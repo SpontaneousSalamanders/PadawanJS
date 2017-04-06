@@ -14,6 +14,10 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# Compiled Dirs (http://nodejs.org/api/addons.html)
+build/
+client/dist/bundle.js
+
 # nyc test coverage
 .nyc_output
 
@@ -27,7 +31,8 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules
+node_modules/
+bower_components/
 jspm_packages
 
 # Optional npm cache directory
@@ -35,3 +40,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Floobits
+.floo
+.floobit
+.floo
+.flooignore

@@ -1,0 +1,29 @@
+{
+  "name": "padawanjs",
+  "version": "1.0.0",
+  "description": "connect-to-tech-mentors-nearby",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpontaneousSalamanders/PadawanJS.git"
+  },
+  "author": "Kay, Chris, David, Brian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpontaneousSalamanders/PadawanJS/issues"
+  },
+  "homepage": "https://github.com/SpontaneousSalamanders/PadawanJS#readme",
+  "dependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "express": "^4.15.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.3.3"
+  }
+}
