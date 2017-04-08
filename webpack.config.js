@@ -22,13 +22,10 @@ var config = {
       }
     ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
   devServer: {
     contentBase: "./dist",
     hot: true
-  },
+  }
 };
 
 module.exports = config;
