@@ -8,10 +8,16 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.map((mentor) => {
       return (
-        <div className="list-group">
-          <Card style={{width: 300}} header={<CardTitle reveal image={"http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png"} waves='light'/>}
+        <div key={mentor.name} className="list-group">
+          <Card style={{width: 300}} header={<CardTitle reveal image={mentor.picture} waves='light'/>}
               title={mentor.name}
-              reveal={<p>Back Profile</p>}>
+              reveal={
+                <ul>
+                  <br />
+                  <li>Location: {mentor.location}</li>
+                  <li>Expertise: {mentor.techStack}</li>
+                </ul>
+              }>
           </Card>
         </div>
       )
