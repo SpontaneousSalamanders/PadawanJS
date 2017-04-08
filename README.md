@@ -4,10 +4,10 @@
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Kay Lee Albito
+  - Chris Chu
+  - Brian Jin
+  - David Deng
 
 ## Table of Contents
 
@@ -44,8 +44,6 @@ bower install
 ```
 
 ### Roadmap
-
-View the project roadmap [here](LINK_TO_DOC)
 
 
 ## Contributing
