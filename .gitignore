@@ -46,3 +46,6 @@ jspm_packages
 .floobit
 .floo
 .flooignore
+
+# misc
+.DS_Store
