@@ -22,6 +22,12 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.boolean('Backbone');
       mentor.boolean('Express');
       mentor.boolean('Redux');
+      mentor.boolean('React Native');
+      mentor.boolean('Mocha/Chai');
+      mentor.boolean('TDD');
+      mentor.boolean('Authorization');
+      mentor.boolean('React Native');
+      mentor.('');
     })
   }
 });
