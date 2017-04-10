@@ -17,6 +17,11 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('mentors', function (mentor) {
       mentor.string('id').primary();
+      mentor.boolean('React');
+      mentor.boolean('Angular');
+      mentor.boolean('Backbone');
+      mentor.boolean('Express');
+      mentor.boolean('Redux');
     })
   }
 });
