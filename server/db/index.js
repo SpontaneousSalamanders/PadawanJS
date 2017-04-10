@@ -18,6 +18,9 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('mentors', function (mentor) {
       mentor.string('id').primary();
+      mentor.string('Name');
+      mentor.string('Location');
+      mentor.string('Picture');
       mentor.boolean('React');
       mentor.boolean('Angular');
       mentor.boolean('Backbone');
@@ -27,16 +30,10 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.boolean('TDD');
       mentor.boolean('Authorization');
       mentor.boolean('React Native');
-      mentor.string('Front-end');
-      mentor.string('Back-end');
-      mentor.string('Full-stack');
-      mentor.string('San Francisco');
-      mentor.string('San Jose');
-      mentor.string('Palo Alto');
     }).then(function(table) {
       console.log('Created table!', table);
     }).catch(function(err) {
-      console.log('Error!', err);
+      console.log('Error creating table!', err);
     })
   }
 });
