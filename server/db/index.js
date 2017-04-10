@@ -18,18 +18,19 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('mentors', function (mentor) {
       mentor.string('id').primary();
-      mentor.string('Name');
-      mentor.string('Location');
-      mentor.string('Picture');
-      mentor.boolean('React');
-      mentor.boolean('Angular');
-      mentor.boolean('Backbone');
-      mentor.boolean('Express');
-      mentor.boolean('Redux');
-      mentor.boolean('Mocha/Chai');
+      mentor.string('name');
+      mentor.string('location');
+      mentor.string('picture');
+      mentor.boolean('react');
+      mentor.boolean('angular');
+      mentor.boolean('backbone');
+      mentor.boolean('express');
+      mentor.boolean('redux');
+      mentor.boolean('authorization');
       mentor.boolean('TDD');
-      mentor.boolean('Authorization');
-      mentor.boolean('React Native');
+      mentor.boolean('mocha/chai');
+      mentor.boolean('react native');
+      mentor.boolean('Node.js');
     }).then(function(table) {
       console.log('Created table!', table);
     }).catch(function(err) {
