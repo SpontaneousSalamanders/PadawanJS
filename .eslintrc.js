@@ -2,6 +2,7 @@
 module.exports = {
   "root": true,
   // http://eslint.org/docs/user-guide/configuring#specifying-environments
+  "extend": 'hackreactor',
   "env": {
     "browser": true,
     "node": true,
