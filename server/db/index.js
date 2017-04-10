@@ -4,6 +4,7 @@ var knex = require('knex')({
   client: 'pg',
   connection: {
     host: '127.0.0.1',
+    port: 5432,
     user: '',
     password: '',
     database: 'padawanJS',
@@ -30,6 +31,13 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.string('Front-end');
       mentor.string('Back-end');
       mentor.string('Full-stack');
+      mentor.string('San Francisco');
+      mentor.string('San Jose');
+      mentor.string('Palo Alto');
+    }).then(function(table) {
+      console.log('Created table!', table);
+    }).catch(function(err) {
+      console.log('Error!', err);
     })
   }
 });
