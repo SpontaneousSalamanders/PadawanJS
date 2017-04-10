@@ -27,7 +27,9 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.boolean('TDD');
       mentor.boolean('Authorization');
       mentor.boolean('React Native');
-      mentor.('');
+      mentor.string('Front-end');
+      mentor.string('Back-end');
+      mentor.string('Full-stack');
     })
   }
 });
