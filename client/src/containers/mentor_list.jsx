@@ -15,7 +15,7 @@ class MentorList extends Component {
                 <ul>
                   <br />
                   <li>Location: {mentor.location}</li>
-                  <li>Expertise: {mentor.techStack}</li>
+                  <li>Expertise: {mentor.techStack.join(', ')}</li>
                 </ul>
               }>
           </Card>
@@ -43,3 +43,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MentorList)
+
+// Tech: 
+// {Object.keys(mentor.techStack).join(', ')}
