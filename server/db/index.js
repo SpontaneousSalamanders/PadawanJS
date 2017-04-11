@@ -35,10 +35,7 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
     }).then(function(table) {
       console.log('Created table!', table);
     }).then(function() {
-      return db.knex('mentors').insert({
-        name: 'John'
-      });
-      console.log('reached here:', db.knex)
+      return db.knex('mentors').insert(dummyData);
     }).catch(function(err) {
       console.log('Error creating table!', err);
     })

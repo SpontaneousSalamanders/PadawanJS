@@ -14,7 +14,7 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Benji Marinacci',
@@ -29,7 +29,7 @@ module.exports = [
     TDD: false,
     'mocha/chai': false,
     'react native': true,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Fred Zirdung',
@@ -44,7 +44,7 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Eric Brown',
@@ -59,7 +59,7 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Tyler Arbus',
@@ -74,7 +74,7 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Paul Mills',
@@ -89,7 +89,7 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Alison Zhang',
@@ -104,7 +104,7 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
   {
     name: 'Jong Kim',
@@ -119,6 +119,6 @@ module.exports = [
     TDD: true,
     'mocha/chai': true,
     'react native': false,
-    'Node.js': true,
+    'Node': true,
   },
 ]
