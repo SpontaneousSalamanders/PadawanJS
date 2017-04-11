@@ -9,7 +9,9 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/getMentors', function(req, res) {
-  res.send('hello');
+  db.knex.select().from('mentors').then(function(mentors) {
+    res.send(mentors);
+  });
 });
 
 var server = app.listen(port, function() {
