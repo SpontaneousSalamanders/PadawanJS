@@ -9,13 +9,10 @@ import App from './components/App.jsx';
 import reducers from './reducers/index.jsx';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
-const history = syncHistoryWithStore(browserHistory, store)
-
-//
 
 render(
-  <Provider store={createStoreWithMiddleware(reducers)} history={history}>
-    <Router history={history} routes={routes} />
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.getElementById('app')
 );
