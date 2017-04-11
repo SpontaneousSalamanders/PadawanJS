@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from 'react-sidebar';
 import MentorList from '../containers/mentor_list.jsx';
-import MentorFilter from '../containers/mentor_filter.jsx';
 import Checkbox from './Checkbox.jsx';
-
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -108,8 +106,6 @@ class App extends Component {
     locationItems.map(this.createCheckbox)
     )
   }
- 
-
 
   render() {
     var sidebarContent = 

@@ -6,6 +6,7 @@ class Checkbox extends Component {
     this.state = {
       isChecked: false,
     }
+    this.toggleCheckboxChange = this.toggleCheckboxChange.bind(this);
   }
 
   toggleCheckboxChange() {
