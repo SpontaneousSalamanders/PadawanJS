@@ -6,6 +6,6 @@ module.exports = function(req, res) {
     res.status(200).send(mentors);
   })
   .catch(function(error) {
-    res.status(error.status || 500).send({'error in server/index.js': error});
+    res.status(error.status || 500).send({'error in getMentors': error});
   });
 }
