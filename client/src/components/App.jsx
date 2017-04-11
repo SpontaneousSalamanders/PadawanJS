@@ -6,7 +6,7 @@ import { filter } from 'lodash';
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const techStackItems = [
-  'Any',
+  'All',
 	'React',
 	'Angular',
 	'Backbone',
@@ -19,14 +19,14 @@ const techStackItems = [
 ];
 
 const rolesItems = [
-  'Any',
+  'All',
 	'Full Stack',
 	'Front-end',
 	'Back-end'
 ];
 
 const locationItems = [
-  'Anywhere',
+  'All',
 	'San Francisco',
 	'San Jose',
 	'Palo Alto'
@@ -46,7 +46,6 @@ class App extends Component {
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.createTechStackCheckboxes = this.createTechStackCheckboxes.bind(this);
-    this.techStackItemSelected = this.techStackItemSelected.bind(this);
   }
 
 	onSetSidebarOpen(open) {
@@ -62,41 +61,18 @@ class App extends Component {
     this.setState({sidebarDocked: this.state.mql.matches});
   }
 
-  techStackItemSelected(item) {
-    console.log(item);
-    const currentSelectedTechStackItems = this.state.selectedTechStacksItems;
-    if (this.state.selectedTechStacksItems.includes(item)) {
-      this.setState({
-        selectedTechStacksItems: filter(currentSelectedTechStackItems, (item) => item != item)
-      }, () => console.log(this.state.selectedTechStacksItems));
-    } else {
-      currentSelectedTechStackItems.push(item);
-      this.setState({
-        selectedTechStacksItems: currentSelectedTechStackItems,
-      }, () => console.log(this.state.selectedTechStacksItems));
-    }
-  }
-
   createTechStackCheckboxes() {
     return (
       techStackItems.map((item) => {
-        const anyItemChecked = (item == 'Any' && this.state.selectedTechStacksItems.length === 0);
-        const techStackItemChecked = this.state.selectedTechStacksItems.includes(item);
-  			return (
-  				<div key={item}>
-  					<input 
-              type="checkbox" 
-              checked={anyItemChecked || techStackItemChecked}  
-              onChange={() => console.log('test')}
-            />
-  					<label>{item}</label>
-  				</div>
-  			)
-  		})
-		);
+        return (
+          <div key={item}>
+            <input type="checkbox" />
+            <label>{item}</label>
+          </div>
+        )
+      })
+    );
   }
-
-// <input type="checkbox" checked={this.state.chkbox} onChange={this.handleChangeChk} />
 
 
   createRolesCheckboxes() {
