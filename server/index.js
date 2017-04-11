@@ -9,8 +9,12 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/getMentors', function(req, res) {
-  db.knex.select().from('mentors').then(function(mentors) {
-    res.send(mentors);
+  db.knex.select('cat').from('mentors')
+  .then(function(mentors) {
+    res.status(200).send(mentors);
+  })
+  .catch(function(error) {
+    res.status(error.status || 500).send({'error in server/index.js': error});
   });
 });
 
