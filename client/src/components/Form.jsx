@@ -20,17 +20,15 @@ class Form extends Component {
       <form onSubmit={this.onSubmit.bind(this)}>
         <ErrorSignIn />
         <div>
-          <input type="text" id="username" value={this.props.data.username} placeholder="fred.zirdung" onChange={this.changeUsername.bind(this)} autoCorrect="off" autoCapitalize="off" spellCheck="false" />
+          <input type="text" id="username" placeholder="fred.zirdung" onChange={this.changeUsername.bind(this)} autoCorrect="off" autoCapitalize="off" spellCheck="false" />
           <label htmlFor="username">Username</label>
         </div>
         <div>
-          <input id="password" type="password" value={this.props.data.password} placeholder="••••••••••"  onChange={this.changePassword.bind(this)} />
+          <input id="password" type="password" placeholder="••••••••••"  onChange={this.changePassword.bind(this)} />
           <label htmlFor="password">Password</label>
         </div>
         <div>
-          {this.props.currentlySending ? (
-            <div>Loading</div>
-          ) : (
+          (
             <button type="submit">{this.props.btnText}</button>
           )}
         </div>
@@ -73,10 +71,5 @@ class Form extends Component {
   }
 }
 
-// Form.propTypes = {
-//   onSubmit: React.PropTypes.func.isRequired,
-//   btnText: React.PropTypes.string.isRequired,
-//   data: React.PropTypes.object.isRequired
-// }
 
 export default Form;
