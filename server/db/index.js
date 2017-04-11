@@ -31,13 +31,13 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.boolean('TDD');
       mentor.boolean('mocha/chai');
       mentor.boolean('react native');
-      mentor.boolean('Node');
+      mentor.boolean('node');
     }).then(function(table) {
       console.log('Created table!', table);
     }).then(function() {
       return db.knex('mentors').insert(dummyData);
     }).catch(function(err) {
-      console.log('Error creating table!', err);
+      console.log('Error creating table', err);
     })
   }
 });
