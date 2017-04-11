@@ -9,15 +9,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/getMentors', function(req, res) {
-  Mentors.getMentors()
-  .then(function(mentors) {
-    res.status(200).send(mentors);
-  })
-  .catch(function(error) {
-    res.status(error.status || 500).send({'error in server/index.js': error});
-  });
-});
+app.get('/getMentors', handler.getMentors);
 
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);

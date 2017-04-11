@@ -1,4 +1,3 @@
-var db = require('../db/index.js');
 var Mentors = require('../models/mentors.js')
 
 module.exports = function(req, res) {
