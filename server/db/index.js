@@ -17,8 +17,8 @@ var db = require('bookshelf')(knex);
 
 db.knex.schema.hasTable('mentors').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('mentors', function (mentor) {
-      mentor.string('id').primary();
+    db.knex.schema.createTable('mentors', function(mentor) {
+      mentor.increments('id').primary();
       mentor.string('name');
       mentor.string('location');
       mentor.string('picture');
@@ -31,14 +31,14 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.boolean('TDD');
       mentor.boolean('mocha/chai');
       mentor.boolean('react native');
-      mentor.boolean('Node.js');
+      mentor.boolean('Node');
     }).then(function(table) {
       console.log('Created table!', table);
     }).then(function() {
-      db.knex('mentors').insert({
+      return db.knex('mentors').insert({
         name: 'John'
       });
-      console.log('mentor added!')
+      console.log('reached here:', db.knex)
     }).catch(function(err) {
       console.log('Error creating table!', err);
     })
