@@ -8,24 +8,28 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.map((mentor) => {
       return (
-        <div key={mentor.name} className="list-group">
-          <Card style={{width: 300}} header={<CardTitle reveal image={mentor.picture} waves='light'/>}
-              title={mentor.name}
-              reveal={
+        <Card 
+        key={mentor.name}
+        header={<CardTitle reveal image={mentor.picture} waves='light'/>}
+            title={mentor.name}
+            reveal={
+              <div>
                 <ul>
                   <br />
                   <li>Location: {mentor.location}</li>
                   <li>Expertise: {mentor.techStack.join(', ')}</li>
                 </ul>
-              }>
-          </Card>
-        </div>
+                <button className="viewProfileButton">View Profile</button>
+                <button className="requestLightSaberButton">Request Lightsaber</button>
+              </div>
+            }>
+        </Card>
       )
     })
   }
   render() {
     return (
-      <div className="container">
+      <div className="cardsContainer">
         {this.renderList()}
       </div>
     )
@@ -43,6 +47,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MentorList)
-
-// Tech: 
-// {Object.keys(mentor.techStack).join(', ')}
