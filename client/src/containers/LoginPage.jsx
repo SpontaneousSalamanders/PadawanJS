@@ -12,7 +12,7 @@ import Form from '../containers/Form.jsx';
 // import { sendingRequest, register } from '../../actions/index.jsx';
 // import LoadingIndicator from '../LoadingIndicator.react';
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { formState, currentlySending } = this.props.data;
