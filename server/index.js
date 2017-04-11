@@ -8,6 +8,10 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
+app.get('/getMentors', function(req, res) {
+  res.send('hello');
+});
+
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);
 });
