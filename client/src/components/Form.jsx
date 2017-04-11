@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import ErrorSignIn from '../containers/Error_SignInPage.jsx'
+import ErrorSignIn from '../containers/ErrorSignInPage.jsx'
 // import { changeForm } from '../actions/index.jsx';
 // import loading button at some point
 
@@ -17,11 +17,11 @@ const assign = Object.assign;
 class LoginForm extends Component {
   render() {
     return(
-      <form className="form" onSubmit={this.onSubmit.bind(this)}>
-        <ErrorMessage />
+      <form onSubmit={this.onSubmit.bind(this)}>
+        <ErrorSignIn />
         <div>
           <input type="text" id="username" value={this.props.data.username} placeholder="fred.zirdung" onChange={this.changeUsername.bind(this)} autoCorrect="off" autoCapitalize="off" spellCheck="false" />
-          <label className="form__field-label" htmlFor="username">Username</label>
+          <label htmlFor="username">Username</label>
         </div>
         <div>
           <input id="password" type="password" value={this.props.data.password} placeholder="••••••••••"  onChange={this.changePassword.bind(this)} />

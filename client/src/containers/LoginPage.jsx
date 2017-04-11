@@ -9,7 +9,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import Form from '../containers/Form.jsx';
-// import { sendingRequest, register } from '../../actions/AppActions';
+// import { sendingRequest, register } from '../../actions/index.jsx';
 // import LoadingIndicator from '../LoadingIndicator.react';
 
 export default class LoginPage extends Component {
@@ -25,7 +25,7 @@ export default class LoginPage extends Component {
           </div>
           {/* While the form is sending, show the loading indicator,
             otherwise show "Log in" on the submit button */}
-          <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={::this.login} btnText={"Login"} currentlySending={currentlySending}/>
+          <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={this.login.bind(this)} btnText={"Login"} currentlySending={currentlySending}/>
         </div>
       </div>
     );
