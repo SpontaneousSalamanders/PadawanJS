@@ -2,9 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { browserHistory } from 'react-router'
+import { Router, browserHistory } from 'react-router'
 import routes from './routes.jsx'
-import { Router, syncHistoryWithStore } from 'react-router-redux'
 
 import App from './components/App.jsx';
 import reducers from './reducers/index.jsx';
