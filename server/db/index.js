@@ -1,4 +1,5 @@
 var pg = require('pg');
+var dummyData = require('./dummyData.js')
 
 var knex = require('knex')({
   client: 'pg',
@@ -33,6 +34,11 @@ db.knex.schema.hasTable('mentors').then(function(exists) {
       mentor.boolean('Node.js');
     }).then(function(table) {
       console.log('Created table!', table);
+    }).then(function() {
+      db.knex('mentors').insert({
+        name: 'John'
+      });
+      console.log('mentor added!')
     }).catch(function(err) {
       console.log('Error creating table!', err);
     })
