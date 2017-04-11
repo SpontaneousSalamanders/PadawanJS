@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('./db/index.js');
+var Mentors = require('./models/mentors.js')
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -9,7 +10,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/getMentors', function(req, res) {
-  db.knex.select('cat').from('mentors')
+  Mentors.getMentors()
   .then(function(mentors) {
     res.status(200).send(mentors);
   })
