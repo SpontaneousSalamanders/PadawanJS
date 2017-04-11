@@ -16,6 +16,8 @@ class LoginPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { formState, currentlySending } = this.props.data;
+          /* While the form is sending, show the loading indicator,
+            otherwise show "Log in" on the submit button */
     return (
       // many divs for CSS classNames - later
       <div>
@@ -23,8 +25,6 @@ class LoginPage extends Component {
           <div>
             <h2>Login</h2>
           </div>
-          {/* While the form is sending, show the loading indicator,
-            otherwise show "Log in" on the submit button */}
           <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={this.login.bind(this)} btnText={"Login"} currentlySending={currentlySending}/>
         </div>
       </div>

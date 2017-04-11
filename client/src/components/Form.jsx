@@ -14,7 +14,7 @@ import ErrorSignIn from '../containers/ErrorSignInPage.jsx'
 
 const assign = Object.assign;
 
-class LoginForm extends Component {
+class Form extends Component {
   render() {
     return(
       <form onSubmit={this.onSubmit.bind(this)}>
@@ -73,10 +73,10 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {
-  onSubmit: React.PropTypes.func.isRequired,
-  btnText: React.PropTypes.string.isRequired,
-  data: React.PropTypes.object.isRequired
-}
+// Form.propTypes = {
+//   onSubmit: React.PropTypes.func.isRequired,
+//   btnText: React.PropTypes.string.isRequired,
+//   data: React.PropTypes.object.isRequired
+// }
 
-export default LoginForm;
+export default Form;
