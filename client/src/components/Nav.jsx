@@ -22,7 +22,7 @@ class Nav extends Component {
         </div>
       ) : (
         <div>
-          <Link to="/register">Register</Link>
+          <Link to="/signup">Sign Up</Link>
           <Link to="/login">Login</Link>
         </div>
       );
