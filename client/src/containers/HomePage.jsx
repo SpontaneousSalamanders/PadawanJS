@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Nav from '../containers/Nav.jsx';
+import Nav from '../components/Nav.jsx';
 import { connect } from 'react-redux';
 
 import MentorList from '../containers/mentor_list.jsx';

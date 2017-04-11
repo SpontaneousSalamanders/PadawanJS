@@ -8,7 +8,7 @@
 
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import Form from '../containers/Form.jsx';
+import Form from '../components/Form.jsx';
 // import { sendingRequest, register } from '../../actions/index.jsx';
 // import LoadingIndicator from '../LoadingIndicator.react';
 
