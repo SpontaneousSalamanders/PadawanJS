@@ -23,6 +23,7 @@ var config = {
     ]
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: "./dist",
     hot: true
   }
