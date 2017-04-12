@@ -5,12 +5,13 @@ import { selectMentor } from '../actions/index.jsx'
 import { bindActionCreators } from 'redux';
 import MentorProfile from './mentor_profile.jsx';
 import { Link } from 'react-router';
+import { getMentors } from '../actions/mentorActions.jsx'
 
 class MentorList extends Component {
   renderList() {
     return this.props.mentors.map((mentor) => {
       return (
-        <Card 
+        <Card
         key={mentor.name}
         header={<CardTitle reveal image={mentor.picture} waves='light'/>}
             title={mentor.name}
@@ -33,6 +34,12 @@ class MentorList extends Component {
       )
     })
   }
+
+  componentDidMount() {
+    console.log(this.props);
+    this.props.getMentors();
+  }
+
   render() {
     return (
       <div className="cardsContainer">
@@ -49,7 +56,20 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({selectMentor: selectMentor}, dispatch);
+  return {
+    actions: {
+      getMentors: bindActionCreators({ getMentors }, dispatch),
+      selectMentor: bindActionCreators({selectMentor: selectMentor}, dispatch)
+    }
+  };
 }
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({selectMentor: selectMentor}, dispatch);
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({selectMentor: selectMentor}, dispatch);
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MentorList)
