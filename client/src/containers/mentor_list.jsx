@@ -67,9 +67,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getMentors: getMentors}, dispatch);
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({selectMentor: selectMentor}, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({selectMentor: selectMentor}, dispatch);
+}
 
 // function mapDispatchToProps(dispatch) {
 //   return {
