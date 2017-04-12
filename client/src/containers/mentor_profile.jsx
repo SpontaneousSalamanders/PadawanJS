@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class MentorProfile extends Component {
   render () {
     return (
-      <div>
+      <div style={{marginTop: 100}}>
         <img
           style={{width: 300}}
           src={this.props.mentor.picture} />          
