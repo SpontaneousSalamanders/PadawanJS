@@ -54,7 +54,7 @@ class HomePage extends Component {
       mql: mql,
       docked: props.docked,
       open: props.open,
-      isChecked: false,
+      isChecked: [],
       selectedTechStacksItems: [],
       selectedRolesItems: [],
       selectedLocationItems: []
