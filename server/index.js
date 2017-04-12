@@ -12,9 +12,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/getMentors', handler.getMentors);
 
-app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
-})
 
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);
