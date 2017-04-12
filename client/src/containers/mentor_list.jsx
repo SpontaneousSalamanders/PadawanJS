@@ -17,13 +17,11 @@ class MentorList extends Component {
       return mentor[tech] === true;
     }).join(', ');
 
-    console.log(result);
-
     return result;
   }
 
   renderList() {
-    return this.props.mentorList.map((mentor) => {
+    return this.props.mentors.map((mentor) => {
       return (
         <Card
         key={mentor.name}
@@ -49,29 +47,6 @@ class MentorList extends Component {
     })
   }
 
-  // renderList() {
-  //   return this.props.mentors.map((mentor) => {
-  //     return (
-  //       <Card
-  //       key={mentor.name}
-  //       header={<CardTitle reveal image={mentor.picture} waves='light'/>}
-  //           title={mentor.name}
-  //           reveal={
-  //             <div>
-  //               <ul>
-  //                 <br />
-  //                 <li>Location: {mentor.location}</li>
-  //                 <li>Expertise: {mentor.techStack.join(', ')}</li>
-  //               </ul>
-  //               <button className="viewProfileButton">View Profile</button>
-  //               <button className="requestLightSaberButton">Request Lightsaber</button>
-  //             </div>
-  //           }>
-  //       </Card>
-  //     )
-  //   })
-  // }
-
   render() {
     return (
       <div className="cardsContainer">
@@ -85,7 +60,6 @@ class MentorList extends Component {
 function mapStateToProps(state) {
   return {
     mentors: state.mentors,
-    mentorList: state.mentorList
   };
 }
 

@@ -3,7 +3,6 @@ import MentorsReducer from './reducer_mentors.jsx';
 import SelectedMentor from './reducer_selected_mentor.jsx';
 import Resources from './reducer_resources.jsx';
 import { reducer as formReducer } from 'redux-form';
-import MentorList from './reducer_mentor_list.jsx';
 
 // The initial application state for form
 const initialState = {
@@ -47,17 +46,9 @@ export function homeReducer(state = initialState, action) {
 
 const rootReducer = combineReducers({
   mentors: MentorsReducer,
-<<<<<<< HEAD
   selectedMentor: SelectedMentor,
   resources: Resources,
   form: formReducer
-=======
-<<<<<<< HEAD
-  selectedMentor: SelectedMentor
-=======
-  mentorList: MentorList
->>>>>>> (feat) Finished AJAX request to get mentors
->>>>>>> (feat) Finished AJAX request to get mentors
 });
 
 export default rootReducer;
