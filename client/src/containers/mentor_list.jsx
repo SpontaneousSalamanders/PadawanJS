@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import { Card, CardTitle } from 'react-materialize';
 import { selectMentor } from '../actions/index.jsx'
 import { bindActionCreators } from 'redux';
+import MentorProfile from './mentor_profile.jsx';
+import { Link } from 'react-router';
 
 class MentorList extends Component {
   renderList() {
     return this.props.mentors.map((mentor) => {
       return (
-        <Card
+        <div style={{marginTop: 100}}>
+        <Card 
         key={mentor.name}
         header={<CardTitle reveal image={mentor.picture} waves='light'/>}
             title={mentor.name}
@@ -19,11 +22,16 @@ class MentorList extends Component {
                   <li>Location: {mentor.location}</li>
                   <li>Expertise: {mentor.techStack.join(', ')}</li>
                 </ul>
-                <button className="viewProfileButton">View Profile</button>
+                <Link
+                  to="/profile"
+                  onClick={()=> this.props.selectMentor(mentor)}
+                  className="viewProfileButton">View Profile
+                </Link>
                 <button className="requestLightSaberButton">Request Lightsaber</button>
               </div>
             }>
         </Card>
+        </div>
       )
     })
   }
