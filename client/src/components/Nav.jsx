@@ -28,12 +28,7 @@ class Nav extends Component {
         </div>
       );
 
-          <div className="nav">
-        <div className="nav__wrapper">
-          <Link to="/" className="nav__logo-wrapper"><h1 className="nav__logo">Login&nbsp;Flow</h1></Link>
-          { navButtons }
-        </div>
-      </div>
+
 
 
     return(

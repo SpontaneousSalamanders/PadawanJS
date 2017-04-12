@@ -100,8 +100,8 @@ class HomePage extends Component {
               <label htmlFor={key}>{item}</label>
             </div>
           )
-        })}
-      </form>
+        })
+}      </form>
     );
   }
 
