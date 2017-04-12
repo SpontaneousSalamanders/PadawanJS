@@ -8,8 +8,12 @@ import { Link } from 'react-router';
 import { getMentors } from '../actions/mentorActions.jsx'
 
 class MentorList extends Component {
+  componentDidMount() {
+    this.props.getMentors();
+  }
+
   renderList() {
-    return this.props.mentors.map((mentor) => {
+    return this.props.mentorList.map((mentor) => {
       return (
         <Card
         key={mentor.name}
@@ -20,7 +24,6 @@ class MentorList extends Component {
                 <ul>
                   <br />
                   <li>Location: {mentor.location}</li>
-                  <li>Expertise: {mentor.techStack.join(', ')}</li>
                 </ul>
                 <Link
                   to="/profile"
@@ -35,9 +38,28 @@ class MentorList extends Component {
     })
   }
 
-  componentDidMount() {
-    this.props.getMentors();
-  }
+  // renderList() {
+  //   return this.props.mentors.map((mentor) => {
+  //     return (
+  //       <Card
+  //       key={mentor.name}
+  //       header={<CardTitle reveal image={mentor.picture} waves='light'/>}
+  //           title={mentor.name}
+  //           reveal={
+  //             <div>
+  //               <ul>
+  //                 <br />
+  //                 <li>Location: {mentor.location}</li>
+  //                 <li>Expertise: {mentor.techStack.join(', ')}</li>
+  //               </ul>
+  //               <button className="viewProfileButton">View Profile</button>
+  //               <button className="requestLightSaberButton">Request Lightsaber</button>
+  //             </div>
+  //           }>
+  //       </Card>
+  //     )
+  //   })
+  // }
 
   render() {
     return (
