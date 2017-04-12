@@ -20,7 +20,6 @@ import { filter } from 'lodash';
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const techStackItems = [
-  'All',
   'React',
   'Angular',
   'Backbone',
@@ -33,18 +32,23 @@ const techStackItems = [
 ];
 
 const rolesItems = [
-  'All',
   'Full Stack',
   'Front-end',
   'Back-end'
 ];
 
 const locationItems = [
-  'All',
   'San Francisco',
   'San Jose',
   'Palo Alto'
 ];
+
+
+// 1) 'All' should be the default click
+// 2) if anything is clicked, 'All' is going to be unclicked 
+// 3) if anything is clicked, function to iterate through the mentor list based on the input 
+//    (that clicked field should give input.value (or target.value))
+// 4) 
 
 class HomePage extends Component {
   constructor(props) {
@@ -53,15 +57,16 @@ class HomePage extends Component {
       mql: mql,
       docked: props.docked,
       open: props.open,
-      isChecked: [],
-      selectedTechStacksItems: [],
-      selectedRolesItems: [],
-      selectedLocationItems: []
+      isAllChecked: true,
+      isChecked: []
     }
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.createTechStackCheckboxes = this.createTechStackCheckboxes.bind(this);
+    this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
+    this.createLocationCheckboxes = this.createLocationCheckboxes.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleAllIsClicked = this.handleAllIsClicked.bind(this);
   }
 
   onSetSidebarOpen(open) {
@@ -85,6 +90,13 @@ class HomePage extends Component {
     });
   }
 
+  handleAllIsClicked() {
+    console.log('all is clicked')
+    this.setState({
+      isAllChecked: !isAllChecked
+    })
+  }
+
   createTechStackCheckboxes() {
     return (
       <form>
@@ -95,13 +107,14 @@ class HomePage extends Component {
                 key={key}
                 id={key}
                 type="checkbox"
-                checked={this.state.isChecked[key]}
+                checked={this.state.isChecked[item]}
                 onChange={this.handleInputChange} />
               <label htmlFor={key}>{item}</label>
             </div>
           )
         })
-}      </form>
+      }      
+      </form>
     );
   }
 
@@ -115,7 +128,7 @@ class HomePage extends Component {
                 key={key}
                 id={key}
                 type="checkbox"
-                checked={this.state.isChecked[key]}
+                checked={this.state.isChecked[item]}
                 onChange={this.handleInputChange} />
               <label htmlFor={key}>{item}</label>
             </div>
@@ -135,7 +148,7 @@ class HomePage extends Component {
                 key={key}
                 id={key}
                 type="checkbox"
-                checked={this.state.isChecked[key]}
+                checked={this.state.isChecked[item]}
                 onChange={this.handleInputChange} />
               <label htmlFor={key}>{item}</label>
             </div>
@@ -143,9 +156,7 @@ class HomePage extends Component {
         })}
       </form>
     );
-  }
-
-
+  
 
   render() {
     const dispatch = this.props.dispatch;
@@ -154,6 +165,14 @@ class HomePage extends Component {
     var sidebarContent =
     (<div className="sidebar">
       <div>Tech Stacks</div>
+      <form>
+        <input 
+         key="all"
+         type="checkbox"
+         checked={this.state.isAllChecked}
+         onClick={this.handleAllIsClicked}/>
+         <label>All</label>
+      </form>
       <div>
         {this.createTechStackCheckboxes()}
       </div>
