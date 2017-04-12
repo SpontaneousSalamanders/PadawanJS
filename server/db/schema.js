@@ -8,16 +8,16 @@ module.exports = function(db) {
         mentor.string('name');
         mentor.string('location');
         mentor.string('picture');
-        mentor.boolean('react');
-        mentor.boolean('angular');
-        mentor.boolean('backbone');
-        mentor.boolean('express');
-        mentor.boolean('redux');
-        mentor.boolean('authorization');
+        mentor.boolean('React');
+        mentor.boolean('Angular');
+        mentor.boolean('Backbone');
+        mentor.boolean('Express');
+        mentor.boolean('Redux');
+        mentor.boolean('Authorization');
         mentor.boolean('TDD');
-        mentor.boolean('mocha/chai');
-        mentor.boolean('react native');
-        mentor.boolean('node');
+        mentor.boolean('Mocha/Chai');
+        mentor.boolean('React Native');
+        mentor.boolean('Node');
       }).then(function(table) {
         console.log('Created table!', table);
       }).then(function() {
