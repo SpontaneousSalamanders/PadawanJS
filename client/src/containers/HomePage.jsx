@@ -11,9 +11,8 @@ import { Link } from 'react-router';
 import Nav from '../components/Nav.jsx';
 import { connect } from 'react-redux';
 
-import MentorList from '../containers/mentor_list.jsx';
-// import MentorDetail from '../containers/mentor_detail';
 
+// import MentorDetail from '../containers/mentor_detail';
 import Sidebar from 'react-sidebar';
 import MentorList from '../containers/mentor_list.jsx';
 import { filter } from 'lodash';
@@ -47,7 +46,7 @@ const locationItems = [
   'Palo Alto'
 ];
 
-class App extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -147,6 +146,7 @@ class App extends Component {
   }
 
 
+
   render() {
     var sidebarContent =
     (<div>
@@ -165,13 +165,10 @@ class App extends Component {
         {this.createLocationCheckboxes()}
       </div>
     </div>);
+    const dispatch = this.props.dispatch;
+    const { loggedIn } = this.props.data;
 
-
-class HomePage extends Component {
-  render() {
     return (
-      const dispatch = this.props.dispatch;
-      const { loggedIn } = this.props.data;
       <div>
         <Sidebar
           sidebar={sidebarContent}
