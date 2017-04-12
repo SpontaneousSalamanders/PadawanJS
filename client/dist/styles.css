@@ -1,3 +1,5 @@
+/* Cards ------------------ */
+
 .viewProfileButton {
 	margin-right: 10px;
   background-color: black;
@@ -38,7 +40,7 @@
 
 .cardsContainer .card {
   width: 300px;
-  height: 400px; 
+  height: 400px;
   float: left;
   margin: 10px;
 
@@ -51,3 +53,193 @@
 .cardsContainer {
   margin: 50px 50px;
 }
+
+/* -----------------------------
+Navigation Bar
+*/
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $nav-height;
+  box-shadow: 0 0 2px rgba(0,0,0,.5);
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.nav__wrapper {
+  max-width: $max-width;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.nav__logo-wrapper {
+  text-decoration: none;
+}
+
+.nav__logo {
+  font-size: 1em;
+  margin: 0;
+  user-select: none;
+  color: $text-color;
+  text-decoration: none;
+}
+
+.btn--nav {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.btn--nav + .btn--nav {
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 400px) {
+  .nav__wrapper {
+    justify-content: none;
+  }
+
+  .nav__logo-wrapper {
+    margin: 0 auto;
+  }
+
+  .btn--nav {
+    display: none;
+  }
+}
+
+/* Form ------------------------ */
+.form-page__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.form-page__form-wrapper {
+  max-width: 325px;
+  width: 100%;
+  border: 1px solid $very-light-grey;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+
+.form-page__form-heading {
+  text-align: center;
+  font-size: 1em;
+  user-select: none;
+}
+
+.form-page__form-header {
+  padding: 1em;
+}
+
+.form__field-wrapper {
+  width: 100%;
+  position: relative;
+  padding-top: 1.75em;
+  border-top: 1px solid $very-light-grey;
+  border-bottom: 1px solid $very-light-grey;
+  background-color: #fff;
+}
+
+.form__field-wrapper + .form__field-wrapper {
+  border-top: none;
+}
+
+.form__field-input:focus ~ .form__field-label {
+  color: $dark-grey;
+  background-color: $very-light-grey;
+}
+
+.form__field-input:focus {
+  background-color: $very-light-grey;
+  color: $very-dark-grey;
+}
+
+.form__field-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin: 0;
+  z-index: 1;
+  font-size: .8em;
+  color: $mid-grey;
+  font-weight: 400;
+  user-select: none;
+  cursor: text;
+}
+
+.form__field-input {
+  position: relative;
+  padding: 1.625em 16px;
+  width: 100%;
+  color: $dark-grey;
+  border: none;
+  outline: 0;
+  letter-spacing: 0.05em;
+}
+
+.form__submit-btn-wrapper {
+  padding: 2em 1em;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.form__submit-btn {
+  border: none;
+  background-color: #fff;
+  border: 1px solid $brand-color;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  background-color: $brand-color;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.js-form__err-animation {
+  animation: shake 150ms ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
+/* Sidebar --------------------------
+*/
+
+
+
+
+

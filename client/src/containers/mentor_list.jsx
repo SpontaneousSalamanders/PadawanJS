@@ -8,7 +8,7 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.map((mentor) => {
       return (
-        <Card 
+        <Card
         key={mentor.name}
         header={<CardTitle reveal image={mentor.picture} waves='light'/>}
             title={mentor.name}

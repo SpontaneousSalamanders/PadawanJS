@@ -148,8 +148,11 @@ class HomePage extends Component {
 
 
   render() {
+    const dispatch = this.props.dispatch;
+    const { loggedIn } = this.props.data;
+
     var sidebarContent =
-    (<div>
+    (<div className="sidebar">
       <div>Tech Stacks</div>
       <div>
         {this.createTechStackCheckboxes()}
@@ -165,8 +168,6 @@ class HomePage extends Component {
         {this.createLocationCheckboxes()}
       </div>
     </div>);
-    const dispatch = this.props.dispatch;
-    const { loggedIn } = this.props.data;
 
     return (
       <div>

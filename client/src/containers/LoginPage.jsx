@@ -19,13 +19,12 @@ class LoginPage extends Component {
           /* While the form is sending, show the loading indicator,
             otherwise show "Log in" on the submit button */
     return (
-      // many divs for CSS classNames - later
       <div>
         <div>
           <div>
             <h2>Login</h2>
           </div>
-          <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={this.login.bind(this)} btnText={"Login"} currentlySending={currentlySending}/>
+          <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={this.login.bind(this)} btnText={"Submit"} currentlySending={currentlySending}/>
         </div>
       </div>
     );
