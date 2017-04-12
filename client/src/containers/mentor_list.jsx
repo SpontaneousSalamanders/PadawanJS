@@ -36,8 +36,7 @@ class MentorList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
-    this.props.getMentors();
+    this.props.actions.getMentors.getMentors();
   }
 
   render() {
@@ -63,10 +62,6 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({selectMentor: selectMentor}, dispatch);
-// }
 
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({selectMentor: selectMentor}, dispatch);
