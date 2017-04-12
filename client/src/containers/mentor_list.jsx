@@ -36,13 +36,14 @@ class MentorList extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.getMentors.getMentors();
+    this.props.getMentors();
   }
 
   render() {
     return (
       <div className="cardsContainer">
         {this.renderList()}
+        }
       </div>
     )
   }
@@ -50,21 +51,26 @@ class MentorList extends Component {
 
 function mapStateToProps(state) {
   return {
-    mentors: state.mentors
+    mentors: state.mentors,
+    mentorList: state.mentorList
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: {
-      getMentors: bindActionCreators({ getMentors }, dispatch),
-      selectMentor: bindActionCreators({selectMentor: selectMentor}, dispatch)
-    }
-  };
+  return bindActionCreators({getMentors: getMentors}, dispatch);
 }
 
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({selectMentor: selectMentor}, dispatch);
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: {
+//       getMentors: bindActionCreators({ getMentors }, dispatch),
+//       selectMentor: bindActionCreators({selectMentor: selectMentor}, dispatch)
+//     }
+//   };
 // }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MentorList)
