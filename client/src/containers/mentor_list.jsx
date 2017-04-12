@@ -9,7 +9,8 @@ import { getMentors } from '../actions/mentorActions.jsx'
 
 class MentorList extends Component {
   componentDidMount() {
-    this.props.getMentors();
+    this.props.getMentorsAction.getMentors();
+    // console.log(this.props);
   }
 
   renderTechStack(mentor) {
@@ -36,7 +37,7 @@ class MentorList extends Component {
                 </ul>
                 <Link
                   to="/profile"
-                  onClick={()=> this.props.selectMentor(mentor)}
+                  onClick={()=> this.props.selectMentorAction.selectMentor(mentor)}
                   className="viewProfileButton">View Profile
                 </Link>
                 <button className="requestLightSaberButton">Request Lightsaber</button>
@@ -64,20 +65,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getMentors: getMentors}, dispatch);
+  return {
+    getMentorsAction: bindActionCreators({ getMentors: getMentors }, dispatch),
+    selectMentorAction: bindActionCreators({selectMentor: selectMentor}, dispatch)
+  };
 }
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({selectMentor: selectMentor}, dispatch);
-}
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: {
-//       getMentors: bindActionCreators({ getMentors }, dispatch),
-//       selectMentor: bindActionCreators({selectMentor: selectMentor}, dispatch)
-//     }
-//   };
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MentorList)
