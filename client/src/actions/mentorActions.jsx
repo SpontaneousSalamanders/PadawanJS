@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const FETCH_MENTORS = 'FETCH_MENTORS';
+export const GET_MENTORS = 'GET_MENTORS';
 
-export function fetchMentors() {
+export function getMentors() {
   const request = axios.get('/getMentors');
 
   return {
-    type: FETCH_MENTORS,
-    payload:
+    type: GET_MENTORS,
+    payload: request
   }
 }
