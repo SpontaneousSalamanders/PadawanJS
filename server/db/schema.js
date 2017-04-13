@@ -31,18 +31,21 @@ module.exports = (db) => {
             event.time('time');
           }).then((table) => {
             console.log('Created table!', table);
-            db.knex.schema.hasTable('users_events').then((exists) => {
-              if (!exists) {
-                db.knex.schema.createTable('users_events', (user_event) => {
-                  user_event.increments('id').primary();
-                }).then((table) => {
-                  console.log('Created table!', table);
-                  return db.knex('events').insert(dummyData.events);
-                }).catch((err) => {
-                  console.log('Error creating table', err);
-                });
-              }
-            });
+            return db.knex('events').insert(dummyData.events);
+          }).catch((err) => {
+            console.log('Error creating table', err);
+          });
+        }
+      });
+
+      db.knex.schema.hasTable('users_events').then((exists) => {
+        if (!exists) {
+          db.knex.schema.createTable('users_events', (user_event) => {
+            user_event.increments('id').primary();
+          }).then((table) => {
+            console.log('Created table!', table);
+          }).catch((err) => {
+            console.log('Error creating table', err);
           });
         }
       });
