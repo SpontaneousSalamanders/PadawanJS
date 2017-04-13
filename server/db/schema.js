@@ -5,6 +5,7 @@ module.exports = (db) => {
     if (!exists) {
       db.knex.schema.createTable('mentors', (mentor) => {
         mentor.increments('id').primary();
+        mentor.string('type');
         mentor.string('name');
         mentor.string('email');
         mentor.string('location');
