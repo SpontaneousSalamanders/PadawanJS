@@ -10,15 +10,6 @@ import { getMentors } from '../actions/mentorActions.jsx'
 class MentorList extends Component {
   componentDidMount() {
     this.props.getMentorsAction.getMentors();
-    // console.log(this.props);
-  }
-
-  renderTechStack(mentor) {
-    var result = Object.keys(mentor).filter((tech) => {
-      return mentor[tech] === true;
-    }).join(', ');
-
-    return result;
   }
 
   renderList() {
@@ -33,7 +24,7 @@ class MentorList extends Component {
                 <ul>
                   <br />
                   <li>Location: {mentor.location}</li>
-                  <li>Expertise: {this.renderTechStack(mentor)}</li>
+                  <li>Expertise: {mentor.techStack.join(', ')}</li>
                 </ul>
                 <Link
                   to="/profile"
