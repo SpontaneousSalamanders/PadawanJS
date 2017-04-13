@@ -13,7 +13,7 @@ module.exports = function(db) {
         mentor.specificType('techStack', 'text[]');
       }).then(function(table) {
         console.log('Created table!', table);
-        return db.knex('mentors').insert(dummyData);
+        return db.knex('mentors').insert(dummyData.mentors);
       }).catch(function(err) {
         console.log('Error creating table', err);
       });
@@ -36,6 +36,7 @@ module.exports = function(db) {
                   user_event.increments('id').primary();
                 }).then(function(table) {
                   console.log('Created table!', table);
+                  return db.knex('events').insert(dummyData.events);
                 }).catch(function(err) {
                   console.log('Error creating table', err);
                 });
