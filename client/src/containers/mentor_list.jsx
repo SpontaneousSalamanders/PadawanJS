@@ -43,7 +43,6 @@ class MentorList extends Component {
     return (
       <div className="cardsContainer">
         {this.renderList()}
-        }
       </div>
     )
   }
@@ -57,7 +56,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getMentorsAction: bindActionCreators({ getMentors: getMentors }, dispatch),
+    getMentorsAction: bindActionCreators({getMentors: getMentors}, dispatch),
     selectMentorAction: bindActionCreators({selectMentor: selectMentor}, dispatch)
   };
 }
