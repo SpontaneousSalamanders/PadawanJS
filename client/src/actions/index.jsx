@@ -25,7 +25,6 @@
 
 import { browserHistory } from 'react-router';
 
-
 export function selectMentor(mentor) {
   console.log('Action:', mentor);
   return {
@@ -34,5 +33,13 @@ export function selectMentor(mentor) {
   };
 }
 
-
-
+export function filterMentors({ techStacks, roles, locations }) {
+	return {
+		type: 'FILTER_MENTORS',
+		payload: {
+			techStacks,
+			roles,
+			locations,
+		},
+	}
+}

@@ -8,19 +8,23 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Nav from '../components/Nav.jsx';
 import { connect } from 'react-redux';
 import { Row, Input } from 'react-materialize';
-
+import { bindActionCreators } from 'redux';
 
 // import MentorDetail from '../containers/mentor_detail';
+import Sidebar from 'react-sidebar';
 import SideBarMenu from '../components/SideBarMenu.jsx';
 import MentorList from '../containers/mentor_list.jsx';
 import { filter } from 'lodash';
+import Nav from '../components/Nav.jsx';
+import MentorList from '../components/MentorList.jsx';
+import { filterMentors } from '../actions/index.jsx'
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const techStackItems = [
+  'All',
   'React',
   'Angular',
   'Backbone',
@@ -28,6 +32,7 @@ const techStackItems = [
   'Express',
   'Node.js',
   'TDD',
+  'JavaScript',
   'Mocha/Chai',
   'Redux'
 ];
@@ -44,30 +49,32 @@ const locationItems = [
   'Palo Alto'
 ];
 
-
-// 1) 'All' should be the default click
-// 2) if anything is clicked, 'All' is going to be unclicked 
-// 3) if anything is clicked, function to iterate through the mentor list based on the input 
-//    (that clicked field should give input.value (or target.value))
-// 4) 
-
 class HomePage extends Component {
+  
   constructor(props) {
     super(props);
+
+    console.log(props);
+
     this.state = {
       mql: mql,
       docked: props.docked,
       open: props.open,
-      isAllChecked: true,
-      isChecked: []
+      selectedTechStacksItems: ['All'],
+      selectedRolesItems: ['Back-end', 'Front-end'],
+      selectedLocationItems: [],
     }
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.createTechStackCheckboxes = this.createTechStackCheckboxes.bind(this);
+    this.handleTechStackChange = this.handleTechStackChange.bind(this);
     this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
+    this.handleRolesChange = this.handleRolesChange.bind(this);
     this.createLocationCheckboxes = this.createLocationCheckboxes.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleAllIsClicked = this.handleAllIsClicked.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
   }
 
   onSetSidebarOpen(open) {
@@ -84,80 +91,103 @@ class HomePage extends Component {
   }
 
 
-  handleInputChange(event) {
-    const target = event.target;
-    this.setState({
-      isChecked: target
-    });
+  createTechStackCheckboxes() {
+    const isAllChecked = this.state.selectedTechStacksItems.includes('All');
+    return techStackItems.map((item) => (
+      <div key={item}>
+        <input
+          key={item}
+          id={item}
+          type="checkbox"
+          checked={isAllChecked || this.state.selectedTechStacksItems.includes(item)}
+          value={item}
+          onChange={this.handleTechStackChange} />
+        <label htmlFor={item}>{item}</label>
+      </div>
+    ));
   }
 
-  handleAllIsClicked() {
-    console.log('all is clicked')
+  handleTechStackChange(event) {
+    const selectedTechStack = event.target.value;
+    let techStacks = this.state.selectedTechStacksItems;
+    if (techStacks.includes('All') && selectedTechStack !== 'All') {
+      techStacks.splice(techStacks.indexOf('All'), 1);
+      techStacks.push(selectedTechStack);
+    } else if (selectedTechStack === 'All'){
+      techStacks = ['All'];
+    } else if (techStacks.includes(selectedTechStack)) {
+      techStacks.splice(techStacks.indexOf(selectedTechStack), 1);
+    } else {
+      techStacks.push(selectedTechStack);
+    }
+
     this.setState({
-      isAllChecked: !isAllChecked
+      selectedTechStacksItems: techStacks
+    }, () => {
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
     })
   }
 
-  createTechStackCheckboxes() {
-    return (
-      <form>
-        {techStackItems.map((item, key) => {
-          return (
-            <div key={key}>
-              <input
-                key={key}
-                id={key}
-                type="checkbox"
-                checked={this.state.isChecked[item]}
-                onChange={this.handleInputChange} />
-              <label htmlFor={key}>{item}</label>
-            </div>
-          )
-        })
-      }      
-      </form>
-    );
+  createRolesCheckboxes() {
+    const selectedRolesItems = this.state.selectedRolesItems;
+    return rolesItems.map((item) => (
+      <div key={item}>
+        <input
+          type="checkbox"
+          id={item}
+          checked={(item === 'Full Stack' && selectedRolesItems.includes('Front-end') && selectedRolesItems.includes('Back-end')) || selectedRolesItems.includes(item)}
+          value={item} 
+          onChange={this.handleRolesChange} />
+        <label htmlFor={item}>{item}</label>
+      </div>
+    ));
   }
 
-  createRolesCheckboxes() {
-    return (
-      <form>
-        {rolesItems.map((item, key) => {
-          return (
-            <div key={key}>
-              <input
-                key={key}
-                id={key}
-                type="checkbox"
-                checked={this.state.isChecked[item]}
-                onChange={this.handleInputChange} />
-              <label htmlFor={key}>{item}</label>
-            </div>
-          )
-        })}
-      </form>
-    );
+  handleRolesChange(event) {
+    const selectedRole = event.target.value;
+    let roles = this.state.selectedRolesItems;
+    if (selectedRole === 'Full Stack') {
+      if (roles.includes('Front-end') && roles.includes('Back-end')) {
+        roles = [];
+      } else {
+        roles = ['Front-end', 'Back-end'];
+      }
+    } else if (selectedRole === 'Front-end') {
+      if (roles.includes(selectedRole)) {
+        roles.splice(roles.indexOf(selectedRole), 1)
+      } else {
+        roles.push(selectedRole);
+      }
+    } else if (selectedRole === 'Back-end') {
+      if (roles.includes(selectedRole)) {
+        roles.splice(roles.indexOf(selectedRole), 1)
+      } else {
+        roles.push(selectedRole)
+      }
+    }
+
+    this.setState({
+      selectedRolesItems: roles
+    }, () => {
+      console.log(this.state.selectedRolesItems);
+    })
   }
 
   createLocationCheckboxes() {
-    return (
-      <form>
-        {locationItems.map((item, key) => {
-          return (
-            <div key={key}>
-              <input
-                key={key}
-                id={key}
-                type="checkbox"
-                checked={this.state.isChecked[item]}
-                onChange={this.handleInputChange} />
-              <label htmlFor={key}>{item}</label>
-            </div>
-          )
-        })}
-      </form>
-    );
-  
+    return locationItems.map((item) => (
+      <div key={item}>
+        <input
+          type="checkbox"
+          id={item}
+        />
+        <label htmlFor={item}>{item}</label>
+      </div>
+    ));
+  }
 
   render() {
     const dispatch = this.props.dispatch;
@@ -165,50 +195,52 @@ class HomePage extends Component {
 
     var sidebarContent =
     (<div className="sidebar">
-      <div>Tech Stacks</div>
       <form>
-        <input 
-         key="all"
-         type="checkbox"
-         checked={this.state.isAllChecked}
-         onClick={this.handleAllIsClicked}/>
-         <label>All</label>
+        <div>Tech Stacks</div>
+        <div>
+          {this.createTechStackCheckboxes()}
+        </div>
+        <br />
+        <div>Roles</div>
+        <div>
+          {this.createRolesCheckboxes()}
+        </div>
+        <br />
+        <div>Location</div>
+        <div>
+          {this.createLocationCheckboxes()}
+        </div>
       </form>
-      <div>
-        {this.createTechStackCheckboxes()}
-      </div>
-      <br />
-      <div>Roles</div>
-      <div>
-        {this.createRolesCheckboxes()}
-      </div>
-      <br />
-      <div>Location</div>
-      <div>
-        {this.createLocationCheckboxes()}
-      </div>
     </div>);
 
     return (
-      <div className="container" style={{width: '100%', marginTop: 50}}>
-        <div className="row">
-          <div className="col-lg-1" style={{marginTop: 50}}>
-            <SideBarMenu />
-          </div>
-          <div className="col-lg-11">
-            <MentorList/>
-          </div>
-        </div>
+      <div>
+        <Sidebar
+          sidebar={sidebarContent}
+          open={this.state.sidebarOpen}
+          docked={this.state.sidebarDocked}
+          onSetOpen={this.onSetSidebarOpen}>
+          <MentorList
+            mentors={this.props.data.mentors}/>
+        </Sidebar>
       </div>
     );
   }
 }
 
-function select(state) {
+function mapStateToProps(state) {
   return {
     data: state
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({
+      filterMentors,
+    }, dispatch),
+  }
+}
+
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
