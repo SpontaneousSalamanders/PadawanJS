@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  mentors: [
+  users: [
     {
       type: 'mentor',
       name: 'Beth Johnson',

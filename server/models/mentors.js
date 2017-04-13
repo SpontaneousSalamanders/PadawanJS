@@ -4,7 +4,7 @@ module.exports = {
   getMentors: () => {
     return db.knex
     .select('id', 'name', 'location', 'role', 'picture', 'techStack')
-    .from('mentors')
+    .from('users')
     .where({
       type: 'mentor'
     });

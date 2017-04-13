@@ -1,20 +1,20 @@
 const dummyData = require('./dummyData.js');
 
 module.exports = (db) => {
-  return db.knex.schema.hasTable('mentors').then((exists) => {
+  return db.knex.schema.hasTable('users').then((exists) => {
     if (!exists) {
-      db.knex.schema.createTable('mentors', (mentor) => {
-        mentor.increments('id').primary();
-        mentor.string('type');
-        mentor.string('name');
-        mentor.string('email');
-        mentor.string('location');
-        mentor.string('role');
-        mentor.string('picture');
-        mentor.specificType('techStack', 'text[]');
+      db.knex.schema.createTable('users', (user) => {
+        user.increments('id').primary();
+        user.string('type');
+        user.string('name');
+        user.string('email');
+        user.string('location');
+        user.string('role');
+        user.string('picture');
+        user.specificType('techStack', 'text[]');
       }).then((table) => {
         console.log('Created table!', table);
-        return db.knex('mentors').insert(dummyData.mentors);
+        return db.knex('users').insert(dummyData.users);
       }).catch((err) => {
         console.log('Error creating table', err);
       });
@@ -23,7 +23,7 @@ module.exports = (db) => {
         if (!exists) {
           db.knex.schema.createTable('events', (event) => {
             event.increments('id').primary();
-            event.integer('user_id').references('mentors.id');
+            event.integer('user_id').references('users.id');
             event.string('title');
             event.string('description');
             event.string('location');
@@ -56,7 +56,7 @@ module.exports = (db) => {
             resource.string('description');
             resource.string('URL');
             resource.specificType('tags', 'text[]');
-            resource.integer('user_id').references('mentors.id');
+            resource.integer('user_id').references('users.id');
             resource.integer('poster_id').references('resources.id');
           }).then((table) => {
             console.log('Created table!', table);
