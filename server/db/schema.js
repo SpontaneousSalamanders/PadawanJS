@@ -40,6 +40,11 @@ module.exports = function(db) {
         if (!exists) {
           db.knex.schema.createTable('resources', function(resource) {
             resource.increments('id').primary();
+            resource.string('type');
+            resource.string('title');
+            resource.string('description');
+            resource.string('URL');
+            resource.specificType('tags', 'text[]');
           }).then(function(table) {
             console.log('Created table!', table);
           })
@@ -52,11 +57,5 @@ module.exports = function(db) {
 // resources table
 
 // primary_id
-// type (post, save)
-// user_id
-// link
-// title
-// description
-// link
-// tag
+// user_id (foreign id)
 // bookmark_id = primary_id
