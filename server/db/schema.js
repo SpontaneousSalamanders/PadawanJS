@@ -11,6 +11,7 @@ module.exports = (db) => {
         user.string('location');
         user.string('role');
         user.string('picture');
+        user.integer('user_id').references('users.id'); // assigned mentor
         user.specificType('techStack', 'text[]');
       }).then((table) => {
         console.log('Created table!', table);
@@ -23,7 +24,7 @@ module.exports = (db) => {
         if (!exists) {
           db.knex.schema.createTable('events', (event) => {
             event.increments('id').primary();
-            event.integer('user_id').references('users.id');
+            event.integer('user_id').references('users.id'); // owner
             event.string('title');
             event.string('description');
             event.string('location');
@@ -42,6 +43,8 @@ module.exports = (db) => {
         if (!exists) {
           db.knex.schema.createTable('users_events', (user_event) => {
             user_event.increments('id').primary();
+            user_event.integer('user_id').references('users.id');
+            user_event.integer('event_id').references('events.id');
           }).then((table) => {
             console.log('Created table!', table);
           }).catch((err) => {
@@ -58,10 +61,10 @@ module.exports = (db) => {
             resource.string('title');
             resource.string('description');
             resource.string('URL');
-            resource.stirng('icon');
+            resource.string('icon');
             resource.specificType('tags', 'text[]');
-            resource.integer('user_id').references('users.id');
-            resource.integer('poster_id').references('resources.id');
+            resource.integer('user_id').references('users.id'); // user
+            resource.integer('resources_id').references('resources.id'); // poster
           }).then((table) => {
             console.log('Created table!', table);
           }).catch((err) => {

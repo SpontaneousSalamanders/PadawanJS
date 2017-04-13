@@ -85,12 +85,12 @@ module.exports = {
       time: '01:00'
     },
     {
-     user_id: 2,
-     title: 'Back-end Workshop',
-     description: 'Let\'s build the the back end!',
-     location: 'Home floor, presentation space',
-     date: '2017-09-28',
-     time: '01:00'
+      user_id: 2,
+      title: 'Back-end Workshop',
+      description: 'Let\'s build the the back end!',
+      location: 'Home floor, presentation space',
+      date: '2017-09-28',
+      time: '01:00'
     },
     {
       user_id: 1,
