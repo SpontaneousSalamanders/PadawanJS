@@ -16,27 +16,27 @@ module.exports = function(db) {
           if (!exists) {
             db.knex.schema.createTable('events', function(event) {
               event.increments('id').primary();
+            }).then(function(table) {
+              console.log('Created table!', table);
+              db.knex.schema.hasTable('users_events').then(function(exists) {
+                if (!exists) {
+                  db.knex.schema.createTable('users_events', function(user_event) {
+                    user_event.increments('id').primary();
+                  }).then(function(table) {
+                    console.log('Created table!', table);
+                    return db.knex('mentors').insert(dummyData);
+                  }).catch(function(err) {
+                    console.log('Error creating table', err);
+                  })
+                }
+              })
             })
           }
-        }).then(function(table) {
-          console.log('Created table!', table);
-          db.knex.schema.hasTable('users_events').then(function(exists) {
-            if (!exists) {
-              db.knex.schema.createTable('users_events', function(user_event) {
-                user_event.increments('id').primary();
-              })
-            }
-          }).then(function() {
-            //return db.knex('mentors').insert(dummyData);
-          }).catch(function(err) {
-            console.log('Error creating table', err);
-          });
-        });
+        })
       })
     }
   });
 }
-
 
 // resources table
 
