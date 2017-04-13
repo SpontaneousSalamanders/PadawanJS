@@ -1,9 +1,9 @@
-var dummyData = require('./dummyData.js');
+const dummyData = require('./dummyData.js');
 
-module.exports = function(db) {
-  return db.knex.schema.hasTable('mentors').then(function(exists) {
+module.exports = (db) => {
+  return db.knex.schema.hasTable('mentors').then((exists) => {
     if (!exists) {
-      db.knex.schema.createTable('mentors', function(mentor) {
+      db.knex.schema.createTable('mentors', (mentor) => {
         mentor.increments('id').primary();
         mentor.string('name');
         mentor.string('email');
@@ -11,16 +11,16 @@ module.exports = function(db) {
         mentor.string('role');
         mentor.string('picture');
         mentor.specificType('techStack', 'text[]');
-      }).then(function(table) {
+      }).then((table) => {
         console.log('Created table!', table);
         return db.knex('mentors').insert(dummyData.mentors);
-      }).catch(function(err) {
+      }).catch((err) => {
         console.log('Error creating table', err);
       });
 
-      db.knex.schema.hasTable('events').then(function(exists) {
+      db.knex.schema.hasTable('events').then((exists) => {
         if (!exists) {
-          db.knex.schema.createTable('events', function(event) {
+          db.knex.schema.createTable('events', (event) => {
             event.increments('id').primary();
             event.integer('user_id').references('mentors.id');
             event.string('title');
@@ -28,16 +28,16 @@ module.exports = function(db) {
             event.string('location');
             event.date('date');
             event.time('time');
-          }).then(function(table) {
+          }).then((table) => {
             console.log('Created table!', table);
-            db.knex.schema.hasTable('users_events').then(function(exists) {
+            db.knex.schema.hasTable('users_events').then((exists) => {
               if (!exists) {
-                db.knex.schema.createTable('users_events', function(user_event) {
+                db.knex.schema.createTable('users_events', (user_event) => {
                   user_event.increments('id').primary();
-                }).then(function(table) {
+                }).then((table) => {
                   console.log('Created table!', table);
                   return db.knex('events').insert(dummyData.events);
-                }).catch(function(err) {
+                }).catch((err) => {
                   console.log('Error creating table', err);
                 });
               }
@@ -46,9 +46,9 @@ module.exports = function(db) {
         }
       });
 
-      db.knex.schema.hasTable('resources').then(function(exists) {
+      db.knex.schema.hasTable('resources').then((exists) => {
         if (!exists) {
-          db.knex.schema.createTable('resources', function(resource) {
+          db.knex.schema.createTable('resources', (resource) => {
             resource.increments('id').primary();
             resource.string('type');
             resource.string('title');
@@ -57,9 +57,9 @@ module.exports = function(db) {
             resource.specificType('tags', 'text[]');
             resource.integer('user_id').references('mentors.id');
             resource.integer('poster_id').references('resources.id');
-          }).then(function(table) {
+          }).then((table) => {
             console.log('Created table!', table);
-          }).catch(function(err) {
+          }).catch((err) => {
             console.log('Error creating table', err);
           });
         }

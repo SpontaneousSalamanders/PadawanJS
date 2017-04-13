@@ -1,6 +1,6 @@
-var db = require('../db');
+const db = require('../db');
 
-module.exports.getMentors = function() {
+module.exports.getMentors = () => {
   return db.knex
   .select()
   .from('mentors');
