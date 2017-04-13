@@ -58,6 +58,7 @@ module.exports = (db) => {
             resource.string('title');
             resource.string('description');
             resource.string('URL');
+            resource.stirng('icon');
             resource.specificType('tags', 'text[]');
             resource.integer('user_id').references('users.id');
             resource.integer('poster_id').references('resources.id');
