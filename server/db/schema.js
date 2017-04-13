@@ -12,6 +12,9 @@ module.exports = function(db) {
         mentor.specificType('techStack', 'text[]');
       }).then(function(table) {
         console.log('Created table!', table);
+        return db.knex('mentors').insert(dummyData);
+      }).catch(function(err) {
+        console.log('Error creating table', err);
       })
 
       db.knex.schema.hasTable('events').then(function(exists) {
@@ -24,9 +27,6 @@ module.exports = function(db) {
               if (!exists) {
                 db.knex.schema.createTable('users_events', function(user_event) {
                   user_event.increments('id').primary();
-                }).then(function(table) {
-                  console.log('Created table!', table);
-                  return db.knex('mentors').insert(dummyData);
                 }).catch(function(err) {
                   console.log('Error creating table', err);
                 })
@@ -45,17 +45,16 @@ module.exports = function(db) {
             resource.string('description');
             resource.string('URL');
             resource.specificType('tags', 'text[]');
+            // primary_id
+            // user_id (foreign id)
+            // bookmark_id = primary_id
           }).then(function(table) {
             console.log('Created table!', table);
+          }).catch(function(err) {
+            console.log('Error creating table', err);
           })
         }
       })
     }
   });
 }
-
-// resources table
-
-// primary_id
-// user_id (foreign id)
-// bookmark_id = primary_id
