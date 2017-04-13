@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import MentorsReducer from './reducer_mentors.jsx';
 import SelectedMentor from './reducer_selected_mentor.jsx';
 
+
 // The initial application state for form
 const initialState = {
   formState: {
@@ -39,6 +40,7 @@ export function homeReducer(state = initialState, action) {
       return state;
   }
 }
+
 
 
 const rootReducer = combineReducers({
