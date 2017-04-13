@@ -19,5 +19,5 @@ module.exports = function(req, res) {
     } else {
         res.sendStatus(401);
     }
-});
-}
+
+};
