@@ -8,16 +8,7 @@ module.exports = function(db) {
         mentor.string('name');
         mentor.string('location');
         mentor.string('picture');
-        mentor.boolean('React');
-        mentor.boolean('Angular');
-        mentor.boolean('Backbone');
-        mentor.boolean('Express');
-        mentor.boolean('Redux');
-        mentor.boolean('Authorization');
-        mentor.boolean('TDD');
-        mentor.boolean('Mocha/Chai');
-        mentor.boolean('React Native');
-        mentor.boolean('Node');
+        mentor.specificType('techStack', 'text[]');
       }).then(function(table) {
         console.log('Created table!', table);
       }).then(function() {

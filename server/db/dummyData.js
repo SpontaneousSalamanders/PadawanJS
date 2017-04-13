@@ -30,6 +30,7 @@ module.exports = [
     location: 'Toronto',
     picture: 'http://imgur.com/ohFukM2.jpg',
     techStack: ['Angular', 'Node.js', 'JavaScript']
+  },
   {
     name: 'Paul Mills',
     location: 'SF',
@@ -47,5 +48,5 @@ module.exports = [
     location: 'San Jose',
     picture: 'http://imgur.com/yTpcGqk.jpg',
     techStack: ['React', 'Node.js', 'JavaScript']
-  },
+  }
 ]
