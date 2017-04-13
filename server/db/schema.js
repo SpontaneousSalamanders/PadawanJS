@@ -6,6 +6,7 @@ module.exports = function(db) {
       db.knex.schema.createTable('mentors', function(mentor) {
         mentor.increments('id').primary();
         mentor.string('name');
+        // email address
         mentor.string('location');
         mentor.string('role');
         mentor.string('picture');
@@ -21,12 +22,20 @@ module.exports = function(db) {
         if (!exists) {
           db.knex.schema.createTable('events', function(event) {
             event.increments('id').primary();
+            // event owner
+            event.string('title');
+            event.string('description');
+            event.string('location');
+            event.date('date');
+            event.ime('time');
           }).then(function(table) {
             console.log('Created table!', table);
             db.knex.schema.hasTable('users_events').then(function(exists) {
               if (!exists) {
                 db.knex.schema.createTable('users_events', function(user_event) {
                   user_event.increments('id').primary();
+                }).then(function(table) {
+                  console.log('Created table!', table);
                 }).catch(function(err) {
                   console.log('Error creating table', err);
                 })
@@ -45,8 +54,7 @@ module.exports = function(db) {
             resource.string('description');
             resource.string('URL');
             resource.specificType('tags', 'text[]');
-            // primary_id
-            // user_id (foreign id)
+            // user_id (foreign key)
             // bookmark_id = primary_id
           }).then(function(table) {
             console.log('Created table!', table);
