@@ -1,4 +1,4 @@
-var dummyData = require('./dummyData.js')
+var dummyData = require('./dummyData.js');
 
 module.exports = function(db) {
   return db.knex.schema.hasTable('mentors').then(function(exists) {
@@ -6,7 +6,7 @@ module.exports = function(db) {
       db.knex.schema.createTable('mentors', function(mentor) {
         mentor.increments('id').primary();
         mentor.string('name');
-        // email address
+        mentor.string('email');
         mentor.string('location');
         mentor.string('role');
         mentor.string('picture');
@@ -16,18 +16,18 @@ module.exports = function(db) {
         return db.knex('mentors').insert(dummyData);
       }).catch(function(err) {
         console.log('Error creating table', err);
-      })
+      });
 
       db.knex.schema.hasTable('events').then(function(exists) {
         if (!exists) {
           db.knex.schema.createTable('events', function(event) {
             event.increments('id').primary();
-            // event owner
+            event.integer('user_id').references('mentors.id');
             event.string('title');
             event.string('description');
             event.string('location');
             event.date('date');
-            event.ime('time');
+            event.time('time');
           }).then(function(table) {
             console.log('Created table!', table);
             db.knex.schema.hasTable('users_events').then(function(exists) {
@@ -38,12 +38,12 @@ module.exports = function(db) {
                   console.log('Created table!', table);
                 }).catch(function(err) {
                   console.log('Error creating table', err);
-                })
+                });
               }
-            })
-          })
+            });
+          });
         }
-      })
+      });
 
       db.knex.schema.hasTable('resources').then(function(exists) {
         if (!exists) {
@@ -54,15 +54,15 @@ module.exports = function(db) {
             resource.string('description');
             resource.string('URL');
             resource.specificType('tags', 'text[]');
-            // user_id (foreign key)
-            // bookmark_id = primary_id
+            resource.integer('user_id').references('mentors.id');
+            resource.integer('poster_id').references('resources.id');
           }).then(function(table) {
             console.log('Created table!', table);
           }).catch(function(err) {
             console.log('Error creating table', err);
-          })
+          });
         }
-      })
+      });
     }
   });
-}
+};
