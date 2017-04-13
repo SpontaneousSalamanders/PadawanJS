@@ -59,12 +59,22 @@ module.exports = {
       techStack: ['React', 'Node.js', 'JavaScript']
     }
   ],
-  events: {
-    user_id: 1,
-    title: 'React Workshop',
-    description: 'I\'m hosting',
-    location: 'Home floor, presentation space',
-    date: '2017-09-28',
-    time: '01:00'
-  }
+  events: [
+    {
+      user_id: 1,
+      title: 'React Workshop',
+      description: 'Building the front end in React',
+      location: 'Home floor, presentation space',
+      date: '2017-09-28',
+      time: '01:00'
+    },
+    {
+     user_id: 2,
+     title: 'Back-end Workshop',
+     description: 'I\'m hosting a workshop on building the back end',
+     location: 'Home floor, presentation space',
+     date: '2017-09-28',
+     time: '01:00'
+    }
+  ]
 }
