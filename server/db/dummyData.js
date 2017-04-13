@@ -5,7 +5,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Beth Johnson',
-      email: null,
+      email: 'beth.johnson@hackreactor.com',
       location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/xEUUtut.jpg',
@@ -14,7 +14,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Benji Marinacci',
-      email: null,
+      email: 'benji.marinacci@hackreactor.com',
       location: 'Redwood City',
       role: 'Back end',
       picture: 'http://imgur.com/iwn6mV5.jpg',
@@ -23,7 +23,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Fred Zirdung',
-      email: null,
+      email: 'fred.zirdung@hackreactor.com',
       location: 'SF',
       role: 'Full stack',
       picture: 'http://imgur.com/9awfsn2.jpg',
@@ -32,7 +32,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Eric Brown',
-      email: null,
+      email: 'eric.brown@hackreactor.com',
       location: 'Albany',
       role: 'Front end',
       picture: 'http://imgur.com/adDa5JU.jpg',
@@ -41,7 +41,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Tyler Arbus',
-      email: null,
+      email: 'tyler.arbus@hackreactor.com',
       location: 'Toronto',
       role: 'Full stack',
       picture: 'http://imgur.com/ohFukM2.jpg',
@@ -50,7 +50,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Paul Mills',
-      email: null,
+      email: 'paul.mills@hackreactor.com',
       location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/9eJRSav.jpg',
@@ -59,7 +59,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Alison Zhang',
-      email: null,
+      email: 'alison.zhang@hackreactor.com',
       location: 'Palo Alto',
       role: 'Full stack',
       picture: 'http://imgur.com/uz1C3om.jpg',
@@ -68,7 +68,7 @@ module.exports = {
     {
       type: 'mentor',
       name: 'Jong Kim',
-      email: null,
+      email: 'jong.kim@hackreactor.com',
       location: 'San Jose',
       role: 'Back end',
       picture: 'http://imgur.com/yTpcGqk.jpg',
@@ -77,9 +77,9 @@ module.exports = {
   ],
   events: [
     {
-      user_id: 1,
-      title: 'React Workshop',
-      description: 'Building the front end in React',
+      user_id: 3,
+      title: 'Full-stack Workshop',
+      description: 'Creating a full-stack app',
       location: 'Home floor, presentation space',
       date: '2017-09-28',
       time: '01:00'
@@ -87,10 +87,18 @@ module.exports = {
     {
      user_id: 2,
      title: 'Back-end Workshop',
-     description: 'I\'m hosting a workshop on building the back end',
+     description: 'Let\'s build the the back end!',
      location: 'Home floor, presentation space',
      date: '2017-09-28',
      time: '01:00'
+    },
+    {
+      user_id: 1,
+      title: 'React Workshop',
+      description: 'Building apps in React',
+      location: 'Home floor, presentation space',
+      date: '2017-09-28',
+      time: '01:00'
     }
   ]
 }

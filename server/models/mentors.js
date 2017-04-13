@@ -5,16 +5,12 @@ module.exports = {
     return db.knex
     .select('id', 'name', 'location', 'role', 'picture', 'techStack')
     .from('users')
-    .where({
-      type: 'mentor'
-    });
+    .where({type: 'mentor'});
   },
   getMentorProfile: () => {
     return db.knex
     .select()
     .from('users')
-    .where({
-      type: 'mentor'
-    });
+    .where({type: 'mentor'});
   }
 };

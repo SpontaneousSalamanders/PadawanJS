@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/getMentors', handler.getMentors);
-
+app.get('/getMentorProfile', handler.getMentorProfile);
 
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);
