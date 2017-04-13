@@ -8,5 +8,13 @@ module.exports = {
     .where({
       type: 'mentor'
     });
+  },
+  getMentorProfile: () => {
+    return db.knex
+    .select()
+    .from('users')
+    .where({
+      type: 'mentor'
+    });
   }
 };
