@@ -4,8 +4,6 @@ import { Divider, Checkbox } from 'semantic-ui-react'
 
 
 function SideBarMenu () {
-  // TODO: move to styles.css
-
   return (
     <div className="sidebar-container">
       <h4>Languages</h4>

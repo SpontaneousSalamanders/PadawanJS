@@ -14,7 +14,7 @@ import { Row, Input } from 'react-materialize';
 
 
 // import MentorDetail from '../containers/mentor_detail';
-import SidebarMenu from '../components/SidebarMenu.jsx';
+import SideBarMenu from '../components/SideBarMenu.jsx';
 import MentorList from '../containers/mentor_list.jsx';
 import { filter } from 'lodash';
 
