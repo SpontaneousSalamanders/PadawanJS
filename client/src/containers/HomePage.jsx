@@ -13,7 +13,6 @@ import { bindActionCreators } from 'redux';
 import Sidebar from 'react-sidebar';
 import { filter } from 'lodash';
 
-
 // import MentorDetail from '../containers/mentor_detail';
 import Nav from '../components/Nav.jsx';
 import MentorList from '../components/MentorList.jsx';
@@ -22,7 +21,7 @@ import { filterMentors } from '../actions/index.jsx'
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const techStackItems = [
-  'All',
+  'Any',
   'React',
   'Angular',
   'Backbone',
@@ -36,12 +35,14 @@ const techStackItems = [
 ];
 
 const rolesItems = [
+  'Any Role',
   'Full Stack',
   'Front-end',
   'Back-end'
 ];
 
 const locationItems = [
+  'Anywhere',
   'San Francisco',
   'San Jose',
   'Palo Alto'
@@ -51,16 +52,13 @@ class HomePage extends Component {
   
   constructor(props) {
     super(props);
-
-    console.log(props);
-
     this.state = {
       mql: mql,
       docked: props.docked,
       open: props.open,
-      selectedTechStacksItems: ['All'],
-      selectedRolesItems: ['Back-end', 'Front-end'],
-      selectedLocationItems: [],
+      selectedTechStacksItems: ['Any'],
+      selectedRolesItems: ['Any Role'],
+      selectedLocationItems: ['Anywhere'],
     }
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
@@ -69,6 +67,7 @@ class HomePage extends Component {
     this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
     this.handleRolesChange = this.handleRolesChange.bind(this);
     this.createLocationCheckboxes = this.createLocationCheckboxes.bind(this);
+    this.handleLocationsChange = this.handleLocationsChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -88,9 +87,8 @@ class HomePage extends Component {
     this.setState({sidebarDocked: this.state.mql.matches});
   }
 
-
   createTechStackCheckboxes() {
-    const isAllChecked = this.state.selectedTechStacksItems.includes('All');
+    const isAllChecked = this.state.selectedTechStacksItems.includes('Any');
     return techStackItems.map((item) => (
       <div key={item}>
         <input
@@ -108,11 +106,11 @@ class HomePage extends Component {
   handleTechStackChange(event) {
     const selectedTechStack = event.target.value;
     let techStacks = this.state.selectedTechStacksItems;
-    if (techStacks.includes('All') && selectedTechStack !== 'All') {
-      techStacks.splice(techStacks.indexOf('All'), 1);
+    if (techStacks.includes('Any') && selectedTechStack !== 'Any') {
+      techStacks.splice(techStacks.indexOf('Any'), 1);
       techStacks.push(selectedTechStack);
-    } else if (selectedTechStack === 'All'){
-      techStacks = ['All'];
+    } else if (selectedTechStack === 'Any'){
+      techStacks = ['Any'];
     } else if (techStacks.includes(selectedTechStack)) {
       techStacks.splice(techStacks.indexOf(selectedTechStack), 1);
     } else {
@@ -131,14 +129,15 @@ class HomePage extends Component {
   }
 
   createRolesCheckboxes() {
-    const selectedRolesItems = this.state.selectedRolesItems;
+    const isAllChecked = this.state.selectedRolesItems.includes('Any Role');
     return rolesItems.map((item) => (
       <div key={item}>
         <input
-          type="checkbox"
+          key={item}
           id={item}
-          checked={(item === 'Full Stack' && selectedRolesItems.includes('Front-end') && selectedRolesItems.includes('Back-end')) || selectedRolesItems.includes(item)}
-          value={item} 
+          type="checkbox"
+          checked={isAllChecked || this.state.selectedRolesItems.includes(item)}
+          value={item}
           onChange={this.handleRolesChange} />
         <label htmlFor={item}>{item}</label>
       </div>
@@ -147,45 +146,73 @@ class HomePage extends Component {
 
   handleRolesChange(event) {
     const selectedRole = event.target.value;
+    console.log(selectedRole);
     let roles = this.state.selectedRolesItems;
-    if (selectedRole === 'Full Stack') {
-      if (roles.includes('Front-end') && roles.includes('Back-end')) {
-        roles = [];
-      } else {
-        roles = ['Front-end', 'Back-end'];
-      }
-    } else if (selectedRole === 'Front-end') {
-      if (roles.includes(selectedRole)) {
-        roles.splice(roles.indexOf(selectedRole), 1)
-      } else {
-        roles.push(selectedRole);
-      }
-    } else if (selectedRole === 'Back-end') {
-      if (roles.includes(selectedRole)) {
-        roles.splice(roles.indexOf(selectedRole), 1)
-      } else {
-        roles.push(selectedRole)
-      }
+    if (roles.includes('Any Role') && selectedRole !== 'Any Role') {
+      roles.splice(roles.indexOf('Any Role'), 1);
+      roles.push(selectedRole);
+    } else if (selectedRole === 'Any Role'){
+      roles = ['Any Role'];
+    } else if (roles.includes(selectedRole)) {
+      roles.splice(roles.indexOf(selectedRole), 1);
+    } else {
+      roles.push(selectedRole);
     }
 
     this.setState({
       selectedRolesItems: roles
     }, () => {
-      console.log(this.state.selectedRolesItems);
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
     })
   }
 
+
   createLocationCheckboxes() {
+    const isAllChecked = this.state.selectedLocationItems.includes('Anywhere');
     return locationItems.map((item) => (
       <div key={item}>
         <input
-          type="checkbox"
+          key={item}
           id={item}
-        />
+          type="checkbox"
+          checked={isAllChecked || this.state.selectedLocationItems.includes(item)}
+          value={item}
+          onChange={this.handleLocationsChange} />
         <label htmlFor={item}>{item}</label>
       </div>
     ));
   }
+
+  handleLocationsChange(event) {
+    const selectedLocation = event.target.value;
+    console.log(selectedLocation);
+    let locations = this.state.selectedLocationItems;
+    if (locations.includes('Anywhere') && selectedLocation !== 'Anywhere') {
+      locations.splice(locations.indexOf('Anywhere'), 1);
+      locations.push(selectedLocation);
+    } else if (selectedLocation === 'Anywhere'){
+      locations = ['Anywhere'];
+    } else if (locations.includes(selectedLocation)) {
+      locations.splice(locations.indexOf(selectedLocation), 1);
+    } else {
+      locations.push(selectedLocation);
+    }
+
+    this.setState({
+      selectedLocationItems: locations
+    }, () => {
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
+  }
+
 
   render() {
     const dispatch = this.props.dispatch;
@@ -219,8 +246,7 @@ class HomePage extends Component {
           docked={this.state.sidebarDocked}
           onSetOpen={this.onSetSidebarOpen}>
           <MentorList
-            mentors={this.props.data.mentors}
-          />
+            mentors={this.props.data.mentors} />
         </Sidebar>
       </div>
     );
