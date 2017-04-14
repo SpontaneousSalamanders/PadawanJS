@@ -57,7 +57,7 @@ const RootReducer = combineReducers({
   form: formReducer,
   events: EventsReducer,
 
-  auth: authReducer,
+  // auth: authReducer,
 
 });
 
