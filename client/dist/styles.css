@@ -69,7 +69,7 @@ Navigation Bar
   display: flex;
   align-items: center;
   background-color: #fff;
-  z-index: 1;
+  z-index: 6;
 }
 
 .nav__wrapper {
@@ -115,6 +115,17 @@ Navigation Bar
     display: none;
   }
 }
+
+/* Sidebar Menu ------------------------ */
+
+  .sidebar-container {
+    position: fixed; 
+    width: 150px; 
+    overflow-y: scroll; 
+    top: 0;
+    margin-top: 100px;
+    bottom: 0;
+  }
 
 /* Form ------------------------ */
 .form-page__wrapper {

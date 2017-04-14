@@ -18,11 +18,8 @@ class App extends Component {
   render() {
     return (
        <div>
-        <Nav loggedIn={this.props.data.loggedIn} history={this.props.history} location={this.props.location} dispatch={this.props.dispatch} currentlySending={this.props.data.currentlySending} />
-        
-       <div style={{marginTop: 100}}>
+        <Nav loggedIn={this.props.data.loggedIn} history={this.props.history} location={this.props.location} dispatch={this.props.dispatch} currentlySending={this.props.data.currentlySending} />  
         { this.props.children }
-       </div>
       </div>
     )
   }

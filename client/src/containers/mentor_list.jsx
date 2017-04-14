@@ -10,7 +10,6 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.map((mentor) => {
       return (
-        <div style={{marginTop: 100}}>
         <Card 
         key={mentor.name}
         header={<CardTitle reveal image={mentor.picture} waves='light'/>}
@@ -31,7 +30,6 @@ class MentorList extends Component {
               </div>
             }>
         </Card>
-        </div>
       )
     })
   }
