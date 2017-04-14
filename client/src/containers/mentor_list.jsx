@@ -27,7 +27,7 @@ class MentorList extends Component {
                   <li>Expertise: {mentor.techStack.join(', ')}</li>
                 </ul>
                 <Link
-                  to="/profile"
+                  to={"/profile/" + mentor.id}
                   onClick={()=> this.props.selectMentorAction.selectMentor(mentor)}
                   className="viewProfileButton">View Profile
                 </Link>

@@ -13,6 +13,6 @@ export default <Route component={App}>
   <Route path='/' component={HomePage} />
   <Route path="/login" component={LoginPage} />
   <Route path="/signup" component={SignUpPage} />
-  <Route path="/profile" component={MentorProfile} />
+  <Route path="/profile/*" component={MentorProfile} />
   </Route>
 
