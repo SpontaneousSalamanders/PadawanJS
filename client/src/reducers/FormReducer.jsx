@@ -1,9 +1,9 @@
-// The initial application state for form
-const CHANGE_FORM = 'CHANGE_FORM';
-const SET_AUTH = 'SET_AUTH';
-const SENDING_REQUEST = 'SENDING_REQUEST';
-const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+import {  CHANGE_FORM,
+          SET_AUTH, SENDING_REQUEST,
+          SET_ERROR_MESSAGE
+        } from '../actions/FormActions.jsx';
 
+// The initial application state for form
 const initialState = {
   formState: {
     username: '',

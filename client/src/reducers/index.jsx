@@ -44,12 +44,17 @@ export function homeReducer(state = initialState, action) {
   }
 }
 
-const rootReducer = combineReducers({
+import MentorsReducer from './MentorsReducer.jsx';
+import SelectedMentor from './SelectedMentorReducer.jsx';
+
+
+const RootReducer = combineReducers({
   mentors: MentorsReducer,
   selectedMentor: SelectedMentor,
+
   resources: Resources,
   form: formReducer,
   events: EventsReducer
 });
 
-export default rootReducer;
+export default RootReducer;
