@@ -1,11 +1,11 @@
-var pg = require('pg');
-var knex = require('knex');
-var bookshelf = require('bookshelf');
-var createSchema = require('./schema.js');
+const pg = require('pg');
+const Knex = require('knex');
+const Bookshelf = require('bookshelf');
+const createSchema = require('./schema.js');
 
-var knex = knex({
+const knex = Knex({
   client: 'pg',
-  connection: {
+  connection: process.env.DATABASE_URL || {
     host: '127.0.0.1',
     port: 5432,
     user: '',
@@ -15,7 +15,7 @@ var knex = knex({
   }
 });
 
-var db = bookshelf(knex);
+const db = Bookshelf(knex);
 
 createSchema(db);
 
