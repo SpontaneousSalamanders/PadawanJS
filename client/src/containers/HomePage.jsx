@@ -174,7 +174,7 @@ class HomePage extends Component {
       <div className="container" style={{width: '100%', marginTop: 50}}>
         <div className="row">
           <div className="col-lg-1" style={{marginTop: 50}}>
-            <SidebarMenu />
+            <SideBarMenu />
           </div>
           <div className="col-lg-11">
             <MentorList/>
