@@ -5,14 +5,20 @@ import { getEvents } from '../actions/eventActions.jsx';
 
 class Events extends Component {
   componentDidMount() {
-    this.props.getEvents();
+    this.props.getEvents(this.props.id);
+    console.log(this.props)
   }
 
   render() {
-    return (
+    return this.props.events.length > 0 ?
+    (
       <div>
-        Events
+        Events: {this.props.events[0].title}
       </div>
+    )
+    :
+    (
+      <div></div>
     )
   }
 }

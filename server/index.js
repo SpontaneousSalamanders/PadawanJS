@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile', handler.getMentorProfile);
-app.get('/getEvents', handler.getEvents);
+app.get('/getEvents/:uid', handler.getEvents);
 
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);
