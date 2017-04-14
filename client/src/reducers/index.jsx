@@ -5,6 +5,10 @@ import Resources from './reducer_resources.jsx';
 import { reducer as formReducer } from 'redux-form';
 import EventsReducer from './reducer_events.jsx';
 
+import FormReducer from './FormReducer.jsx'
+
+
+
 
 // The initial application state for form
 const initialState = {
@@ -44,9 +48,6 @@ export function homeReducer(state = initialState, action) {
   }
 }
 
-import MentorsReducer from './MentorsReducer.jsx';
-import SelectedMentor from './SelectedMentorReducer.jsx';
-import FormReducer from './FormReducer.jsx'
 
 
 const RootReducer = combineReducers({
@@ -55,7 +56,11 @@ const RootReducer = combineReducers({
 
   resources: Resources,
   form: formReducer,
+<<<<<<< HEAD
   events: EventsReducer
+=======
+  Form: FormReducer
+>>>>>>> fix merge conflicts. will worry about file renaming later
 });
 
 export default RootReducer;
