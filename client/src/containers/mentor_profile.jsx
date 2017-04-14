@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import MessageBoard from './MessageBoard.jsx';
 import { Card, Icon, Image } from 'semantic-ui-react'
+=======
+import Events from './Events.jsx';
+>>>>>>> (feat) Created reducer and action creator for events
 
 class MentorProfile extends Component {
   render () {
     return (
+<<<<<<< HEAD
       <div className="container" style={{marginTop: 100}}>
         <div className="row">
           <div className="col-lg-4">
@@ -36,6 +41,18 @@ class MentorProfile extends Component {
             <MessageBoard />
         </div>
           </div>
+=======
+      <div style={{marginTop: 100}}>
+        <img
+          style={{width: 300}}
+          src={this.props.mentor.picture} />
+        <h5>{this.props.mentor.name}</h5>
+        <div>Location: {this.props.mentor.location}</div>
+        <div>Tech Stacks: {this.props.mentor.techStack.map((stack)=>{return(<div>{stack}</div>)})}</div>
+        <div>Projects</div>
+        <div>Video Group</div>
+        <div><Events id={this.props.mentor.id}/></div>
+>>>>>>> (feat) Created reducer and action creator for events
       </div>
     )
   }
