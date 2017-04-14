@@ -67,6 +67,7 @@ module.exports = (db) => {
             resource.integer('resources_id').references('resources.id'); // poster
           }).then((table) => {
             console.log('Created table!', table);
+            return db.knex('resources').insert(dummyData.resources);
           }).catch((err) => {
             console.log('Error creating table', err);
           });

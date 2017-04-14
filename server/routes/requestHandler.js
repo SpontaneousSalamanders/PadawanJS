@@ -3,5 +3,6 @@
 module.exports = {
   getMentors: require('./getMentors.js'),
   getMentorProfile: require('./getMentorProfile.js'),
-  getEvents: require('./getEvents.js')
+  getEvents: require('./getEvents.js'),
+  getResources: require('./getResources.js')
 }

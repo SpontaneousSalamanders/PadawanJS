@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Divider } from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
+import { getResources } from '../actions/resourceActions.jsx';
+
 
 class MessageBoard extends Component {
+  componentDidMount() {
+    this.props.getResources(this.props.id);
+  }
+
   render() {
     console.log('resources', this.props.resources);
     return (
@@ -14,17 +21,17 @@ class MessageBoard extends Component {
           return (
             <li key={index} className="media">
               <div className="media-left">
-                <div 
-                  style={{width: 50, cursor: 'pointer'}} 
-                  className='thumbnail' 
+                <div
+                  style={{width: 50, cursor: 'pointer'}}
+                  className='thumbnail'
                   onClick={()=>{window.open(resource.URL)}}>
                   <img className="media-object" src={resource.icon} alt="..."/>
                 </div>
               </div>
               <div className="media-body">
-                <h5 
+                <h5
                   style={{cursor: 'pointer'}}
-                  onClick={()=>{window.open(resource.URL)}} 
+                  onClick={()=>{window.open(resource.URL)}}
                   className="media-heading" >{resource.title}</h5>
                 <p>
                   {resource.description}
@@ -33,7 +40,7 @@ class MessageBoard extends Component {
             </li>
           )
         })}
-      
+
       </ul>
       </div>
     )
@@ -46,4 +53,8 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(MessageBoard);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({getResources: getResources}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageBoard);

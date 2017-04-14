@@ -8,5 +8,5 @@ export function getMentors() {
   return {
     type: GET_MENTORS,
     payload: request
-  }
+  };
 }

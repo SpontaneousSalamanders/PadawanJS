@@ -8,5 +8,5 @@ export function getEvents(user_id) {
   return {
     type: GET_EVENTS,
     payload: request
-  }
+  };
 }

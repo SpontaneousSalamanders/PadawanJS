@@ -34,7 +34,7 @@ class MentorProfile extends Component {
               </Card>
           </div>
           <div className="col-lg-8">
-            <MessageBoard />
+            <MessageBoard id={this.props.mentor.id}/>
         </div>
           </div>
       </div>
