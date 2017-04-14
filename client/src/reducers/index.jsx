@@ -46,6 +46,7 @@ export function homeReducer(state = initialState, action) {
 
 import MentorsReducer from './MentorsReducer.jsx';
 import SelectedMentor from './SelectedMentorReducer.jsx';
+import FormReducer from './FormReducer.jsx'
 
 
 const RootReducer = combineReducers({
