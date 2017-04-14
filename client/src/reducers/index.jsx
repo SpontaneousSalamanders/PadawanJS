@@ -56,11 +56,12 @@ const RootReducer = combineReducers({
 
   resources: Resources,
   form: formReducer,
-<<<<<<< HEAD
-  events: EventsReducer
-=======
-  Form: FormReducer
->>>>>>> fix merge conflicts. will worry about file renaming later
+  events: EventsReducer,
+
+  Form: FormReducer,
+
+  auth: authReducer,
+
 });
 
 export default RootReducer;
