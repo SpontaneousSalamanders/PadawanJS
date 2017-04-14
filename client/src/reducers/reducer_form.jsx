@@ -1,12 +1,9 @@
-import { combineReducers } from 'redux';
-import MentorsReducer from './reducer_mentors.jsx';
-import SelectedMentor from './reducer_selected_mentor.jsx';
-import Resources from './reducer_resources.jsx';
-import { reducer as formReducer } from 'redux-form';
-import EventsReducer from './reducer_events.jsx';
-
-
 // The initial application state for form
+const CHANGE_FORM = 'CHANGE_FORM';
+const SET_AUTH = 'SET_AUTH';
+const SENDING_REQUEST = 'SENDING_REQUEST';
+const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+
 const initialState = {
   formState: {
     username: '',
@@ -14,11 +11,13 @@ const initialState = {
   },
   currentlySending: false,
   // loggedIn: auth.loggedIn(),
-  errorMessage: '',
+  errorMessage: ''
 };
 
+const assign = Object.assign;
+
 // Takes care of changing the application state
-export function homeReducer(state = initialState, action) {
+export function FormReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_FORM:
       return assign({}, state, {
@@ -43,13 +42,3 @@ export function homeReducer(state = initialState, action) {
       return state;
   }
 }
-
-const rootReducer = combineReducers({
-  mentors: MentorsReducer,
-  selectedMentor: SelectedMentor,
-  resources: Resources,
-  form: formReducer,
-  events: EventsReducer
-});
-
-export default rootReducer;
