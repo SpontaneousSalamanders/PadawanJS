@@ -19,7 +19,7 @@ export default function(state = { authenticated: false, mentor_privileges: false
       return { ...state, error: action.payload };
     case FETCH_MESSAGE:
       return { ...state, message: action.payload };
-    case FETCH_ADMIN_MESSAGE:
+    case FETCH_MENTOR_MESSAGE:
       return { ...state, message: action.payload };
     case SET_MENTOR_PRIVILEGES:
       return { ...state, mentor_privileges: true };
