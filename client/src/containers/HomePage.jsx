@@ -10,10 +10,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Nav from '../components/Nav.jsx';
 import { connect } from 'react-redux';
+import { Row, Input } from 'react-materialize';
 
 
 // import MentorDetail from '../containers/mentor_detail';
-import Sidebar from 'react-sidebar';
+import SidebarMenu from '../components/SidebarMenu.jsx';
 import MentorList from '../containers/mentor_list.jsx';
 import { filter } from 'lodash';
 
@@ -170,14 +171,15 @@ class HomePage extends Component {
     </div>);
 
     return (
-      <div>
-        <Sidebar
-          sidebar={sidebarContent}
-          open={this.state.sidebarOpen}
-          docked={this.state.sidebarDocked}
-          onSetOpen={this.onSetSidebarOpen}>
-          <MentorList />
-        </Sidebar>
+      <div className="container" style={{width: '100%', marginTop: 50}}>
+        <div className="row">
+          <div className="col-lg-1" style={{marginTop: 50}}>
+            <SidebarMenu />
+          </div>
+          <div className="col-lg-11">
+            <MentorList/>
+          </div>
+        </div>
       </div>
     );
   }
