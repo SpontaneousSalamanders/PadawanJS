@@ -21,59 +21,64 @@ module.exports = (db) => {
         console.log('Error creating table', err);
       });
 
-      db.knex.schema.hasTable('events').then((exists) => {
-        if (!exists) {
-          db.knex.schema.createTable('events', (event) => {
-            event.increments('id').primary();
-            event.integer('user_id').references('users.id'); // owner
-            event.string('title');
-            event.string('description');
-            event.string('location');
-            event.date('date');
-            event.time('time');
-          }).then((table) => {
-            console.log('Created table!', table);
-            return db.knex('events').insert(dummyData.events);
-          }).catch((err) => {
-            console.log('Error creating table', err);
-          });
-        }
-      });
+const schema = (db) => {
+  return db.knex.schema
 
-      db.knex.schema.hasTable('users_events').then((exists) => {
-        if (!exists) {
-          db.knex.schema.createTable('users_events', (user_event) => {
-            user_event.increments('id').primary();
-            user_event.integer('user_id').references('users.id');
-            user_event.integer('event_id').references('events.id');
-          }).then((table) => {
-            console.log('Created table!', table);
-          }).catch((err) => {
-            console.log('Error creating table', err);
-          });
-        }
-      });
+  .createTableIfNotExists('users', (users) => {
+    users.increments('id').primary();
+    users.string('type');
+    users.string('name');
+    users.string('email');
+    users.string('location');
+    users.string('role');
+    users.string('picture');
+    users.integer('user_id').references('users.id'); // assigned mentor
+    users.specificType('techStack', 'text[]');
+  })
 
-      db.knex.schema.hasTable('resources').then((exists) => {
-        if (!exists) {
-          db.knex.schema.createTable('resources', (resource) => {
-            resource.increments('id').primary();
-            resource.string('type');
-            resource.string('title');
-            resource.string('description');
-            resource.string('URL');
-            resource.string('icon');
-            resource.specificType('tags', 'text[]');
-            resource.integer('user_id').references('users.id'); // user
-            resource.integer('resources_id').references('resources.id'); // poster
-          }).then((table) => {
-            console.log('Created table!', table);
-            return db.knex('resources').insert(dummyData.resources);
-          }).catch((err) => {
-            console.log('Error creating table', err);
-          });
-        }
-      });
-    }
+  .createTableIfNotExists('events', (events) => {
+    events.increments('id').primary();
+    events.integer('user_id').unsigned().references('users.id'); // owner
+    events.string('title');
+    events.string('description');
+    events.string('location');
+    events.date('date');
+    events.time('time');
+  })
+
+  .createTableIfNotExists('users_events', (users_events) => {
+    users_events.increments('id').primary();
+    users_events.integer('user_id').unsigned().references('users.id');
+    users_events.integer('event_id').unsigned().references('events.id');
+  })
+
+  .createTableIfNotExists('resources', (resources) => {
+    resources.increments('id').primary();
+    resources.string('type');
+    resources.string('title');
+    resources.string('description');
+    resources.string('URL');
+    resources.string('icon');
+    resources.specificType('tags', 'text[]');
+    resources.integer('user_id').unsigned().references('users.id'); // user
+    resources.integer('resource_id').unsigned().references('resources.id'); // poster
+  })
+
+  .then((tables) => {
+    console.log('Created tables!', tables);
+  })
+  .catch((err) => {
+    console.log('Error creating tables', err);
+  })
+  .then(() => {
+    return db.knex('users').insert(dummyData.users);
+  })
+  .then(() => {
+    return db.knex('events').insert(dummyData.events);
+  })
+  .then(() => {
+    return db.knex('resources').insert(dummyData.resources);
   });
-};
+}
+
+module.exports = schema;

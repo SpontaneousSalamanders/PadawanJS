@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  getMentors: require('./getMentors.js'),
-  getMentor: require('./getMentor.js'),
   getEvents: require('./getEvents.js'),
+  getMentor: require('./getMentor.js'),
+  getMentors: require('./getMentors.js'),
   getResources: require('./getResources.js')
 }
