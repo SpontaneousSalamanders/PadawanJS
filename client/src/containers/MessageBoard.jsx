@@ -49,7 +49,7 @@ class MessageBoard extends Component {
 
 function mapStateToProps(state) {
   return {
-    resources: state.resources
+    resources: state.resources.resourceData
   }
 }
 
