@@ -29,10 +29,10 @@
 
 import { GET_RESOURCES } from '../actions/resourceActions.jsx';
 
-export default function(state = [], action) {
+export default function(state = {resourceData:[]}, action) {
   switch (action.type) {
     case GET_RESOURCES:
-    return state.concat(action.payload.data);
+    return Object.assign({}, state, {resourceData: action.payload.data})
   }
 
   return state;
