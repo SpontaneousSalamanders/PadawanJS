@@ -9,6 +9,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form.jsx';
+import LoginForm from './auth/LoginForm.jsx';
 // import { sendingRequest, register } from '../../actions/index.jsx';
 // import LoadingIndicator from '../LoadingIndicator.react';
 
@@ -24,7 +25,7 @@ class LoginPage extends Component {
           <div>
             <h2>Login</h2>
           </div>
-          <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={this.login.bind(this)} btnText={"Submit"} currentlySending={currentlySending}/>
+          <LoginForm />
         </div>
       </div>
     );
