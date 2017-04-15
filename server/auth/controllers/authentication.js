@@ -1,5 +1,5 @@
 const jwt = require('jwt-simple');
-const User = require('./handleUser');
+const User = require('../handleUser');
 const config = require('../config');
 
 function tokenForUser(user) {
