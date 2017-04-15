@@ -9,7 +9,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form.jsx';
-import RegisterForm from './auth/RegisterForm.jsx';
+// import RegisterForm from './auth/RegisterForm.jsx';
 // import { sendingRequest, register } from '../../actions/AppActions';
 // import LoadingIndicator from '../LoadingIndicator.react';
 

@@ -48,7 +48,7 @@ jspm_packages
 .flooignore
 
 # auth keys
-server/auth/config.js
+server/services/config.js
 
 # misc
 .DS_Store
