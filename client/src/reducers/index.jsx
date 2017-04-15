@@ -4,7 +4,7 @@ import SelectedMentor from './reducer_selected_mentor.jsx';
 import Resources from './reducer_resources.jsx';
 import { reducer as formReducer } from 'redux-form';
 import EventsReducer from './reducer_events.jsx';
-import authReducer from './reducer_auth.jsx';
+import AuthReducer from './reducer_auth.jsx';
 
 
 <<<<<<< HEAD
@@ -59,7 +59,7 @@ const RootReducer = combineReducers({
   resources: Resources,
   form: formReducer,
   events: EventsReducer,
-  auth: authReducer,
+  auth: AuthReducer,
 
 });
 
