@@ -21,4 +21,10 @@ exports.signup = function(req, res, next) {
     return res.status(422).send({ error: 'You must provide email and password'});
   }
 
+
   createUser(email, password, name);
+
+  // Respond to request indicating the user was created
+  res.json({ token: tokenForUser(user) });
+
+}
