@@ -14,3 +14,13 @@ function createUser (req) {
   })
   .returning('*');
 }
+
+
+function comparePass(userPassword, databasePassword) {
+  return bcrypt.compareSync(userPassword, databasePassword);
+}
+
+module.exports = {
+  comparePass,
+  createUser
+}
