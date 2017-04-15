@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   .then((resource) => {
     res.status(200).send(resource);
   })
-  .catch((error) => {
-    res.status(error.status || 500).send({'error in getResources': error});
+  .catch((err) => {
+    res.status(err.status || 500).send({'error in getResources': err});
   });
 }

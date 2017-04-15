@@ -5,6 +5,6 @@ module.exports = {
     return db.knex
     .select()
     .from('events')
-    .where({user_id: user_id})
+    .where({user_id: user_id});
   },
 };
