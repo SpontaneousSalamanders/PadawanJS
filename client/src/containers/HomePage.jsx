@@ -24,7 +24,6 @@ import { filterMentors } from '../actions/index.jsx'
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const techStackItems = [
-  'Any',
   'React',
   'Angular',
   'Backbone',
@@ -32,20 +31,17 @@ const techStackItems = [
   'Express',
   'Node.js',
   'TDD',
-  'JavaScript',
   'Mocha/Chai',
   'Redux'
 ];
 
 const rolesItems = [
-  'Any Role',
   'Full Stack',
   'Front-end',
   'Back-end'
 ];
 
 const locationItems = [
-  'Anywhere',
   'San Francisco',
   'San Jose',
   'Palo Alto'
@@ -59,9 +55,9 @@ class HomePage extends Component {
       mql: mql,
       docked: props.docked,
       open: props.open,
-      selectedTechStacksItems: ['Any'],
-      selectedRolesItems: ['Any Role'],
-      selectedLocationItems: ['Anywhere'],
+      selectedTechStacksItems: ['Nothing selected'],
+      selectedRolesItems: ['Nothing selected'],
+      selectedLocationItems: ['Nothing selected'],
     }
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
@@ -69,12 +65,16 @@ class HomePage extends Component {
     this.handleTechStackChange = this.handleTechStackChange.bind(this);
     this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
     this.handleRolesChange = this.handleRolesChange.bind(this);
-    this.createLocationCheckboxes = this.createLocationCheckboxes.bind(this);
+    this.createLocationsCheckboxes = this.createLocationsCheckboxes.bind(this);
     this.handleLocationsChange = this.handleLocationsChange.bind(this);
   }
 
+  componentDidMount() {
+    console.log('to begin with, techstack is:', this.state.selectedTechStacksItems);
+  }
+
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
   }
 
   onSetSidebarOpen(open) {
@@ -90,8 +90,11 @@ class HomePage extends Component {
     this.setState({sidebarDocked: this.state.mql.matches});
   }
 
+  // checkboxes created for tech stacks
   createTechStackCheckboxes() {
-    const isAllChecked = this.state.selectedTechStacksItems.includes('Any');
+    // starts with unchecked box
+    const isAllChecked = false;
+    // map out techStackItems and crate input boxes for each item
     return techStackItems.map((item) => (
       <div key={item}>
         <input
@@ -106,23 +109,40 @@ class HomePage extends Component {
     ));
   }
 
+  // event handler for tech stack input boxes
   handleTechStackChange(event) {
+    // selected tech stack is saved
     const selectedTechStack = event.target.value;
+    // created a new variable as this.state.selectedTechStacksItems is too long
     let techStacks = this.state.selectedTechStacksItems;
-    if (techStacks.includes('Any') && selectedTechStack !== 'Any') {
-      techStacks.splice(techStacks.indexOf('Any'), 1);
-      techStacks.push(selectedTechStack);
-    } else if (selectedTechStack === 'Any'){
-      techStacks = ['Any'];
-    } else if (techStacks.includes(selectedTechStack)) {
-      techStacks.splice(techStacks.indexOf(selectedTechStack), 1);
-    } else {
-      techStacks.push(selectedTechStack);
-    }
 
+    // conditions
+    // 1) default is to show all mentors
+    // 2) if a user clicks any tech stack, it should remove 'Nothing selected'
+    //    and add that clicked tech stack
+    if (techStacks.includes('Nothing selected')) {
+      techStacks.splice(techStacks.indexOf('Nothing selected'), 1);
+      techStacks.push(selectedTechStack);
+    // 3) if the user clicks already added tech stack, it de-selects the box
+    //    and removes that tech stack
+    } else {
+      if (techStacks.includes(selectedTechStack)) {
+        techStacks.splice(techStacks.indexOf(selectedTechStack), 1);
+        // 4) if techStacks does not include anything due to this removal, 
+        //    'Nothing selected' is added to return the default state
+        if (techStacks.length === 0) {
+          techStacks = ['Nothing selected'];
+        }
+      // 5) none of the above -> add the new techStack
+      } else {
+        techStacks.push(selectedTechStack);
+      }
+    }
+    // set the existing state of 'selectedTechStacksItems' to the newly filtered stacks
     this.setState({
       selectedTechStacksItems: techStacks
     }, () => {
+      console.log('techstack after setstate looks like:', techStacks);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -132,7 +152,7 @@ class HomePage extends Component {
   }
 
   createRolesCheckboxes() {
-    const isAllChecked = this.state.selectedRolesItems.includes('Any Role');
+    const isAllChecked = false;
     return rolesItems.map((item) => (
       <div key={item}>
         <input
@@ -149,22 +169,24 @@ class HomePage extends Component {
 
   handleRolesChange(event) {
     const selectedRole = event.target.value;
-    console.log(selectedRole);
     let roles = this.state.selectedRolesItems;
-    if (roles.includes('Any Role') && selectedRole !== 'Any Role') {
-      roles.splice(roles.indexOf('Any Role'), 1);
+    if (roles.includes('Nothing selected')) {
+      roles.splice(roles.indexOf('Nothing selected'), 1);
       roles.push(selectedRole);
-    } else if (selectedRole === 'Any Role'){
-      roles = ['Any Role'];
-    } else if (roles.includes(selectedRole)) {
-      roles.splice(roles.indexOf(selectedRole), 1);
     } else {
-      roles.push(selectedRole);
+      if (roles.includes(selectedRole)) {
+        roles.splice(roles.indexOf(selectedRole), 1);
+        if (roles.length === 0) {
+          roles = ['Nothing selected'];
+        }
+      } else {
+        roles.push(selectedRole);
+      }
     }
-
     this.setState({
       selectedRolesItems: roles
     }, () => {
+      console.log('techstack after setstate looks like:', roles);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -173,9 +195,8 @@ class HomePage extends Component {
     })
   }
 
-
-  createLocationCheckboxes() {
-    const isAllChecked = this.state.selectedLocationItems.includes('Anywhere');
+  createLocationsCheckboxes() {
+    const isAllChecked = false;
     return locationItems.map((item) => (
       <div key={item}>
         <input
@@ -192,22 +213,24 @@ class HomePage extends Component {
 
   handleLocationsChange(event) {
     const selectedLocation = event.target.value;
-    console.log(selectedLocation);
     let locations = this.state.selectedLocationItems;
-    if (locations.includes('Anywhere') && selectedLocation !== 'Anywhere') {
-      locations.splice(locations.indexOf('Anywhere'), 1);
+    if (locations.includes('Nothing selected')) {
+      locations.splice(locations.indexOf('Nothing selected'), 1);
       locations.push(selectedLocation);
-    } else if (selectedLocation === 'Anywhere'){
-      locations = ['Anywhere'];
-    } else if (locations.includes(selectedLocation)) {
-      locations.splice(locations.indexOf(selectedLocation), 1);
     } else {
-      locations.push(selectedLocation);
+      if (locations.includes(selectedLocation)) {
+        locations.splice(locations.indexOf(selectedLocation), 1);
+        if (locations.length === 0) {
+          locations = ['Nothing selected'];
+        }
+      } else {
+        locations.push(selectedLocation);
+      }
     }
-
     this.setState({
       selectedLocationItems: locations
     }, () => {
+      console.log('techstack after setstate looks like:', locations);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -215,7 +238,6 @@ class HomePage extends Component {
       });
     })
   }
-
 
   render() {
     const dispatch = this.props.dispatch;
@@ -236,7 +258,7 @@ class HomePage extends Component {
         <br />
         <div>Location</div>
         <div>
-          {this.createLocationCheckboxes()}
+          {this.createLocationsCheckboxes()}
         </div>
       </form>
     </div>);
