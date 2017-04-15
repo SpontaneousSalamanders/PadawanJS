@@ -4,6 +4,8 @@ var db = require('./db/index.js');
 var handler = require('./routes/requestHandler.js');
 var path = require('path');
 
+// authentication routes
+var authRouter = require('./auth/authRoutes.js')
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -17,13 +19,15 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname, + '/../client/dist')
 })
 
+
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getResources/:uid', handler.getResources);
 app.get('/*');
 
-
+// authentication routes
+authRouter(app);
 
 
 var server = app.listen(port, function() {
