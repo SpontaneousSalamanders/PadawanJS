@@ -1,5 +1,4 @@
 var db = require('./db/index.js');
-
 var bcrypt = require('bcrypt');
 
 // Before inserting a user, encrypt the password
@@ -24,17 +23,27 @@ function comparePass(userPassword, databasePassword) {
 // check to see if email username is already in database
 // if not, return false
 // else, return the user
-function checkUsernameInDB(email, password) {
+function checkUsernameInDB(email, password, done) {
   return db.knex('users').where({ email }).first()
     .then((user)) => {
       if( !user) return done(null, false);
-      if( !comparepass(password, user.password)) {
+      if( !comparePass(password, user.password)) {
         return done(null, false);
       } else {
         return done(null, user);
       }
     })
     .catch((err) => { return done(err); })
+}
+
+function checkIdInDB(id) {
+  return db.knex('users').where({ id }).first()
+  .then((user)) => {
+    if (!user) return done (null, false);
+    else {
+      return done (null, user);
+    }
+  }
 }
 
 
