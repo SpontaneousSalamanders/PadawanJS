@@ -5,13 +5,14 @@ var handler = require('./routes/requestHandler.js');
 var path = require('path');
 
 // authentication routes
-var authRouter = require('./auth/authRoutes.js')
+var authRouter = require('./routes/authRoutes.js')
+
 
 var app = express();
 var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use(auth.initialize())
+
 app.use(express.static(__dirname + '/../client/dist'));
 
 // serve up / but not sure if needed
