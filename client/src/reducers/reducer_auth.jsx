@@ -5,7 +5,7 @@ import {
   FETCH_STUDENT_PROFILE,
   FETCH_MENTOR_PROFILE,
   SET_MENTOR_PRIVILEGES
-} from '../actions/AuthActions.jsx';
+} from '../actions/authActions.jsx';
 
 
 export default function(state = { authenticated: false, mentor_privileges: false }, action) {

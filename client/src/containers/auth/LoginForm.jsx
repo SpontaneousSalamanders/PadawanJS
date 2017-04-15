@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import * as actions from '../../actions/AuthActions.jsx'
+import * as actions from '../../actions/authActions.jsx'
 
 
 class LoginForm extends Component {
