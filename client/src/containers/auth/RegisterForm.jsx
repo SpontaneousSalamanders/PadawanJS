@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import * as actions from '../../actions';
+// import * as actions from '../../actions';
 
 class RegisterForm extends Component {
   handleFormSubmit(formProps) {
@@ -115,6 +115,5 @@ function mapStateToProps(state) {
 
 export default reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'passwordConfirm'],
-  validate
-}, mapStateToProps, actions)(Signup);
+  fields: ["email", "password", "firstName", "lastName", "techStack", "role", "location", "passwordConfirm"],
+}, mapStateToProps)(RegisterForm);

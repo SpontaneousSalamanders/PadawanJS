@@ -9,6 +9,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form.jsx';
+// import RegisterForm from './auth/RegisterForm.jsx';
 // import { sendingRequest, register } from '../../actions/AppActions';
 // import LoadingIndicator from '../LoadingIndicator.react';
 
@@ -22,9 +23,7 @@ class SignUpPage extends Component {
           <div>
             <h2>Register</h2>
           </div>
-          {/* While the form is sending, show the loading indicator,
-            otherwise show "Register" on the submit button */}
-          <Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={this.register.bind(this)} btnText={"Register"} currentlySending={currentlySending}/>
+          <Form />
         </div>
       </div>
     );

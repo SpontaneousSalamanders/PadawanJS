@@ -7,6 +7,7 @@ import EventsReducer from './reducer_events.jsx';
 import authReducer from './reducer_auth.jsx';
 
 
+<<<<<<< HEAD
 
 
 // The initial application state for form
@@ -49,6 +50,8 @@ export function homeReducer(state = initialState, action) {
 
 
 
+=======
+>>>>>>> set up actions
 const RootReducer = combineReducers({
   mentors: MentorsReducer,
   selectedMentor: SelectedMentor,
@@ -56,8 +59,7 @@ const RootReducer = combineReducers({
   resources: Resources,
   form: formReducer,
   events: EventsReducer,
-
-  // auth: authReducer,
+  auth: authReducer,
 
 });
 
