@@ -15,8 +15,8 @@ module.exports = {
       type: 'mentor',
       name: 'Benji Marinacci',
       email: 'benji.marinacci@hackreactor.com',
-      location: 'Redwood City',
-      role: 'Back end',
+      location: 'Palo Alto',
+      role: 'Full stack',
       picture: 'http://imgur.com/iwn6mV5.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript']
     },
@@ -33,7 +33,7 @@ module.exports = {
       type: 'mentor',
       name: 'Eric Brown',
       email: 'eric.brown@hackreactor.com',
-      location: 'Albany',
+      location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/adDa5JU.jpg',
       techStack: ['React', 'Node.js', 'JavaScript']
@@ -42,7 +42,7 @@ module.exports = {
       type: 'mentor',
       name: 'Tyler Arbus',
       email: 'tyler.arbus@hackreactor.com',
-      location: 'Toronto',
+      location: 'San Jose',
       role: 'Full stack',
       picture: 'http://imgur.com/ohFukM2.jpg',
       techStack: ['Angular', 'Node.js', 'JavaScript']

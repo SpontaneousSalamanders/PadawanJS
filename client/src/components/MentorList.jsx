@@ -3,16 +3,21 @@ import { connect } from 'react-redux';
 import { Card, CardTitle } from 'react-materialize';
 import { selectMentor } from '../actions/index.jsx'
 import { bindActionCreators } from 'redux';
+import MentorProfile from '../containers/MentorProfile.jsx';
 import { Link } from 'react-router';
+import { getMentors } from '../actions/mentorActions.jsx'
 
-export default class MentorList extends Component {
-
+class MentorList extends Component {
   constructor(props) {
     super(props);
 
     this.renderCardHeader = this.renderCardHeader.bind(this);
     this.renderReveal = this.renderReveal.bind(this);
     this.renderList = this.renderList.bind(this);
+  }
+  
+  componentDidMount() {
+    this.props.getMentorsAction.getMentors();
   }
 
   renderCardHeader(mentor) {
@@ -28,7 +33,7 @@ export default class MentorList extends Component {
           <li>Expertise: {mentor.techStack.join(', ')}</li>
         </ul>
         <Link
-          to="/profile"
+          to={"/profile/" + mentor.id}
           onClick={()=> this.props.selectMentor(mentor)}
           className="viewProfileButton">View Profile
         </Link>
@@ -60,3 +65,18 @@ export default class MentorList extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    mentors: state.mentors,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getMentorsAction: bindActionCreators({getMentors: getMentors}, dispatch),
+    selectMentorAction: bindActionCreators({selectMentor: selectMentor}, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MentorList)

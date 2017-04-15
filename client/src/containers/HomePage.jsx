@@ -14,8 +14,7 @@ import { bindActionCreators } from 'redux';
 
 // import MentorDetail from '../containers/mentor_detail';
 import Sidebar from 'react-sidebar';
-import SideBarMenu from '../components/SideBarMenu.jsx';
-import MentorList from '../containers/mentor_list.jsx';
+// import SideBarMenu from '../components/SideBarMenu.jsx';
 import { filter } from 'lodash';
 import Nav from '../components/Nav.jsx';
 import MentorList from '../components/MentorList.jsx';
@@ -37,12 +36,12 @@ const techStackItems = [
 
 const rolesItems = [
   'Full Stack',
-  'Front-end',
-  'Back-end'
+  'Front end',
+  'Back end'
 ];
 
 const locationItems = [
-  'San Francisco',
+  'SF',
   'San Jose',
   'Palo Alto'
 ];
