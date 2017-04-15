@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-// import * as actions from '../../actions';
+import { reduxForm } from 'redux-form';
+// import * as actions from '../../actions/authActions.jsx';
 
 class RegisterForm extends Component {
   handleFormSubmit(formProps) {
@@ -18,7 +18,7 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password, firstName, lastName, techStack, role, location, passwordConfirm }} = this.props;
+    const { handleSubmit, fields: { email, password, firstName, lastName, passwordConfirm }} = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
@@ -46,35 +46,6 @@ class RegisterForm extends Component {
           <label>Confirm Password:</label>
           <input className="form-control" {...passwordConfirm} type="password" />
           {passwordConfirm.touched && passwordConfirm.error && <div className="error">{passwordConfirm.error}</div>}
-        </fieldset>
-        <fieldset className="form-group">
-          <label htmlFor="techStack">Technologies:</label>
-            <input className="form-control" type="checkbox" name='React'/>
-            <input className="form-control" type="checkbox" name='Angular'/>
-            <input className="form-control" type="checkbox" name='Backbone'/>
-            <input className="form-control" type="checkbox" name='React Native'/>
-            <input className="form-control" type="checkbox" name='Express'/>
-            <input className="form-control" type="checkbox" name='Node.js'/>
-            <input className="form-control" type="checkbox" name='TDD'/>
-            <input className="form-control" type="checkbox" name='Redux'/>
-        </fieldset>
-        <label>Role:</label>
-        <fieldset>
-          <Field name="role" component="select">
-            <option></option>
-            <option value="full-stack">Full Stack</option>
-            <option value="front-end">Front-end</option>
-            <option value="back-end">Back-end</option>
-          </Field>
-        </fieldset>
-        <label>Location:</label>
-        <fieldset>
-          <Field name="location" component="select">
-            <option></option>
-            <option value="san-francisco">San Francisco</option>
-            <option value="san-jose">San Jose</option>
-            <option value="palo-alto">Palo Alto</option>
-          </Field>
         </fieldset>
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign up!</button>
@@ -115,5 +86,5 @@ function mapStateToProps(state) {
 
 export default reduxForm({
   form: 'signup',
-  fields: ["email", "password", "firstName", "lastName", "techStack", "role", "location", "passwordConfirm"],
-}, mapStateToProps)(RegisterForm);
+  fields: ["email", "password", "firstName", "lastName", "passwordConfirm"], validate
+}, mapStateToProps, actions)(RegisterForm);

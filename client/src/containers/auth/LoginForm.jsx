@@ -33,11 +33,11 @@ class LoginForm extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
           <label>Email:</label>
-          <input {...email} placeholder="fred.zirdung@hackreactor.com" className="form-control" />
+          <input {...email} className="form-control" />
         </fieldset>
         <fieldset className="form-group">
           <label>Password:</label>
-          <input {...password} type="password" placeholder="••••••••••" className="form-control" />
+          <input {...password} type="password" className="form-control" />
         </fieldset>
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign in</button>
