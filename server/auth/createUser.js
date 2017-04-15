@@ -4,13 +4,14 @@ var bcrypt = require('bcrypt');
 
 // Before inserting a user, encrypt the password
 
-function createUser (req) {
+function createUser (email, password, name) {
   const salt = bcrypt.genSaltSync();
-  const hash = bcrypt.hashSync(req.body.password, salt);
+  const hash = bcrypt.hashSync(password, salt);
   return db.knex('users')
   .insert({
-    email: req.body.email,
-    password: hash
+    email: email,
+    password: hash,
+    name: name
   })
   .returning('*');
 }
