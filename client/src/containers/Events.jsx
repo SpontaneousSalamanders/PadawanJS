@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
-import { Divider } from 'semantic-ui-react';
+import { Divider, Segment } from 'semantic-ui-react';
 
 class Events extends Component {
   componentDidMount() {
@@ -18,6 +18,7 @@ class Events extends Component {
       <ul className="media-list">
         {this.props.events.map((event, index)=>{
           return (
+            <Segment>
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -37,6 +38,7 @@ class Events extends Component {
                 </p>
               </div>
             </li>
+            </Segment>
           )
         })}
 
