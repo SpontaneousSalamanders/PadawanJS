@@ -8,17 +8,15 @@
 
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import Form from '../components/Form.jsx';
+// import Form from '../components/Form.jsx';
 import LoginForm from './auth/LoginForm.jsx';
-// import { sendingRequest, register } from '../../actions/index.jsx';
+
 // import LoadingIndicator from '../LoadingIndicator.react';
 
 class LoginPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { formState, currentlySending } = this.props.data;
-          /* While the form is sending, show the loading indicator,
-            otherwise show "Log in" on the submit button */
     return (
       <div>
         <div>
