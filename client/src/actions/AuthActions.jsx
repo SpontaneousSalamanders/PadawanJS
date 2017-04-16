@@ -13,12 +13,12 @@ export const SET_MENTOR_PRIVILEGES = 'set_mentor_privileges';
 
 const jwt_decode = require('jwt-decode');
 
-const ROOT_URL = 'http://localhost:3000';
+// const ROOT_URL = 'http://localhost:3000';
 
 export function signinUser({ email, password }) {
   return function(dispatch) {
     // Submit email/password to the server
-    axios.post(`${ROOT_URL}/signin`, { email, password })
+    axios.post('/signin', { email, password })
       .then(response => {
         // If request is good...
         // - Update state to indicate user is authenticated
@@ -33,19 +33,19 @@ export function signinUser({ email, password }) {
 
 
 
-        // - redirect to the appropriate route
-        if(decoded_token_data.type === 'student') {
-          browserHistory.push('/student_profile/id');
-        }
-        // - set mentor flag if token indicates the user has mentor privileges
-        else if(decoded_token_data.type == 'mentor') {
-          dispatch({ type: SET_MENTOR_PRIVILEGES });
-          browserHistory.push('/mentor_profile/id');
-        }
-        else {
-          browserHistory.push('/');
-        }
-
+        // // - redirect to the appropriate route
+        // if(decoded_token_data.type === 'student') {
+        //   browserHistory.push('/student_profile/id');
+        // }
+        // // - set mentor flag if token indicates the user has mentor privileges
+        // else if(decoded_token_data.type == 'mentor') {
+        //   dispatch({ type: SET_MENTOR_PRIVILEGES });
+        //   browserHistory.push('/mentor_profile/id');
+        // }
+        // else {
+        //   browserHistory.push('/');
+        // }
+        browserHistory.push('/');
 
       })
       .catch(() => {
@@ -58,7 +58,7 @@ export function signinUser({ email, password }) {
 
 export function signupUser({ email, password }) {
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/signup`, { email, password })
+    axios.post('/signup', { email, password })
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
@@ -117,7 +117,7 @@ export function fetchStudentProfile() {
 
 //token included in the header of the request for authorization
 // fetch mentor dashboard with mentor privileges
-export function fetchAdminMessage() {
+export function fetchMentorProfile() {
   return function(dispatch) {
     axios.get(`${ROOT_URL}/mentor_profile`, {
       headers: { authorization: localStorage.getItem('token') }

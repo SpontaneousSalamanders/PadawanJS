@@ -9,6 +9,7 @@ function tokenForUser(user) {
 
 exports.signin = function(req, res, next) {
   // User has been authenticated, send back token
+  console.log('is signin reached?')
   res.send({ token: tokenForUser(req.user) });
 }
 

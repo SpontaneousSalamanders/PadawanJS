@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var db = require('./db/index.js');
 var handler = require('./routes/requestHandler.js');
 var path = require('path');
+var cors = require('cors');
 
 // authentication routes
 var authRouter = require('./routes/authRoutes.js')
@@ -11,7 +12,11 @@ var authRouter = require('./routes/authRoutes.js')
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: '*/*' }));
+
+// Allow cross-origin resource sharing
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
