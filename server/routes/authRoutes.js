@@ -5,7 +5,7 @@ const auth = require ('../auth/controllers/authentication');
 const passport = require('passport');
 const passportStrategies = require('../auth/passportStrategies');
 const requireAuth = passport.authenticate('jwt', { session: false });
-const requireSignin = passport.authenticate('local');
+const requireSignin = passport.authenticate('local', { session: false });
 
 //Custom express routing middleware that checks to see if the authenticated user is an admin
 const requireMentor = require('../auth/requireMentor')
@@ -28,7 +28,12 @@ module.exports = function(app) {
   // using requireSignin passport middleware to authenticate for protected route using local (email/password) strategy)
   // Authentication.signin sends back JWT token to authenticated user
   app.post('/signin', function (req, res) {
-    res.send('/')
+    console.log('before auth')
+    passport.authenticate('local', { failureRedirect: '/login' }),
+    function(req, res) {
+    console.log('inside authentication')
+    res.redirect('/');
+    };
   });
 
   // route for signing up user
