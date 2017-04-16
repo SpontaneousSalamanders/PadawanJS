@@ -11,7 +11,6 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Row, Input } from 'react-materialize';
 import { bindActionCreators } from 'redux';
-
 // import MentorDetail from '../containers/mentor_detail';
 import Sidebar from 'react-sidebar';
 // import SideBarMenu from '../components/SideBarMenu.jsx';
@@ -19,6 +18,9 @@ import { filter } from 'lodash';
 import Nav from '../components/Nav.jsx';
 import MentorList from '../components/MentorList.jsx';
 import { filterMentors } from '../actions/index.jsx'
+import { selectMentor } from '../actions/index.jsx'
+import { getMentors } from '../actions/mentorActions.jsx'
+
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -185,7 +187,6 @@ class HomePage extends Component {
     this.setState({
       selectedRolesItems: roles
     }, () => {
-      console.log('techstack after setstate looks like:', roles);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -229,7 +230,7 @@ class HomePage extends Component {
     this.setState({
       selectedLocationItems: locations
     }, () => {
-      console.log('techstack after setstate looks like:', locations);
+      console.log('locations after setstate looks like:', locations);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -270,7 +271,8 @@ class HomePage extends Component {
           docked={this.state.sidebarDocked}
           onSetOpen={this.onSetSidebarOpen}>
           <MentorList
-            mentors={this.props.data.mentors}/>
+            actions={this.props.actions}
+            mentors={this.props.data.mentors.filtered}/>
         </Sidebar>
       </div>
     );
@@ -287,6 +289,8 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       filterMentors,
+      getMentors,
+      selectMentor,
     }, dispatch),
   }
 }

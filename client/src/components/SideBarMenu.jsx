@@ -6,7 +6,7 @@ import { Divider, Checkbox } from 'semantic-ui-react'
 function SideBarMenu () {
   return (
     <div className="sidebar-container">
-      <h4>Languages</h4>
+      <h4>Tech stack</h4>
     <Divider />
     <Row>
       <Input name='group1' type='checkbox' value='red' label='Node' />

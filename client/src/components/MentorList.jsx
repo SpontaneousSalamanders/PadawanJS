@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardTitle } from 'react-materialize';
-import { selectMentor } from '../actions/index.jsx'
 import { bindActionCreators } from 'redux';
 import MentorProfile from '../containers/MentorProfile.jsx';
 import { Link } from 'react-router';
-import { getMentors } from '../actions/mentorActions.jsx'
 
-class MentorList extends Component {
+export default class MentorList extends Component {
   constructor(props) {
     super(props);
 
@@ -17,7 +15,7 @@ class MentorList extends Component {
   }
   
   componentDidMount() {
-    this.props.getMentorsAction.getMentors();
+    this.props.actions.getMentors();
   }
 
   renderCardHeader(mentor) {
@@ -34,7 +32,7 @@ class MentorList extends Component {
         </ul>
         <Link
           to={"/profile/" + mentor.id}
-          onClick={()=> this.props.selectMentor(mentor)}
+          onClick={()=> this.props.actions.selectMentor(mentor)}
           className="viewProfileButton">View Profile
         </Link>
         <button className="requestLightSaberButton">Request Lightsaber</button>
@@ -43,6 +41,7 @@ class MentorList extends Component {
   }
 
   renderList() {
+    console.log(this.props)
     return this.props.mentors.map((mentor) => {
       return (
         <div style={{marginTop: 100}} key={mentor.name}>
@@ -50,8 +49,7 @@ class MentorList extends Component {
             key={mentor.name}
             header={this.renderCardHeader(mentor)}
             title={mentor.name}
-            reveal={this.renderReveal(mentor)}
-          />
+            reveal={this.renderReveal(mentor)}/>
         </div>
       )
     })
@@ -65,18 +63,3 @@ class MentorList extends Component {
     )
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    mentors: state.mentors,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    getMentorsAction: bindActionCreators({getMentors: getMentors}, dispatch),
-    selectMentorAction: bindActionCreators({selectMentor: selectMentor}, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MentorList)

@@ -16,7 +16,7 @@ module.exports = {
       name: 'Benji Marinacci',
       email: 'benji.marinacci@hackreactor.com',
       location: 'Palo Alto',
-      role: 'Full stack',
+      role: 'Full Stack',
       picture: 'http://imgur.com/iwn6mV5.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript']
     },
@@ -25,7 +25,7 @@ module.exports = {
       name: 'Fred Zirdung',
       email: 'fred.zirdung@hackreactor.com',
       location: 'SF',
-      role: 'Full stack',
+      role: 'Full Stack',
       picture: 'http://imgur.com/9awfsn2.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript']
     },
@@ -43,7 +43,7 @@ module.exports = {
       name: 'Tyler Arbus',
       email: 'tyler.arbus@hackreactor.com',
       location: 'San Jose',
-      role: 'Full stack',
+      role: 'Full Stack',
       picture: 'http://imgur.com/ohFukM2.jpg',
       techStack: ['Angular', 'Node.js', 'JavaScript']
     },
@@ -61,7 +61,7 @@ module.exports = {
       name: 'Alison Zhang',
       email: 'alison.zhang@hackreactor.com',
       location: 'Palo Alto',
-      role: 'Full stack',
+      role: 'Full Stack',
       picture: 'http://imgur.com/uz1C3om.jpg',
       techStack: ['React', 'Node.js', 'JavaScript']
     },
