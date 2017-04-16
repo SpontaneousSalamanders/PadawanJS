@@ -69,15 +69,6 @@ const schema = (db) => {
   })
   .catch((err) => {
     console.log('Error creating tables', err);
-  })
-  .then(() => {
-    return db.knex('users').insert(dummyData.users);
-  })
-  .then(() => {
-    return db.knex('events').insert(dummyData.events);
-  })
-  .then(() => {
-    return db.knex('resources').insert(dummyData.resources);
   });
 }
 
