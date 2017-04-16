@@ -13,7 +13,7 @@ const initialState = {
   },
   currentlySending: false,
   // loggedIn: auth.loggedIn(),
-  errorMessage: ''
+  errorMessage: '',
 };
 
 // Takes care of changing the application state

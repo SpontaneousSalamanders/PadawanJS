@@ -8,20 +8,23 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Nav from '../components/Nav.jsx';
 import { connect } from 'react-redux';
 import { Row, Input } from 'react-materialize';
-
-
+import { bindActionCreators } from 'redux';
 // import MentorDetail from '../containers/mentor_detail';
-import SideBarMenu from '../components/SideBarMenu.jsx';
-import MentorList from '../containers/mentor_list.jsx';
+import Sidebar from 'react-sidebar';
+// import SideBarMenu from '../components/SideBarMenu.jsx';
 import { filter } from 'lodash';
+import Nav from '../components/Nav.jsx';
+import MentorList from '../components/MentorList.jsx';
+import { filterMentors } from '../actions/index.jsx'
+import { selectMentor } from '../actions/index.jsx'
+import { getMentors } from '../actions/mentorActions.jsx'
+
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const techStackItems = [
-  'All',
   'React',
   'Angular',
   'Backbone',
@@ -34,35 +37,45 @@ const techStackItems = [
 ];
 
 const rolesItems = [
-  'All',
   'Full Stack',
-  'Front-end',
-  'Back-end'
+  'Front end',
+  'Back end'
 ];
 
 const locationItems = [
-  'All',
-  'San Francisco',
+  'SF',
   'San Jose',
   'Palo Alto'
 ];
 
 class HomePage extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       mql: mql,
       docked: props.docked,
       open: props.open,
-      isChecked: false,
-      selectedTechStacksItems: [],
-      selectedRolesItems: [],
-      selectedLocationItems: []
+      selectedTechStacksItems: ['Nothing selected'],
+      selectedRolesItems: ['Nothing selected'],
+      selectedLocationItems: ['Nothing selected'],
     }
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.createTechStackCheckboxes = this.createTechStackCheckboxes.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleTechStackChange = this.handleTechStackChange.bind(this);
+    this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
+    this.handleRolesChange = this.handleRolesChange.bind(this);
+    this.createLocationsCheckboxes = this.createLocationsCheckboxes.bind(this);
+    this.handleLocationsChange = this.handleLocationsChange.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('to begin with, techstack is:', this.state.selectedTechStacksItems);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps);
   }
 
   onSetSidebarOpen(open) {
@@ -78,75 +91,153 @@ class HomePage extends Component {
     this.setState({sidebarDocked: this.state.mql.matches});
   }
 
-
-  handleInputChange(event) {
-    const target = event.target;
-    this.setState({
-      isChecked: target
-    });
+  // checkboxes created for tech stacks
+  createTechStackCheckboxes() {
+    // starts with unchecked box
+    const isAllChecked = false;
+    // map out techStackItems and crate input boxes for each item
+    return techStackItems.map((item) => (
+      <div key={item}>
+        <input
+          key={item}
+          id={item}
+          type="checkbox"
+          checked={isAllChecked || this.state.selectedTechStacksItems.includes(item)}
+          value={item}
+          onChange={this.handleTechStackChange} />
+        <label htmlFor={item}>{item}</label>
+      </div>
+    ));
   }
 
-  createTechStackCheckboxes() {
-    return (
-      <form>
-        {techStackItems.map((item, key) => {
-          return (
-            <div key={key}>
-              <input
-                key={key}
-                id={key}
-                type="checkbox"
-                checked={this.state.isChecked[key]}
-                onChange={this.handleInputChange} />
-              <label htmlFor={key}>{item}</label>
-            </div>
-          )
-        })
-}      </form>
-    );
+  // event handler for tech stack input boxes
+  handleTechStackChange(event) {
+    // selected tech stack is saved
+    const selectedTechStack = event.target.value;
+    // created a new variable as this.state.selectedTechStacksItems is too long
+    let techStacks = this.state.selectedTechStacksItems;
+
+    // conditions
+    // 1) default is to show all mentors
+    // 2) if a user clicks any tech stack, it should remove 'Nothing selected'
+    //    and add that clicked tech stack
+    if (techStacks.includes('Nothing selected')) {
+      techStacks.splice(techStacks.indexOf('Nothing selected'), 1);
+      techStacks.push(selectedTechStack);
+    // 3) if the user clicks already added tech stack, it de-selects the box
+    //    and removes that tech stack
+    } else {
+      if (techStacks.includes(selectedTechStack)) {
+        techStacks.splice(techStacks.indexOf(selectedTechStack), 1);
+        // 4) if techStacks does not include anything due to this removal, 
+        //    'Nothing selected' is added to return the default state
+        if (techStacks.length === 0) {
+          techStacks = ['Nothing selected'];
+        }
+      // 5) none of the above -> add the new techStack
+      } else {
+        techStacks.push(selectedTechStack);
+      }
+    }
+    // set the existing state of 'selectedTechStacksItems' to the newly filtered stacks
+    this.setState({
+      selectedTechStacksItems: techStacks
+    }, () => {
+      console.log('techstack after setstate looks like:', techStacks);
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
   }
 
   createRolesCheckboxes() {
-    return (
-      <form>
-        {rolesItems.map((item, key) => {
-          return (
-            <div key={key}>
-              <input
-                key={key}
-                id={key}
-                type="checkbox"
-                checked={this.state.isChecked[key]}
-                onChange={this.handleInputChange} />
-              <label htmlFor={key}>{item}</label>
-            </div>
-          )
-        })}
-      </form>
-    );
+    const isAllChecked = false;
+    return rolesItems.map((item) => (
+      <div key={item}>
+        <input
+          key={item}
+          id={item}
+          type="checkbox"
+          checked={isAllChecked || this.state.selectedRolesItems.includes(item)}
+          value={item}
+          onChange={this.handleRolesChange} />
+        <label htmlFor={item}>{item}</label>
+      </div>
+    ));
   }
 
-  createLocationCheckboxes() {
-    return (
-      <form>
-        {locationItems.map((item, key) => {
-          return (
-            <div key={key}>
-              <input
-                key={key}
-                id={key}
-                type="checkbox"
-                checked={this.state.isChecked[key]}
-                onChange={this.handleInputChange} />
-              <label htmlFor={key}>{item}</label>
-            </div>
-          )
-        })}
-      </form>
-    );
+  handleRolesChange(event) {
+    const selectedRole = event.target.value;
+    let roles = this.state.selectedRolesItems;
+    if (roles.includes('Nothing selected')) {
+      roles.splice(roles.indexOf('Nothing selected'), 1);
+      roles.push(selectedRole);
+    } else {
+      if (roles.includes(selectedRole)) {
+        roles.splice(roles.indexOf(selectedRole), 1);
+        if (roles.length === 0) {
+          roles = ['Nothing selected'];
+        }
+      } else {
+        roles.push(selectedRole);
+      }
+    }
+    this.setState({
+      selectedRolesItems: roles
+    }, () => {
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
   }
 
+  createLocationsCheckboxes() {
+    const isAllChecked = false;
+    return locationItems.map((item) => (
+      <div key={item}>
+        <input
+          key={item}
+          id={item}
+          type="checkbox"
+          checked={isAllChecked || this.state.selectedLocationItems.includes(item)}
+          value={item}
+          onChange={this.handleLocationsChange} />
+        <label htmlFor={item}>{item}</label>
+      </div>
+    ));
+  }
 
+  handleLocationsChange(event) {
+    const selectedLocation = event.target.value;
+    let locations = this.state.selectedLocationItems;
+    if (locations.includes('Nothing selected')) {
+      locations.splice(locations.indexOf('Nothing selected'), 1);
+      locations.push(selectedLocation);
+    } else {
+      if (locations.includes(selectedLocation)) {
+        locations.splice(locations.indexOf(selectedLocation), 1);
+        if (locations.length === 0) {
+          locations = ['Nothing selected'];
+        }
+      } else {
+        locations.push(selectedLocation);
+      }
+    }
+    this.setState({
+      selectedLocationItems: locations
+    }, () => {
+      console.log('locations after setstate looks like:', locations);
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
+  }
 
   render() {
     const dispatch = this.props.dispatch;
@@ -154,42 +245,55 @@ class HomePage extends Component {
 
     var sidebarContent =
     (<div className="sidebar">
-      <div>Tech Stacks</div>
-      <div>
-        {this.createTechStackCheckboxes()}
-      </div>
-      <br />
-      <div>Roles</div>
-      <div>
-        {this.createRolesCheckboxes()}
-      </div>
-      <br />
-      <div>Location</div>
-      <div>
-        {this.createLocationCheckboxes()}
-      </div>
+      <form>
+        <div>Tech Stacks</div>
+        <div>
+          {this.createTechStackCheckboxes()}
+        </div>
+        <br />
+        <div>Roles</div>
+        <div>
+          {this.createRolesCheckboxes()}
+        </div>
+        <br />
+        <div>Location</div>
+        <div>
+          {this.createLocationsCheckboxes()}
+        </div>
+      </form>
     </div>);
 
     return (
-      <div className="container" style={{width: '100%', marginTop: 50}}>
-        <div className="row">
-          <div className="col-lg-1" style={{marginTop: 50}}>
-            <SideBarMenu />
-          </div>
-          <div className="col-lg-11">
-            <MentorList/>
-          </div>
-        </div>
+      <div>
+        <Sidebar
+          sidebar={sidebarContent}
+          open={this.state.sidebarOpen}
+          docked={this.state.sidebarDocked}
+          onSetOpen={this.onSetSidebarOpen}>
+          <MentorList
+            actions={this.props.actions}
+            mentors={this.props.data.mentors.filtered}/>
+        </Sidebar>
       </div>
     );
   }
 }
 
-function select(state) {
+function mapStateToProps(state) {
   return {
     data: state
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({
+      filterMentors,
+      getMentors,
+      selectMentor,
+    }, dispatch),
+  }
+}
+
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
