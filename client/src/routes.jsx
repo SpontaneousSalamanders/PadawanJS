@@ -8,10 +8,11 @@ import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import MentorPage from './components/MentorPage.jsx'
 
+
 export default (<Route component={App} >
   <Route path="/" component={LandingPage} />
   <Route path="/find_mentor" component={FindMentor} />
-  <Route path="/login" component={LoginPage} />
+  <Route path="/signin" component={LoginPage} />
   <Route path="/signup" component={SignUpPage} />
   <Route path="/profile/*" component={MentorPage} />
   </Route>
