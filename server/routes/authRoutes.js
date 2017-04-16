@@ -5,10 +5,7 @@ const auth = require ('../auth/controllers/authentication');
 const passport = require('passport');
 const passportStrategies = require('../auth/passportStrategies');
 const requireAuth = passport.authenticate('jwt', { session: false });
-const requireSignin = passport.authenticate('local', function (req, res) {
-  console.log('reaches server side')
-  res.send('/')
-});
+const requireSignin = passport.authenticate('local');
 
 //Custom express routing middleware that checks to see if the authenticated user is an admin
 const requireMentor = require('../auth/requireMentor')
@@ -17,20 +14,22 @@ module.exports = function(app) {
 
   // using requireAuth passport middleware w/ jwt strategy to protect route
 
-  app.get('/student_profile/id', requireAuth, function(req, res) {
+  app.get('/student_profile/:id', requireAuth, function(req, res) {
     res.send({ message: 'server response: this GET request has been authorized for a padawan' });
   });
 
   // using requireAuth passport middleware w/ jwt strategy as well as requireAdmin custom express middleware to protect route
   // must be a mentor to access mentor area
 
-  app.get('/mentor_profile/id', requireAuth, requireMentor, function(req, res, next) {
+  app.get('/mentor_profile/:id', requireAuth, requireMentor, function(req, res, next) {
     res.send({ message: 'server response: this GET request has been authorized for a mentor' });
   })
 
   // using requireSignin passport middleware to authenticate for protected route using local (email/password) strategy)
   // Authentication.signin sends back JWT token to authenticated user
-  app.post('/signin', requireSignin);
+  app.post('/signin', function (req, res) {
+    res.send('/')
+  });
 
   // route for signing up user
   app.post('/signup', auth.signup);
