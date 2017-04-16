@@ -20,6 +20,7 @@ import MentorList from '../components/MentorList.jsx';
 import { filterMentors } from '../actions/index.jsx'
 import { selectMentor } from '../actions/index.jsx'
 import { getMentors } from '../actions/mentorActions.jsx'
+import { Divider } from 'semantic-ui-react';
 
 
 const mql = window.matchMedia(`(min-width: 800px)`);
@@ -243,37 +244,34 @@ class HomePage extends Component {
     const dispatch = this.props.dispatch;
     const { loggedIn } = this.props.data;
 
-    var sidebarContent =
-    (<div className="sidebar">
-      <form>
-        <div>Tech Stacks</div>
-        <div>
-          {this.createTechStackCheckboxes()}
-        </div>
-        <br />
-        <div>Roles</div>
-        <div>
-          {this.createRolesCheckboxes()}
-        </div>
-        <br />
-        <div>Location</div>
-        <div>
-          {this.createLocationsCheckboxes()}
-        </div>
-      </form>
-    </div>);
 
     return (
       <div>
-        <Sidebar
-          sidebar={sidebarContent}
-          open={this.state.sidebarOpen}
-          docked={this.state.sidebarDocked}
-          onSetOpen={this.onSetSidebarOpen}>
+          <div className="sidebar-container">
+            <form>
+              <h4>Tech Stacks</h4>
+              <Divider/>
+              <div>
+                {this.createTechStackCheckboxes()}
+              </div>
+              <br />
+              <h4>Roles</h4>
+              <Divider/>
+              <div>
+                {this.createRolesCheckboxes()}
+              </div>
+              <br />
+              <h4>Location</h4>
+              <Divider/>
+              <div>
+                {this.createLocationsCheckboxes()}
+              </div>
+            </form>
+          </div>
+
           <MentorList
             actions={this.props.actions}
             mentors={this.props.data.mentors.filtered}/>
-        </Sidebar>
       </div>
     );
   }
