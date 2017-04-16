@@ -19,17 +19,17 @@ export function signinUser({ email, password }) {
   return function(dispatch) {
     // Submit email/password to the server
     axios.post('/signin', { email, password })
-      .then(response => {
-        // If request is good...
-        // - Update state to indicate user is authenticated
-        dispatch({ type: AUTH_USER });
+      .then( (response) => {
+        // // If request is good...
+        // // - Update state to indicate user is authenticated
+        // dispatch({ type: AUTH_USER });
 
-        // decode token for info on the user
-        let decoded_token_data = jwt_decode(response.data.token);
+        // // decode token for info on the user
+        // let decoded_token_data = jwt_decode(response.data.token);
 
 
-        // - Save the JWT token
-        localStorage.setItem('token', response.data.token);
+        // // - Save the JWT token
+        // localStorage.setItem('token', response.data.token);
 
 
 
@@ -51,6 +51,7 @@ export function signinUser({ email, password }) {
       .catch(() => {
         // If request is bad...
         // - Show an error to the user
+        console.log(email, password);
         dispatch(authError('Bad Login Info'));
       });
   }
@@ -74,7 +75,7 @@ export function signupUser({ email, password }) {
 export function activateMentorProfile({ email, password }) {
   return function(dispatch) {
     // admin_activation
-    axios.post(`${ROOT_URL}'/mentor_profile_activation'`,
+    axios.post('/mentor_profile_activation',
       { email, password },
       {headers: { authorization: localStorage.getItem('token') }} )
       .then(response => {
@@ -101,7 +102,7 @@ export function signoutUser() {
 // fetch student dashboard with just student privileges
 export function fetchStudentProfile() {
   return function(dispatch) {
-    axios.get(`${ROOT_URL}/student_profile`, {
+    axios.get('/student_profile', {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
@@ -119,7 +120,7 @@ export function fetchStudentProfile() {
 // fetch mentor dashboard with mentor privileges
 export function fetchMentorProfile() {
   return function(dispatch) {
-    axios.get(`${ROOT_URL}/mentor_profile`, {
+    axios.get('/mentor_profile', {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
