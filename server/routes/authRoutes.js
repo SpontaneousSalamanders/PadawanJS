@@ -3,7 +3,7 @@ const auth = require ('../auth/controllers/authentication');
 
 // Passport middle module and setup
 const passport = require('passport');
-const passportStrategies = require('../auth/passportStrategies');
+const passportStrategies = require('../auth/passportStrategies.js');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
@@ -27,14 +27,7 @@ module.exports = function(app) {
 
   // using requireSignin passport middleware to authenticate for protected route using local (email/password) strategy)
   // Authentication.signin sends back JWT token to authenticated user
-  app.post('/signin', function (req, res) {
-    console.log('before auth')
-    passport.authenticate('local', { failureRedirect: '/login' }),
-    function(req, res) {
-    console.log('inside authentication')
-    res.redirect('/');
-    };
-  });
+  app.post('/signin', requireSignin, auth.signin);
 
   // route for signing up user
   app.post('/signup', auth.signup);
