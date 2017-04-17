@@ -20,7 +20,7 @@ class MentorProfile extends Component {
       </div>
     )
   }
-}
+} 
 
 function mapStateToProps(state) {
   return {
