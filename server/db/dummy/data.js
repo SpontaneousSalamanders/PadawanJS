@@ -81,6 +81,13 @@ module.exports = {
       role: 'Back end',
       picture: 'http://imgur.com/yTpcGqk.jpg',
       techStack: ['React', 'Node.js', 'JavaScript']
+    },
+    {
+      type: 'mentee',
+      name: 'Winston Ku',
+      email: 'winston.ku@ku.com',
+      location: 'SF',
+      user_id: 1
     }
   ],
   events: [
@@ -137,6 +144,12 @@ module.exports = {
       description: 'Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6',
       URL: 'https://www.udemy.com/react-redux/',
       icon: 'https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png',
+    }
+  ],
+  users_events: [
+    {
+      user_id: 9,
+      event_id: 1
     }
   ]
 }

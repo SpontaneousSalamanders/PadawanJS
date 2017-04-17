@@ -22,54 +22,75 @@ module.exports = (db) => {
       });
 
 const schema = (db) => {
-  return db.knex.schema
+  return Promise.all([
+    db.knex.schema.hasTable('users').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('users', (table) => {
+          table.increments('id').primary();
+          table.string('type');
+          table.string('name');
+          table.string('email');
+          table.string('location');
+          table.string('role');
+          table.string('picture');
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.specificType('techStack', 'text[]');
+        })
+        .then((table) => {
+          console.log('Created users table!');
+        });
+      }
+    }),
 
-  .createTableIfNotExists('users', (users) => {
-    users.increments('id').primary();
-    users.string('type');
-    users.string('name');
-    users.string('email');
-    users.string('location');
-    users.string('role');
-    users.string('picture');
-    users.integer('user_id').references('users.id'); // assigned mentor
-    users.specificType('techStack', 'text[]');
-  })
+    db.knex.schema.hasTable('events').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('events', (table) => {
+          table.increments('id').primary();
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.string('title');
+          table.string('description');
+          table.string('location');
+          table.date('date');
+          table.time('time');
+        })
+        .then((table) => {
+          console.log('Created events table!');
+        });
+      }
+    }),
 
-  .createTableIfNotExists('events', (events) => {
-    events.increments('id').primary();
-    events.integer('user_id').unsigned().references('users.id'); // owner
-    events.string('title');
-    events.string('description');
-    events.string('location');
-    events.date('date');
-    events.time('time');
-  })
+    db.knex.schema.hasTable('users_events').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('users_events', (table) => {
+          table.increments('id').primary();
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.integer('event_id').unsigned().references('id').inTable('events');
+        })
+        .then((table) => {
+          console.log('Created users_events table!');
+        });
+      }
+    }),
 
-  .createTableIfNotExists('users_events', (users_events) => {
-    users_events.increments('id').primary();
-    users_events.integer('user_id').unsigned().references('users.id');
-    users_events.integer('event_id').unsigned().references('events.id');
-  })
-
-  .createTableIfNotExists('resources', (resources) => {
-    resources.increments('id').primary();
-    resources.string('type');
-    resources.string('title');
-    resources.string('description');
-    resources.string('URL');
-    resources.string('icon');
-    resources.specificType('tags', 'text[]');
-    resources.integer('user_id').unsigned().references('users.id'); // user
-    resources.integer('resource_id').unsigned().references('resources.id'); // poster
-  })
-
-  .then((tables) => {
-    console.log('Created tables!', tables);
-  })
-  .catch((err) => {
-    console.log('Error creating tables', err);
-  });
-}
+    db.knex.schema.hasTable('resources').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('resources', (table) => {
+          table.increments('id').primary();
+          table.string('type');
+          table.string('title');
+          table.string('description');
+          table.string('URL');
+          table.string('icon');
+          table.specificType('tags', 'text[]');
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.integer('resource_id').unsigned().references('id').inTable('resources');
+        })
+        .then((table) => {
+          console.log('Created resources table!');
+        });
+      }
+    })
+  ]);
+};
 
 module.exports = schema;

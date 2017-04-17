@@ -11,7 +11,9 @@ const knex = Knex({
     user: '',
     password: '',
     database: 'padawanJS',
-    charset: 'utf8'
+    seeds: {
+      directory: './dummy/seedData.js'
+    }
   }
 });
 
