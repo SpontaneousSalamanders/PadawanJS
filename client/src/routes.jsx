@@ -5,7 +5,7 @@ import App from './components/App.jsx';
 import HomePage from './containers/HomePage.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
-import MentorProfile from './containers/MentorProfile.jsx'
+import MentorProfile from './components/MentorProfile.jsx'
 
 export default (<Route component={App}>
   <Route path='/' component={HomePage} />

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { getResources } from '../actions/resourceActions.jsx';
 
 
-class MessageBoard extends Component {
+class ResourceBoard extends Component {
   componentDidMount() {
     this.props.getResources(this.props.mentor.id);
   }
@@ -60,4 +60,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getResources: getResources}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceBoard);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardTitle } from 'react-materialize';
 import { bindActionCreators } from 'redux';
-import MentorProfile from '../containers/MentorProfile.jsx';
+import MentorProfile from '../components/MentorProfile.jsx';
 import { Link } from 'react-router';
 
 export default class MentorList extends Component {

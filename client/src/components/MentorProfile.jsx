@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ResourceBoard from './ResourceBoard.jsx';
-import Events from './Events.jsx';
-import MentorCard from '../components/MentorCard.jsx';
+import ResourceBoard from '../containers/ResourceBoard.jsx';
+import Events from '../containers/Events.jsx';
+import MentorCard from '../containers/MentorCard.jsx';
 
 const MentorProfile = function (props) {  
   return (
