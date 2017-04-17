@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 function MentorCard (props) {
   return (
-    <Card style={{marginTop: 50, position: 'fixed'}}>
+    <Card style={{marginTop: 50}}>
       <Image src={props.mentor.picture} />
       <Card.Content>
         <Card.Header>

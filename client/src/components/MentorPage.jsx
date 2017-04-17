@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import ResourceBoard from '../containers/ResourceBoard.jsx';
-import Events from '../containers/Events.jsx';
 import MentorCard from '../containers/MentorCard.jsx';
+import EventBoard from '../containers/EventBoard.jsx';
 
-const MentorProfile = function (props) {  
+const MentorPage = function (props) {  
   return (
-    <div className="container" style={{marginTop: 100}}>
+    <div className="container" style={{marginTop: 150}}>
       <div className="row">
         <div className="col-lg-4" >
-            <MentorCard />
+          <MentorCard />
         </div>
         <div className="col-lg-8">
           <ResourceBoard />
-          <Events />
-      </div>
+          <EventBoard />
         </div>
+      </div>
     </div>
   )
 } 
 
 
 
-export default MentorProfile
+export default MentorPage;

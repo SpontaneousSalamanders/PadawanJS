@@ -19,22 +19,29 @@ class ResourceBoard extends Component {
       <ul className="media-list">
         {this.props.resources.map((resource, index)=>{
           return (
-            <Segment>
+            <Segment key={index}>
             <li key={index} className="media">
               <div className="media-left">
                 <div
+                  key={index}
                   style={{width: 50, cursor: 'pointer'}}
                   className='thumbnail'
                   onClick={()=>{window.open(resource.URL)}}>
-                  <img className="media-object" src={resource.icon} alt="..."/>
+                  <img 
+                    className="media-object" 
+                    src={resource.icon} 
+                    key={index}
+                    alt="..."/>
                 </div>
               </div>
-              <div className="media-body">
+              <div
+                key={index} 
+                className="media-body">
                 <h5
                   style={{cursor: 'pointer'}}
                   onClick={()=>{window.open(resource.URL)}}
                   className="media-heading" >{resource.title}</h5>
-                <p>
+                <p key={index}>
                   {resource.description}
                 </p>
               </div>
