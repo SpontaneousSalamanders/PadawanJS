@@ -3,9 +3,17 @@ import { connect } from 'react-redux';
 import { Row, Input } from 'react-materialize';
 import { bindActionCreators } from 'redux';
 import { filter } from 'lodash';
+<<<<<<< HEAD:client/src/containers/SidebarMenu.jsx
 import { filterMentors } from '../actions/index.jsx'
 import MentorList from '../containers/MentorList.jsx';
 import { Divider } from 'semantic-ui-react';
+=======
+import Nav from '../components/Nav.jsx';
+import MentorList from '../components/MentorList.jsx';
+import { filterMentors } from '../actions/index.jsx'
+import { selectMentor } from '../actions/index.jsx'
+import { getMentors } from '../actions/mentorActions.jsx'
+>>>>>>> temporary changes: rebase:client/src/containers/HomePage.jsx
 
 const techStackItems = [
   'React',
@@ -184,6 +192,25 @@ class SidebarMenu extends Component {
     const dispatch = this.props.dispatch;
     // const { loggedIn } = this.props.data;
 
+    var sidebarContent =
+    (<div className="sidebar">
+      <form>
+        <div>Tech Stacks</div>
+        <div>
+          {this.createTechStackCheckboxes()}
+        </div>
+        <br />
+        <div>Roles</div>
+        <div>
+          {this.createRolesCheckboxes()}
+        </div>
+        <br />
+        <div>Location</div>
+        <div>
+          {this.createLocationsCheckboxes()}
+        </div>
+      </form>
+    </div>);
 
     return (
       <div>
