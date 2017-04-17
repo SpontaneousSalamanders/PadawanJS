@@ -16,8 +16,8 @@ import Sidebar from 'react-sidebar';
 // import SideBarMenu from '../components/SideBarMenu.jsx';
 import { filter } from 'lodash';
 import Nav from '../components/Nav.jsx';
-import MentorList from '../components/MentorList.jsx';
 import { filterMentors } from '../actions/index.jsx'
+import MentorList from '../components/MentorList.jsx';
 import { selectMentor } from '../actions/index.jsx'
 import { getMentors } from '../actions/mentorActions.jsx'
 import { Divider } from 'semantic-ui-react';
