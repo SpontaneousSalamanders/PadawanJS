@@ -27,11 +27,14 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
     //   return done(null, user);
     // })
 
+    User.createHashAndInsertToDB (email, password);
 
-    else {
-      console.log('user', user, 'email', email, 'password', password, 'user email in db', user.email, 'user.password', user.password);
-      return done(null, user);
-    }
+    return done(null, user);
+
+    // else {
+    //   console.log('user', user, 'email', email, 'password', password, 'user email in db', user.email, 'user.password', user.password);
+    //   return done(null, user);
+    // }
   })
   .catch((err) => { return done(err); });
 });

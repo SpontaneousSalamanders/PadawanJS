@@ -21,8 +21,10 @@ function createUser (email, password, name) {
 
 
 function createHashAndInsertToDB (email, password) {
+  console.log('before hash')
   bcrypt.hash(password, 10, function(err, hash) {
     // store hash to DB
+    console.log('inside hash', hash)
     db.knex('users').where({ email }).first()
     .update({
       password: hash
