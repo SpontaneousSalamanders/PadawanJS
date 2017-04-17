@@ -5,36 +5,43 @@ import { bindActionCreators } from 'redux';
 import { getResources } from '../actions/resourceActions.jsx';
 
 
-class MessageBoard extends Component {
+class ResourceBoard extends Component {
   componentDidMount() {
-    this.props.getResources(this.props.id);
+    this.props.getResources(this.props.mentor.id);
   }
 
   render() {
     console.log('resources', this.props.resources);
     return (
       <div>
-      <h4 style={{textAlign: 'center'}}>Recommended Resources</h4>
+      <h4 style={{textAlign: 'center', marginTop: 20}}>Recommended Resources</h4>
       <Divider />
       <ul className="media-list">
         {this.props.resources.map((resource, index)=>{
           return (
-            <Segment>
+            <Segment key={index}>
             <li key={index} className="media">
               <div className="media-left">
                 <div
+                  key={index}
                   style={{width: 50, cursor: 'pointer'}}
                   className='thumbnail'
                   onClick={()=>{window.open(resource.URL)}}>
-                  <img className="media-object" src={resource.icon} alt="..."/>
+                  <img 
+                    className="media-object" 
+                    src={resource.icon} 
+                    key={index}
+                    alt="..."/>
                 </div>
               </div>
-              <div className="media-body">
+              <div
+                key={index} 
+                className="media-body">
                 <h5
                   style={{cursor: 'pointer'}}
                   onClick={()=>{window.open(resource.URL)}}
                   className="media-heading" >{resource.title}</h5>
-                <p>
+                <p key={index}>
                   {resource.description}
                 </p>
               </div>
@@ -51,6 +58,7 @@ class MessageBoard extends Component {
 
 function mapStateToProps(state) {
   return {
+    mentor: state.selectedMentor,
     resources: state.resources.resourceData
   }
 }
@@ -59,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getResources: getResources}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceBoard);
