@@ -249,19 +249,19 @@ class HomePage extends Component {
       <div>
           <div className="sidebar-container">
             <form>
-              <h4>Tech Stacks</h4>
+              <h4 style={{textAlign: 'center'}} >Tech Stacks</h4>
               <Divider/>
               <div>
                 {this.createTechStackCheckboxes()}
               </div>
               <br />
-              <h4>Roles</h4>
+              <h4 style={{textAlign: 'center'}} >Roles</h4>
               <Divider/>
               <div>
                 {this.createRolesCheckboxes()}
               </div>
               <br />
-              <h4>Location</h4>
+              <h4 style={{textAlign: 'center'}} >Location</h4>
               <Divider/>
               <div>
                 {this.createLocationsCheckboxes()}
