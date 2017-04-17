@@ -89,6 +89,19 @@ const schema = (db) => {
           console.log('Created resources table!');
         });
       }
+    }),
+
+    db.knex.schema.hasTable('users_resources').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('users_resources', (table) => {
+          table.increments('id').primary();
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.integer('resource_id').unsigned().references('id').inTable('resources');
+        })
+        .then((table) => {
+          console.log('Created users_resources table!');
+        });
+      }
     })
   ]);
 };

@@ -32,6 +32,9 @@ app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getResources/:uid', handler.getResources);
 app.get('/*');
 app.post('/saveResources/', handler.saveResources);
+app.get('/getMenteeResources/:uid', handler.getMenteeResources);
+app.post('/saveResource/', handler.saveResource);
+app.post('/postResource/', handler.postResource);
 
 // authentication routes
 authRouter(app);

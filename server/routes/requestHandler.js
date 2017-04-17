@@ -5,5 +5,7 @@ module.exports = {
   getMentor: require('./getMentor.js'),
   getMentors: require('./getMentors.js'),
   getResources: require('./getResources.js'),
-  saveResources: require('./saveResources.js')
+  getMenteeResources: require('./getMenteeResources.js'),
+  postResource: require('./postResource.js'),
+  saveResource: require('./saveResource.js')
 }
