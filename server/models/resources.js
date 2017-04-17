@@ -7,17 +7,26 @@ module.exports = {
     .from('resources')
     .where({user_id: user_id});
   },
+
   getMenteeResources: (user_id) => {
     // return db.knex
   },
+
+  postResource: (resource) => {
+    return db.knex('resources')
+    .insert({
+      user_id: resource.user_id,
+      title: resource.title,
+      description: resource.description,
+      URL: resource.URL
+    });
+  },
+
   saveResource: (user_id, resource_id) => {
     return db.knex('users_resources')
     .insert({
       user_id: user_id,
       resource_id: resource_id
-    })
-  },
-  postResource: (user_id, resource_id) => {
-    // return db.knex
+    });
   }
 };

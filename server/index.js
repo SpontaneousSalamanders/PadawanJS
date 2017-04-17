@@ -33,6 +33,7 @@ app.get('/getResources/:uid', handler.getResources);
 app.get('/*');
 app.post('/saveResources/', handler.saveResources);
 app.get('/getMentorResources/:uid', handler.getMentorResources);
+app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getMenteeResources/:uid', handler.getMenteeResources);
 app.post('/saveResource/', handler.saveResource);
 app.post('/postResource/', handler.postResource);
