@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ResourceBoard from '../containers/ResourceBoard.jsx';
-import Events from '../containers/Events.jsx';
 import MentorCard from '../containers/MentorCard.jsx';
+import Events from '../containers/Events.jsx'
 
 const MentorPage = function (props) {  
   return (
@@ -13,8 +13,8 @@ const MentorPage = function (props) {
         <div className="col-lg-8">
           <ResourceBoard />
           <Events />
-      </div>
         </div>
+      </div>
     </div>
   )
 } 

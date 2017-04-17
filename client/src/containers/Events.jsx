@@ -10,6 +10,7 @@ class Events extends Component {
   }
 
   render() {
+    console.log('events')
     return this.props.events.length > 0 ?
     (
       <div>

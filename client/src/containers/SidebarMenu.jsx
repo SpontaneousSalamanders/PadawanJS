@@ -182,7 +182,7 @@ class SidebarMenu extends Component {
 
   render() {
     const dispatch = this.props.dispatch;
-    const { loggedIn } = this.props.data;
+    // const { loggedIn } = this.props.data;
 
 
     return (
