@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ResourceBoard from '../containers/ResourceBoard.jsx';
 import MentorCard from '../containers/MentorCard.jsx';
 import EventBoard from '../containers/EventBoard.jsx';
+import ResourcePost from './ResourcePost.jsx';
 
 const MentorPage = function (props) {  
   return (
@@ -13,6 +14,7 @@ const MentorPage = function (props) {
         <div className="col-lg-8">
           <ResourceBoard />
           <EventBoard />
+          <ResourcePost />
         </div>
       </div>
     </div>
