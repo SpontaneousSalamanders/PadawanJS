@@ -11,7 +11,11 @@ module.exports = {
     // return db.knex
   },
   saveResource: (user_id, resource_id) => {
-    // return db.knex
+    return db.knex('users_resources')
+    .insert({
+      user_id: user_id,
+      resource_id: resource_id
+    })
   },
   postResource: (user_id, resource_id) => {
     // return db.knex

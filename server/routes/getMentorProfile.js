@@ -1,7 +1,7 @@
 const Mentors = require('../models/mentors.js');
 
 module.exports = (req, res) => {
-  Mentors.getMentor(req.params.uid)
+  Mentors.getMentorProfile(req.params.uid)
   .then((mentor) => {
     res.status(200).send(mentor);
   })

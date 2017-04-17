@@ -1,7 +1,7 @@
 const db = require('../db');
 
 module.exports = {
-  getMentor: (user_id) => {
+  getMentorProfile: (user_id) => {
     return db.knex
     .select()
     .from('users')
