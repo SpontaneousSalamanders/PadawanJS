@@ -43,8 +43,6 @@ export function homeReducer(state = initialState, action) {
   }
 }
 
-
-
 const rootReducer = combineReducers({
   mentors: MentorsReducer,
   selectedMentor: SelectedMentor,

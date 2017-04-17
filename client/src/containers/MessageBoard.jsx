@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider } from 'semantic-ui-react';
+import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getResources } from '../actions/resourceActions.jsx';
 
@@ -19,6 +19,7 @@ class MessageBoard extends Component {
       <ul className="media-list">
         {this.props.resources.map((resource, index)=>{
           return (
+            <Segment>
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -38,6 +39,7 @@ class MessageBoard extends Component {
                 </p>
               </div>
             </li>
+            </Segment>
           )
         })}
 
