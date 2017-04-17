@@ -17,12 +17,19 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
     if (!user) {
       return done(null, false);
     }
-    // if (!User.comparePass(password, user.password)) {
-    //   console.log('given password', password);
-    //   console.log('if user compare pass is false', user.password)
-    //   return done(null, false);
-    // }
+
+    // User.comparePass(password, user.password, function(err, isMatch) {
+    //   if (err) { return done(err); }
+    //   if (!isMatch) { return done(null, false);
+    //   }
+    //   // if credentials are valid, invoke done() to supply Passport with the
+    //   // user that authenticated.
+    //   return done(null, user);
+    // })
+
+
     else {
+      console.log('user', user, 'email', email, 'password', password, 'user email in db', user.email, 'user.password', user.password);
       return done(null, user);
     }
   })

@@ -20,8 +20,24 @@ function createUser (email, password, name) {
 }
 
 
+function createHashAndInsertToDB (email, password) {
+  bcrypt.hash(password, 10, function(err, hash) {
+    // store hash to DB
+    db.knex('users').where({ email }).first()
+    .update({
+      password: hash
+    })
+  });
+}
+
+
 function comparePass (userPassword, databasePassword) {
-  return bcrypt.compareSync(userPassword, databasePassword);
+  bcrypt.compare(userPassword, databasePassword, function(err, isMatch) {
+    if (err) { return
+      callback(err); }
+
+    callback(null, isMatch);
+  });
 }
 
 // check to see if email username is already in database
@@ -40,6 +56,9 @@ function checkUsernameInDB (email, password, done) {
   .catch((err) => { return done(err); })
 }
 
+
+
+
 function checkIdInDB(id) {
   return db.knex('users').where({ id }).first()
   .then((user) => {
@@ -55,5 +74,6 @@ module.exports = {
   comparePass,
   createUser,
   checkUsernameInDB,
-  checkIdInDB
+  checkIdInDB,
+  createHashAndInsertToDB
 }
