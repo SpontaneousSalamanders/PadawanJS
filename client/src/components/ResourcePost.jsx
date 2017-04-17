@@ -7,6 +7,7 @@ class ResourcePost extends Component {
   render() {
     // native function from redux form
     const { fields: {title, category, url, description} } = this.props;
+    console.log('resource post title', title)
     return (
       <Segment>
         <form onSubmit={ this.props.handleSubmit(this.props.postResource)}>
@@ -38,5 +39,5 @@ class ResourcePost extends Component {
 
 export default reduxForm({
   form: 'ResourcePost',
-  fields: ['title', 'category', 'url', 'description']
+  fields: ['title', 'category', 'URL', 'description']
 }, null, { postResource })(ResourcePost);
