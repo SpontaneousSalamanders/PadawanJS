@@ -15,7 +15,6 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
   db.knex('users').where({ email }).first()
   .then((user) => {
     if (!user) {
-      console.log('if user is false')
       return done(null, false);
     }
     // if (!User.comparePass(password, user.password)) {
