@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
 import { Divider, Segment } from 'semantic-ui-react';
 
-class Events extends Component {
+class EventBoard extends Component {
   componentDidMount() {
-    this.props.getEvents(this.props.id);
+    this.props.getEvents(this.props.mentor.id);
   }
 
   render() {
+    console.log('EventBoard')
     return this.props.events.length > 0 ?
     (
       <div>
@@ -54,6 +55,7 @@ class Events extends Component {
 
 function mapStateToProps(state) {
   return {
+    mentor: state.selectedMentor,
     events: state.events.eventData
   };
 }
@@ -62,4 +64,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getEvents: getEvents}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Events);
+export default connect(mapStateToProps, mapDispatchToProps)(EventBoard);
