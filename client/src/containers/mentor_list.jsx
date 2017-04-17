@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Card, CardTitle } from 'react-materialize';
 import { selectMentor } from '../actions/index.jsx'
 import { bindActionCreators } from 'redux';
-import MentorProfile from '../components/MentorProfile.jsx';
+import MentorPage from '../components/MentorPage.jsx';
 import { Link } from 'react-router';
 import { getMentors } from '../actions/mentorActions.jsx'
 

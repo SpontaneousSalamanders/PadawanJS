@@ -3,7 +3,7 @@ import ResourceBoard from '../containers/ResourceBoard.jsx';
 import Events from '../containers/Events.jsx';
 import MentorCard from '../containers/MentorCard.jsx';
 
-const MentorProfile = function (props) {  
+const MentorPage = function (props) {  
   return (
     <div className="container" style={{marginTop: 100}}>
       <div className="row">
@@ -21,4 +21,4 @@ const MentorProfile = function (props) {
 
 
 
-export default MentorProfile
+export default MentorPage
