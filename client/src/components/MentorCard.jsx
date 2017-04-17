@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 function MentorCard (props) {
   return (
-    <Card style={{position: 'fixed'}}>
+    <Card style={{marginTop: 50, position: 'fixed'}}>
       <Image src={props.mentor.picture} />
       <Card.Content>
         <Card.Header>
@@ -28,4 +29,10 @@ function MentorCard (props) {
   )
 }
 
-export default MentorCard;
+function mapStateToProps(state) {
+  return {
+    mentor: state.selectedMentor,
+  };
+}
+
+export default connect(mapStateToProps)(MentorCard);

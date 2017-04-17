@@ -6,7 +6,7 @@ import { Divider, Segment } from 'semantic-ui-react';
 
 class Events extends Component {
   componentDidMount() {
-    this.props.getEvents(this.props.id);
+    this.props.getEvents(this.props.mentor.id);
   }
 
   render() {
@@ -54,6 +54,7 @@ class Events extends Component {
 
 function mapStateToProps(state) {
   return {
+    mentor: state.selectedMentor,
     events: state.events.eventData
   };
 }

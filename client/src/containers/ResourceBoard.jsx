@@ -7,14 +7,14 @@ import { getResources } from '../actions/resourceActions.jsx';
 
 class MessageBoard extends Component {
   componentDidMount() {
-    this.props.getResources(this.props.id);
+    this.props.getResources(this.props.mentor.id);
   }
 
   render() {
     console.log('resources', this.props.resources);
     return (
       <div>
-      <h4 style={{textAlign: 'center'}}>Recommended Resources</h4>
+      <h4 style={{textAlign: 'center', marginTop: 20}}>Recommended Resources</h4>
       <Divider />
       <ul className="media-list">
         {this.props.resources.map((resource, index)=>{
@@ -51,6 +51,7 @@ class MessageBoard extends Component {
 
 function mapStateToProps(state) {
   return {
+    mentor: state.selectedMentor,
     resources: state.resources.resourceData
   }
 }
