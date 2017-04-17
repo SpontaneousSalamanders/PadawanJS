@@ -10,6 +10,7 @@ import { getMentors } from '../actions/mentorActions.jsx'
 class MentorList extends Component {
   componentDidMount() {
     this.props.getMentorsAction.getMentors();
+    console.log('test')
   }
 
   renderList() {
