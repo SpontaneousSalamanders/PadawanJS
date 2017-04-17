@@ -13,7 +13,7 @@ class Events extends Component {
     return this.props.events.length > 0 ?
     (
       <div>
-      <h4 style={{textAlign: 'center'}}>Events</h4>
+      <h4 style={{textAlign: 'center'}}>Mentorship Events</h4>
       <Divider />
       <ul className="media-list">
         {this.props.events.map((event, index)=>{
