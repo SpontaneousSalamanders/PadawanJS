@@ -10,18 +10,21 @@ import { getMentors } from '../actions/mentorActions.jsx'
 class MentorList extends Component {
   componentDidMount() {
     this.props.getMentorsAction.getMentors();
-    console.log('test')
   }
 
   renderList() {
-    return this.props.mentors.filtered.map((mentor) => {
+    return this.props.mentors.filtered.map((mentor, index) => {
       return (
         <div style={{marginTop: 100}}>
         <Card 
-        key={mentor.name}
-        header={<CardTitle reveal image={mentor.picture} waves='light'/>}
-            title={mentor.name}
-            reveal={
+        key={index}
+        header={
+          <CardTitle 
+            reveal 
+            image={mentor.picture} 
+            waves='light'/>}
+        title={mentor.name}
+        reveal={
               <div>
                 <ul>
                   <br />
