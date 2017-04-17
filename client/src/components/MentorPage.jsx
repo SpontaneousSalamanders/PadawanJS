@@ -8,7 +8,7 @@ const MentorPage = function (props) {
     <div className="container" style={{marginTop: 100}}>
       <div className="row">
         <div className="col-lg-4" >
-            <MentorCard />
+          <MentorCard />
         </div>
         <div className="col-lg-8">
           <ResourceBoard />
@@ -21,4 +21,4 @@ const MentorPage = function (props) {
 
 
 
-export default MentorPage
+export default MentorPage;
