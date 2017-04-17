@@ -25,19 +25,22 @@ function createHashAndInsertToDB (email, password) {
   bcrypt.hash(password, 10, function(err, hash) {
     // store hash to DB
     console.log('inside hash', hash)
-    db.knex('users').where({ email }).first()
+    db.knex('users').where('email', email)
     .update({
       password: hash
     })
+    console.log('updated:', db.knex('users').where('email', email).select('password'));
   });
 }
 
 
-function comparePass (userPassword, databasePassword) {
+function comparePass (userPassword, databasePassword, callback) {
   bcrypt.compare(userPassword, databasePassword, function(err, isMatch) {
-    if (err) { return
-      callback(err); }
+    console.log(userPassword, databasePassword);
+    if (err) {
+      return callback(err); }
 
+    console.log('isMatch', isMatch);
     callback(null, isMatch);
   });
 }

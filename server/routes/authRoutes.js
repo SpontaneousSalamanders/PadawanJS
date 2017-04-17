@@ -1,6 +1,9 @@
 // Authentication route handlers
 const auth = require ('../auth/controllers/authentication');
 
+// var User = require ('../auth/handleUser.js');
+// var db = require ('../db')
+
 // Passport middle module and setup
 const passport = require('passport');
 const passportStrategies = require('../auth/passportStrategies.js');
@@ -27,7 +30,18 @@ module.exports = function(app) {
 
   // using requireSignin passport middleware to authenticate for protected route using local (email/password) strategy)
   // Authentication.signin sends back JWT token to authenticated user
+
   app.post('/signin', requireSignin, auth.signin);
+
+  // // manually update this person's password in the DB and then redirect them to homepage
+
+  // app.post('/signin', function(req, res) {
+  //   User.createHashAndInsertToDB (req.body.email, req.body.password);
+
+  //   console.log(db.knex('users').where('email', req.body.email));
+
+  //   res.redirect('/');
+  // })
 
   // route for signing up user
   app.post('/signup', auth.signup);
