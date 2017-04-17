@@ -4,7 +4,7 @@ import * as actions from '../../actions/authActions.jsx';
 
 class RegisterForm extends Component {
   handleFormSubmit(formProps) {
-    this.props.signupUser(formProps);
+    this.props.signupUser({...formProps}, {type: 'padawan'});
   }
 
   renderAlert() {

@@ -9,12 +9,14 @@ var bcrypt = require('bcrypt');
 // Before inserting a user, encrypt the password
 
 function createUser (email, password, name) {
+  console.log('inside create User!!');
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(password, salt);
   return db.knex('users').insert({
     email: email,
     password: hash,
-    name: name
+    name: name,
+    type: 'padawan'
   })
   .returning('*');
 }
@@ -48,21 +50,18 @@ function comparePass (userPassword, databasePassword, callback) {
 // check to see if email username is already in database
 // if not, return false
 // else, return the user
-function checkUsernameInDB (email, password, done) {
+
+function doesUserAlreadyExist (email, password) {
   db.knex('users').where({ email }).first()
   .then((user) => {
-    if(!user) return done(null, false);
-    if(!comparePass(password, user.password)) {
-      return done(null, false);
+    if (user) {
+      return true;
     } else {
-      return done(null, user);
+      return false;
     }
   })
   .catch((err) => { return done(err); })
 }
-
-
-
 
 function checkIdInDB(id) {
   return db.knex('users').where({ id }).first()
@@ -78,7 +77,7 @@ function checkIdInDB(id) {
 module.exports = {
   comparePass,
   createUser,
-  checkUsernameInDB,
+  doesUserAlreadyExist,
   checkIdInDB,
   createHashAndInsertToDB
 }

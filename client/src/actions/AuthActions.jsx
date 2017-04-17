@@ -57,13 +57,19 @@ export function signinUser({ email, password }) {
   }
 }
 
-export function signupUser({ email, password }) {
+export function signupUser({ email, password, firstName, lastName, passwordConfirm, type = 'padawan' }) {
   return function(dispatch) {
-    axios.post('/signup', { email, password })
+    axios.post('/signup', { email, password, firstName, lastName, passwordConfirm, type})
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
-        browserHistory.push('/student_profile/id');
+
+        // send to appropriate student profile after auth
+
+        // browserHistory.push('/student_profile/id');
+
+        // for now, sign the guy up and send him back to homepage
+        browserHistory.push('/');
       })
       .catch(response => dispatch(authError(response.data.error)));
   }

@@ -51,7 +51,4 @@ module.exports = function(app) {
   // must be an admin to activate another admin
   app.post('/mentor_profile_activation', requireAuth, requireMentor, auth.mentor_profile_activation);
 
-
-
-
 }
