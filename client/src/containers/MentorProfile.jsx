@@ -6,6 +6,7 @@ import MentorCard from '../components/MentorCard.jsx';
 
 class MentorProfile extends Component {
   render () {
+    console.log('test')
     return (
       <div className="container" style={{marginTop: 100}}>
         <div className="row">
