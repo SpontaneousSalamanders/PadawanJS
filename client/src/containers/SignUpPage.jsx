@@ -9,7 +9,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 // import Form from '../components/Form.jsx';
-// import RegisterForm from './auth/RegisterForm.jsx';
+import RegisterForm from './auth/RegisterForm.jsx';
 
 // import LoadingIndicator from '../LoadingIndicator.react';
 
@@ -23,7 +23,7 @@ class SignUpPage extends Component {
           <div>
             <h2>Register</h2>
           </div>
-          <Form />
+          <RegisterForm />
         </div>
       </div>
     );
