@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import {Segment} from 'semantic-ui-react';
 import { postResource } from '../actions/postResourceActions.jsx';
 
@@ -19,6 +19,7 @@ class ResourcePost extends Component {
           <div className="form-group">
             <label>Category</label>
             <input type="text" className="form-control" {...category} />
+
           </div>
           <div className="form-group">
             <label>URL</label>
