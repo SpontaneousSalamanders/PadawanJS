@@ -1,3 +1,5 @@
+const seedData = require('./dummy/seedData.js')
+
 const schema = (db) => {
   return Promise.all([
     db.knex.schema.hasTable('users').then((exists) => {
@@ -93,6 +95,7 @@ const schema = (db) => {
         })
         .then((table) => {
           console.log('Created categories table!');
+          seedData(db);
         });
       }
     })
