@@ -51,7 +51,7 @@ exports.mentor_profile_activation = function (req, res, next) {
   const location = req.body.location;
   const techStack = req.body.techStack;
 
-  // need to have support for role, location, image for a mentor
+
   if (!email || !password) {
     return res.status(422).send({ error: 'You must provide email and password'});
   }
