@@ -49,6 +49,6 @@ module.exports = function(app) {
 
   // using requireAuth passport middleware using jwt strategy as well as requireAdmin custom express middleware to protect route
   // must be an admin to activate another admin
-  app.post('/mentor_profile_activation', requireAuth, requireMentor, auth.mentor_profile_activation);
+  app.post('/mentor_profile_activation', requireAuth, auth.mentor_profile_activation);
 
 }

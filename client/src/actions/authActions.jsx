@@ -33,7 +33,7 @@ export function signinUser({ email, password }) {
 
 
         // // - redirect to the appropriate route
-        // if(decoded_token_data.type === 'student') {
+        // if(decoded_token_data.type === 'padawan') {
         //   browserHistory.push('/padawan_profile/id=' + decoded_token_data.sub);
         // }
         // // - set mentor flag if token indicates the user has mentor privileges
