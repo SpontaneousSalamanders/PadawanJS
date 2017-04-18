@@ -18,7 +18,11 @@ function createUser (email, password, name) {
     name: name,
     type: 'padawan'
   })
-  .returning('*');
+  .returning('*')
+  .then( () => {
+    console.log('fulfilled')
+  })
+  .catch( (err) => console.log(err) );
 }
 
 
@@ -51,9 +55,15 @@ function comparePass (userPassword, databasePassword, callback) {
 // if not, return false
 // else, return the user
 
-function doesUserAlreadyExist (email, password) {
+function doesUserAlreadyExist (email) {
   db.knex('users').where({ email }).first()
   .then((user) => {
+    if (!user) {
+      return user;
+    }
+
+
+    console.log('USER SHOULD ALREADY EXIST?!', user);
     if (user) {
       return true;
     } else {
