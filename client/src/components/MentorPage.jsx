@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ResourceBoard from '../containers/ResourceBoard.jsx';
 import MentorCard from '../containers/MentorCard.jsx';
 import EventBoard from '../containers/EventBoard.jsx';
-import ResourcePost from './ResourcePost.jsx';
+import ResourcePost from '../containers/ResourcePost.jsx';
 
 const MentorPage = function (props) {  
   return (
@@ -19,8 +19,6 @@ const MentorPage = function (props) {
       </div>
     </div>
   )
-} 
-
-
+}
 
 export default MentorPage;
