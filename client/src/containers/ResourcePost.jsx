@@ -6,11 +6,11 @@ import { postResource } from '../actions/postResourceActions.jsx';
 class ResourcePost extends Component {
   render() {
     // native function from redux form
+    console.log('resource post component id', this.props.mentor.id)
     const { fields: {title, category, url, description} } = this.props;
-    console.log('resource post title', title)
     return (
       <Segment>
-        <form onSubmit={ this.props.handleSubmit(this.props.postResource)}>
+        <form onSubmit={ this.props.handleSubmit(this.props.postResource, this.props.mentor.id)}>
           <div>Post Resources</div>
           <div className="form-group">
             <label>Title</label>
@@ -34,10 +34,16 @@ class ResourcePost extends Component {
     )
   }
 }
+function mapStateToProps(state) {
+  return {
+    mentor: state.selectedMentor
+  }
+
+}
 
 // Just like connect except reduxForm takes form fields object as first argument 
 
 export default reduxForm({
   form: 'ResourcePost',
   fields: ['title', 'category', 'URL', 'description']
-}, null, { postResource })(ResourcePost);
+}, mapStateToProps, { postResource })(ResourcePost);
