@@ -47,8 +47,9 @@ module.exports = function(app) {
   app.post('/signup', auth.signup);
 
 
-  // using requireAuth passport middleware using jwt strategy as well as requireAdmin custom express middleware to protect route
-  // must be an admin to activate another admin
+  // using requireAuth passport middleware using jwt strategy as well as custom express middleware to protect route
+
+  // route for signing up a mentor with mentor privileges
   app.post('/mentor_profile_activation', requireAuth, auth.mentor_profile_activation);
 
 }
