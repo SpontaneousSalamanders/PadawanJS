@@ -47,8 +47,8 @@ jspm_packages
 .floo
 .flooignore
 
-# auth keys
-server/auth/config.js
+# auth keys need to uncomment in deployment
+# server/auth/config.js
 
 # misc
 .DS_Store
