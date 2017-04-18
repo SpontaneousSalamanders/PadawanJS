@@ -22,7 +22,7 @@ class RegisterForm extends Component {
 
     // renders the sign up register form
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form className="form" style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
           <label>First Name:</label>
           <input className="form-control" {...firstName} />
