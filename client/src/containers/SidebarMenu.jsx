@@ -48,7 +48,6 @@ class SidebarMenu extends Component {
   }
 
   handleTechStackChange(event) {
-    console.log(event);
     const selectedTechStack = event.target.value;
     let techStacks = this.state.selectedTechStacksItems;
     if (techStacks.includes('Nothing selected')) {
@@ -67,7 +66,6 @@ class SidebarMenu extends Component {
     this.setState({
       selectedTechStacksItems: techStacks
     }, () => {
-      console.log('techstack after setstate looks like:', techStacks);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -122,7 +120,6 @@ class SidebarMenu extends Component {
     this.setState({
       selectedLocationItems: locations
     }, () => {
-      console.log('locations after setstate looks like:', locations);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -138,7 +135,7 @@ class SidebarMenu extends Component {
       <div>
           <div className="sidebar-container">
             <form>
-              <h4 style={{textAlign: 'center'}} >Tech Stacks</h4>
+              <h4 className="tech_stack" style={{textAlign: 'center'}} >Tech Stacks</h4>
               <Divider/>
               <div>
                 <TechStacks 
@@ -148,7 +145,7 @@ class SidebarMenu extends Component {
                 />
               </div>
               <br />
-              <h4 style={{textAlign: 'center'}} >Roles</h4>
+              <h4 className="roles" style={{textAlign: 'center'}} >Roles</h4>
               <Divider/>
               <div>
                 <Roles 
@@ -157,7 +154,7 @@ class SidebarMenu extends Component {
                 selectedRolesItems={this.state.selectedRolesItems}/>
               </div>
               <br />
-              <h4 style={{textAlign: 'center'}} >Locations</h4>
+              <h4 className="locations" style={{textAlign: 'center'}} >Locations</h4>
               <Divider/>
               <div>
                 <Locations 

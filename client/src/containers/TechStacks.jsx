@@ -17,7 +17,7 @@ class TechStacks extends Component {
           checked={isAllChecked || this.props.selectedTechStacksItems.includes(item)}
           value={item}
           onChange={this.props.handleTechStackChange} />
-        <label htmlFor={item}>{item}</label>
+        <label className="tech_items" htmlFor={item}>{item}</label>
       </div>
     ));
   }

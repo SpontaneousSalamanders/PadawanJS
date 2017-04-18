@@ -17,7 +17,7 @@ class Locations extends Component {
           checked={isAllChecked || this.props.selectedLocationItems.includes(item)}
           value={item}
           onChange={this.props.handleLocationsChange} />
-        <label htmlFor={item}>{item}</label>
+        <label className="location_items"htmlFor={item}>{item}</label>
       </div>
     ));
   }
