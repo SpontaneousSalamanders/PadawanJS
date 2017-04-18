@@ -7,7 +7,7 @@ function MentorCard (props) {
     <Card style={{marginTop: 50}}>
       <Image src={props.mentor.picture} />
       <Card.Content>
-        <Card.Header>
+        <Card.Header className="mentor_name">
           {props.mentor.name}
         </Card.Header>
         <Card.Meta>

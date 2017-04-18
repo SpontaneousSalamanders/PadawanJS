@@ -1,5 +1,32 @@
 /* Cards ------------------ */
 
+#logo {
+  display: block;
+  /*float: center;*/
+  width: 250px;
+}
+
+.placeholder {
+  width: 100%;
+  display: block;
+  margin: 90px auto;
+  margin-bottom: 30px;
+}
+
+/*.video {
+  width: 100%;
+  display: block;
+  margin: 90px auto;
+  margin-bottom: 30px;
+}*/
+
+.welcome_padawan {
+  margin-top: 10px;
+  text-align: center;
+/*  text-shadow: 0 0 3px #00b7ee;*/
+  margin-bottom: -50px;
+}
+
 .viewProfileButton {
 	margin-right: 10px;
   background-color: black;
@@ -55,6 +82,10 @@
   margin-left: 155px;
 }
 
+.mentor_name {
+  background-color: white;
+}
+
 /* -----------------------------
 Navigation Bar
 */
@@ -69,7 +100,26 @@ Navigation Bar
   padding: 1em;
   display: flex;
   align-items: center;
-  background-color: #fff;
+  /*background-color: #fff;*/
+  background-color: #000000;
+  z-index: 6;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+.header_menus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  background-color: #fdcc02;
+  margin-top: 65px;
   z-index: 6;
 }
 
@@ -84,6 +134,7 @@ Navigation Bar
 
 .nav__logo-wrapper {
   text-decoration: none;
+  float: left;
 }
 
 .nav__logo {
@@ -101,6 +152,10 @@ Navigation Bar
 
 .btn--nav + .btn--nav {
   margin-left: 1em;
+}
+
+.btn {
+  background-color: #5c5d5d;
 }
 
 @media screen and (max-width: 400px) {
@@ -124,14 +179,42 @@ Navigation Bar
     width: 150px; 
     overflow-y: scroll; 
     top: 0;
-    margin-top: 100px;
+    margin-top: 95px;
     bottom: 0;
+    padding-top: 15px;
     padding-left: 15px;
     padding-right: 20px;
     padding-bottom: 30px;
+    background-color: #e0e1e1;
+    /*background-color: #6bd3f0;*/
   }
 
-/* Form ------------------------ */
+  .tech_stack {
+    color: black;
+  }
+
+  .roles {
+    color: black;
+  }
+
+  .locations {
+    color: black;
+  }
+
+  .tech_items {
+    color: black;
+  }
+
+  .role_items {
+    color: black;
+  }
+
+  .location_items {
+    color: black;
+  }
+
+
+ /*Form ------------------------ */
 .form-page__wrapper {
   display: flex;
   align-items: center;
@@ -253,8 +336,3 @@ Navigation Bar
 
 /* Sidebar --------------------------
 */
-
-
-
-
-

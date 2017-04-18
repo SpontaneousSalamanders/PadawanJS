@@ -14,6 +14,7 @@ app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getResources/:uid', handler.getResources);
+app.get('/*');
 
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);

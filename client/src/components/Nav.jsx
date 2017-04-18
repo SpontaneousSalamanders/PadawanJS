@@ -8,6 +8,8 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Divider } from 'semantic-ui-react';
+
 // import { logout } from '../actions/index.jsx';
 // import LoadingButton from './LoadingButton.react';
 
@@ -28,16 +30,21 @@ class Nav extends Component {
         </div>
       );
 
-
-
-
     return(
-      <div className="nav">
-        <div className="nav__wrapper">
-          <Link className="nav__logo-wrapper" to="/"><h4>PadawanJS</h4></Link>
-          { navButtons }
+      <div>
+        <div className="nav">
+          <div className="nav__wrapper">
+            <Link className="nav__logo-wrapper" to="/"><img src="/logo.png" id="logo" /></Link>
+            { navButtons }
+          </div>
+        </div>
+        <div className="header_menus">
+          <div className="header__wrapper">
+            <Link className="header__findmentor" to="/find_mentor"><h4>Find Mentor</h4></Link>
+          </div>
         </div>
       </div>
+
     );
   }
 

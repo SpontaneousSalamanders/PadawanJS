@@ -6,6 +6,9 @@ import { filter } from 'lodash';
 import { filterMentors } from '../actions/index.jsx'
 import MentorList from '../containers/MentorList.jsx';
 import { Divider } from 'semantic-ui-react';
+import TechStacks from './TechStacks.jsx';
+import Roles from './Roles.jsx';
+import Locations from './Locations.jsx';
 
 const techStackItems = [
   'React',
@@ -32,7 +35,6 @@ const locationItems = [
 ];
 
 class SidebarMenu extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -40,34 +42,14 @@ class SidebarMenu extends Component {
       selectedRolesItems: ['Nothing selected'],
       selectedLocationItems: ['Nothing selected'],
     }
-    this.createTechStackCheckboxes = this.createTechStackCheckboxes.bind(this);
     this.handleTechStackChange = this.handleTechStackChange.bind(this);
-    this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
     this.handleRolesChange = this.handleRolesChange.bind(this);
-    this.createLocationsCheckboxes = this.createLocationsCheckboxes.bind(this);
     this.handleLocationsChange = this.handleLocationsChange.bind(this);
-  }
-
-  createTechStackCheckboxes() {
-    const isAllChecked = false;
-    return techStackItems.map((item) => (
-      <div key={item}>
-        <input
-          key={item}
-          id={item}
-          type="checkbox"
-          checked={isAllChecked || this.state.selectedTechStacksItems.includes(item)}
-          value={item}
-          onChange={this.handleTechStackChange} />
-        <label htmlFor={item}>{item}</label>
-      </div>
-    ));
   }
 
   handleTechStackChange(event) {
     const selectedTechStack = event.target.value;
     let techStacks = this.state.selectedTechStacksItems;
-
     if (techStacks.includes('Nothing selected')) {
       techStacks.splice(techStacks.indexOf('Nothing selected'), 1);
       techStacks.push(selectedTechStack);
@@ -84,29 +66,12 @@ class SidebarMenu extends Component {
     this.setState({
       selectedTechStacksItems: techStacks
     }, () => {
-      console.log('techstack after setstate looks like:', techStacks);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
         locations: this.state.selectedLocationItems,
       });
     })
-  }
-
-  createRolesCheckboxes() {
-    const isAllChecked = false;
-    return rolesItems.map((item) => (
-      <div key={item}>
-        <input
-          key={item}
-          id={item}
-          type="checkbox"
-          checked={isAllChecked || this.state.selectedRolesItems.includes(item)}
-          value={item}
-          onChange={this.handleRolesChange} />
-        <label htmlFor={item}>{item}</label>
-      </div>
-    ));
   }
 
   handleRolesChange(event) {
@@ -136,22 +101,6 @@ class SidebarMenu extends Component {
     })
   }
 
-  createLocationsCheckboxes() {
-    const isAllChecked = false;
-    return locationItems.map((item) => (
-      <div key={item}>
-        <input
-          key={item}
-          id={item}
-          type="checkbox"
-          checked={isAllChecked || this.state.selectedLocationItems.includes(item)}
-          value={item}
-          onChange={this.handleLocationsChange} />
-        <label htmlFor={item}>{item}</label>
-      </div>
-    ));
-  }
-
   handleLocationsChange(event) {
     const selectedLocation = event.target.value;
     let locations = this.state.selectedLocationItems;
@@ -171,7 +120,6 @@ class SidebarMenu extends Component {
     this.setState({
       selectedLocationItems: locations
     }, () => {
-      console.log('locations after setstate looks like:', locations);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -183,28 +131,36 @@ class SidebarMenu extends Component {
   render() {
     const dispatch = this.props.dispatch;
     // const { loggedIn } = this.props.data;
-
-
     return (
       <div>
           <div className="sidebar-container">
             <form>
-              <h4 style={{textAlign: 'center'}} >Tech Stacks</h4>
+              <h4 className="tech_stack" style={{textAlign: 'center'}} >Tech Stacks</h4>
               <Divider/>
               <div>
-                {this.createTechStackCheckboxes()}
+                <TechStacks 
+                  techStackItems={techStackItems}
+                  handleTechStackChange={this.handleTechStackChange}
+                  selectedTechStacksItems={this.state.selectedTechStacksItems}
+                />
               </div>
               <br />
-              <h4 style={{textAlign: 'center'}} >Roles</h4>
+              <h4 className="roles" style={{textAlign: 'center'}} >Roles</h4>
               <Divider/>
               <div>
-                {this.createRolesCheckboxes()}
+                <Roles 
+                rolesItems={rolesItems}
+                handleRolesChange={this.handleRolesChange}
+                selectedRolesItems={this.state.selectedRolesItems}/>
               </div>
               <br />
-              <h4 style={{textAlign: 'center'}} >Location</h4>
+              <h4 className="locations" style={{textAlign: 'center'}} >Locations</h4>
               <Divider/>
               <div>
-                {this.createLocationsCheckboxes()}
+                <Locations 
+                locationItems={locationItems}
+                handleLocationsChange={this.handleLocationsChange}
+                selectedLocationItems={this.state.selectedLocationItems}/>
               </div>
             </form>
           </div>
