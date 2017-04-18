@@ -57,9 +57,17 @@ const jwtOptions = {
 
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if the user ID in the payload exists in our database
-  // If it does, call 'done' with that other
-  // otherwise, call done without a user object
-  User.checkIdInDB(payload.sub)
+  db.knex('users').where({id: payload.sub}).first()
+  .then((mentor) =>{
+    if(err) {
+      return done(err, false);
+    }
+    if (mentor) {
+      return done (null, mentor);
+    } else {
+      return done (null, false);
+    }
+  })
 });
 
 
