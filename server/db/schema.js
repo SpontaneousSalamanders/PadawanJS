@@ -1,26 +1,3 @@
-const dummyData = require('./dummyData.js');
-
-module.exports = (db) => {
-  return db.knex.schema.hasTable('users').then((exists) => {
-    if (!exists) {
-      db.knex.schema.createTable('users', (user) => {
-        user.increments('id').primary();
-        user.string('type');
-        user.string('name');
-        user.string('email');
-        user.string('password');
-        user.string('location');
-        user.string('role');
-        user.string('picture');
-        user.integer('user_id').references('users.id'); // assigned mentor
-        user.specificType('techStack', 'text[]');
-      }).then((table) => {
-        console.log('Created table!', table);
-        return db.knex('users').insert(dummyData.users);
-      }).catch((err) => {
-        console.log('Error creating table', err);
-      });
-
 const seedData = require('./dummy/seedData.js')
 
 const schema = (db) => {
@@ -32,6 +9,7 @@ const schema = (db) => {
           table.string('type');
           table.string('name');
           table.string('email');
+          table.string('password');
           table.string('location');
           table.string('role');
           table.string('picture');

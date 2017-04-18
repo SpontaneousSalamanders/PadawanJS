@@ -11,7 +11,7 @@ module.exports = {
       role: 'Front end',
       picture: 'http://imgur.com/xEUUtut.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
-      followers: 25
+      followers: 26
     },
     {
       type: 'mentor',
@@ -66,7 +66,7 @@ module.exports = {
       role: 'Front end',
       picture: 'http://imgur.com/9eJRSav.jpg',
       techStack: ['React', 'Node.js', 'JavaScript'],
-      followers: 20
+      followers: 21
     },
     {
       type: 'mentor',
