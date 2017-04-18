@@ -1,7 +1,9 @@
 const Events = require('../models/events.js');
 
 module.exports = (req, res) => {
-  Events.getEvents(req.params.uid)
+  const user_id = req.params.uid;
+
+  Events.getEvents(user_id)
   .then((events) => {
     res.status(200).send(events);
   })

@@ -7,4 +7,20 @@ module.exports = {
     .from('events')
     .where({user_id: user_id});
   },
+
+  postEvent: (event) => {
+    return db.knex('events')
+    .insert({
+      user_id: event.user_id,
+      title: event.title,
+      description: event.description,
+      location: event.location,
+      date: event.date,
+      time: event.time
+    }).then(() => {
+      console.log('success!')
+    }).catch((err) => {
+      console.log(err);
+    })
+  },
 };

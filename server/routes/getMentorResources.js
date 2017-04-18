@@ -1,7 +1,9 @@
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {
-  Resources.getMentorResources(req.params.uid)
+  const user_id = req.params.uid;
+
+  Resources.getMentorResources(user_id)
   .then((resources) => {
     res.status(200).send(resources);
   })
