@@ -74,21 +74,11 @@ function comparePass (userPassword, databasePassword, callback) {
 }
 
 
-function checkIdInDB(id) {
-  return db.knex('users').where({ id }).first()
-  .then((user) => {
-    if (!user) return done (null, false);
-    else {
-      return done (null, user);
-    }
-  })
-}
-
 
 module.exports = {
   comparePass,
   createUser,
+  createMentor,
   doesUserAlreadyExist,
-  checkIdInDB,
   createHashAndInsertToDB
 }
