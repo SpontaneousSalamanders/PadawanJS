@@ -19,8 +19,6 @@ const MentorPage = function (props) {
       </div>
     </div>
   )
-} 
-
-
+}
 
 export default MentorPage;
