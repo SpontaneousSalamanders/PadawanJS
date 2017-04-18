@@ -19,7 +19,7 @@ exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.firstName + ' ' + req.body.lastName;
-  const type = req.body.type
+  const type = req.body.type;
   console.log(email, password, name, type);
 
   if (!email || !password) {
@@ -28,7 +28,7 @@ exports.signup = function(req, res, next) {
   // check to see if email exists
   db.knex('users').where({ email }).first()
   .then((user) => {
-    console.log('user is,', user)
+    console.log('user is', user)
     if (user) {
       return res.status(422).send({ error: 'You must provide email and password'});
     } else if (user === undefined) {

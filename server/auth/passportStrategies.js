@@ -20,24 +20,29 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 
     //compare passwords - is the password arg equal to user.password?
 
-    // User.comparePass(password, user.password, function(err, isMatch) {
-    //   if (err) {
-    //     return done(err); }
-    //   if (!isMatch) { return done(null, false);
-    //   }
-    //   // if credentials are valid, invoke done() to supply Passport with the
-    //   // user that authenticated.
-    //   return done(null, user);
-    // })
+    User.comparePass(password, user.password, function(err, isMatch) {
+      if (err) {
+        return done(err); }
+      if (!isMatch) { return done(null, false);
+      }
+      // if credentials are valid, invoke done() to supply Passport with the
+      // user that authenticated.
+      return done(null, user);
+    })
 
     // manually create hash and insert it to the DB for dummy data
 
-    // uncomment this for demo
+    // User.createHashAndInsertToDB (email, password);
 
-    else {
-      console.log('user', user, 'email', email, 'password', password, 'user email in db', user.email, 'user.password', user.password);
-      return done(null, user);
-    }
+    return done(null, user);
+
+
+    // if above two don't work, uncomment this below for demo
+
+    // else {
+    //   console.log('user', user, 'email', email, 'password', password, 'user email in db', user.email, 'user.password', user.password);
+    //   return done(null, user);
+    // }
   })
   .catch((err) => { return done(err); });
 });

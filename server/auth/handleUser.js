@@ -28,15 +28,17 @@ function createUser (email, password, name) {
 
 function createHashAndInsertToDB (email, password) {
   console.log('before hash')
-  bcrypt.hash(password, 10, function(err, hash) {
-    // store hash to DB
-    console.log('inside hash', hash)
-    db.knex('users').where('email', email)
-    .update({
-      password: hash
-    })
-    console.log('updated:', db.knex('users').where('email', email).select('password'));
-  });
+  console.log('inside create User!!');
+  const salt = bcrypt.genSaltSync();
+  const hash = bcrypt.hashSync(password, salt);
+  return db.knex('users').where('email', email)
+  .update({
+    password: hash
+  })
+  .then( () => {
+    console.log ('hash inserted in db');
+  })
+  .catch( (err) => console.log('err', err) );
 }
 
 
