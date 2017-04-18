@@ -22,33 +22,6 @@ class Locations extends Component {
     ));
   }
 
-  handleLocationsChange(event) {
-    const selectedLocation = event.target.value;
-    let locations = this.state.selectedLocationItems;
-    if (locations.includes('Nothing selected')) {
-      locations.splice(locations.indexOf('Nothing selected'), 1);
-      locations.push(selectedLocation);
-    } else {
-      if (locations.includes(selectedLocation)) {
-        locations.splice(locations.indexOf(selectedLocation), 1);
-        if (locations.length === 0) {
-          locations = ['Nothing selected'];
-        }
-      } else {
-        locations.push(selectedLocation);
-      }
-    }
-    this.setState({
-      selectedLocationItems: locations
-    }, () => {
-      console.log('locations after setstate looks like:', locations);
-      this.props.actions.filterMentors({
-        techStacks: this.state.selectedTechStacksItems,
-        roles: this.state.selectedRolesItems,
-        locations: this.state.selectedLocationItems,
-      });
-    })
-  }
 	render() {
     return (
       <div>

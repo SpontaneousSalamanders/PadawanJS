@@ -42,6 +42,93 @@ class SidebarMenu extends Component {
       selectedRolesItems: ['Nothing selected'],
       selectedLocationItems: ['Nothing selected'],
     }
+    this.handleTechStackChange = this.handleTechStackChange.bind(this);
+    this.handleRolesChange = this.handleRolesChange.bind(this);
+    this.handleLocationsChange = this.handleLocationsChange.bind(this);
+  }
+
+  handleTechStackChange(event) {
+    console.log(event);
+    const selectedTechStack = event.target.value;
+    let techStacks = this.state.selectedTechStacksItems;
+    if (techStacks.includes('Nothing selected')) {
+      techStacks.splice(techStacks.indexOf('Nothing selected'), 1);
+      techStacks.push(selectedTechStack);
+    } else {
+      if (techStacks.includes(selectedTechStack)) {
+        techStacks.splice(techStacks.indexOf(selectedTechStack), 1);
+        if (techStacks.length === 0) {
+          techStacks = ['Nothing selected'];
+        }
+      } else {
+        techStacks.push(selectedTechStack);
+      }
+    }
+    this.setState({
+      selectedTechStacksItems: techStacks
+    }, () => {
+      console.log('techstack after setstate looks like:', techStacks);
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
+  }
+
+  handleRolesChange(event) {
+    const selectedRole = event.target.value;
+    let roles = this.state.selectedRolesItems;
+    if (roles.includes('Nothing selected')) {
+      roles.splice(roles.indexOf('Nothing selected'), 1);
+      roles.push(selectedRole);
+    } else {
+      if (roles.includes(selectedRole)) {
+        roles.splice(roles.indexOf(selectedRole), 1);
+        if (roles.length === 0) {
+          roles = ['Nothing selected'];
+        }
+      } else {
+        roles.push(selectedRole);
+      }
+    }
+    this.setState({
+      selectedRolesItems: roles
+    }, () => {
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
+  }
+
+  handleLocationsChange(event) {
+    const selectedLocation = event.target.value;
+    let locations = this.state.selectedLocationItems;
+    if (locations.includes('Nothing selected')) {
+      locations.splice(locations.indexOf('Nothing selected'), 1);
+      locations.push(selectedLocation);
+    } else {
+      if (locations.includes(selectedLocation)) {
+        locations.splice(locations.indexOf(selectedLocation), 1);
+        if (locations.length === 0) {
+          locations = ['Nothing selected'];
+        }
+      } else {
+        locations.push(selectedLocation);
+      }
+    }
+    this.setState({
+      selectedLocationItems: locations
+    }, () => {
+      console.log('locations after setstate looks like:', locations);
+      this.props.actions.filterMentors({
+        techStacks: this.state.selectedTechStacksItems,
+        roles: this.state.selectedRolesItems,
+        locations: this.state.selectedLocationItems,
+      });
+    })
   }
 
   render() {
@@ -56,7 +143,9 @@ class SidebarMenu extends Component {
               <div>
                 <TechStacks 
                   techStackItems={techStackItems}
-                  selectedTechStacksItems={this.state.selectedTechStacksItems}/>
+                  handleTechStackChange={this.handleTechStackChange}
+                  selectedTechStacksItems={this.state.selectedTechStacksItems}
+                />
               </div>
               <br />
               <h4 style={{textAlign: 'center'}} >Roles</h4>
@@ -64,6 +153,7 @@ class SidebarMenu extends Component {
               <div>
                 <Roles 
                 rolesItems={rolesItems}
+                handleRolesChange={this.handleRolesChange}
                 selectedRolesItems={this.state.selectedRolesItems}/>
               </div>
               <br />
@@ -72,6 +162,7 @@ class SidebarMenu extends Component {
               <div>
                 <Locations 
                 locationItems={locationItems}
+                handleLocationsChange={this.handleLocationsChange}
                 selectedLocationItems={this.state.selectedLocationItems}/>
               </div>
             </form>
