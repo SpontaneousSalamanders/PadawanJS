@@ -77,12 +77,12 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
 
 
 //token included in the header of the request for authorization
-export function activateMentorProfile({ email, password }) {
+export function activateMentorProfile({ email, password, firstName, lastName, passwordConfirm, type = 'mentor', role, location, techStack }) {
   return function(dispatch) {
     // admin_activation
     axios.post('/mentor_profile_activation',
       { email, password },
-      {headers: { authorization: localStorage.getItem('token') }} )
+      {headers: { authorization: localStorage.setItem('token') }} )
       .then(response => {
         // admin_area
         browserHistory.push('/mentor_profile/id');
