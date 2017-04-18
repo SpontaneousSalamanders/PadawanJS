@@ -22,25 +22,24 @@ export function signinUser({ email, password }) {
       .then( (response) => {
         // // If request is good...
         // // - Update state to indicate user is authenticated
-        // dispatch({ type: AUTH_USER });
+        dispatch({ type: AUTH_USER });
 
         // // decode token for info on the user
-        // let decoded_token_data = jwt_decode(response.data.token);
+        let decoded_token_data = jwt_decode(response.data.token);
 
 
-        // // - Save the JWT token
-        // localStorage.setItem('token', response.data.token);
-
+        // - Save the JWT token
+        localStorage.setItem('token', response.data.token);
 
 
         // // - redirect to the appropriate route
         // if(decoded_token_data.type === 'student') {
-        //   browserHistory.push('/student_profile/id');
+        //   browserHistory.push('/padawan_profile/id=' + decoded_token_data.sub);
         // }
         // // - set mentor flag if token indicates the user has mentor privileges
         // else if(decoded_token_data.type == 'mentor') {
         //   dispatch({ type: SET_MENTOR_PRIVILEGES });
-        //   browserHistory.push('/mentor_profile/id');
+        //   browserHistory.push('/mentor_profile/id=' + + decoded_token_data.sub);
         // }
         // else {
         //   browserHistory.push('/');
