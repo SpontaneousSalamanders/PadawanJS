@@ -58,7 +58,7 @@ exports.mentor_profile_activation = function (req, res, next) {
 
   db.knex('users').where({ email }).first()
   .then((user) => {
-    console.log('user is', user)
+    console.log('user is', user);
     if (user) {
       return res.status(422).send({ error: 'You must provide email and password'});
     } else if (user === undefined) {
@@ -68,6 +68,7 @@ exports.mentor_profile_activation = function (req, res, next) {
 
       res.json({ token: tokenForUser(mentor) });
     }
+  })
+  .catch((err) => { return next(err)})
   // create mentor with role, location, image for a mentor
-
 }
