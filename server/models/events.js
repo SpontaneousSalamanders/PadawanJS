@@ -17,10 +17,6 @@ module.exports = {
       location: event.location,
       date: event.date,
       time: event.time
-    }).then(() => {
-      console.log('success!')
-    }).catch((err) => {
-      console.log(err);
-    })
+    });
   },
 };

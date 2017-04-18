@@ -3,7 +3,7 @@ const db = require('../db');
 module.exports = {
   getMentors: () => {
     return db.knex
-    .select('id', 'name', 'location', 'role', 'picture', 'techStack')
+    .select('id', 'name', 'location', 'role', 'picture', 'techStack', 'followers')
     .from('users')
     .where({type: 'mentor'});
   },

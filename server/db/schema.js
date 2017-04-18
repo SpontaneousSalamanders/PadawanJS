@@ -21,6 +21,8 @@ module.exports = (db) => {
         console.log('Error creating table', err);
       });
 
+const seedData = require('./dummy/seedData.js')
+
 const schema = (db) => {
   return Promise.all([
     db.knex.schema.hasTable('users').then((exists) => {
@@ -33,6 +35,7 @@ const schema = (db) => {
           table.string('location');
           table.string('role');
           table.string('picture');
+          table.integer('followers');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.specificType('techStack', 'text[]');
         })
@@ -82,7 +85,7 @@ const schema = (db) => {
           table.string('URL');
           table.string('icon');
           table.string('category');
-          table.specificType('tags', 'text[]');
+          // table.specificType('tags', 'text[]');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
         })
@@ -105,16 +108,20 @@ const schema = (db) => {
       }
     }),
 
-    db.knex.schema.hasTable('tags').then((exists) => {
+    db.knex.schema.hasTable('categories').then((exists) => {
       if (!exists) {
-        db.knex.schema.createTable('tags', (table) => {
+        db.knex.schema.createTable('categories', (table) => {
           table.increments('id').primary();
+          table.string('category');
+          table.string('picture');
         })
         .then((table) => {
-          console.log('Created tags table!');
+          console.log('Created categories table!');
         });
       }
-    })
+    }),
+
+    seedData(db)
   ]);
 };
 
