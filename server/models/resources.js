@@ -9,16 +9,17 @@ module.exports = {
   },
 
   getMenteeResources: (user_id) => {
-    // return db.knex
+    //
   },
 
-  postResource: (resource) => {
+  postResource: (user_id, resource) => {
     return db.knex('resources')
     .insert({
-      user_id: resource.user_id,
+      user_id: user_id,
       title: resource.title,
       description: resource.description,
-      URL: resource.URL
+      URL: resource.url,
+      category: resource.category
     });
   },
 

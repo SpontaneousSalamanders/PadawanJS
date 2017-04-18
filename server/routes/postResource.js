@@ -1,9 +1,8 @@
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {
-  var resource = req.body;
-
-  console.log('resource', resource);
+  const user_id = req.params.uid;
+  const resource = req.body;
 
   Resources.postResource(resource)
   .then(() => {

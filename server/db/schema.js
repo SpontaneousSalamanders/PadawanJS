@@ -102,6 +102,17 @@ const schema = (db) => {
           console.log('Created users_resources table!');
         });
       }
+    }),
+
+    db.knex.schema.hasTable('tags').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('tags', (table) => {
+          table.increments('id').primary();
+        })
+        .then((table) => {
+          console.log('Created tags table!');
+        });
+      }
     })
   ]);
 };

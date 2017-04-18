@@ -1,7 +1,7 @@
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {
-  // Resources.getMenteeResources(req.params.uid)
+  // Resources.getMenteeResources()
   // .then((resources) => {
   //   res.status(200).send(resources);
   // })

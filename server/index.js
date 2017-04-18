@@ -36,7 +36,7 @@ app.get('/getMentorResources/:uid', handler.getMentorResources);
 app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getMenteeResources/:uid', handler.getMenteeResources);
 app.post('/saveResource/', handler.saveResource);
-app.post('/postResource/', handler.postResource);
+app.post('/postResource/:uid', handler.postResource);
 
 // authentication routes
 authRouter(app);
