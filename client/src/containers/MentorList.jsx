@@ -15,16 +15,16 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.filtered.map((mentor, index) => {
       return (
-        <div style={{marginTop: 100}}>
+        <div style={{marginTop: 100}} key={index}>
         <Card 
         key={index}
         header={
-          <CardTitle 
+          <CardTitle
             reveal 
             image={mentor.picture} 
             waves='light'/>}
-        title={mentor.name}
-        reveal={
+            title={mentor.name}
+            reveal={
               <div>
                 <ul>
                   <br />

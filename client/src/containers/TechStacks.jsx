@@ -1,33 +1,22 @@
-const techStackItems = [
-  'React',
-  'Angular',
-  'Backbone',
-  'React Native',
-  'Express',
-  'Node.js',
-  'TDD',
-  'Mocha/Chai',
-  'Redux'
-];
+import React, { Component } from 'react';
 
 class TechStacks extends Component {
   constructor(props) {
     super(props);
-    this.createTechStackCheckboxes = this.createTechStackCheckboxes.bind(this);
-    this.handleTechStackChange = this.handleTechStackChange.bind(this);
+    console.log(props);
   }
 
   createTechStackCheckboxes() {
     const isAllChecked = false;
-    return techStackItems.map((item) => (
+    return this.props.techStackItems.map((item) => (
       <div key={item}>
         <input
           key={item}
           id={item}
           type="checkbox"
-          checked={isAllChecked || this.state.selectedTechStacksItems.includes(item)}
+          checked={isAllChecked || this.props.selectedTechStacksItems.includes(item)}
           value={item}
-          onChange={this.handleTechStackChange} />
+          onChange={this.props.handleTechStackChange} />
         <label htmlFor={item}>{item}</label>
       </div>
     ));
@@ -60,27 +49,14 @@ class TechStacks extends Component {
       });
     })
   }
-  render () {
+
+  render() {
+    return (
     <div>
       {this.createTechStackCheckboxes()}
     </div>
-  }
-
-  function mapStateToProps(state) {
-    return {
-      data: state
-    };
-  }
-
-  function mapDispatchToProps(dispatch) {
-    return {
-      actions: bindActionCreators({
-        filterMentors,
-        getMentors,
-        selectMentor,
-      }, dispatch),
-    }
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TechStack);
+export default TechStacks;

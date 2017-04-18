@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MentorList from '../containers/MentorList.jsx';
 import SidebarMenu from '../containers/SidebarMenu.jsx';
 
-function HomePage() {
+export default props => {
   return (
     <div >
       <SidebarMenu />
@@ -10,6 +10,3 @@ function HomePage() {
     </div>
   );
 }
-
-
-export default HomePage;

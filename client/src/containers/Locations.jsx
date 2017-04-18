@@ -1,28 +1,22 @@
-const locationItems = [
-  'SF',
-  'San Jose',
-  'Palo Alto'
-];
-
+import React, { Component } from 'react';
 
 class Locations extends Component {
   constructor(props) {
     super(props);
-    this.createLocationsCheckboxes = this.createLocationsCheckboxes.bind(this);
-    this.handleLocationsChange = this.handleLocationsChange.bind(this);
+    console.log(props);
   }
 
-  createLocationsCheckboxes() {
+	createLocationsCheckboxes() {
     const isAllChecked = false;
-    return locationItems.map((item) => (
+    return this.props.locationItems.map((item) => (
       <div key={item}>
         <input
           key={item}
           id={item}
           type="checkbox"
-          checked={isAllChecked || this.state.selectedLocationItems.includes(item)}
+          checked={isAllChecked || this.props.selectedLocationItems.includes(item)}
           value={item}
-          onChange={this.handleLocationsChange} />
+          onChange={this.props.handleLocationsChange} />
         <label htmlFor={item}>{item}</label>
       </div>
     ));
@@ -47,6 +41,7 @@ class Locations extends Component {
     this.setState({
       selectedLocationItems: locations
     }, () => {
+      console.log('locations after setstate looks like:', locations);
       this.props.actions.filterMentors({
         techStacks: this.state.selectedTechStacksItems,
         roles: this.state.selectedRolesItems,
@@ -54,25 +49,14 @@ class Locations extends Component {
       });
     })
   }
-
-  render () {
-    this.createLocationsCheckboxes()
-  }
-
-function mapStateToProps(state) {
-  return {
-    data: state
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({
-      filterMentors,
-      getMentors,
-      selectMentor,
-    }, dispatch),
+	render() {
+    return (
+      <div>
+        {this.createLocationsCheckboxes()}
+      </div>
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Locations);
+
+export default Locations;

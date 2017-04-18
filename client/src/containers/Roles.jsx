@@ -1,78 +1,61 @@
-
-const rolesItems = [
-  'Full Stack',
-  'Front end',
-  'Back end'
-];
+import React, { Component } from 'react';
 
 class Roles extends Component {
-  constructor(props) {
+	constructor(props) {
     super(props);
-    this.createRolesCheckboxes = this.createRolesCheckboxes.bind(this);
-    this.handleRolesChange = this.handleRolesChange.bind(this);
+    console.log(props);
   }
 
-  createRolesCheckboxes() {
-    const isAllChecked = false;
-    return locationItems.map((item) => (
-      <div key={item}>
-        <input
-          key={item}
-          id={item}
-          type="checkbox"
-          checked={isAllChecked || this.state.selectedLocationItems.includes(item)}
-          value={item}
-          onChange={this.handleLocationsChange} />
-        <label htmlFor={item}>{item}</label>
-      </div>
-    ));
-  }
+	createRolesCheckboxes() {
+	    const isAllChecked = false;
+	    return this.props.rolesItems.map((item) => (
+	      <div key={item}>
+	        <input
+	          key={item}
+	          id={item}
+	          type="checkbox"
+	          checked={isAllChecked || this.props.selectedRolesItems.includes(item)}
+	          value={item}
+	          onChange={this.props.handleRolesChange} />
+	        <label htmlFor={item}>{item}</label>
+	      </div>
+	    ));
+	  }
 
-  handleRolesChange(event) {
-    const selectedRole = event.target.value;
-    let roles = this.state.selectedRolesItems;
-    if (roles.includes('Nothing selected')) {
-      roles.splice(roles.indexOf('Nothing selected'), 1);
-      roles.push(selectedRole);
-    } else {
-      if (roles.includes(selectedRole)) {
-        roles.splice(roles.indexOf(selectedRole), 1);
-        if (roles.length === 0) {
-          roles = ['Nothing selected'];
-        }
-      } else {
-        roles.push(selectedRole);
-      }
-    }
-    this.setState({
-      selectedRolesItems: roles
-    }, () => {
-      this.props.actions.filterMentors({
-        techStacks: this.state.selectedTechStacksItems,
-        roles: this.state.selectedRolesItems,
-        locations: this.state.selectedLocationItems,
-      });
-    })
-  }
-
-  render () {
-    this.createRolesCheckboxes()
-  }
-
-function mapStateToProps(state) {
-  return {
-    data: state
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({
-      filterMentors,
-      getMentors,
-      selectMentor,
-    }, dispatch),
+	  handleRolesChange(event) {
+	    const selectedRole = event.target.value;
+	    let roles = this.state.selectedRolesItems;
+	    if (roles.includes('Nothing selected')) {
+	      roles.splice(roles.indexOf('Nothing selected'), 1);
+	      roles.push(selectedRole);
+	    } else {
+	      if (roles.includes(selectedRole)) {
+	        roles.splice(roles.indexOf(selectedRole), 1);
+	        if (roles.length === 0) {
+	          roles = ['Nothing selected'];
+	        }
+	      } else {
+	        roles.push(selectedRole);
+	      }
+	    }
+	    this.setState({
+	      selectedRolesItems: roles
+	    }, () => {
+	      this.props.actions.filterMentors({
+	        techStacks: this.state.selectedTechStacksItems,
+	        roles: this.state.selectedRolesItems,
+	        locations: this.state.selectedLocationItems,
+	      });
+	    })
+	  }
+	  render() {
+	  	return(
+	    <div>
+	      {this.createRolesCheckboxes()}
+	    </div>
+	  	)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Roles);
+
+export default Roles;
