@@ -8,7 +8,8 @@ class LandingPage extends Component {
     return (
      <div>
      	<div>
-	     	<img className="lightsaber" src="/lightsaber_grey_background.png"/>
+     		<video className="video" src="/padawanjs.mov" autoPlay="true">
+     		</video>
 	     	<h2 className="welcome_padawan">
 	     		Welcome, Padawan!
 	     		<br />
@@ -21,3 +22,4 @@ class LandingPage extends Component {
 }
 
 export default LandingPage;
+	     	// <img className="lightsaber" src="/lightsaber_grey_background.png"/>
