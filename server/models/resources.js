@@ -12,10 +12,10 @@ module.exports = {
     //
   },
 
-  postResource: (user_id, resource) => {
+  postResource: (resource) => {
     return db.knex('resources')
     .insert({
-      user_id: user_id,
+      user_id: resource.user_id,
       title: resource.title,
       description: resource.description,
       URL: resource.url,

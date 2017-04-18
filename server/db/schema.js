@@ -81,6 +81,7 @@ const schema = (db) => {
           table.string('description');
           table.string('URL');
           table.string('icon');
+          table.string('category');
           table.specificType('tags', 'text[]');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
