@@ -25,6 +25,26 @@ function createUser (email, password, name) {
   .catch( (err) => console.log(err) );
 }
 
+function createMentor (email, password, name, type = mentor, role, location, techStack) {
+  console.log('inside create Mentor!!');
+  const salt = bcrypt.genSaltSync();
+  const hash = bcrypt.hashSync(password, salt);
+  return db.knex('users').insert({
+    email: email,
+    password: hash,
+    name: name,
+    type: 'mentor',
+    role: role,
+    location: location,
+    techStack: techStack
+  })
+  .returning('*')
+  .then( () => {
+    console.log('mentor created in handleUser')
+  })
+  .catch( (err) => console.log(err) );
+}
+
 
 function createHashAndInsertToDB (email, password) {
   console.log('before hash')
@@ -53,27 +73,6 @@ function comparePass (userPassword, databasePassword, callback) {
   });
 }
 
-// check to see if email username is already in database
-// if not, return false
-// else, return the user
-
-function doesUserAlreadyExist (email) {
-  db.knex('users').where({ email }).first()
-  .then((user) => {
-    if (!user) {
-      return user;
-    }
-
-
-    console.log('USER SHOULD ALREADY EXIST?!', user);
-    if (user) {
-      return true;
-    } else {
-      return false;
-    }
-  })
-  .catch((err) => { return done(err); })
-}
 
 function checkIdInDB(id) {
   return db.knex('users').where({ id }).first()
