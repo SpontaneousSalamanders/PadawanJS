@@ -79,6 +79,5 @@ module.exports = {
   comparePass,
   createUser,
   createMentor,
-  doesUserAlreadyExist,
   createHashAndInsertToDB
 }

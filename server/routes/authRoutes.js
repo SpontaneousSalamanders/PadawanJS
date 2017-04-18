@@ -10,7 +10,7 @@ const passportStrategies = require('../auth/passportStrategies.js');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
-//Custom express routing middleware that checks to see if the authenticated user is an admin
+//Custom express routing middleware that checks to see if the authenticated user is a mentor
 const requireMentor = require('../auth/requireMentor')
 
 module.exports = function(app) {
