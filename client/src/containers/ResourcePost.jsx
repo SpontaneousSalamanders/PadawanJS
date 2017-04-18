@@ -6,44 +6,47 @@ import { postResource } from '../actions/postResourceActions.jsx';
 class ResourcePost extends Component {
   render() {
     // native function from redux form
-    console.log('resource post component id', this.props.mentor.id)
-    const { fields: {title, category, url, description} } = this.props;
+    const { fields: {user_id, title, category, URL, description} } = this.props;
+
     return (
       <Segment>
-        <form onSubmit={ this.props.handleSubmit(this.props.postResource, this.props.mentor.id)}>
+        <form onSubmit={ this.props.handleSubmit(this.props.postResource)}>
           <div>Post Resources</div>
           <div className="form-group">
             <label>Title</label>
-            <input type="text" className="form-control" {...title} />      
+            <input type="text" className="form-control" {...title} />
           </div>
           <div className="form-group">
             <label>Category</label>
-            <input type="text" className="form-control" {...category} />      
+            <input type="text" className="form-control" {...category} />
           </div>
           <div className="form-group">
             <label>URL</label>
-            <input type="text" className="form-control" {...url} />      
+            <input type="text" className="form-control" {...URL} />
           </div>
           <div className="form-group">
             <label>Description</label>
-            <textarea className="form-control" {...description} />      
+            <textarea className="form-control" {...description} />
           </div>
           <button className="btn btn-primary">Submit</button>
-        </form>      
+        </form>
       </Segment>
     )
   }
 }
+
 function mapStateToProps(state) {
   return {
-    mentor: state.selectedMentor
+    mentor: state.selectedMentor,
+    initialValues: {
+      user_id: state.selectedMentor.id
+    }
   }
-
 }
 
-// Just like connect except reduxForm takes form fields object as first argument 
+// Just like connect except reduxForm takes form fields object as first argument
 
 export default reduxForm({
   form: 'ResourcePost',
-  fields: ['title', 'category', 'URL', 'description']
+  fields: ['user_id', 'title', 'category', 'URL', 'description'],
 }, mapStateToProps, { postResource })(ResourcePost);

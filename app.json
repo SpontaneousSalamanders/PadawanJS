@@ -1,13 +1,16 @@
 {
   "name": "PadawanJS",
   "scripts": {
+    "postdeploy": "server/db/dummy/seedData.js",
   },
   "env": {
   },
   "formation": {
   },
   "addons": [
-
+    {
+      "plan": "heroku-postgresql"
+    }
   ],
   "buildpacks": [
     {

@@ -27,9 +27,14 @@ app.get('/', function(req, res) {
 
 
 app.get('/getMentors', handler.getMentors);
-app.get('/getMentorProfile', handler.getMentorProfile);
+app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
-app.get('/getResources/:uid', handler.getResources);
+app.get('/getMentorResources/:uid', handler.getMentorResources);
+app.get('/getResources/:uid', handler.getMentorResources);
+app.get('/getMenteeResources/:uid', handler.getMenteeResources);
+app.post('/postEvent', handler.postEvent);
+app.post('/postResource', handler.postResource);
+app.post('/saveResource', handler.saveResource);
 app.get('/*');
 
 // authentication routes

@@ -1,11 +1,13 @@
 const Events = require('../models/events.js');
 
 module.exports = (req, res) => {
-  Events.getEvents(req.params.uid)
+  const user_id = req.params.uid;
+
+  Events.getEvents(user_id)
   .then((events) => {
     res.status(200).send(events);
   })
-  .catch((error) => {
-    res.status(error.status || 500).send({'error in getEvents': error});
+  .catch((err) => {
+    res.status(err.status || 500).send({'error in getEvents': err});
   });
 }

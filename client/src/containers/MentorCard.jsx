@@ -22,7 +22,7 @@ function MentorCard (props) {
       <Card.Content extra>
         <a>
           <Icon name='user' />
-          22 Friends
+          {props.mentor.followers} Padawans
         </a>
       </Card.Content>
     </Card>
