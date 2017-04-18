@@ -8,6 +8,7 @@ module.exports = (db) => {
         user.string('type');
         user.string('name');
         user.string('email');
+        user.string('password');
         user.string('location');
         user.string('role');
         user.string('picture');

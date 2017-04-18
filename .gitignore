@@ -47,5 +47,8 @@ jspm_packages
 .floo
 .flooignore
 
+# auth keys need to uncomment in deployment
+
+
 # misc
 .DS_Store

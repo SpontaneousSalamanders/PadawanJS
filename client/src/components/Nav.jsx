@@ -26,7 +26,7 @@ class Nav extends Component {
       ) : (
         <div>
           <Link className="btn btn--login btn--nav" to="/signup">Sign Up</Link>
-          <Link className="btn btn--login btn--nav" to="/login">Login</Link>
+          <Link className="btn btn--login btn--nav" to="/signin">Login</Link>
         </div>
       );
 

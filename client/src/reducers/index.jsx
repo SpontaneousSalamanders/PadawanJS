@@ -4,6 +4,10 @@ import SelectedMentor from './reducer_selected_mentor.jsx';
 import Resources from './reducer_resources.jsx';
 import { reducer as formReducer } from 'redux-form';
 import EventsReducer from './reducer_events.jsx';
+import AuthReducer from './reducer_auth.jsx';
+
+
+
 
 // The initial application state for form
 const initialState = {
@@ -43,12 +47,17 @@ export function homeReducer(state = initialState, action) {
   }
 }
 
-const rootReducer = combineReducers({
+
+
+const RootReducer = combineReducers({
   mentors: MentorsReducer,
   selectedMentor: SelectedMentor,
+
   resources: Resources,
   form: formReducer,
-  events: EventsReducer
+  events: EventsReducer,
+  auth: AuthReducer,
+
 });
 
-export default rootReducer;
+export default RootReducer;

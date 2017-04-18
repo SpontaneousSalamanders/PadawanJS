@@ -172,12 +172,13 @@ Navigation Bar
   }
 }
 
+
 /* Sidebar Menu ------------------------ */
 
   .sidebar-container {
-    position: fixed; 
-    width: 150px; 
-    overflow-y: scroll; 
+    position: fixed;
+    width: 150px;
+    overflow-y: scroll;
     top: 0;
     margin-top: 95px;
     bottom: 0;
