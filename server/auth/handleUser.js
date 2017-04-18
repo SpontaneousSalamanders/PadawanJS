@@ -1,7 +1,7 @@
 // You can even use knex without a connection, just for its query building features. Just pass in an empty object when initializing the library. Specify a client if you are interested in a particular flavour of SQL.
 
 var db = require('../db');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
 // var knex = require('knex');
 // var pg = require('knex')({client: 'pg'});
