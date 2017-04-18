@@ -91,7 +91,7 @@ module.exports = {
       followers: 20
     },
     {
-      type: 'mentee',
+      type: 'padawan',
       name: 'Winston Ku',
       email: 'winston.ku@ku.com',
       location: 'SF',
