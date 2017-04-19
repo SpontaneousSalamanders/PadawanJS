@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Divider } from 'semantic-ui-react';
+import { connect } from 'react-redux'
 
 // import { logout } from '../actions/index.jsx';
 // import LoadingButton from './LoadingButton.react';
@@ -53,9 +54,10 @@ class Nav extends Component {
   }
 }
 
-// Nav.propTypes = {
-//   loggedIn: React.PropTypes.bool.isRequired,
-//   currentlySending: React.PropTypes.bool.isRequired
-// }
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated
+  };
+}
 
-export default Nav;
+export default connect(mapStateToProps)(Nav);
