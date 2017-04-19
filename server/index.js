@@ -37,7 +37,7 @@ app.post('/postEvent', handler.postEvent);
 app.post('/postResource', handler.postResource);
 app.post('/saveResource', handler.saveResource);
 app.post('/postQuestion', handler.postQuestion);
-app.post('/postAnswer', handler.postAnswer);
+app.post('/postReply', handler.postReply);
 app.get('/*', handler.wildCard);
 
 // authentication routes

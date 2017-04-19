@@ -10,7 +10,7 @@ module.exports = {
   postEvent: require('./postEvent.js'),
   postResource: require('./postResource.js'),
   postQuestion: require('./postQuestion.js'),
-  postAnswer: require('./postAnswer.js'),
+  postReply: require('./postReply.js'),
   saveResource: require('./saveResource.js'),
   wildCard: require('./wildCard.js')
 }

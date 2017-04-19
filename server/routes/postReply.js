@@ -3,13 +3,13 @@
 const Messages = require('../models/messages.js');
 
 module.exports = (req, res) => {
-  const question = req.body;
+  const reply = req.body;
 
-  Messages.postQuestion(question)
+  Messages.postReply(reply)
   .then(() => {
     res.status(200).end();
   })
   .catch((err) => {
-    res.status(err.status || 500).send({'error in postQuestion': err});
+    res.status(err.status || 500).send({'error in postReply': err});
   });
 }
