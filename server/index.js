@@ -35,7 +35,7 @@ app.get('/getMenteeResources/:uid', handler.getMenteeResources);
 app.post('/postEvent', handler.postEvent);
 app.post('/postResource', handler.postResource);
 app.post('/saveResource', handler.saveResource);
-app.get('/*');
+app.get('/*', handler.wildCard);
 
 // authentication routes
 authRouter(app);

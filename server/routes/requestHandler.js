@@ -8,5 +8,6 @@ module.exports = {
   getMenteeResources: require('./getMenteeResources.js'),
   postEvent: require('./postEvent.js'),
   postResource: require('./postResource.js'),
-  saveResource: require('./saveResource.js')
+  saveResource: require('./saveResource.js'),
+  wildCard: require('./wildCard.js')
 }
