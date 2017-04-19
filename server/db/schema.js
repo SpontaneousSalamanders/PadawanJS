@@ -97,6 +97,21 @@ const schema = (db) => {
         })
         .then((table) => {
           console.log('Created categories table!');
+        });
+      }
+    }),
+
+    db.knex.schema.hasTable('messages').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('messages', (table) => {
+          table.increments('id').primary();
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.string('message');
+          table.integer('reply_to_message_id').unsigned().references('id').inTable('messages')
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
+        })
+        .then((table) => {
+          console.log('Created replies table!');
           seedData(db);
         });
       }
