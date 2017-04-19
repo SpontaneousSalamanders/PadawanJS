@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardTitle } from 'react-materialize';
 import { selectMentor } from '../actions/index.jsx'
 import { bindActionCreators } from 'redux';
-import MentorPage from '../components/MentorPage.jsx';
 import { Link } from 'react-router';
 import { getMentors } from '../actions/mentorActions.jsx';
+import { Card, CardTitle } from 'react-materialize';
+import MentorPage from '../components/MentorPage.jsx';
 import MentorListCard from './MentorListCard.jsx';
 
 class MentorList extends Component {
@@ -16,7 +16,10 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.filtered.map((mentor, index) => {
       return (
-        <MentorListCard selectedMentor={this.props.selectedMentor} mentor={mentor}/>
+        <MentorListCard 
+        mentor={mentor}
+
+        />
       )
     })
   }

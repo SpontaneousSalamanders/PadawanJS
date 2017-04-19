@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
+import { selectMentor } from '../actions/index.jsx'
+import { Button } from 'semantic-ui-react';
 
 function MentorListCard (props) {
 
@@ -59,10 +61,10 @@ function MentorListCard (props) {
                         </div>
                         <div className= 'profile-btn-container'>
                         <Link
-                          to={"/profile/" + mentor.id}
-                          onClick={()=> this.props.selectMentorAction.selectMentor(mentor)}
-                        >
-                          <Button basic color='yellow'>View Profile</Button>
+                          to={"/profile/" + props.mentor.id}
+                          onClick={()=> props.selectMentorAction.selectMentor(props.mentor)}
+                          >
+                            <Button basic color='yellow'>View Profile</Button>
                         </Link>
                         </div>
                     </div>
@@ -80,4 +82,11 @@ function MentorListCard (props) {
   )
 }
 
-export default MentorListCard
+
+function mapDispatchToProps(dispatch) {
+  return {
+    selectMentorAction: bindActionCreators({selectMentor: selectMentor}, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(MentorListCard)
