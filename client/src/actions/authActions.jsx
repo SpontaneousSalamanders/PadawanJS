@@ -41,7 +41,7 @@ export function signinUser({ email, password }) {
         // // - set mentor flag if token indicates the user has mentor privileges
         else if (decoded_token_data.type == 'mentor') {
           dispatch({ type: SET_MENTOR_PRIVILEGES });
-          browserHistory.push('/mentor_profile/' +decoded_token_data.sub);
+          browserHistory.push('/profile/' +decoded_token_data.sub);
         }
 
         else {
