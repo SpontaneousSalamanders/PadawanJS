@@ -29,6 +29,7 @@ app.get('/', function(req, res) {
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
+app.get('/getMenteeEvents/:uid', handler.getMenteeEvents);
 app.get('/getMentorResources/:uid', handler.getMentorResources);
 app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getMenteeResources/:uid', handler.getMenteeResources);

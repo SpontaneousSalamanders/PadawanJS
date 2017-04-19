@@ -19,4 +19,14 @@ module.exports = {
       time: event.time
     });
   },
+
+  getMenteeEvents: (user_id) => {
+    return db.knex
+    .select()
+    .from('events')
+    .innerJoin('users_events')
+    .onIn({
+      // users_events.user_id: user_id,
+    });
+  }
 };

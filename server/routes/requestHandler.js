@@ -2,6 +2,7 @@
 
 module.exports = {
   getEvents: require('./getEvents.js'),
+  getMenteeEvents: require('./getMenteeEvents.js'),
   getMentorProfile: require('./getMentorProfile.js'),
   getMentors: require('./getMentors.js'),
   getMentorResources: require('./getMentorResources.js'),
