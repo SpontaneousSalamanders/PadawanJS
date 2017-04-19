@@ -5,7 +5,9 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Checkbox from 'material-ui/Checkbox'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import { postEvent } from '../actions/postEventActions.jsx';
+import { postResource } from '../actions/postResourceActions.jsx';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 const validate = values => {
   const errors = {}
@@ -52,10 +54,10 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
     {...custom}/>
 )
 
-const EventForm = props => {
+const ResourceForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit(postEvent)}>
+    <form onSubmit={handleSubmit(postResource)}>
       <div>
         <Field name="firstName" component={renderTextField} label="First Name"/>
       </div>
@@ -94,6 +96,6 @@ const EventForm = props => {
 }
 
 export default reduxForm({
-  form: 'EventForm',  // a unique identifier for this form
+  form: 'ResourceForm',  // a unique identifier for this form
   validate,
-})(EventForm)
+})(ResourceForm)
