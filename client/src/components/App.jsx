@@ -9,7 +9,7 @@
 
 
 import React, { Component } from 'react';
-import Nav from './Nav.jsx';
+import Nav from '../containers/Nav.jsx';
 import { connect } from 'react-redux';
 // import auth from '../utils/auth';
 import injectTapEventPlugin from 'react-tap-event-plugin';
