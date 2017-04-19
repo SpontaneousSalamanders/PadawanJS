@@ -207,12 +207,12 @@ module.exports = {
     },
     {
       user_id: 3,
-      message: 'What is logarithmic',
+      message: 'What is logarithmic?',
       reply_to_message_id: 2,
     },
     {
       user_id: 4,
-      message: 'It\'s linear everyone',
+      message: 'It\'s linear, everyone',
       reply_to_message_id: 1,
     }
   ]
