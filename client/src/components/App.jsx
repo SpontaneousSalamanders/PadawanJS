@@ -22,13 +22,7 @@ class App extends Component {
   render() {
     return (
        <div>
-        <Nav
-          currentlySending={this.props.data.currentlySending}
-          dispatch={this.props.dispatch}
-          history={this.props.history}
-          location={this.props.location}
-          loggedIn={this.props.data.loggedIn}
-        />  
+        <Nav />
         { this.props.children }
       </div>
     )
