@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
-
+import { Link } from 'react-router';
 
 function MentorListCard (props) {
 
@@ -58,7 +58,12 @@ function MentorListCard (props) {
                             </div>
                         </div>
                         <div className= 'profile-btn-container'>
-                            <Button basic color='yellow'>View Profile</Button>
+                        <Link
+                          to={"/profile/" + mentor.id}
+                          onClick={()=> this.props.selectMentorAction.selectMentor(mentor)}
+                        >
+                          <Button basic color='yellow'>View Profile</Button>
+                        </Link>
                         </div>
                     </div>
                 </div>

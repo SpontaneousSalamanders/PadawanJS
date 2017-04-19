@@ -16,7 +16,7 @@ class MentorList extends Component {
   renderList() {
     return this.props.mentors.filtered.map((mentor, index) => {
       return (
-        <MentorListCard mentor={mentor}/>
+        <MentorListCard selectedMentor={this.props.selectedMentor} mentor={mentor}/>
       )
     })
   }
