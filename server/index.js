@@ -32,9 +32,12 @@ app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getMentorResources/:uid', handler.getMentorResources);
 app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getMenteeResources/:uid', handler.getMenteeResources);
+app.get('/getQuestions/:uid', handler.getQuestions);
 app.post('/postEvent', handler.postEvent);
 app.post('/postResource', handler.postResource);
 app.post('/saveResource', handler.saveResource);
+app.post('/postQuestion', handler.postQuestion);
+app.post('/postAnswer', handler.postAnswer);
 app.get('/*', handler.wildCard);
 
 // authentication routes
