@@ -5,7 +5,8 @@ module.exports = {
     return db.knex
     .select('title', 'description', 'URL', 'icon')
     .from('resources')
-    .where({user_id: user_id});
+    .where({user_id: user_id})
+    .orderBy('created_at')
   },
 
   getMenteeResources: (user_id) => {
