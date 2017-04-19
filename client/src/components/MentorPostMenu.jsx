@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input, Menu, Segment } from 'semantic-ui-react'
-import ResourcePost from '../containers/ResourcePost.jsx';
-import EventPost from '../containers/EventPost.jsx';
+import ResourceForm from '../containers/ResourceForm.jsx';
+import EventForm from '../containers/EventForm.jsx';
 
 class MentorPostMenu extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class MentorPostMenu extends Component {
           </Menu>
 
           <Segment attached='bottom'>
-            <ResourcePost /> 
+            <ResourceForm /> 
           </Segment>
         </div>
       )
