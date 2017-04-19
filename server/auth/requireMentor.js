@@ -1,5 +1,5 @@
 module.exports = function (req, res, next) {
-  if(req.user.mentor === 'mentor'){
+  if(req.user.type === 'mentor'){
     next();
   }
   else {

@@ -30,7 +30,7 @@ exports.signup = function(req, res, next) {
   .then((user) => {
     console.log('user is', user)
     if (user) {
-      return res.status(422).send({ error: 'You must provide email and password'});
+      return res.status(422).send({ error: 'Email is in use'});
     } else if (user === undefined) {
       console.log('user was found undefined,  creating user and then sending token back');
 
@@ -45,21 +45,28 @@ exports.signup = function(req, res, next) {
 
 exports.mentor_profile_activation = function (req, res, next) {
   const email = req.body.email;
-  const password = req.body.password;
-  const name = req.body.firstName + ' ' + req.body.lastName;
+  const role = req.body.role;
+  const location = req.body.location;
+  const techStack = req.body.techStack;
+  const type = 'mentor';
 
-  // need to have support for role, location, image for a mentor
+
   if (!email || !password) {
     return res.status(422).send({ error: 'You must provide email and password'});
   }
 
-  // See if a user with email exists
-  const doesUserExist = User.checkUsernameInDb(email, password);
-
-  if (doesUserExist) {
-    return res.state(422).send({ error: 'Email is in use'});
-  }
-
-  // create mentor with role, location, image for a mentor
+  // find user in the database and update his role to mentor
+  db.knex('users').where({ email }).first()
+    .update({
+      type: 'mentor',
+      role: role,
+      location: location,
+      techStack: techStack,
+    })
+    .then(() => {
+      console.log('mentor updated in type');
+    // res.json({ token: tokenForUser(user) })
+    })
+    .catch((err) => { return next(err)})
 
 }

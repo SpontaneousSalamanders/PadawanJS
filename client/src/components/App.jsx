@@ -9,7 +9,7 @@
 
 
 import React, { Component } from 'react';
-import Nav from './Nav.jsx';
+import Nav from '../containers/Nav.jsx';
 import { connect } from 'react-redux';
 // import auth from '../utils/auth';
 
@@ -18,13 +18,7 @@ class App extends Component {
   render() {
     return (
        <div>
-        <Nav
-          currentlySending={this.props.data.currentlySending}
-          dispatch={this.props.dispatch}
-          history={this.props.history}
-          location={this.props.location}
-          loggedIn={this.props.data.loggedIn}
-        />  
+        <Nav />
         { this.props.children }
       </div>
     )
