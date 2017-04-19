@@ -22,7 +22,7 @@ const MentorPage = function (props) {
       <div>
         <div className="col-md-6">
         <MuiThemeProvider>
-          <EventForm/>
+          <ResourceForm/>
         </MuiThemeProvider>
         </div>
       </div>
