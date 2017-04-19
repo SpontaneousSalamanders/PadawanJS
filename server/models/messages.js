@@ -1,33 +1,28 @@
-// const db = require('../db');
+const db = require('../db');
 
-// module.exports = {
-//   getMentorResources: (user_id) => {
-//     return db.knex
-//     .select('title', 'description', 'URL', 'icon')
-//     .from('resources')
-//     .where({user_id: user_id});
-//   },
+module.exports = {
+  getQuestions: (user_id) => {
+    return db.knex
+    .select()
+    .from('messages')
+    .where({user_id: user_id});
+  },
 
-//   getMenteeResources: (user_id) => {
-//     //
-//   },
+  postQuestion: (question) => {
+    return db.knex('messages')
+    .insert({
+      user_id: question.user_id,
+      title: question.title,
+      message: question.message
+    });
+  },
 
-//   postResource: (resource) => {
-//     return db.knex('resources')
-//     .insert({
-//       user_id: resource.user_id,
-//       title: resource.title,
-//       description: resource.description,
-//       URL: resource.url,
-//       category: resource.category
-//     });
-//   },
-
-//   saveResource: (user_id, resource_id) => {
-//     return db.knex('users_resources')
-//     .insert({
-//       user_id: user_id,
-//       resource_id: resource_id
-//     });
-//   }
-// };
+  postAnswer: (answer) => {
+    return db.knex
+    .insert({
+      user_id: answer.user_id,
+      message: answer.message,
+      reply_to_message_id: answer.reply_to_message_id
+    });
+  }
+};
