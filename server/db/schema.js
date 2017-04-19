@@ -35,6 +35,7 @@ const schema = (db) => {
           table.string('location');
           table.date('date');
           table.time('time');
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })
         .then((table) => {
           console.log('Created events table!');
@@ -48,6 +49,7 @@ const schema = (db) => {
           table.increments('id').primary();
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('event_id').unsigned().references('id').inTable('events');
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })
         .then((table) => {
           console.log('Created users_events table!');
@@ -68,6 +70,7 @@ const schema = (db) => {
           // table.specificType('tags', 'text[]');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })
         .then((table) => {
           console.log('Created resources table!');
@@ -81,6 +84,7 @@ const schema = (db) => {
           table.increments('id').primary();
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })
         .then((table) => {
           console.log('Created users_resources table!');
