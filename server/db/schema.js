@@ -108,7 +108,8 @@ const schema = (db) => {
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.string('title');
           table.string('message');
-          table.integer('reply_to_message_id').unsigned().references('id').inTable('messages')
+          table.integer('reply_to_message_id').unsigned().references('id').inTable('messages');
+          table.integer('root_message_id').unsigned().references('id').inTable('messages');
           table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })
         .then((table) => {
