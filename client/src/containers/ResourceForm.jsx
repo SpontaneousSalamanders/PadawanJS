@@ -71,8 +71,8 @@ const ResourceForm = props => {
           <MenuItem value="React" primaryText="Red"/>
           <MenuItem value="Node" primaryText="Node"/>
           <MenuItem value="Redux" primaryText="Angular"/>
-          <MenuItem value="Angular" primaryText="TDD"/>
           <MenuItem value="TDD" primaryText="Redux"/>
+          <MenuItem value="Angular" primaryText="TDD"/>
           <MenuItem value="Express" primaryText="Express"/>
         </Field>
       </div>
