@@ -77,14 +77,16 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
 
 
 //token included in the header of the request for authorization
-export function activateMentorProfile({ email, password, firstName, lastName, passwordConfirm, type = 'mentor', role, location, techStack }) {
+
+export function activateMentorProfile({ email, password, type = 'mentor', role, location, techStack }) {
   return function(dispatch) {
     // mentor sign up and activating mentor profile
     axios.post('/mentor_profile_activation',
-      { email, password }
+      { email, password, type, location, role, techStack },
+      {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
-        // admin_area
-        browserHistory.push('/mentor_profile/id');
+        // mentor_profile
+        browserHistory.push('/mentorprofile/');
       })
       .catch(response => dispatch(authError(response.data.error)));
   }
@@ -114,6 +116,7 @@ export function fetchStudentProfile() {
           type: FETCH_STUDENT_PROFILE,
           payload: response.data.message
         });
+        console.log('r.d.m?', response.data.message)
       });
   }
 }
@@ -132,6 +135,7 @@ export function fetchMentorProfile(mentor) {
           type: FETCH_MENTOR_PROFILE,
           payload: response.data.message
         });
+        console.log('r.d.m?', response.data.message)
       });
   }
 }
