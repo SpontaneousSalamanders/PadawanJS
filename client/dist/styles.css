@@ -27,45 +27,7 @@
   margin-bottom: -50px;
 }
 
-.viewProfileButton {
-	margin-right: 10px;
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  cursor: pointer;
-  float: left;
-}
-
-.viewProfileButton:hover {
-  background-color: black;
-  color: #ff3c3c;
-}
-
-.requestLightSaberButton {
-	margin-right: 10px;
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  cursor: pointer;
-  float: left;
-}
-
-.requestLightSaberButton:hover {
-  background-color: black;
-  color: #55fd55;
-}
-
-.cardsContainer .card {
+/*.cardsContainer .card {
   width: 300px;
   height: 400px;
   float: left;
@@ -84,7 +46,7 @@
 
 .mentor_name {
   background-color: white;
-}
+}*/
 
 /* -----------------------------
 Navigation Bar
@@ -105,9 +67,9 @@ Navigation Bar
   z-index: 6;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+/*.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   color: black;
-}
+}*/
 
 .header_menus {
   position: fixed;
@@ -186,7 +148,7 @@ Navigation Bar
     padding-left: 15px;
     padding-right: 20px;
     padding-bottom: 30px;
-    background-color: #e0e1e1;
+    /*background-color: #e0e1e1;*/
     /*background-color: #6bd3f0;*/
   }
 
@@ -335,5 +297,10 @@ Navigation Bar
 
 
 
-/* Sidebar --------------------------
+/* View Profile button --------------------------
 */
+
+.profile-btn-container {
+  text-align: center;
+  margin-top: 50%;
+}
