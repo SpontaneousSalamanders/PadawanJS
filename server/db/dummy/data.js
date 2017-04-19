@@ -11,6 +11,8 @@ module.exports = {
       role: 'Front end',
       picture: 'http://imgur.com/xEUUtut.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
+      github: 'https://github.com/beth',
+      linkedIn: 'https://www.linkedin.com/in/bethjohnson3',
       followers: 26
     },
     {
@@ -22,6 +24,8 @@ module.exports = {
       role: 'Full Stack',
       picture: 'http://imgur.com/iwn6mV5.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
+      github: 'https://github.com/bcmarinacci',
+      linkedIn: 'https://www.linkedin.com/in/bcmarinacci',
       followers: 25
     },
     {
@@ -33,17 +37,21 @@ module.exports = {
       role: 'Full Stack',
       picture: 'http://imgur.com/9awfsn2.jpg',
       techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
+      github: 'https://github.com/fredx',
+      linkedIn: 'https://www.linkedin.com/in/fredzirdung',
       followers: 32
     },
     {
       type: 'mentor',
-      name: 'Eric Brown',
+      name: 'Erik Brown',
       email: 'eric.brown@hackreactor.com',
       password: '$2a$10$QIwi9bkgI5Z/wo5Q7PHcH.tCcy9iGeFYkByAF4OXwbu.UCwhBW6..',
       location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/adDa5JU.jpg',
       techStack: ['React', 'Node.js', 'JavaScript'],
+      github: 'https://github.com/erikdbrown',
+      linkedIn: 'https://www.linkedin.com/in/erikdbrown',
       followers: 24
     },
     {
@@ -55,6 +63,8 @@ module.exports = {
       role: 'Full Stack',
       picture: 'http://imgur.com/ohFukM2.jpg',
       techStack: ['Angular', 'Node.js', 'JavaScript'],
+      github: '',
+      linkedIn: '',
       followers: 20
     },
     {
@@ -66,6 +76,8 @@ module.exports = {
       role: 'Front end',
       picture: 'http://imgur.com/9eJRSav.jpg',
       techStack: ['React', 'Node.js', 'JavaScript'],
+      github: '',
+      linkedIn: '',
       followers: 21
     },
     {
@@ -77,6 +89,8 @@ module.exports = {
       role: 'Full Stack',
       picture: 'http://imgur.com/uz1C3om.jpg',
       techStack: ['React', 'Node.js', 'JavaScript'],
+      github: '',
+      linkedIn: '',
       followers: 20
     },
     {
@@ -88,6 +102,8 @@ module.exports = {
       role: 'Back end',
       picture: 'http://imgur.com/yTpcGqk.jpg',
       techStack: ['React', 'Node.js', 'JavaScript'],
+      github: '',
+      linkedIn: '',
       followers: 20
     },
     {

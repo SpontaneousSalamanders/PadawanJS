@@ -13,6 +13,8 @@ const schema = (db) => {
           table.string('location');
           table.string('role');
           table.string('picture');
+          table.string('github');
+          table.string('linkedIn');
           table.integer('followers');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.specificType('techStack', 'text[]');
