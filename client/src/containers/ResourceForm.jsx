@@ -86,7 +86,17 @@ const ResourceForm = props => {
   )
 }
 
+function mapStateToProps(state) {
+  return {
+    mentor: state.selectedMentor, 
+    initialValues: {
+      user_id: state.selectedMentor.id
+    }
+  }
+}
+
+
 export default reduxForm({
   form: 'ResourceForm',  // a unique identifier for this form
   validate,
-})(ResourceForm)
+}, mapStateToProps)(ResourceForm)
