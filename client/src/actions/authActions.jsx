@@ -79,10 +79,9 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
 //token included in the header of the request for authorization
 export function activateMentorProfile({ email, password, firstName, lastName, passwordConfirm, type = 'mentor', role, location, techStack }) {
   return function(dispatch) {
-    // admin_activation
+    // mentor sign up and activating mentor profile
     axios.post('/mentor_profile_activation',
-      { email, password },
-      {headers: { authorization: localStorage.setItem('token') }} )
+      { email, password }
       .then(response => {
         // admin_area
         browserHistory.push('/mentor_profile/id');
@@ -123,7 +122,7 @@ export function fetchStudentProfile() {
 
 //token included in the header of the request for authorization
 // fetch mentor dashboard with mentor privileges
-export function fetchMentorProfile() {
+export function fetchMentorProfile(mentor) {
   return function(dispatch) {
     axios.get('/mentor_profile', {
       headers: { authorization: localStorage.getItem('token') }
