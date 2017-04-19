@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Button } from 'semantic-ui-react';
 
 
 function MentorListCard (props) {
@@ -28,34 +29,37 @@ function MentorListCard (props) {
             </div> 
             <div className="back">
                 <div className="header">
-                    <h5 className="motto">"To be or not to be, this is my awesome motto!"</h5>
+                    <h5 className="motto">{props.mentor.role + ' developer'}</h5>
                 </div>
                 <div className="content">
                     <div className="main">
                         <h4 className="text-center">Job Description</h4>
                         <p className="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
 
+
                         <div className="stats-container">
                             <div className="stats">
-                                <h4>235</h4>
+                                <h4>5</h4>
                                 <p>
-                                    Followers
+                                    Events
                                 </p>
                             </div>
                             <div className="stats">
-                                <h4>114</h4>
+                                <h4>14</h4>
                                 <p>
-                                    Following
+                                    Padawans
                                 </p>
                             </div>
                             <div className="stats">
-                                <h4>35</h4>
+                                <h4>15</h4>
                                 <p>
-                                    Projects
+                                    Resources
                                 </p>
                             </div>
                         </div>
-
+                        <div className= 'profile-btn-container'>
+                            <Button basic color='yellow'>View Profile</Button>
+                        </div>
                     </div>
                 </div>
                 <div className="footer">
