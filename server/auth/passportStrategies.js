@@ -58,12 +58,12 @@ const jwtOptions = {
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if the user ID in the payload exists in our database
   db.knex('users').where({id: payload.sub}).first()
-  .then((mentor) =>{
+  .then((user) =>{
     if(err) {
       return done(err, false);
     }
-    if (mentor) {
-      return done (null, mentor);
+    if (user) {
+      return done (null, user);
     } else {
       return done (null, false);
     }

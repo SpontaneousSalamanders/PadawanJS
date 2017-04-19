@@ -33,18 +33,19 @@ export function signinUser({ email, password }) {
 
 
         // // - redirect to the appropriate route
-        // if(decoded_token_data.type === 'padawan') {
-        //   browserHistory.push('/padawan_profile/id=' + decoded_token_data.sub);
-        // }
+        if(decoded_token_data.type === 'padawan') {
+          browserHistory.push('/padawan_profile/id=' + decoded_token_data.sub);
+        }
         // // - set mentor flag if token indicates the user has mentor privileges
-        // else if(decoded_token_data.type == 'mentor') {
-        //   dispatch({ type: SET_MENTOR_PRIVILEGES });
-        //   browserHistory.push('/mentor_profile/id=' + + decoded_token_data.sub);
-        // }
-        // else {
-        //   browserHistory.push('/');
-        // }
-        browserHistory.push('/');
+        else if (decoded_token_data.type == 'mentor') {
+          dispatch({ type: SET_MENTOR_PRIVILEGES });
+          browserHistory.push('/mentor_profile/id=' + + decoded_token_data.sub);
+        }
+
+        else {
+          browserHistory.push('/');
+        }
+        // browserHistory.push('/');
 
       })
       .catch(() => {
@@ -85,7 +86,7 @@ export function activateMentorProfile({ email, password, type = 'mentor', role, 
       { email, password, type, location, role, techStack },
       {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
-        // mentor_profile
+        // what protected content are we pointing them to?
         browserHistory.push('/mentorprofile/');
       })
       .catch(response => dispatch(authError(response.data.error)));
