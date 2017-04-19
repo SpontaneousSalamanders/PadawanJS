@@ -3,14 +3,16 @@ const db = require('../db');
 module.exports = {
   getMentors: () => {
     return db.knex
-    .select('id', 'name', 'location', 'role', 'picture', 'techStack')
+    .select('id', 'name', 'location', 'role', 'picture', 'techStack', 'followers')
     .from('users')
     .where({type: 'mentor'});
   },
-  getMentorProfile: () => {
+
+  getMentorProfile: (user_id) => {
     return db.knex
     .select()
     .from('users')
-    .where({type: 'mentor'});
+    .where({id: user_id})
+    .first();
   }
 };

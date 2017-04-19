@@ -10,7 +10,8 @@ module.exports = {
       location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/xEUUtut.jpg',
-      techStack: ['React', 'Express', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
+      followers: 26
     },
     {
       type: 'mentor',
@@ -20,7 +21,8 @@ module.exports = {
       location: 'Palo Alto',
       role: 'Full Stack',
       picture: 'http://imgur.com/iwn6mV5.jpg',
-      techStack: ['React', 'Express', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
+      followers: 25
     },
     {
       type: 'mentor',
@@ -30,7 +32,8 @@ module.exports = {
       location: 'SF',
       role: 'Full Stack',
       picture: 'http://imgur.com/9awfsn2.jpg',
-      techStack: ['React', 'Express', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
+      followers: 32
     },
     {
       type: 'mentor',
@@ -40,7 +43,8 @@ module.exports = {
       location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/adDa5JU.jpg',
-      techStack: ['React', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Node.js', 'JavaScript'],
+      followers: 24
     },
     {
       type: 'mentor',
@@ -50,7 +54,8 @@ module.exports = {
       location: 'San Jose',
       role: 'Full Stack',
       picture: 'http://imgur.com/ohFukM2.jpg',
-      techStack: ['Angular', 'Node.js', 'JavaScript']
+      techStack: ['Angular', 'Node.js', 'JavaScript'],
+      followers: 20
     },
     {
       type: 'mentor',
@@ -60,7 +65,8 @@ module.exports = {
       location: 'SF',
       role: 'Front end',
       picture: 'http://imgur.com/9eJRSav.jpg',
-      techStack: ['React', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Node.js', 'JavaScript'],
+      followers: 21
     },
     {
       type: 'mentor',
@@ -70,7 +76,8 @@ module.exports = {
       location: 'Palo Alto',
       role: 'Full Stack',
       picture: 'http://imgur.com/uz1C3om.jpg',
-      techStack: ['React', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Node.js', 'JavaScript'],
+      followers: 20
     },
     {
       type: 'mentor',
@@ -80,7 +87,15 @@ module.exports = {
       location: 'San Jose',
       role: 'Back end',
       picture: 'http://imgur.com/yTpcGqk.jpg',
-      techStack: ['React', 'Node.js', 'JavaScript']
+      techStack: ['React', 'Node.js', 'JavaScript'],
+      followers: 20
+    },
+    {
+      type: 'padawan',
+      name: 'Winston Ku',
+      email: 'winston.ku@ku.com',
+      location: 'SF',
+      user_id: 1
     }
   ],
   events: [
@@ -95,7 +110,7 @@ module.exports = {
     {
       user_id: 2,
       title: 'Back-end Workshop',
-      description: 'Let\'s build the the back end!',
+      description: 'Let\'s build the back end!',
       location: 'Home floor, presentation space',
       date: '2017-09-28',
       time: '01:00'
@@ -137,6 +152,30 @@ module.exports = {
       description: 'Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6',
       URL: 'https://www.udemy.com/react-redux/',
       icon: 'https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png',
+    }
+  ],
+  users_events: [
+    {
+      user_id: 9,
+      event_id: 1
+    }
+  ],
+  categories: [
+    {
+      category: 'React',
+      picture: 'http://coenraets.org/present/react/img/react.png'
+    },
+    {
+      category: 'Angular',
+      picture: 'https://www.w3schools.com/angular/pic_angular.jpg'
+    },
+    {
+      category: 'Redux',
+      picture: 'https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png'
+    },
+    {
+      category: 'Node',
+      picture: 'https://cdn2.iconfinder.com/data/icons/nodejs-1/512/nodejs-512.png'
     }
   ]
 }

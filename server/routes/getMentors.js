@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   .then((mentors) => {
     res.status(200).send(mentors);
   })
-  .catch((error) => {
-    res.status(error.status || 500).send({'error in getMentors': error});
+  .catch((err) => {
+    res.status(err.status || 500).send({'error in getMentors': err});
   });
 }
