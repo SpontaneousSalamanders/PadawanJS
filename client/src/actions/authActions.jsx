@@ -27,7 +27,6 @@ export function signinUser({ email, password }) {
         // // decode token for info on the user
         let decoded_token_data = jwt_decode(response.data.token);
 
-
         // - Save the JWT token
         localStorage.setItem('token', response.data.token);
 
@@ -39,9 +38,9 @@ export function signinUser({ email, password }) {
           browserHistory.push('/');
         }
         // // - set mentor flag if token indicates the user has mentor privileges
-        else if (decoded_token_data.type == 'mentor') {
+        else if (decoded_token_data.type === 'mentor') {
           dispatch({ type: SET_MENTOR_PRIVILEGES });
-          browserHistory.push('/profile/' +decoded_token_data.sub);
+          browserHistory.push('/profile/' + decoded_token_data.sub);
         }
 
         else {
