@@ -65,6 +65,7 @@ exports.mentor_profile_activation = function (req, res, next) {
     })
     .then(() => {
       console.log('mentor updated in type');
+    // res.json({ token: tokenForUser(user) })
     })
     .catch((err) => { return next(err)})
 
