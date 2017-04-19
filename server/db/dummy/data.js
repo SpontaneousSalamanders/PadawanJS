@@ -196,24 +196,27 @@ module.exports = {
   ],
   messages: [
     {
+      tite: 'Time complexity question',
       user_id: 1,
       message: 'What is the time complexity of heap sort?',
-      reply_to_message_id: null,
     },
     {
       user_id: 2,
       message: 'Logarithmic?',
       reply_to_message_id: 1,
+      root_message_id: 1,
     },
     {
       user_id: 3,
       message: 'What is logarithmic?',
       reply_to_message_id: 2,
+      root_message_id: 1
     },
     {
       user_id: 4,
       message: 'It\'s linear, everyone',
       reply_to_message_id: 1,
+      root_message_id: 1,
     }
   ]
 }

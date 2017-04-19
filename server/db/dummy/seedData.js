@@ -17,6 +17,9 @@ module.exports = (db) => {
   })
   .then(() => {
     return db.knex('categories').insert(data.categories);
+  })
+  .then(() => {
+    return db.knex('messages').insert(data.messages);
   });
 }
 
