@@ -82,7 +82,6 @@ function MentorListCard (props) {
   )
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     selectMentorAction: bindActionCreators({selectMentor: selectMentor}, dispatch)

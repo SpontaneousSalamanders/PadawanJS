@@ -6,6 +6,8 @@ import Checkbox from 'material-ui/Checkbox'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { postEvent } from '../actions/postEventActions.jsx';
+import DatePicker from 'material-ui/DatePicker';
+import TimePicker from 'material-ui/TimePicker';
 
 const validate = values => {
   const errors = {}
@@ -56,38 +58,28 @@ const EventForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit(postEvent)}>
+      Event
       <div>
-        <Field name="firstName" component={renderTextField} label="First Name"/>
+        <Field name="title" component={renderTextField} label="Title"/>
       </div>
       <div>
-        <Field name="lastName" component={renderTextField} label="Last Name"/>
+        <Field name="eventDate" component={DatePicker} hintText="Select a date"/>
       </div>
       <div>
-        <Field name="email" component={renderTextField} label="Email"/>
-      </div>
-      <div>
-        <Field name="sex" component={renderRadioGroup}>
-          <RadioButton value="male" label="male"/>
-          <RadioButton value="female" label="female"/>
+        <Field name="location" component={renderSelectField} label="Location">
+          <MenuItem value="San Fransisco" primaryText="San Fransisco"/>
+          <MenuItem value="San Jose" primaryText="San Jose"/>
+          <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
         </Field>
       </div>
       <div>
-        <Field name="favoriteColor" component={renderSelectField} label="Favorite Color">
-          <MenuItem value={'ff0000'} primaryText="Red"/>
-          <MenuItem value={'00ff00'} primaryText="Green"/>
-          <MenuItem value={'0000ff'} primaryText="Blue"/>
-        </Field>
+        <Field name="eventTime" component={TimePicker} hintText="Select a time"/>
       </div>
       <div>
-        <Field name="employed" component={renderCheckbox} label="Employed"/>
-      </div>
-      <div>
-        <Field name="notes" component={renderTextField} label="Notes" multiLine={true} rows={2}/>
+        <Field name="description" component={renderTextField} label="Description" multiLine={true} rows={2}/>
       </div>
       <div>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
-        </button>
       </div>
     </form>
   )
