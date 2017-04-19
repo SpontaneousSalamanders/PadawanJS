@@ -68,8 +68,8 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.67.2",
-    "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3",
+    "socket.io": "^1.7.3",
     "twilio": "^2.11.1",
     "webpack": "^2.3.3"
   },
