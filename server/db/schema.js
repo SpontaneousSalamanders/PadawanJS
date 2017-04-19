@@ -112,7 +112,7 @@ const schema = (db) => {
           table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })
         .then((table) => {
-          console.log('Created replies table!');
+          console.log('Created messages table!');
           seedData(db);
         });
       }

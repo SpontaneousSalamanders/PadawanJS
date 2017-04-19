@@ -17,12 +17,12 @@ module.exports = {
     });
   },
 
-  postAnswer: (answer) => {
-    return db.knex
+  postReply: (reply) => {
+    return db.knex('messages')
     .insert({
-      user_id: answer.user_id,
-      message: answer.message,
-      reply_to_message_id: answer.reply_to_message_id
+      user_id: reply.user_id,
+      message: reply.message,
+      reply_to_message_id: reply.reply_to_message_id
     });
   }
 };
