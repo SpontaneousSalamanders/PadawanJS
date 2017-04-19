@@ -34,7 +34,9 @@ export function signinUser({ email, password }) {
 
         // // - redirect to the appropriate route
         if(decoded_token_data.type === 'padawan') {
-          browserHistory.push('/padawan_profile/' + decoded_token_data.sub);
+          // browserHistory.push('/padawan_profile/' + decoded_token_data.sub);
+
+          browserHistory.push('/');
         }
         // // - set mentor flag if token indicates the user has mentor privileges
         else if (decoded_token_data.type == 'mentor') {
@@ -45,7 +47,6 @@ export function signinUser({ email, password }) {
         else {
           browserHistory.push('/');
         }
-        // browserHistory.push('/');
 
       })
       .catch(() => {
