@@ -5,7 +5,8 @@ module.exports = {
     return db.knex
     .select()
     .from('messages')
-    .where({user_id: user_id});
+    .where({user_id: user_id})
+    .orderBy('created_at');
   },
 
   postQuestion: (question) => {
