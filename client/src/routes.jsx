@@ -8,7 +8,13 @@ import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import MentorPage from './components/MentorPage.jsx';
 
-export default (<Route component={App} >
+export default (<Route
+  component={App}
+  onChange={(prevState, nextState) => {
+    if (nextState.location.action !== "POP") {
+      window.scrollTo(0, 0);
+    }
+  }}>
   <Route path="/" component={LandingPage} />
   <Route path="/find_mentor" component={FindMentor} />
   <Route path="/signin" component={LoginPage} />
