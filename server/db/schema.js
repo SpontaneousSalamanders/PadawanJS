@@ -57,6 +57,19 @@ const schema = (db) => {
       }
     }),
 
+    db.knex.schema.hasTable('categories').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('categories', (table) => {
+          table.increments('id').primary();
+          table.string('category');
+          table.string('picture');
+        })
+        .then((table) => {
+          console.log('Created categories table!');
+        });
+      }
+    }),
+
     db.knex.schema.hasTable('resources').then((exists) => {
       if (!exists) {
         db.knex.schema.createTable('resources', (table) => {
@@ -66,7 +79,7 @@ const schema = (db) => {
           table.string('description');
           table.string('URL');
           table.string('icon');
-          table.string('category_id').unsigned.references('id').inTable('categories');
+          table.integer('category_id').unsigned().references('id').inTable('categories');
           // table.specificType('tags', 'text[]');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
@@ -92,18 +105,6 @@ const schema = (db) => {
       }
     }),
 
-    db.knex.schema.hasTable('categories').then((exists) => {
-      if (!exists) {
-        db.knex.schema.createTable('categories', (table) => {
-          table.increments('id').primary();
-          table.string('category');
-          table.string('picture');
-        })
-        .then((table) => {
-          console.log('Created categories table!');
-        });
-      }
-    }),
 
     db.knex.schema.hasTable('messages').then((exists) => {
       if (!exists) {

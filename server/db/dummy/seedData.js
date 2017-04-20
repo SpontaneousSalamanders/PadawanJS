@@ -16,6 +16,9 @@ db.knex.schema.hasTable('users')
   return db.knex('events').insert(events);
 })
 .then(() => {
+  return db.knex('categories').insert(categories);
+})
+.then(() => {
   return db.knex('resources').insert(resources);
 })
 .then(() => {
@@ -23,9 +26,6 @@ db.knex.schema.hasTable('users')
 })
 .then(() => {
   return db.knex('users_resources').insert(users_resources);
-})
-.then(() => {
-  return db.knex('categories').insert(categories);
 })
 .then(() => {
   return db.knex('messages').insert(messages);
