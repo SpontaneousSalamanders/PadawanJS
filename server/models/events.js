@@ -5,7 +5,8 @@ module.exports = {
     return db.knex
     .select()
     .from('events')
-    .where({user_id: user_id});
+    .where({user_id: user_id})
+    .orderBy('created_at');
   },
 
   postEvent: (event) => {
@@ -19,4 +20,34 @@ module.exports = {
       time: event.time
     });
   },
+
+  attendEvent: (user_id, event_id) => {
+    return db.knex('users_events')
+    .insert({
+      user_id: user_id,
+      event_id: event_id
+    });
+  },
+
+  getMenteeEvents: (user_id) => {
+    return db.knex
+    .select()
+    .from('events')
+    .innerJoin('users_events', function() {
+      this.on('users_events.user_id', '=', Number(user_id))
+      .andOn('events.id', '=', 'users_events.event_id');
+    })
+    .orderBy('created_at');
+  }
 };
+
+  // getMenteeEvents: (event_id) => {
+  //   return db.knex
+  //   .select()
+  //   .from('users')
+  //   .innerJoin('users_events', function() {
+  //     this
+  //     .on('users_events.event_id', '=', Number(event_id))
+  //     .andOn('users_events.user_id', '=', 'users.id');
+  //   });
+  // }

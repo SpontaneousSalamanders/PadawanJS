@@ -1,3 +1,5 @@
+'use strict';
+
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {

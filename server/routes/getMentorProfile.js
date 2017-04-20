@@ -1,3 +1,5 @@
+'use strict';
+
 const Mentors = require('../models/mentors.js');
 
 module.exports = (req, res) => {
