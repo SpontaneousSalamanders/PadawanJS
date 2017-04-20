@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = [
+module.exports.categories = [
   {
     category: 'React',
     picture: 'http://coenraets.org/present/react/img/react.png'

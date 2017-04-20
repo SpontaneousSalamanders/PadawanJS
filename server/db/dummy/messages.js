@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = [
+module.exports.messages = [
   {
     title: 'Time complexity question',
     user_id: 1,
