@@ -3,8 +3,9 @@ const db = require('../db');
 module.exports = {
   getMentorResources: (user_id) => {
     return db.knex
-    .select('title', 'description', 'URL', 'icon')
+    .select()
     .from('resources')
+    .leftJoin('categories', 'resources.category_id', 'categories.id')
     .where({user_id: user_id})
     .orderBy('created_at');
   },
