@@ -17,8 +17,7 @@ module.exports = {
     .innerJoin('users_resources', function() {
       this.on('users_resources.user_id', '=', Number(user_id))
       .andOn('resources.id', '=', 'users_resources.resource_id');
-    })
-    .orderBy('created_at');
+    });
   },
 
   postResource: (resource) => {

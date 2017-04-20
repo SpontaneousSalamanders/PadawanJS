@@ -35,9 +35,8 @@ module.exports = {
     .from('events')
     .innerJoin('users_events', function() {
       this.on('users_events.user_id', '=', Number(user_id))
-      .andOn('events.id', '=', 'users_events.event_id');
-    })
-    .orderBy('created_at');
+      .andOn('users_events.event_id', '=', 'events.id');
+    });
   }
 };
 

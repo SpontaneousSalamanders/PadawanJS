@@ -7,7 +7,6 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      icon: 'http://coenraets.org/present/react/img/react.png',
       category_id: 1,
       created_at: '2017-04-19 12:27:17.205319-07'
     },
@@ -16,7 +15,6 @@ module.exports = {
       title: 'Angular Documentation',
       description: 'Angular is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://docs.angularjs.org/api',
-      icon: 'https://www.w3schools.com/angular/pic_angular.jpg',
       category_id: 2,
       created_at: '2017-04-19 12:28:17.205319-07'
     },
@@ -25,7 +23,6 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      // icon: 'http://coenraets.org/present/react/img/react.png',
       category_id: 1,
       created_at: '2017-04-19 12:29:17.205319-07'
     },
@@ -34,7 +31,6 @@ module.exports = {
       title: 'Redux Course',
       description: 'Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6',
       URL: 'https://www.udemy.com/react-redux/',
-      // icon: 'https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png',
       category_id: 3,
       created_at: '2017-04-19 12:30:17.205319-07'
     },
@@ -43,7 +39,6 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      // icon: 'http://coenraets.org/present/react/img/react.png',
       category_id: 1,
       created_at: '2017-04-19 12:33:17.205319-07'
     },
@@ -52,7 +47,6 @@ module.exports = {
       title: 'Angular Documentation',
       description: 'Angular is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://docs.angularjs.org/api',
-      // icon: 'https://www.w3schools.com/angular/pic_angular.jpg',
       category_id: 2,
       created_at: '2017-04-19 12:32:17.205319-07'
     },
@@ -61,7 +55,6 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      // icon: 'http://coenraets.org/present/react/img/react.png',
       category_id: 1,
       created_at: '2017-04-19 12:31:17.205319-07'
     },
@@ -70,7 +63,6 @@ module.exports = {
       title: 'Redux Course',
       description: 'Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6',
       URL: 'https://www.udemy.com/react-redux/',
-      // icon: 'https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png',
       category_id: 3,
       created_at: '2017-04-19 12:30:17.205319-07'
     }

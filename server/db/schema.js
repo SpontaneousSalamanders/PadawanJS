@@ -78,9 +78,7 @@ const schema = (db) => {
           table.string('title');
           table.string('description');
           table.string('URL');
-          // table.string('icon');
           table.integer('category_id').unsigned().references('id').inTable('categories');
-          // table.specificType('tags', 'text[]');
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
           table.timestamp('created_at').defaultTo(db.knex.fn.now());
@@ -104,7 +102,6 @@ const schema = (db) => {
         });
       }
     }),
-
 
     db.knex.schema.hasTable('messages').then((exists) => {
       if (!exists) {
