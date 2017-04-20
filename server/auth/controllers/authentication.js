@@ -46,6 +46,7 @@ exports.signup = function(req, res, next) {
 exports.mentor_profile_activation = function (req, res, next) {
   const email = req.body.email;
   const role = req.body.role;
+  const picture = req.body.img;
   const location = req.body.location;
   const techStack = req.body.techStack;
   const type = 'mentor';
@@ -62,6 +63,7 @@ exports.mentor_profile_activation = function (req, res, next) {
       role: role,
       location: location,
       techStack: techStack,
+      picture: picture,
     })
     .then(() => {
       console.log('mentor updated in type');

@@ -13,10 +13,15 @@ function createUser (email, password, name) {
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(password, salt);
   return db.knex('users').insert({
+    type: 'padawan',
+    name: name,
     email: email,
     password: hash,
-    name: name,
-    type: 'padawan'
+    location: 'none',
+    role: 'none',
+    picture: 'none',
+    techStack: ['none', 'none'],
+    followers: 0
   })
   .returning('*')
   .then( () => {
