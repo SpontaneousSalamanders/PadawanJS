@@ -125,7 +125,6 @@ export function fetchStudentProfile() {
 }
 
 
-
 //token included in the header of the request for authorization
 // fetch mentor dashboard with mentor privileges
 export function fetchMentorProfile(mentor) {
