@@ -5,8 +5,8 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Checkbox from 'material-ui/Checkbox'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import { postResource } from '../actions/postResourceActions.jsx';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import { postResource } from '../actions/postResourceActions.jsx';
 import FlatButton from 'material-ui/FlatButton';
 
 const validate = values => {
