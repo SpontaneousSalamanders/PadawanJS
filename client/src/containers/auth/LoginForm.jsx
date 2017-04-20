@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { signinUser } from '../../actions/authActions.jsx'
+import * as actions from '../../actions/authActions.jsx'
 
 
 
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
 
 export default reduxForm({
   form: 'login',
-}, mapStateToProps, { signinUser })(LoginForm);
+}, mapStateToProps, actions)(LoginForm);
 
 
 
