@@ -5,6 +5,8 @@ import Resources from './reducer_resources.jsx';
 import { reducer as formReducer } from 'redux-form';
 import EventsReducer from './reducer_events.jsx';
 import AuthReducer from './reducer_auth.jsx';
+import MessageReducer from './reducer_messages.jsx';
+
 
 
 
@@ -52,11 +54,11 @@ export function homeReducer(state = initialState, action) {
 const RootReducer = combineReducers({
   mentors: MentorsReducer,
   selectedMentor: SelectedMentor,
-
   resources: Resources,
   form: formReducer,
   events: EventsReducer,
   auth: AuthReducer,
+  messages: MessageReducer
 
 });
 
