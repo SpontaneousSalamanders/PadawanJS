@@ -21,7 +21,7 @@ class MentorForm extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: {email, role, location, tech} } = this.props;
+    const { handleSubmit } = this.props;
 
     const techOptions = [
       {
