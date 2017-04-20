@@ -150,6 +150,23 @@ module.exports = {
       created_at: '2017-04-19 12:26:17.205319-07'
     }
   ],
+  users_events: [
+    {
+      user_id: 9,
+      event_id: 1,
+      created_at: '2017-04-19 12:31:17.205319-07'
+    },
+    {
+      user_id: 10,
+      event_id: 1,
+      created_at: '2017-04-19 12:32:17.205319-07'
+    },
+    {
+      user_id: 10,
+      event_id: 2,
+      created_at: '2017-04-19 12:33:17.205319-07'
+    }
+  ],
   resources: [
     {
       user_id: 1,
@@ -216,21 +233,22 @@ module.exports = {
       created_at: '2017-04-19 12:30:17.205319-07'
     }
   ],
-  users_events: [
+  users_resources: [
     {
       user_id: 9,
-      event_id: 1,
-      created_at: '2017-04-19 12:31:17.205319-07'
+      resource_id: 1
+    },
+    {
+      user_id: 9,
+      resource_id: 2
     },
     {
       user_id: 10,
-      event_id: 1,
-      created_at: '2017-04-19 12:32:17.205319-07'
+      resource_id: 3
     },
     {
       user_id: 10,
-      event_id: 2,
-      created_at: '2017-04-19 12:33:17.205319-07'
+      resource_id: 4
     }
   ],
   categories: [
