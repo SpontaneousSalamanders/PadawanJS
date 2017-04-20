@@ -10,6 +10,6 @@ module.exports = (req, res) => {
     res.status(200).end();
   })
   .catch((err) => {
-    res.status(err.status || 500).send({'error in getResources': err});
+    res.status(err.status || 500).send({'error in postResources': err});
   });
 }
