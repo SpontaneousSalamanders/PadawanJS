@@ -22,7 +22,8 @@ module.exports = {
     .insert({
       user_id: reply.user_id,
       message: reply.message,
-      reply_to_message_id: reply.reply_to_message_id
+      reply_to_message_id: reply.reply_to_message_id,
+      root_message_id: reply.root_message_id
     });
   }
 };
