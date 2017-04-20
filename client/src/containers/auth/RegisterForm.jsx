@@ -3,6 +3,18 @@ import { Field, Form, reduxForm } from 'redux-form';
 import * as actions from '../../actions/authActions.jsx';
 import { connect } from 'react-redux';
 
+const renderInput = (field) => {
+    const { label, type, input, meta: { error, touched } } = field;
+    return (
+        <div>
+            <label>{label}:</label>
+            <input {...input} type={type}
+                className="form-control" />
+                {touched && error && <div className="error">{error}</div>}
+        </div>
+    );
+}
+
 class RegisterForm extends Component {
   handleFormSubmit(formProps) {
     this.props.signupUser({...formProps}, {type: 'padawan'});
@@ -41,12 +53,37 @@ class RegisterForm extends Component {
   }
 }
 
+function validate(formProps) {
+    const errors = {};
+    const { password, passwordConfirm, email } = formProps;
+
+    if (!email) {
+        errors.email = 'Please enter an email';
+    }
+
+    if (!password) {
+        errors.password = 'Please enter a password';
+    }
+
+    if (!passwordConfirm) {
+        errors.passwordConfirm = 'Please enter a password confirmation';
+    }
+
+    if (password !== passwordConfirm) {
+        errors.password = 'Passwords must match';
+    }
+
+    return errors;
+}
+
+
 function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
 RegisterForm = reduxForm({
   form: 'register',
+  validate,
 })(RegisterForm);
 
 export default connect(mapStateToProps, actions)(RegisterForm);
