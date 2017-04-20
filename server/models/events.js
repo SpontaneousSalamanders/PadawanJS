@@ -20,6 +20,14 @@ module.exports = {
     });
   },
 
+  attendEvent: (user_id, event_id) => {
+    return db.knex('users_events')
+    .insert({
+      user_id: user_id,
+      event_id: event_id
+    });
+  },
+
   getMenteeEvents: (user_id) => {
     return db.knex
     .select()

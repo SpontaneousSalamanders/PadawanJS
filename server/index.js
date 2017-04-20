@@ -34,6 +34,7 @@ app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getMenteeResources/:uid', handler.getMenteeResources);
 app.get('/getQuestions/:uid', handler.getQuestions);
 app.post('/postEvent', handler.postEvent);
+app.post('/attendEvent', handler.attendEvent);
 app.post('/postResource', handler.postResource);
 app.post('/saveResource', handler.saveResource);
 app.post('/postQuestion', handler.postQuestion);
