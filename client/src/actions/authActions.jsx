@@ -40,6 +40,9 @@ export function signinUser({ email, password }) {
         // // - set mentor flag if token indicates the user has mentor privileges
         else if (decoded_token_data.type === 'mentor') {
           dispatch({ type: SET_MENTOR_PRIVILEGES });
+
+          // below commented won't work unless that profile has already been visited. need to think of another work around
+
           // browserHistory.push('/profile/' + decoded_token_data.sub);
            browserHistory.push('/');
         }

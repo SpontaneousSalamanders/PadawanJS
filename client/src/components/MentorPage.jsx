@@ -10,7 +10,15 @@ import MentorProfileCard from '../containers/MentorProfileCard.jsx';
 import ChallengeThreadList from '../containers/ChallengeThreadList.jsx';
 
 
-const MentorPage = function (props) {  
+
+// redux form v6 breaks code
+
+// ResourceBoard />
+// EventBoard />
+// ResourcePost />
+
+
+const MentorPage = function (props) {
   return (
     <div className="container" style={{marginTop: 150, width: '100%'}}>
       <div className="row">
