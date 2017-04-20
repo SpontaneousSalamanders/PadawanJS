@@ -84,7 +84,7 @@ class TechSelect extends Component {
     }
 }
 
-MultiCheckboxField.propTypes = {
+TechSelect.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.node
