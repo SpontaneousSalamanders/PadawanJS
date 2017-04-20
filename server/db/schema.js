@@ -62,7 +62,7 @@ const schema = (db) => {
         db.knex.schema.createTable('categories', (table) => {
           table.increments('id').primary();
           table.string('category');
-          table.string('picture');
+          table.string('icon');
         })
         .then((table) => {
           console.log('Created categories table!');
@@ -78,7 +78,7 @@ const schema = (db) => {
           table.string('title');
           table.string('description');
           table.string('URL');
-          table.string('icon');
+          // table.string('icon');
           table.integer('category_id').unsigned().references('id').inTable('categories');
           // table.specificType('tags', 'text[]');
           table.integer('user_id').unsigned().references('id').inTable('users');
