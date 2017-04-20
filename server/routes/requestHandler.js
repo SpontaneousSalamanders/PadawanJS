@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  attendEvent: require('./attendEvent.js'),
   getEvents: require('./getEvents.js'),
   getMenteeEvents: require('./getMenteeEvents.js'),
   getMentorProfile: require('./getMentorProfile.js'),
