@@ -8,13 +8,14 @@
 
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import * as actions from '../../actions/authActions.jsx'
+import * as actions from '../../actions/authActions.jsx';
+import { connect } from 'react-redux';
 
 
 
 class LoginForm extends Component {
-  handleFormSubmit(formProps, dispatch) {
-    return dispatch(this.props.signinUser({...formProps}));
+  handleFormSubmit({ email, password }) {
+    this.props.signinUser({email, password}));
   }
 
   renderAlert() {
@@ -33,9 +34,9 @@ class LoginForm extends Component {
     return (
       <form style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <label>Email:</label>
-          <Field className="form-group" name="email" type="email" />
+          <Field className="form-group" component="input" name="email" type="email" />
           <label>Password:</label>
-            <Field className="form-group" name="password" type="password" />
+            <Field className="form-group" component="input" name="password" type="password" />
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign in</button>
       </form>
@@ -47,9 +48,11 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
-export default reduxForm({
+LoginForm = reduxForm({
   form: 'login',
-}, mapStateToProps, actions)(LoginForm);
+})(LoginForm);
+
+export default connect(mapStateToProps, actions)(LoginForm);
 
 
 
