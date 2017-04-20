@@ -27,8 +27,8 @@ class MentorList extends Component {
   render() {
     return (
       <div className='container'style={{width: '100%', marginTop: 100, marginLeft: 150}}>
-        <div class="row">
-            <div class="col-sm-8"></div>
+        <div className="row">
+            <div className="col-sm-12"></div>
             {this.renderList()}
         </div>
       </div>
