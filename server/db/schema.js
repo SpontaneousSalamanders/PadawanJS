@@ -1,4 +1,4 @@
-const seedData = require('./dummy/seedData.js')
+'use strict';
 
 const schema = (db) => {
   return Promise.all([
@@ -118,7 +118,6 @@ const schema = (db) => {
         })
         .then((table) => {
           console.log('Created messages table!');
-          seedData(db);
         });
       }
     })

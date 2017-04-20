@@ -46,5 +46,5 @@ module.exports = {
       event_id: 2,
       created_at: '2017-04-19 12:33:17.205319-07'
     }
-  ],
+  ]
 }

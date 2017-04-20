@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = [
+module.exports.users = [
   {
     type: 'mentor',
     name: 'Beth Johnson',
