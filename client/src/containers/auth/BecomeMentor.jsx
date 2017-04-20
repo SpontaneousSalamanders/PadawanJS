@@ -24,16 +24,32 @@ class MentorForm extends Component {
     // renders the sign up register form
     return (
       <Form style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <div>
         <label><Field name="email" component="input" type="email"/>Re-enter your email:</label>
+      </div>
+      <div>
         <label><Field name="role" component="input" type="radio" value="Full Stack"/>Full Stack</label>
+      </div>
+      <div>
         <label><Field name="role" component="input" type="radio" value="Front end"/>Front end</label>
+      </div>
+      <div>
         <label><Field name="role" component="input" type="radio" value="Back end"/>Back end</label>
-        <label>Password:</label>
-          <Field className="form-control" component="input" name="password" type="password" />
-        <label>Confirm Password:</label>
-          <Field className="form-control" component="input" name="passwordConfirm" type="password" />
+      </div>
+      <div>
+      <div>
+        <Field name="location" component="select">
+          <option></option>
+          <option value="San Francisco">San Francisco</option>
+          <option value="San Jose">San Jose</option>
+          <option value="Palo Alto">Palo Alto</option>
+        </Field>
+      </div>
+
+
+
         {this.renderAlert()}
-        <button action="submit" className="btn btn-primary">Sign up!</button>
+        <button action="submit" className="btn btn-primary">Submit Jedi Application!</button>
       </Form>
     );
   }
