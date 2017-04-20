@@ -3,6 +3,8 @@ import { Field, Form, reduxForm } from 'redux-form';
 import * as actions from '../../actions/authActions.jsx';
 import { connect } from 'react-redux';
 
+import TechSelect from '../../components/TechSelect.jsx'
+
 class MentorForm extends Component {
   handleFormSubmit(formProps) {
     this.props.activateMentorProfile({...formProps});
@@ -19,7 +21,42 @@ class MentorForm extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, fields: {email, role, location, tech} } = this.props;
+
+    const techOptions = [
+      {
+        id: 'React',
+        label: 'React'
+      },
+      {
+        id: 'Angular',
+        label: 'Angular'
+      },
+      {
+        id: 'Backbone',
+        label: 'Backbone'
+      },
+      {
+        id: 'React Native',
+        label: 'React Native'
+      },
+      {
+        id: 'Express',
+        label: 'Express'
+      },
+      {
+        id: 'Node.js',
+        label: 'Node.js'
+      },
+      {
+        id: 'TDD',
+        label: 'TDD'
+      },
+      {
+        id: 'Redux',
+        label: 'Redux'
+      },
+    ]
 
     // renders the sign up register form
     return (
@@ -37,7 +74,6 @@ class MentorForm extends Component {
         <label><Field name="role" component="input" type="radio" value="Back end"/>Back end</label>
       </div>
       <div>
-      <div>
         <Field name="location" component="select">
           <option></option>
           <option value="San Francisco">San Francisco</option>
@@ -45,9 +81,14 @@ class MentorForm extends Component {
           <option value="Palo Alto">Palo Alto</option>
         </Field>
       </div>
-
-
-
+      <div>
+        <Field name="techStack" component={props =>
+          <TechSelect
+            options={techOptions}
+            field={props.input}
+          />
+        } />
+      </div>
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Submit Jedi Application!</button>
       </Form>
