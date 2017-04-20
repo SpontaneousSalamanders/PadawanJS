@@ -10,7 +10,30 @@ import React, { Component } from 'react';
 import { Field, Form, reduxForm } from 'redux-form';
 import * as actions from '../../actions/authActions.jsx';
 import { connect } from 'react-redux';
+import TextField from 'material-ui/TextField';
 
+
+const validate = values => {
+  const errors = {}
+  const requiredFields = [ 'email', 'password' ]
+  requiredFields.forEach(field => {
+    if (!values[ field ]) {
+      errors[ field ] = 'Required'
+    }
+  })
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+  return errors;
+}
+
+const renderTextField = (props) => {
+  <TextField hintText={props.label}
+    floatingLabelText={props.label}
+    errorText={props.touched && props.error}
+    {...props}
+  />
+}
 
 
 class LoginForm extends Component {
@@ -33,10 +56,8 @@ class LoginForm extends Component {
 
     return (
       <Form style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <label>Email:</label>
-          <Field className="form-group" component="input" name="email" type="email" />
-          <label>Password:</label>
-            <Field className="form-group" component="input" name="password" type="password" />
+          <Field className="form-group" component={renderTextField} name="email" type="email" label="Email" />
+          <Field className="form-group" component={renderTextField} name="password" type="password" label="Password"/>
           {this.renderAlert()}
           <button action="submit" className="btn btn-primary">Sign in</button>
       </Form>
@@ -50,6 +71,7 @@ function mapStateToProps(state) {
 
 LoginForm = reduxForm({
   form: 'login',
+  validate,
 })(LoginForm);
 
 export default connect(mapStateToProps, actions)(LoginForm);

@@ -47,6 +47,7 @@
     "jwt-simple": "^0.5.1",
     "knex": "^0.12.9",
     "lodash": "^4.17.4",
+    "material-ui": "^0.17.4",
     "node-gyp": "^3.6.0",
     "material-ui": "^0.17.4",
     "nodemon": "^1.11.0",
