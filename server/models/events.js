@@ -33,8 +33,7 @@ module.exports = {
     .select()
     .from('events')
     .innerJoin('users_events', function() {
-      this
-      .on('users_events.user_id', '=', Number(user_id))
+      this.on('users_events.user_id', '=', Number(user_id))
       .andOn('events.id', '=', 'users_events.event_id');
     });
   }
