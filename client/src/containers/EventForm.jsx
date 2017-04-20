@@ -105,7 +105,7 @@ const EventForm = props => {
           label="Event Time" 
           format={null} />
       </div>
-      <div>
+      <div style={{marginTop: 20}}>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
       </div>
     </form>
