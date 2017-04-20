@@ -1,7 +1,7 @@
 {
   "name": "PadawanJS",
   "scripts": {
-    "postdeploy": "node server/db/dummy/seedData.js"
+    "postdeploy": "npm run seed"
   },
   "env": {
   },
