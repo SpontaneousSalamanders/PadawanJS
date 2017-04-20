@@ -5,7 +5,8 @@ module.exports = {
     return db.knex
     .select()
     .from('events')
-    .where({user_id: user_id});
+    .where({user_id: user_id})
+    .orderBy('created_at');
   },
 
   postEvent: (event) => {
@@ -35,7 +36,8 @@ module.exports = {
     .innerJoin('users_events', function() {
       this.on('users_events.user_id', '=', Number(user_id))
       .andOn('events.id', '=', 'users_events.event_id');
-    });
+    })
+    .orderBy('created_at');
   }
 };
 
