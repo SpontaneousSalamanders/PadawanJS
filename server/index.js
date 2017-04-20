@@ -25,7 +25,6 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname, + '/../client/dist')
 })
 
-
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);

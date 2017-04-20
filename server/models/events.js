@@ -24,9 +24,21 @@ module.exports = {
     return db.knex
     .select()
     .from('events')
-    .innerJoin('users_events')
-    .onIn({
-      // users_events.user_id: user_id,
+    .innerJoin('users_events', function() {
+      this
+      .on('users_events.user_id', '=', Number(user_id))
+      .andOn('events.id', '=', 'users_events.event_id');
     });
   }
 };
+
+  // getMenteeEvents: (event_id) => {
+  //   return db.knex
+  //   .select()
+  //   .from('users')
+  //   .innerJoin('users_events', function() {
+  //     this
+  //     .on('users_events.event_id', '=', Number(event_id))
+  //     .andOn('users_events.user_id', '=', 'users.id');
+  //   });
+  // }
