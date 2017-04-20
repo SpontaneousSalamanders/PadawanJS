@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, Form, reduxForm } from 'redux-form';
 import * as actions from '../../actions/authActions.jsx';
+import { connect } from 'react-redux';
 
 class RegisterForm extends Component {
   handleFormSubmit(formProps) {
@@ -18,37 +19,24 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password, firstName, lastName, passwordConfirm }} = this.props;
+    const { handleSubmit } = this.props;
 
     // renders the sign up register form
     return (
-      <form className="form" style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <fieldset className="form-group">
+      <Form className="form" style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <label>First Name:</label>
-          <input className="form-control" {...firstName} />
-        </fieldset>
-        <fieldset className="form-group">
+            <Field className="form-control" component="input" name="firstName" type="text" />
           <label>Last Name:</label>
-          <input className="form-control" {...lastName} />
-        </fieldset>
-        <fieldset className="form-group">
+            <Field className="form-control" component="input" name="lastName" type="text" />
           <label>Email:</label>
-          <input className="form-control" {...email} />
-        </fieldset>
-        <fieldset className="form-group">
+            <Field className="form-control" component="input" name="email" type="email" />
           <label>Password:</label>
-          <input className="form-control" {...password} type="password" />
-        </fieldset>
-        <fieldset className="form-group">
+            <Field className="form-control" component="input" name="password" type="password" />
           <label>Confirm Password:</label>
-          <input className="form-control" {...passwordConfirm} type="password" />
-        </fieldset>
-
-
-
+            <Field className="form-control" component="input" name="passwordConfirm" type="password" />
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign up!</button>
-      </form>
+      </Form>
     );
   }
 }
@@ -57,7 +45,8 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
-export default reduxForm({
+RegisterForm = reduxForm({
   form: 'register',
-  fields: ["email", "password", "firstName", "lastName", "passwordConfirm"]
-}, mapStateToProps, actions)(RegisterForm);
+})(RegisterForm);
+
+export default connect(mapStateToProps, actions)(RegisterForm);

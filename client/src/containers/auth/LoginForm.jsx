@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, Form, reduxForm } from 'redux-form';
 import * as actions from '../../actions/authActions.jsx';
 import { connect } from 'react-redux';
 
@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 
 class LoginForm extends Component {
   handleFormSubmit({ email, password }) {
-    this.props.signinUser({email, password}));
+    this.props.signinUser({email, password});
   }
 
   renderAlert() {
@@ -32,14 +32,14 @@ class LoginForm extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <Form style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <label>Email:</label>
           <Field className="form-group" component="input" name="email" type="email" />
           <label>Password:</label>
             <Field className="form-group" component="input" name="password" type="password" />
-        {this.renderAlert()}
-        <button action="submit" className="btn btn-primary">Sign in</button>
-      </form>
+          {this.renderAlert()}
+          <button action="submit" className="btn btn-primary">Sign in</button>
+      </Form>
     );
   }
 }
