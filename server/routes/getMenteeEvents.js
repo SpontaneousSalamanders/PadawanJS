@@ -3,11 +3,13 @@
 const Events = require('../models/events.js');
 
 module.exports = (req, res) => {
-  // Events.getMenteeEvents()
-  // .then((resources) => {
-  //   res.status(200).send(resources);
-  // })
-  // .catch((err) => {
-  //   res.status(err.status || 500).send({'error in getResources': err});
-  // });
+  const user_id = req.params.uid;
+
+  Events.getMenteeEvents(user_id)
+  .then((events) => {
+    res.status(200).send(events);
+  })
+  .catch((err) => {
+    res.status(err.status || 500).send({'error in getMenteeEvents': err});
+  });
 }
