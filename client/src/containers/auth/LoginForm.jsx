@@ -27,12 +27,15 @@ const validate = values => {
   return errors;
 }
 
-const renderTextField = (props) => {
-  <TextField hintText={props.label}
-    floatingLabelText={props.label}
-    errorText={props.touched && props.error}
-    {...props}
-  />
+const renderInput = (props) => {
+  const { label, type, input, meta: { error, touched } } = props;
+  return (
+      <div>
+        <label>{label}</label>
+        <input {...input} type={type} />
+          {touched && error && <div className="error">{error}</div>}
+      </div>
+  );
 }
 
 
@@ -56,8 +59,8 @@ class LoginForm extends Component {
 
     return (
       <Form style={{marginTop: 150}} onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <Field className="form-group" component={renderTextField} name="email" type="email" label="Email" />
-          <Field className="form-group" component={renderTextField} name="password" type="password" label="Password"/>
+          <Field className="form-group" component={renderInput} name="email" type="email" label="Email" />
+          <Field className="form-group" component={renderInput} name="password" type="password" label="Password"/>
           {this.renderAlert()}
           <button action="submit" className="btn btn-primary">Sign in</button>
       </Form>
