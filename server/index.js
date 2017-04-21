@@ -8,6 +8,13 @@ var cors = require('cors');
 // authentication routes
 var authRouter = require('./routes/authRoutes.js')
 
+const auth = require ('./auth/controllers/authentication');
+const passport = require('passport');
+const passportStrategies = require('./auth/passportStrategies.js');
+const requireAuth = passport.authenticate('jwt', { session: false });
+const requireSignin = passport.authenticate('local', { session: false });
+const requireMentor = require('./auth/requireMentor')
+
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -28,17 +35,19 @@ app.get('/', function(req, res) {
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
-app.get('/getMenteeEvents/:uid', handler.getMenteeEvents);
-app.get('/getMentorResources/:uid', handler.getMentorResources);
 app.get('/getResources/:uid', handler.getMentorResources);
-app.get('/getMenteeResources/:uid', handler.getMenteeResources);
 app.get('/getQuestions/:uid', handler.getQuestions);
-app.post('/postEvent', handler.postEvent);
-app.post('/attendEvent', handler.attendEvent);
-app.post('/postResource', handler.postResource);
-app.post('/saveResource', handler.saveResource);
-app.post('/postQuestion', handler.postQuestion);
-app.post('/postReply', handler.postReply);
+
+app.get('/getMenteeResources/:uid', requireAuth, handler.getMenteeResources);
+app.get('/getMenteeEvents/:uid', requireAuth, handler.getMenteeEvents);
+app.post('/attendEvent', requireAuth, handler.attendEvent);
+app.post('/saveResource', requireAuth, handler.saveResource);
+app.post('/postReply', requireAuth, handler.postReply);
+
+app.post('/postEvent', requireAuth, requireMentor, handler.postEvent);
+app.post('/postResource', requireAuth, requireMentor, handler.postResource);
+app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion);
+
 app.get('/*', handler.wildCard);
 
 // authentication routes
