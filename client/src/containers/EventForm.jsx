@@ -4,8 +4,8 @@ import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Checkbox from 'material-ui/Checkbox'
 import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import MenuItem from 'material-ui/MenuItem'
 import { postEvent } from '../actions/postEventActions.jsx';
 import FlatButton from 'material-ui/FlatButton';
 import {

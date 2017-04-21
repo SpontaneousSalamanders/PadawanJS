@@ -5,8 +5,8 @@ import EventBoard from '../containers/EventBoard.jsx';
 import MentorPostMenu from './MentorPostMenu.jsx';
 import EventForm from '../containers/EventForm.jsx';
 import ResourceForm from '../containers/ResourceForm.jsx';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MentorProfileCard from '../containers/MentorProfileCard.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const MentorPage = function (props) {  
   return (

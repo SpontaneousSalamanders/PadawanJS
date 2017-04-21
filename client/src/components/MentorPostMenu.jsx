@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Input, Menu, Segment } from 'semantic-ui-react'
 import ResourceForm from '../containers/ResourceForm.jsx';
+import { Input, Menu, Segment } from 'semantic-ui-react'
 import EventForm from '../containers/EventForm.jsx';
 
 class MentorPostMenu extends Component {
