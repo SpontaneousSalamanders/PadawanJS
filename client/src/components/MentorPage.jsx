@@ -14,7 +14,12 @@ const MentorPage = function (props) {
       <div className="row">
         <div className="col-md-6" >
           <MentorProfileCard/>
-          <MentorPostMenu />
+          <MuiThemeProvider>
+            <EventForm/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <ResourceForm/>
+          </MuiThemeProvider>
         </div>
         <div className="col-md-6">
           <ResourceBoard/>
