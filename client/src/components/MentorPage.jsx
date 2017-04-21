@@ -7,6 +7,8 @@ import EventForm from '../containers/EventForm.jsx';
 import ResourceForm from '../containers/ResourceForm.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MentorProfileCard from '../containers/MentorProfileCard.jsx';
+import ChallengeThreadList from '../containers/ChallengeThreadList.jsx';
+
 
 const MentorPage = function (props) {  
   return (
@@ -24,6 +26,7 @@ const MentorPage = function (props) {
         <div className="col-md-6">
           <ResourceBoard/>
           <EventBoard/>
+          <ChallengeThreadList />
         </div>
       </div>
       <div>
