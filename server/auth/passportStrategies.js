@@ -51,17 +51,15 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 
 // Setup options for JWT Strategy
 const jwtOptions = {
+
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: config.secret
 };
 
-const jwtLogin = new JwtStrategy(jwtOptions, function(err, payload) {
+const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if the user ID in the payload exists in our database
-  db.knex('users').where({id: id}).first()
+  db.knex('users').where({id: payload.sub}).first()
   .then((user) =>{
-    if(err) {
-      return done(err);
-    }
     if (user) {
       return done (null, user);
     } else {

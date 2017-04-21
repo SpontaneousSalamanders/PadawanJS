@@ -50,11 +50,11 @@ exports.mentor_profile_activation = function (req, res, next) {
   const techStack = req.body.techStack;
   const type = 'mentor';
 
-  console.log('list of stuff', email, role, picture, location, techStack, type);
+  console.log('list of stuff', email, role, location, techStack, type);
 
 
-  if (!email || !password) {
-    return res.status(422).send({ error: 'You must provide email and password'});
+  if (!email) {
+    return res.status(422).send({ error: 'You must provide email'});
   }
 
   // find user in the database and update his role to mentor
@@ -64,7 +64,6 @@ exports.mentor_profile_activation = function (req, res, next) {
       role: role,
       location: location,
       techStack: techStack,
-      picture: picture,
     })
     .then(() => {
       console.log('mentor updated in type');
