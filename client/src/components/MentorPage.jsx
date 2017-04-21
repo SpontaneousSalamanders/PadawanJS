@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import ResourceBoard from '../containers/ResourceBoard.jsx';
 import MentorCard from '../containers/MentorCard.jsx';
 import EventBoard from '../containers/EventBoard.jsx';
-<<<<<<< HEAD
 import MentorPostMenu from './MentorPostMenu.jsx';
 import EventForm from '../containers/EventForm.jsx';
 import ResourceForm from '../containers/ResourceForm.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MentorProfileCard from '../containers/MentorProfileCard.jsx';
-=======
-import ResourcePost from '../containers/ResourcePost.jsx';
 import ChallengeThreadList from '../containers/ChallengeThreadList.jsx';
->>>>>>> temporary commit before rebase
+
 
 const MentorPage = function (props) {  
   return (

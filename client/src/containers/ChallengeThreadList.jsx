@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Divider, Segment } from 'semantic-ui-react';
 import ChallengeQuestion from './ChallengeQuestion.jsx';
-// import ChallengeAnswer from './ChallengeAnswer.jsx';
 import EnterNewComment from './EnterNewComment.jsx';
 
 // dummy data: this will be replaced by data from database
@@ -82,6 +81,5 @@ class ChallengeThreadList extends Component {
 		)
 	}
 }
-
 
 export default ChallengeThreadList;
