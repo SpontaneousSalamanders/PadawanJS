@@ -51,6 +51,8 @@ exports.mentor_profile_activation = function (req, res, next) {
   const techStack = req.body.techStack;
   const type = 'mentor';
 
+  console.log('list of stuff', email, role, picture, location, techStack, type);
+
 
   if (!email || !password) {
     return res.status(422).send({ error: 'You must provide email and password'});
