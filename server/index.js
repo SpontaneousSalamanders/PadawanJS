@@ -25,17 +25,21 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname, + '/../client/dist')
 })
 
-
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
+app.get('/getMenteeEvents/:uid', handler.getMenteeEvents);
 app.get('/getMentorResources/:uid', handler.getMentorResources);
 app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getMenteeResources/:uid', handler.getMenteeResources);
+app.get('/getQuestions/:uid', handler.getQuestions);
 app.post('/postEvent', handler.postEvent);
+app.post('/attendEvent', handler.attendEvent);
 app.post('/postResource', handler.postResource);
 app.post('/saveResource', handler.saveResource);
-app.get('/*');
+app.post('/postQuestion', handler.postQuestion);
+app.post('/postReply', handler.postReply);
+app.get('/*', handler.wildCard);
 
 // authentication routes
 authRouter(app);

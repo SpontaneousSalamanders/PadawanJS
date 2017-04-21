@@ -1,18 +1,23 @@
+'use strict';
+
 const db = require('../db');
 
-module.exports = {
-  getMentors: () => {
-    return db.knex
-    .select('id', 'name', 'location', 'role', 'picture', 'techStack', 'followers')
-    .from('users')
-    .where({type: 'mentor'});
-  },
+const getMentors = () => {
+  return db.knex
+  .select('id', 'name', 'location', 'role', 'picture', 'techStack', 'followers')
+  .from('users')
+  .where({type: 'mentor'});
+};
 
-  getMentorProfile: (user_id) => {
-    return db.knex
-    .select()
-    .from('users')
-    .where({id: user_id})
-    .first();
-  }
+const getMentorProfile = (user_id) => {
+  return db.knex
+  .select()
+  .from('users')
+  .where({id: user_id})
+  .first();
+};
+
+module.exports = {
+  getMentors: getMentors,
+  getMentorProfile: getMentorProfile
 };
