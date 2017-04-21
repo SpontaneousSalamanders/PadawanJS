@@ -46,7 +46,6 @@ exports.signup = function(req, res, next) {
 exports.mentor_profile_activation = function (req, res, next) {
   const email = req.body.email;
   const role = req.body.role;
-  const picture = req.body.img;
   const location = req.body.location;
   const techStack = req.body.techStack;
   const type = 'mentor';
@@ -59,7 +58,7 @@ exports.mentor_profile_activation = function (req, res, next) {
   }
 
   // find user in the database and update his role to mentor
-  db.knex('users').where({ email }).first()
+  db.knex('users').where({ email })
     .update({
       type: 'mentor',
       role: role,
