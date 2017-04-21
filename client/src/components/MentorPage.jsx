@@ -5,8 +5,8 @@ import EventBoard from '../containers/EventBoard.jsx';
 import MentorPostMenu from './MentorPostMenu.jsx';
 import EventForm from '../containers/EventForm.jsx';
 import ResourceForm from '../containers/ResourceForm.jsx';
-import MentorProfileCard from '../containers/MentorProfileCard.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MentorProfileCard from '../containers/MentorProfileCard.jsx';
 
 const MentorPage = function (props) {  
   return (
@@ -16,16 +16,13 @@ const MentorPage = function (props) {
           <MentorProfileCard/>
         </div>
         <div className="col-md-6">
-        <MuiThemeProvider>
-          <EventForm />
-        </MuiThemeProvider>
+          <ResourceBoard/>
+          <EventBoard/>
         </div>
       </div>
       <div>
         <div className="col-md-6">
-        <MuiThemeProvider>
-          <ResourceForm/>
-        </MuiThemeProvider>
+          <MentorPostMenu />
         </div>
       </div>
     </div>
