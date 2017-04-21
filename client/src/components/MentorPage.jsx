@@ -14,18 +14,20 @@ const MentorPage = function (props) {
       <div className="row">
         <div className="col-md-6" >
           <MentorProfileCard/>
+          <MuiThemeProvider>
+            <EventForm/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <ResourceForm/>
+          </MuiThemeProvider>
         </div>
         <div className="col-md-6">
-        <MuiThemeProvider>
-          <EventForm />
-        </MuiThemeProvider>
+          <ResourceBoard/>
+          <EventBoard/>
         </div>
       </div>
       <div>
         <div className="col-md-6">
-        <MuiThemeProvider>
-          <ResourceForm/>
-        </MuiThemeProvider>
         </div>
       </div>
     </div>
