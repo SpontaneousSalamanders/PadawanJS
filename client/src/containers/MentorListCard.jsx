@@ -13,7 +13,7 @@ function MentorListCard (props) {
         <div className="card">
             <div className="front">
                 <div className="cover">
-                    <img src={'https://images4.alphacoders.com/190/thumb-1920-19098.jpg'}/>
+                    <img src={props.mentor.image}/>
                 </div>
                 <div className="user">
                     <img className="img-circle" src={props.mentor.picture}/>

@@ -4,8 +4,9 @@ const db = require('../db');
 
 const getMentors = () => {
   return db.knex
-  .select('id', 'name', 'location', 'role', 'picture', 'techStack', 'followers')
+  .select('users.id', 'users.name', 'users.location', 'users.role', 'users.picture', 'users.techStack', 'users.followers', 'categories.image')
   .from('users')
+  .innerJoin('categories', 'users.location', 'categories.location')
   .where({type: 'mentor'});
 };
 

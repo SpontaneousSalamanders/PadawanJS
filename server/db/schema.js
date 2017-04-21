@@ -63,6 +63,8 @@ const schema = (db) => {
           table.increments('id').primary();
           table.string('category');
           table.string('icon');
+          table.string('image');
+          table.string('location');
         })
         .then((table) => {
           console.log('Created categories table!');
