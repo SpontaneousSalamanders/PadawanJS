@@ -55,12 +55,12 @@ const jwtOptions = {
   secretOrKey: config.secret
 };
 
-const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
+const jwtLogin = new JwtStrategy(jwtOptions, function(err, payload) {
   // See if the user ID in the payload exists in our database
   db.knex('users').where({id: payload.sub}).first()
   .then((user) =>{
     if(err) {
-      return done(err, false);
+      return done(err);
     }
     if (user) {
       return done (null, user);
