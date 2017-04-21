@@ -64,7 +64,11 @@ class Nav extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated,
+<<<<<<< HEAD
     mentor_privileges: state.auth.mentor_privileges
+=======
+    mentorPrivileges: state.auth.mentor_privileges,
+>>>>>>> edited nav dashboard depending on mentor privileges
   };
 }
 
