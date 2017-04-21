@@ -141,8 +141,7 @@ export function fetchMentorProfile(mentor) {
     })
       .then(response => {
         dispatch({
-          type: FETCH_MENTOR_PROFILE,
-          payload: response.data.message
+
         });
         console.log('r.d.m?', response.data.message)
       });
