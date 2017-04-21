@@ -22,30 +22,34 @@ export function signinUser({ email, password }) {
       .then( (response) => {
         // // If request is good...
         // // - Update state to indicate user is authenticated
-        // dispatch({ type: AUTH_USER });
+        dispatch({ type: AUTH_USER });
 
         // // decode token for info on the user
-        // let decoded_token_data = jwt_decode(response.data.token);
+        let decoded_token_data = jwt_decode(response.data.token);
 
-
-        // // - Save the JWT token
-        // localStorage.setItem('token', response.data.token);
-
+        // - Save the JWT token
+        localStorage.setItem('token', response.data.token);
 
 
         // // - redirect to the appropriate route
-        // if(decoded_token_data.type === 'student') {
-        //   browserHistory.push('/student_profile/id');
-        // }
+        if(decoded_token_data.type === 'padawan') {
+          // browserHistory.push('/padawan_profile/' + decoded_token_data.sub);
+
+          browserHistory.push('/');
+        }
         // // - set mentor flag if token indicates the user has mentor privileges
-        // else if(decoded_token_data.type == 'mentor') {
-        //   dispatch({ type: SET_MENTOR_PRIVILEGES });
-        //   browserHistory.push('/mentor_profile/id');
-        // }
-        // else {
-        //   browserHistory.push('/');
-        // }
-        browserHistory.push('/');
+        else if (decoded_token_data.type === 'mentor') {
+          dispatch({ type: SET_MENTOR_PRIVILEGES });
+
+          // below commented won't work unless that profile has already been visited. need to think of another work around
+
+          // browserHistory.push('/profile/' + decoded_token_data.sub);
+           browserHistory.push('/');
+        }
+
+        else {
+          browserHistory.push('/');
+        }
 
       })
       .catch(() => {
@@ -78,15 +82,16 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
 
 
 //token included in the header of the request for authorization
-export function activateMentorProfile({ email, password }) {
+
+export function activateMentorProfile({ email, password, type = 'mentor', role, location, techStack }) {
   return function(dispatch) {
-    // admin_activation
+    // mentor sign up and activating mentor profile
     axios.post('/mentor_profile_activation',
-      { email, password },
-      {headers: { authorization: localStorage.getItem('token') }} )
+      { email, password, type, location, role, techStack },
+      {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
-        // admin_area
-        browserHistory.push('/mentor_profile/id');
+        // what protected content are we pointing them to?
+        browserHistory.push('/');
       })
       .catch(response => dispatch(authError(response.data.error)));
   }
@@ -101,6 +106,7 @@ export function authError(error) {
 
 export function signoutUser() {
   localStorage.removeItem('token');
+  browserHistory.push('/')
   return { type: UNAUTH_USER };
 }
 
@@ -116,15 +122,15 @@ export function fetchStudentProfile() {
           type: FETCH_STUDENT_PROFILE,
           payload: response.data.message
         });
+        console.log('r.d.m?', response.data.message)
       });
   }
 }
 
 
-
 //token included in the header of the request for authorization
 // fetch mentor dashboard with mentor privileges
-export function fetchMentorProfile() {
+export function fetchMentorProfile(mentor) {
   return function(dispatch) {
     axios.get('/mentor_profile', {
       headers: { authorization: localStorage.getItem('token') }
@@ -134,6 +140,7 @@ export function fetchMentorProfile() {
           type: FETCH_MENTOR_PROFILE,
           payload: response.data.message
         });
+        console.log('r.d.m?', response.data.message)
       });
   }
 }

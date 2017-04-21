@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Divider } from 'semantic-ui-react';
+import { connect } from 'react-redux'
 
 // import { logout } from '../actions/index.jsx';
 // import LoadingButton from './LoadingButton.react';
@@ -18,10 +19,11 @@ class Nav extends Component {
   render() {
     // Render either the Log In and register buttons, or the logout button
     // based on the current authentication state.
-    const navButtons = this.props.loggedIn ? (
+    const navButtons = this.props.authenticated ? (
         <div>
-          <Link to="/dashboard">Dashboard</Link>
-          (<a href="#" onClick={this.logout.bind(this)}>Logout</a>)}
+          <Link className="btn btn--login btn--nav" to="/mentorform">Become a Mentor!</Link>
+          <Link className="btn btn--login btn--nav" to="/dashboard">Dashboard</Link>
+          <Link className="btn btn--login btn--nav" to="/signout">Signout</Link>
         </div>
       ) : (
         <div>
@@ -53,9 +55,10 @@ class Nav extends Component {
   }
 }
 
-// Nav.propTypes = {
-//   loggedIn: React.PropTypes.bool.isRequired,
-//   currentlySending: React.PropTypes.bool.isRequired
-// }
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated
+  };
+}
 
-export default Nav;
+export default connect(mapStateToProps)(Nav);
