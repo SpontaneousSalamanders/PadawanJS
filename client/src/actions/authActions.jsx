@@ -91,7 +91,7 @@ export function activateMentorProfile({ email, password, type = 'mentor', role, 
       {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
         // what protected content are we pointing them to?
-        browserHistory.push('/mentorprofile/');
+        browserHistory.push('/');
       })
       .catch(response => dispatch(authError(response.data.error)));
   }
