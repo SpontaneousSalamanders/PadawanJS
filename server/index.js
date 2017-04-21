@@ -32,14 +32,14 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname, + '/../client/dist')
 })
 
-app.get('/getMentors', handler.getMentors);
-app.get('/getMentorProfile/:uid', handler.getMentorProfile);
-app.get('/getEvents/:uid', handler.getEvents);
-app.get('/getResources/:uid', handler.getMentorResources);
-app.get('/getQuestions/:uid', handler.getQuestions);
+app.get('/getMentors', handler.getMentors); // good
+app.get('/getMentorProfile/:uid', handler.getMentorProfile); // good
+app.get('/getEvents/:uid', handler.getEvents); //good
+app.get('/getResources/:uid', handler.getMentorResources); // good
+app.get('/getQuestions/:uid', handler.getQuestions); // good
 
-app.get('/getMenteeResources/:uid', requireAuth, handler.getMenteeResources);
-app.get('/getMenteeEvents/:uid', requireAuth, handler.getMenteeEvents);
+app.get('/getMenteeResources', requireAuth, handler.getMenteeResources);
+app.get('/getMenteeEvents', requireAuth, handler.getMenteeEvents);
 app.post('/attendEvent', requireAuth, handler.attendEvent);
 app.post('/saveResource', requireAuth, handler.saveResource);
 app.post('/postReply', requireAuth, handler.postReply);
@@ -52,7 +52,6 @@ app.get('/*', handler.wildCard);
 
 // authentication routes
 authRouter(app);
-
 
 var server = app.listen(port, function() {
   console.log('App is listening on port: ', port);
