@@ -105,18 +105,4 @@ module.exports.users = [
     linkedIn: '',
     followers: 20
   },
-  {
-    type: 'padawan',
-    name: 'Winston Ku',
-    email: 'winston.ku@ku.com',
-    location: 'SF',
-    user_id: 1
-  },
-  {
-    type: 'padawan',
-    name: 'Kylo Ren',
-    email: 'kylo.ren@starkillerbase.gov',
-    location: 'SF',
-    user_id: 1
-  }
 ]
