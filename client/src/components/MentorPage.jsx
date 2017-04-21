@@ -14,6 +14,7 @@ const MentorPage = function (props) {
       <div className="row">
         <div className="col-md-6" >
           <MentorProfileCard/>
+          <MentorPostMenu />
         </div>
         <div className="col-md-6">
           <ResourceBoard/>
@@ -22,7 +23,6 @@ const MentorPage = function (props) {
       </div>
       <div>
         <div className="col-md-6">
-          <MentorPostMenu />
         </div>
       </div>
     </div>
