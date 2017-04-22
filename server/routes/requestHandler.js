@@ -8,6 +8,7 @@ module.exports = {
   getMentors: require('./getMentors.js'),
   getMentorResources: require('./getMentorResources.js'),
   getMenteeResources: require('./getMenteeResources.js'),
+  getMessages: require('./getMessages.js'),
   getQuestions: require('./getQuestions.js'),
   getConversation: require('./getConversation.js'),
   getAllConversations: require('./getAllConversations.js'),

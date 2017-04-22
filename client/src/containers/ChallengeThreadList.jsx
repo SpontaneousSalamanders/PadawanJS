@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Divider, Segment } from 'semantic-ui-react';
 import ChallengeQuestion from './ChallengeQuestion.jsx';
 import EnterNewComment from './EnterNewComment.jsx';
+import { bindActionCreators } from 'redux';
+import { getMessages } from '../actions/messageActions.jsx';
 
-// dummy data: this will be replaced by data from database
-const question = "Q. What is time complexity of HeapSort?"
-const answerList = [
-	{
-		student: 'David',
-		answer: 'Logarithmic?'
-	},
-	{
-		student: 'Kay',
-		answer: '@David What is Logarithmic?'
-	}
-];
+const question = "Q. what?"
 
 class ChallengeThreadList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			comments: answerList,
+			comments: [],
 			incomingComment: {}
 		}
 		this.handleCommentChange = this.handleCommentChange.bind(this);
 		this.renderAnswerList = this.renderAnswerList.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	componentDidMount() {
+		this.props.getMessagesAction.getMessages();
 	}
 
 	handleCommentChange(event) {
@@ -82,4 +78,16 @@ class ChallengeThreadList extends Component {
 	}
 }
 
-export default ChallengeThreadList;
+function mapStateToProps(state) {
+  return {
+    messages: state.comments,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getMessagesAction: bindActionCreators({getMessages: getMessages}, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChallengeThreadList)

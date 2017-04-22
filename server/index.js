@@ -36,6 +36,8 @@ app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getResources/:uid', handler.getMentorResources);
+app.get('/getMenteeResources/:uid', handler.getMenteeResources);
+app.get('/getMessages/:uid', handler.getMessages);
 app.get('/getQuestions/:uid', handler.getQuestions);
 app.get('/getMenteeResources', requireAuth, handler.getMenteeResources);
 app.get('/getMenteeResources', handler.getMenteeResources);

@@ -5,6 +5,5 @@ export default function(state = {messageData: []}, action) {
     case GET_MESSAGES:
     return Object.assign({}, state, {messageData: action.payload.data});
   }
-
-  return state;
+	return state;
 }

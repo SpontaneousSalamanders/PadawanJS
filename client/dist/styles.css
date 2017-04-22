@@ -81,7 +81,8 @@ Navigation Bar
   padding: 1em;
   display: flex;
   align-items: center;
-  background-color: #db644f;
+  /*background-color: #db644f;*/
+  background-color: #740202;
   margin-top: 65px;
   z-index: 6;
 }
