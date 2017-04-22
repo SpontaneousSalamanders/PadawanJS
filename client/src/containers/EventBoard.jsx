@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
 import { Divider, Segment } from 'semantic-ui-react';
+import * as moment from 'moment';
 
 class EventBoard extends Component {
   componentDidMount() {
@@ -32,10 +33,18 @@ class EventBoard extends Component {
               <div className="media-body">
                 <h5
                   style={{cursor: 'pointer'}}
-                
+
                   className="media-heading" >{event.title}</h5>
                 <p>
                   {event.description}
+                  <br/>
+                  {event.location}
+                  <br/>
+                  {event.description}
+                  <br/>
+                  {event.date}
+                  <br/>
+                  {event.time}
                 </p>
               </div>
             </li>
