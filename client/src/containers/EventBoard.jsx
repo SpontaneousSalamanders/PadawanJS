@@ -4,10 +4,23 @@ import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
 import { Divider, Segment } from 'semantic-ui-react';
 import moment from 'moment';
+import axios from 'axios';
+
 
 class EventBoard extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   componentDidMount() {
     this.props.getEvents(this.props.mentor.id);
+  }
+
+  handleClick(event) {
+    axios.post('/attendEvent', event, {
+      headers: { authorization: localStorage.getItem('token') }
+    });
   }
 
   render() {
@@ -21,6 +34,11 @@ class EventBoard extends Component {
         {this.props.events.map((event, index)=>{
           return (
             <Segment>
+            <button
+              onClick={() => this.handleClick(event)}
+              type="button">
+              Save
+            </button>
             <li key={index} className="media">
               <div className="media-left">
                 <div

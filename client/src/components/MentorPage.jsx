@@ -9,6 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MentorProfileCard from '../containers/MentorProfileCard.jsx';
 import ChallengeThreadList from '../containers/ChallengeThreadList.jsx';
 import SavedResources from '../containers/SavedResources.jsx';
+import SavedEvents from '../containers/SavedEvents.jsx';
 
 
 
@@ -29,8 +30,9 @@ const MentorPage = function (props) {
         </div>
         <div className="col-md-6">
           <ResourceBoard/>
-          <SavedResources/>
           <EventBoard/>
+          <SavedResources/>
+          <SavedEvents/>
           <ChallengeThreadList />
         </div>
       </div>
