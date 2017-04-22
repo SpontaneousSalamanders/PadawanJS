@@ -7,6 +7,7 @@ import EventsReducer from './reducer_events.jsx';
 import AuthReducer from './reducer_auth.jsx';
 import MessageReducer from './reducer_messages.jsx';
 import SavedResourcesReducer from './reducer_saved_resources.jsx';
+import SavedEventsReducer from './reducer_saved_events.jsx';
 
 
 
@@ -60,7 +61,8 @@ const RootReducer = combineReducers({
   events: EventsReducer,
   auth: AuthReducer,
   messages: MessageReducer,
-  savedResources: SavedResourcesReducer
+  savedResources: SavedResourcesReducer,
+  savedEvents: SavedEventsReducer
 });
 
 export default RootReducer;
