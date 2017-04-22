@@ -5,6 +5,15 @@ import { bindActionCreators } from 'redux';
 
 class Inbox extends Component {
   componentDidMount() {
-    this.props.getConversations
+    this.props.getConversations();
   }
 }
+
+render() {
+
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inbox);
