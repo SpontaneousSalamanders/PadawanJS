@@ -70,9 +70,9 @@ const ResourceForm = props => {
         <Field name="category" component={renderSelectField} label="Category">
           <MenuItem value="React" primaryText="React"/>
           <MenuItem value="Node" primaryText="Node"/>
-          <MenuItem value="Redux" primaryText="Angular"/>
-          <MenuItem value="TDD" primaryText="Redux"/>
-          <MenuItem value="Angular" primaryText="TDD"/>
+          <MenuItem value="Redux" primaryText="Redux"/>
+          <MenuItem value="TDD" primaryText="TDD"/>
+          <MenuItem value="Angular" primaryText="Angular"/>
           <MenuItem value="Express" primaryText="Express"/>
         </Field>
       </div>
