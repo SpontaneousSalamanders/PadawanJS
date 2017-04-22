@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 // import { getSavedResources } from '../actions/savedResourceActions.jsx';
-import { getResources } from '../actions/resourceActions.jsx';
+// import { getResources } from '../actions/resourceActions.jsx';
 
 
 class SavedResources extends Component {
