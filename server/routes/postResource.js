@@ -13,4 +13,4 @@ module.exports = (req, res) => {
   .catch((err) => {
     res.status(err.status || 500).send({'error in postResources': err});
   });
-}
+};

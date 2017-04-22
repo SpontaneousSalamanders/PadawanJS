@@ -10,10 +10,10 @@ const getEvents = (user_id) => {
   .orderBy('created_at');
 };
 
-const postEvent = (event) => {
+const postEvent = (user_id, event) => {
   return db.knex('events')
   .insert({
-    user_id: event.user_id,
+    user_id: user_id,
     title: event.title,
     description: event.description,
     location: event.location,

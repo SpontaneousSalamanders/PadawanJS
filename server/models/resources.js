@@ -21,10 +21,10 @@ const getMenteeResources = (user_id) => {
   });
 };
 
-const postResource = (resource) => {
+const postResource = (user_id, resource) => {
   return db.knex('resources')
   .insert({
-    user_id: resource.user_id,
+    user_id: users_id,
     title: resource.title,
     description: resource.description,
     URL: resource.URL,
