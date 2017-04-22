@@ -76,6 +76,15 @@ class MentorForm extends Component {
         <label><Field name="role" component="input" type="radio" value="Back end"/>Back end</label>
       </div>
       <div>
+        <label><Field name="location" component="input" type="radio" value="San Francisco"/>San Francisco</label>
+      </div>
+      <div>
+        <label><Field name="location" component="input" type="radio" value="San Jose"/>San Jose</label>
+      </div>
+      <div>
+        <label><Field name="location" component="input" type="radio" value="Palo Alto"/>Palo Alto</label>
+      </div>
+      <div>
         <Field name="location" component="select">
           <option></option>
           <option value="San Francisco">San Francisco</option>
