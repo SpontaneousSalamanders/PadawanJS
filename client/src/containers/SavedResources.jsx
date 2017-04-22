@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-import { getSavedResources } from '../actions/savedResourceActions.jsx';
+// import { getSavedResources } from '../actions/savedResourceActions.jsx';
+import { getResources } from '../actions/resourceActions.jsx';
 
 
 class SavedResources extends Component {
@@ -67,4 +68,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({getResources: getResources}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(SavedResources);
