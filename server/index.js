@@ -46,7 +46,7 @@ app.post('/postReply', requireAuth, handler.postReply); // start
 
 app.post('/postEvent', requireAuth, requireMentor, handler.postEvent); // start
 app.post('/postResource', requireAuth, requireMentor, handler.postResource); // start
-app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion); //
+app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion); // start
 
 app.get('/*', handler.wildCard);
 
