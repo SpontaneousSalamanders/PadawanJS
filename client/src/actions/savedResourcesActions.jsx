@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const GET_SAVED_RESOURCES = 'GET_SAVED_RESOURCES';
 
-export function getMyEvents(props) {
+export function getSavedResources (props) {
   const request = axios.post('/getMenteeResources/', props, {
     headers: { authorization: localStorage.getItem('token') }
   });

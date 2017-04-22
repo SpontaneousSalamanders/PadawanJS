@@ -6,6 +6,7 @@ import { reducer as formReducer } from 'redux-form';
 import EventsReducer from './reducer_events.jsx';
 import AuthReducer from './reducer_auth.jsx';
 import MessageReducer from './reducer_messages.jsx';
+import SavedResourcesReducer from './reducer_saved_resources.jsx';
 
 
 
@@ -58,8 +59,8 @@ const RootReducer = combineReducers({
   form: formReducer,
   events: EventsReducer,
   auth: AuthReducer,
-  messages: MessageReducer
-
+  messages: MessageReducer,
+  savedResources: SavedResourcesReducer
 });
 
 export default RootReducer;
