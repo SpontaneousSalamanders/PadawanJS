@@ -11,6 +11,9 @@ const getEvents = (user_id) => {
 };
 
 const postEvent = (user_id, event) => {
+  console.log(user_id);
+  console.log(event);
+
   return db.knex('events')
   .insert({
     user_id: user_id,
