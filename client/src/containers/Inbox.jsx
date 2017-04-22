@@ -7,13 +7,40 @@ class Inbox extends Component {
   componentDidMount() {
     this.props.getConversations();
   }
+
+  renderConversations() {
+    return this.props.conversations.map( (conversation, map) => {
+      return (
+        <Conversation conversation={conversation}
+        />
+      )
+    })
+  }
+
+  render() {
+    return (
+      <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
+        <div className="row">
+          {this.renderConversations()}
+        </div>
+      </div>
+    )
+  }
 }
 
-render() {
-
+function mapStateToProps(state) {
+  return {
+    conversations: state.conversations,
+  }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    getConversations:bindActionCreators({getConversations: getConversations})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inbox)
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inbox);

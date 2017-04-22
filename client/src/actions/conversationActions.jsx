@@ -12,3 +12,16 @@ export function getConversations() {
     payload: request
   }
 }
+
+export function selectConversation() {
+
+  const request = axios.get('/convo_selection', { headers: {
+    authorization: localStorage.getItem('token') }
+  })
+
+  return {
+    type: SELECT_CONVERSATION,
+    payload: request
+  }
+
+}
