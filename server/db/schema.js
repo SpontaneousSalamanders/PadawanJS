@@ -12,7 +12,7 @@ const schema = (db) => {
           table.string('password');
           table.string('location');
           table.string('role');
-          table.string('picture');
+          table.string('picture').defaultTo('http://images.gotinder.com/0001unknown/640x640_pct_0_0_100_100_unknown.jpg');
           table.string('github');
           table.string('linkedIn');
           table.integer('followers');

@@ -32,11 +32,11 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname, + '/../client/dist')
 })
 
-app.get('/getMentors', handler.getMentors); // good
-app.get('/getMentorProfile/:uid', handler.getMentorProfile); // good
-app.get('/getEvents/:uid', handler.getEvents); //good
-app.get('/getResources/:uid', handler.getMentorResources); // good
-app.get('/getQuestions/:uid', handler.getQuestions); // good
+app.get('/getMentors', handler.getMentors);
+app.get('/getMentorProfile/:uid', handler.getMentorProfile);
+app.get('/getEvents/:uid', handler.getEvents);
+app.get('/getResources/:uid', handler.getMentorResources);
+app.get('/getQuestions/:uid', handler.getQuestions);
 
 app.get('/getMenteeResources', requireAuth, handler.getMenteeResources); // start
 app.get('/getMenteeEvents', requireAuth, handler.getMenteeEvents); // start
@@ -45,7 +45,7 @@ app.post('/saveResource', requireAuth, handler.saveResource); // start
 app.post('/postReply', requireAuth, handler.postReply); // start
 
 app.post('/postEvent', requireAuth, requireMentor, handler.postEvent); // start
-app.post('/postResource', requireAuth, requireMentor, handler.postResource); // start
+app.post('/postResource', requireAuth, requireMentor, handler.postResource);
 app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion); // start
 
 app.get('/*', handler.wildCard);
