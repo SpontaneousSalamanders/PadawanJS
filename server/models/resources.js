@@ -6,7 +6,7 @@ const getMentorResources = (user_id) => {
   return db.knex
   .select()
   .from('resources')
-  .leftJoin('categories', 'resources.category_id', 'categories.id')
+  .leftJoin('categories', 'resources.resource_category', 'categories.category')
   .where({user_id: user_id})
   .orderBy('created_at');
 };
@@ -28,7 +28,7 @@ const postResource = (user_id, resource) => {
     title: resource.title,
     description: resource.description,
     URL: resource.URL,
-    category_id: resource.category
+    resource_category: resource.category
   })
   .catch((err) => {
     console.log(err);
