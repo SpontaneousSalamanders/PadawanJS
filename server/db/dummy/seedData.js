@@ -7,6 +7,8 @@ const users_events = require('./events.js').users_events;
 const users_resources = require('./resources.js').users_resources;
 const categories = require('./categories.js').categories;
 const messages = require('./messages.js').messages;
+const direct_messages = require('./directMessages.js').direct_messages;
+const conversations = require('./directMessages.js').conversations;
 
 db.knex.schema.hasTable('users')
 .then(() => {
@@ -29,4 +31,13 @@ db.knex.schema.hasTable('users')
 })
 .then(() => {
   return db.knex('messages').insert(messages);
-});
+})
+.then(() => {
+  return db.knex('conversations').insert(conversations);
+})
+.then(() => {
+  return db.knex('direct_messages').insert(direct_messages);
+})
+.catch((err)=> {
+	console.log(err)
+})
