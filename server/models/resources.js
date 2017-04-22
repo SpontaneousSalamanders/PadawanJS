@@ -17,7 +17,7 @@ const getMenteeResources = (user_id) => {
   .from('resources')
   .innerJoin('users_resources', function() {
     this.on('users_resources.user_id', '=', Number(user_id))
-    .andOn('resources.id', '=', 'users_resources.resource_id');
+    .andOn('users_resources.resource_id', '=', 'resources.id');
   })
   .leftJoin('categories', 'resources.resource_category', 'categories.category')
 };
