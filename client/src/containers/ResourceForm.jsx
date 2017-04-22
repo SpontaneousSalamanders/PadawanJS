@@ -57,7 +57,7 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
 const ResourceForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit(postResource)}>
+    <form style={{height: 500}} onSubmit={handleSubmit(postResource)}>
       Resource
       <div>
         <Field name="title" component={renderTextField} label="Title"/>

@@ -76,7 +76,7 @@ const renderDatePicker = props => (
 const EventForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit(postEvent)}>
+    <form style={{height: 500}} onSubmit={handleSubmit(postEvent)}>
       Event
       <div>
         <Field name="title" component={renderTextField} label="Title"/>

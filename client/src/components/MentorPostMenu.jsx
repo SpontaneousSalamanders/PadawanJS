@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ResourceForm from '../containers/ResourceForm.jsx';
 import { Input, Menu, Segment } from 'semantic-ui-react'
+import ResourceForm from '../containers/ResourceForm.jsx';
 import EventForm from '../containers/EventForm.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -29,9 +29,9 @@ class MentorPostMenu extends Component {
           </Menu>
 
           <Segment attached='bottom'>
-          <MuiThemeProvider>
-            <ResourceForm /> 
-          </MuiThemeProvider>
+            <MuiThemeProvider>
+              <ResourceForm style={{height: 500}}/> 
+            </MuiThemeProvider>
           </Segment>
         </div>
       )
@@ -47,7 +47,7 @@ class MentorPostMenu extends Component {
 
         <Segment attached='bottom'>
           <MuiThemeProvider>
-            <EventPost /> 
+            <EventForm style={{height: 500}}/> 
           </MuiThemeProvider>
         </Segment>
       </div>
