@@ -12,7 +12,6 @@ class EventBoard extends Component {
 
   render() {
     console.log('EventBoard')
-    console.log(moment('2:30', 'H:mm'))
     return this.props.events.length > 0 ?
     (
       <div>

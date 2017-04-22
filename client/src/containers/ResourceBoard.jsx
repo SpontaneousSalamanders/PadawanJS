@@ -3,11 +3,24 @@ import { connect } from 'react-redux';
 import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getResources } from '../actions/resourceActions.jsx';
+import axios from 'axios';
 
 
 class ResourceBoard extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   componentDidMount() {
     this.props.getResources(this.props.mentor.id);
+  }
+
+  handleClick(resource) {
+    console.log('here!')
+    axios.post('/saveResource', resource, {
+      headers: { authorization: localStorage.getItem('token') }
+    });
   }
 
   render() {
@@ -18,8 +31,14 @@ class ResourceBoard extends Component {
       <Divider />
       <ul className="media-list">
         {this.props.resources.map((resource, index)=>{
+          console.log('resource', resource);
           return (
             <Segment key={index}>
+            <button
+              onClick={() => this.handleClick(resource)}
+              type="button">
+              Save
+            </button>
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -27,15 +46,15 @@ class ResourceBoard extends Component {
                   style={{width: 50, cursor: 'pointer'}}
                   className='thumbnail'
                   onClick={()=>{window.open(resource.URL)}}>
-                  <img 
-                    className="media-object" 
-                    src={resource.icon} 
+                  <img
+                    className="media-object"
+                    src={resource.icon}
                     key={index}
                     alt="..."/>
                 </div>
               </div>
               <div
-                key={index} 
+                key={index}
                 className="media-body">
                 <h5
                   style={{cursor: 'pointer'}}
