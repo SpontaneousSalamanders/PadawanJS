@@ -38,15 +38,15 @@ app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getResources/:uid', handler.getMentorResources);
 app.get('/getQuestions/:uid', handler.getQuestions);
 
-app.get('/getMenteeResources', requireAuth, handler.getMenteeResources); // start
-app.get('/getMenteeEvents', requireAuth, handler.getMenteeEvents); // start
-app.post('/attendEvent', requireAuth, handler.attendEvent); // start
-app.post('/saveResource', requireAuth, handler.saveResource); // start
-app.post('/postReply', requireAuth, handler.postReply); // start
+app.get('/getMenteeResources', requireAuth, handler.getMenteeResources);
+app.get('/getMenteeEvents', requireAuth, handler.getMenteeEvents);
+app.post('/attendEvent', requireAuth, handler.attendEvent);
+app.post('/saveResource', requireAuth, handler.saveResource);
+app.post('/postReply', requireAuth, handler.postReply);
 
-app.post('/postEvent', requireAuth, requireMentor, handler.postEvent); // start
+app.post('/postEvent', requireAuth, requireMentor, handler.postEvent);
 app.post('/postResource', requireAuth, requireMentor, handler.postResource);
-app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion); // start
+app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion);
 
 app.get('/*', handler.wildCard);
 
