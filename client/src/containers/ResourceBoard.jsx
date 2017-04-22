@@ -17,7 +17,6 @@ class ResourceBoard extends Component {
   }
 
   handleClick(resource) {
-    console.log('here!')
     axios.post('/saveResource', resource, {
       headers: { authorization: localStorage.getItem('token') }
     });

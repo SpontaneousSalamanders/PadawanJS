@@ -3,6 +3,7 @@
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {
+  console.log('here res!')
   const user_id = req.user.id;
 
   Resources.getMenteeResources(user_id)

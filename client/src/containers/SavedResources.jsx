@@ -10,13 +10,13 @@ class SavedResources extends Component {
   }
 
   render() {
-    console.log('resources', this.props.resources);
+    console.log('savedResources', this.props.savedResources);
     return (
       <div>
       <h4 style={{textAlign: 'center', marginTop: 20}}>My Resources</h4>
       <Divider />
       <ul className="media-list">
-        {this.props.resources.map((resource, index)=>{
+        {this.props.savedResources.map((resource, index)=>{
           return (
             <Segment key={index}>
             <li key={index} className="media">
@@ -58,7 +58,7 @@ class SavedResources extends Component {
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
-    resources: state.savedResources.savedResourcesData
+    savedResources: state.savedResources.savedResourcesData
   }
 }
 
