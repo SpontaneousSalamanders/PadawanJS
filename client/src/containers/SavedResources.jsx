@@ -10,7 +10,6 @@ class SavedResources extends Component {
   }
 
   render() {
-    console.log('savedResources', this.props.savedResources);
     return (
       <div>
       <h4 style={{textAlign: 'center', marginTop: 20}}>My Resources</h4>

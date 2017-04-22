@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getSavedEvents } from '../actions/savedEventsActions.jsx';
+import moment from 'moment';
+
 
 class SavedEvents extends Component {
   componentDidMount() {
@@ -18,8 +20,33 @@ class SavedEvents extends Component {
       <ul className="media-list">
         {this.props.savedEvents.map((event, index)=>{
           return (
-            <Segment key={index}>
+            <Segment>
+            <li key={index} className="media">
+              <div className="media-left">
+                <div
+                  style={{width: 50, cursor: 'pointer'}}
+                  className='thumbnail'
+                  >
+                  <img className="media-object" src='https://d30y9cdsu7xlg0.cloudfront.net/png/89454-200.png' alt="..."/>
+                </div>
+              </div>
+              <div className="media-body">
+                <h5
+                  style={{cursor: 'pointer'}}
 
+                  className="media-heading" >{event.title}</h5>
+                <p>
+                  {event.description}
+                  <br/>
+                  {event.location}
+                  <br/>
+                  {event.description}
+                  <br/>
+                  {moment(event.date).format('MMMM D YYYY')}
+                  <br/>
+                </p>
+              </div>
+            </li>
             </Segment>
           )
         })}
@@ -42,30 +69,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SavedEvents);
-
-// <li key={index} className="media">
-//   <div className="media-left">
-//     <div
-//       key={index}
-//       style={{width: 50, cursor: 'pointer'}}
-//       className='thumbnail'
-//       onClick={()=>{window.open(resource.URL)}}>
-//       <img
-//         className="media-object"
-//         src={resource.icon}
-//         key={index}
-//         alt="..."/>
-//     </div>
-//   </div>
-//   <div
-//     key={index}
-//     className="media-body">
-//     <h5
-//       style={{cursor: 'pointer'}}
-//       onClick={()=>{window.open(resource.URL)}}
-//       className="media-heading" >{resource.title}</h5>
-//     <p key={index}>
-//       {resource.description}
-//     </p>
-//   </div>
-// </li>

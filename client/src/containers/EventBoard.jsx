@@ -37,7 +37,7 @@ class EventBoard extends Component {
             <button
               onClick={() => this.handleClick(event)}
               type="button">
-              Save
+              Attend
             </button>
             <li key={index} className="media">
               <div className="media-left">

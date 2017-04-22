@@ -3,8 +3,8 @@
 const Events = require('../models/events.js');
 
 module.exports = (req, res) => {
-  const user_id = req.user_id;
-  const event_id = req.body.event_id;
+  const user_id = req.user.id;
+  const event_id = req.body.id;
 
   Events.attendEvent(user_id, event_id)
   .then((event) => {
