@@ -20,11 +20,11 @@ export function signinUser({ email, password }) {
     // Submit email/password to the server
     axios.post('/signin', { email, password })
       .then( (response) => {
-        // // If request is good...
-        // // - Update state to indicate user is authenticated
+        // If request is good...
+        // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER });
 
-        // // decode token for info on the user
+        // decode token for info on the user
         let decoded_token_data = jwt_decode(response.data.token);
 
         // - Save the JWT token
@@ -66,7 +66,9 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
     axios.post('/signup', { email, password, firstName, lastName, passwordConfirm, type})
       .then(response => {
         dispatch({ type: AUTH_USER });
+
         localStorage.setItem('token', response.data.token);
+
 
         // send to appropriate student profile after auth
 

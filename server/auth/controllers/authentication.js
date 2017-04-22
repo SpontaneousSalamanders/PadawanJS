@@ -36,7 +36,7 @@ exports.signup = function(req, res, next) {
 
       user = User.createUser(email, password, name);
 
-      res.json({ token: tokenForUser(user) });
+      res.send({ token: tokenForUser(user) });
     }
   })
   .catch((err) => { return next(err)})
