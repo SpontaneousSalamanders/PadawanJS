@@ -12,7 +12,7 @@ const schema = (db) => {
           table.string('password');
           table.string('location');
           table.string('role');
-          table.string('picture').defaultTo('https://i.imgur.com/0mpKurZ.png');
+          table.string('picture').defaultTo('https://images.gotinder.com/0001unknown/640x640_pct_0_0_100_100_unknown.jpg');
           table.string('github');
           table.string('linkedIn');
           table.integer('followers');
@@ -33,7 +33,7 @@ const schema = (db) => {
           table.string('title');
           table.string('description');
           table.string('location');
-          table.date('date').format('MM-DD-YYYY');
+          table.date('date');
           table.time('time');
           table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })

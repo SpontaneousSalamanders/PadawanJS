@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
 import { Divider, Segment } from 'semantic-ui-react';
-import * as moment from 'moment';
+import moment from 'moment';
 
 class EventBoard extends Component {
   componentDidMount() {
@@ -12,6 +12,7 @@ class EventBoard extends Component {
 
   render() {
     console.log('EventBoard')
+    console.log(moment('2:30', 'H:mm'))
     return this.props.events.length > 0 ?
     (
       <div>
@@ -42,9 +43,8 @@ class EventBoard extends Component {
                   <br/>
                   {event.description}
                   <br/>
-                  {event.date}
+                  {moment(event.date).format('MMMM D YYYY')}
                   <br/>
-                  {event.time}
                 </p>
               </div>
             </li>
