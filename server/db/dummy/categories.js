@@ -24,7 +24,7 @@ module.exports.categories = [
   },
   { 
     location: 'San Jose',
-    image:'http://img2.wikia.nocookie.net/__cb20120114004056/starwars/images/5/5b/Imperial_center_ROTJ.jpg'
+    image:'http://vignette1.wikia.nocookie.net/swfanon/images/8/86/Daelmen_City.jpg/revision/latest?cb=20130115174543'
 
   },
   { 
