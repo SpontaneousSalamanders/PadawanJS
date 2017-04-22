@@ -11,8 +11,8 @@ const getEvents = (user_id) => {
 };
 
 const postEvent = (user_id, event) => {
-  console.log(user_id);
-  console.log(event);
+  const date = event.date.split('T')[0];
+  const time = event.time.split('T')[1];
 
   return db.knex('events')
   .insert({
@@ -20,8 +20,8 @@ const postEvent = (user_id, event) => {
     title: event.title,
     description: event.description,
     location: event.location,
-    date: event.date,
-    time: event.time
+    date: date,
+    time: time
   });
 };
 

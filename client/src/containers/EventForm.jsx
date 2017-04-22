@@ -93,16 +93,16 @@ const EventForm = props => {
       </div>
       <div>
         <Field
-          name="date" 
+          name="date"
           label="Event Date"
-          component={renderDatePicker} 
+          component={renderDatePicker}
           format={null} />
       </div>
       <div>
-        <Field 
-          name="time" 
-          component={renderTimePicker} 
-          label="Event Time" 
+        <Field
+          name="time"
+          component={renderTimePicker}
+          label="Event Time"
           format={null} />
       </div>
       <div style={{marginTop: 30}}>
@@ -114,7 +114,7 @@ const EventForm = props => {
 
 function mapStateToProps(state) {
   return {
-    mentor: state.selectedMentor, 
+    mentor: state.selectedMentor,
     initialValues: {
       user_id: state.selectedMentor.id
     }
