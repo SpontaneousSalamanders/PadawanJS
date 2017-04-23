@@ -9,7 +9,7 @@ import SignUpPage from './containers/SignUpPage.jsx';
 import MentorForm from './containers/auth/MentorForm.jsx';
 import MentorPage from './components/MentorPage.jsx'
 import Signout from './containers/auth/Signout.jsx'
-import Dashboard from './containers/Dashboard.jsx'
+import Dashboard from './components/Dashboard.jsx'
 
 export default (<Route
   component={App}
