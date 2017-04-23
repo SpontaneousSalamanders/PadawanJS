@@ -23,7 +23,7 @@ class ResourceBoard extends Component {
   }
 
   render() {
-    console.log('resources', this.props.resources);
+    console.log('resource board, this.props:', this.props)
     return (
       <div>
       <h4 style={{textAlign: 'center', marginTop: 20}}>Recommended Resources</h4>
