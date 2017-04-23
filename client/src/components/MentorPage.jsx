@@ -4,16 +4,7 @@ import MentorCard from '../containers/MentorCard.jsx';
 import EventBoard from '../containers/EventBoard.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MentorProfileCard from '../containers/MentorProfileCard.jsx';
-import ChallengeThreadList from '../containers/ChallengeThreadList.jsx';
-
-
-
-// redux form v6 breaks code
-
-// ResourceBoard />
-// EventBoard />
-// ResourcePost />
-
+import ChallengeThread from '../containers/ChallengeThread.jsx';
 
 const MentorPage = function (props) {
   return (
@@ -25,7 +16,7 @@ const MentorPage = function (props) {
         <div className="col-md-6">
           <ResourceBoard/>
           <EventBoard/>
-          <ChallengeThreadList />
+          <ChallengeThread />
         </div>
       </div>
       <div>
