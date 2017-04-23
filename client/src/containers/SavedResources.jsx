@@ -2,41 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-import { getResources } from '../actions/resourceActions.jsx';
-import axios from 'axios';
+import { getSavedResources } from '../actions/savedResourcesActions.jsx';
 
-
-class ResourceBoard extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
+class SavedResources extends Component {
   componentDidMount() {
-    this.props.getResources(this.props.mentor.id);
-  }
-
-  handleClick(resource) {
-    axios.post('/saveResource', resource, {
-      headers: { authorization: localStorage.getItem('token') }
-    });
+    this.props.getSavedResources();
   }
 
   render() {
     return (
       <div>
-      <h4 style={{textAlign: 'center', marginTop: 20}}>Recommended Resources</h4>
+      <h4 style={{textAlign: 'center', marginTop: 20}}>My Resources</h4>
       <Divider />
       <ul className="media-list">
-        {this.props.resources.map((resource, index)=>{
-          console.log('resource', resource);
+        {this.props.savedResources.map((resource, index)=>{
           return (
             <Segment key={index}>
-            <button
-              onClick={() => this.handleClick(resource)}
-              type="button">
-              Save
-            </button>
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -76,12 +57,12 @@ class ResourceBoard extends Component {
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
-    resources: state.resources.resourceData
+    savedResources: state.savedResources.savedResourcesData
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getResources: getResources}, dispatch);
+  return bindActionCreators({getSavedResources: getSavedResources}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(SavedResources);

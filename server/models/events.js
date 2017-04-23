@@ -10,15 +10,18 @@ const getEvents = (user_id) => {
   .orderBy('created_at');
 };
 
-const postEvent = (event) => {
+const postEvent = (user_id, event) => {
+  const date = event.date.split('T')[0];
+  const time = event.time.split('T')[1];
+
   return db.knex('events')
   .insert({
-    user_id: event.user_id,
+    user_id: user_id,
     title: event.title,
     description: event.description,
     location: event.location,
-    date: event.date,
-    time: event.time
+    date: date,
+    time: time
   });
 };
 

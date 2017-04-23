@@ -1,10 +1,12 @@
+'use strict';
+
 const db = require('../db');
 
 const getMentorResources = (user_id) => {
   return db.knex
-  .select()
+  .select('resources.id', 'resources.title', 'resources.description', 'resources.URL', 'categories.icon')
   .from('resources')
-  .leftJoin('categories', 'resources.category_id', 'categories.id')
+  .leftOuterJoin('categories', 'resources.resource_category', 'categories.category')
   .where({user_id: user_id})
   .orderBy('created_at');
 };
@@ -16,17 +18,18 @@ const getMenteeResources = (user_id) => {
   .innerJoin('users_resources', function() {
     this.on('users_resources.user_id', '=', Number(user_id))
     .andOn('resources.id', '=', 'users_resources.resource_id');
-  });
+  })
+  .leftOuterJoin('categories', 'resources.resource_category', 'categories.category')
 };
 
-const postResource = (resource) => {
+const postResource = (user_id, resource) => {
   return db.knex('resources')
   .insert({
-    user_id: resource.user_id,
+    user_id: user_id,
     title: resource.title,
     description: resource.description,
     URL: resource.URL,
-    category_id: resource.category
+    resource_category: resource.category
   })
   .catch((err) => {
     console.log(err);

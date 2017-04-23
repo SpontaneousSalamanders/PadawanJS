@@ -7,7 +7,7 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      category_id: 1,
+      resource_category: 'React',
       created_at: '2017-04-19 12:27:17.205319-07'
     },
     {
@@ -15,7 +15,7 @@ module.exports = {
       title: 'Angular Documentation',
       description: 'Angular is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://docs.angularjs.org/api',
-      category_id: 2,
+      resource_category: 'Angular',
       created_at: '2017-04-19 12:28:17.205319-07'
     },
     {
@@ -23,7 +23,7 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      category_id: 1,
+      resource_category: 'React',
       created_at: '2017-04-19 12:29:17.205319-07'
     },
     {
@@ -31,7 +31,7 @@ module.exports = {
       title: 'Redux Course',
       description: 'Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6',
       URL: 'https://www.udemy.com/react-redux/',
-      category_id: 3,
+      resource_category: 'Redux',
       created_at: '2017-04-19 12:30:17.205319-07'
     },
     {
@@ -39,7 +39,7 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      category_id: 1,
+      resource_category: 'React',
       created_at: '2017-04-19 12:33:17.205319-07'
     },
     {
@@ -47,7 +47,7 @@ module.exports = {
       title: 'Angular Documentation',
       description: 'Angular is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://docs.angularjs.org/api',
-      category_id: 2,
+      resource_category: 'Angular',
       created_at: '2017-04-19 12:32:17.205319-07'
     },
     {
@@ -55,7 +55,7 @@ module.exports = {
       title: 'React tutorial',
       description: 'React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language.',
       URL: 'https://facebook.github.io/react/tutorial/tutorial.html',
-      category_id: 1,
+      resource_category: 'React',
       created_at: '2017-04-19 12:31:17.205319-07'
     },
     {
@@ -63,7 +63,7 @@ module.exports = {
       title: 'Redux Course',
       description: 'Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6',
       URL: 'https://www.udemy.com/react-redux/',
-      category_id: 3,
+      resource_category: 'Redux',
       created_at: '2017-04-19 12:30:17.205319-07'
     }
   ],

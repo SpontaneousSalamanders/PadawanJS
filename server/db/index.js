@@ -10,10 +10,7 @@ const knex = Knex({
     port: 5432,
     user: '',
     password: '',
-    database: 'padawanJS',
-    seeds: {
-      directory: './dummy/seedData.js'
-    }
+    database: 'padawanJS'
   }
 });
 

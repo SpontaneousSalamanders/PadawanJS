@@ -68,11 +68,11 @@ const ResourceForm = props => {
 
       <div>
         <Field name="category" component={renderSelectField} label="Category">
-          <MenuItem value="React" primaryText="Red"/>
+          <MenuItem value="React" primaryText="React"/>
           <MenuItem value="Node" primaryText="Node"/>
-          <MenuItem value="Redux" primaryText="Angular"/>
-          <MenuItem value="TDD" primaryText="Redux"/>
-          <MenuItem value="Angular" primaryText="TDD"/>
+          <MenuItem value="Redux" primaryText="Redux"/>
+          <MenuItem value="TDD" primaryText="TDD"/>
+          <MenuItem value="Angular" primaryText="Angular"/>
           <MenuItem value="Express" primaryText="Express"/>
         </Field>
       </div>
@@ -88,7 +88,7 @@ const ResourceForm = props => {
 
 function mapStateToProps(state) {
   return {
-    mentor: state.selectedMentor, 
+    mentor: state.selectedMentor,
     initialValues: {
       user_id: state.selectedMentor.id
     }

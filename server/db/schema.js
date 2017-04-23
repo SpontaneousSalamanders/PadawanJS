@@ -12,7 +12,7 @@ const schema = (db) => {
           table.string('password');
           table.string('location');
           table.string('role');
-          table.string('picture');
+          table.string('picture').defaultTo('http://images.gotinder.com/0001unknown/640x640_pct_0_0_100_100_unknown.jpg');
           table.string('github');
           table.string('linkedIn');
           table.integer('followers');
@@ -80,7 +80,7 @@ const schema = (db) => {
           table.string('title');
           table.string('description');
           table.string('URL');
-          table.integer('category_id').unsigned().references('id').inTable('categories');
+          table.string('resource_category')/*.unsigned().references('category').inTable('categories');*/
           table.integer('user_id').unsigned().references('id').inTable('users');
           table.integer('resource_id').unsigned().references('id').inTable('resources');
           table.timestamp('created_at').defaultTo(db.knex.fn.now());

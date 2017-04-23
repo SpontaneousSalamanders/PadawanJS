@@ -3,7 +3,7 @@
 const Events = require('../models/events.js');
 
 module.exports = (req, res) => {
-  const user_id = req.params.uid;
+  const user_id = req.user.id;
 
   Events.getMenteeEvents(user_id)
   .then((events) => {
@@ -12,4 +12,4 @@ module.exports = (req, res) => {
   .catch((err) => {
     res.status(err.status || 500).send({'error in getMenteeEvents': err});
   });
-}
+};

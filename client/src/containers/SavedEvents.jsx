@@ -1,44 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { getEvents } from '../actions/eventActions.jsx';
 import { Divider, Segment } from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
+import { getSavedEvents } from '../actions/savedEventsActions.jsx';
 import moment from 'moment';
-import axios from 'axios';
 
 
-class EventBoard extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
+class SavedEvents extends Component {
   componentDidMount() {
-    this.props.getEvents(this.props.mentor.id);
-  }
-
-  handleClick(event) {
-    axios.post('/attendEvent', event, {
-      headers: { authorization: localStorage.getItem('token') }
-    });
+    this.props.getSavedEvents();
   }
 
   render() {
-    console.log('EventBoard')
-    return this.props.events.length > 0 ?
-    (
+    console.log('savedEvents', this.props.savedEvents);
+    return (
       <div>
-      <h4 style={{textAlign: 'center'}}>Mentorship Events</h4>
+      <h4 style={{textAlign: 'center', marginTop: 20}}>Saved Events</h4>
       <Divider />
       <ul className="media-list">
-        {this.props.events.map((event, index)=>{
+        {this.props.savedEvents.map((event, index)=>{
           return (
             <Segment>
-            <button
-              onClick={() => this.handleClick(event)}
-              type="button">
-              Attend
-            </button>
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -72,22 +54,18 @@ class EventBoard extends Component {
       </ul>
       </div>
     )
-    :
-    (
-      <div></div>
-    )
   }
 }
 
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
-    events: state.events.eventData
-  };
+    savedEvents: state.savedEvents.savedEventsData
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getEvents: getEvents}, dispatch);
+  return bindActionCreators({getSavedEvents: getSavedEvents}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(SavedEvents);

@@ -3,8 +3,8 @@
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {
-  const user_id = req.body.user_id;
-  const resource_id = req.body.resource_id;
+  const user_id = req.user.id;
+  const resource_id = req.body.id;
 
   Resources.saveResource(user_id, resource_id)
   .then(() => {

@@ -19,7 +19,6 @@ function createUser (email, password, name) {
     password: hash,
     location: 'none',
     role: 'none',
-    picture: 'none',
     techStack: ['none', 'none'],
     followers: 0
   })
