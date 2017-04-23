@@ -9,9 +9,9 @@ class Inbox extends Component {
   }
 
   renderConversations() {
-    return this.props.conversations.map( (conversation, map) => {
+    return this.props.conversations.map( (conversation) => {
       return (
-        <Conversation conversation={conversation}
+        <Conversation conversation={conversation} user={user} onConvoClick={onConvoClick}
         />
       )
     })
@@ -37,7 +37,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getConversations: bindActionCreators({getConversations: getConversations}, dispatch),
-    selectConversation: bindActionCreators: bindActionCreators({selectConversation: selectConversation}, dispatch)
+    selectConversation: bindActionCreators: bindActionCreators({selectConversation: selectConversation}, dispatch),
+    onConvoClick: conversation => dispatch(selectConversation(conversation))
   }
 }
 
