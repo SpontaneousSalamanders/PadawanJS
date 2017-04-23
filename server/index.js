@@ -49,6 +49,7 @@ app.post('/postResource', requireAuth, requireMentor, handler.postResource);
 app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion);
 app.post('/directMessage', handler.postDirectMessage);
 app.get('/conversation/:uid', handler.getConversation);
+app.get('/allConversations/:uid', handler.getAllConversations);
 app.get('/*', handler.wildCard);
 
 // authentication routes

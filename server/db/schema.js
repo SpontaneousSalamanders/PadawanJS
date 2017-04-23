@@ -139,7 +139,7 @@ const schema = (db) => {
         db.knex.schema.createTable('direct_messages', (table) => {
           table.increments('id').primary();
           table.integer('conversation_id').unsigned().references('id').inTable('conversations');
-          table.integer('users_id').unsigned().references('id').inTable('users');
+          table.integer('user_id').unsigned().references('id').inTable('users');
           table.string('direct_message');
           table.timestamp('created_at').defaultTo(db.knex.fn.now());
         })

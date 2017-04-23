@@ -10,6 +10,7 @@ module.exports = {
   getMenteeResources: require('./getMenteeResources.js'),
   getQuestions: require('./getQuestions.js'),
   getConversation: require('./getConversation.js'),
+  getAllConversations: require('./getAllConversations.js'),
   postEvent: require('./postEvent.js'),
   postResource: require('./postResource.js'),
   postQuestion: require('./postQuestion.js'),
