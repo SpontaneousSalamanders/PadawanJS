@@ -12,6 +12,28 @@ const getQuestions = (user_id) => {
   .whereNull('reply_to_message_id')
   .whereNull('root_message_id')
   .orderBy('id');
+
+  // return db.knex.raw(`
+  //   WITH RECURSIVE cte (id, message, path, reply_to_message_id, depth)  AS (
+  //     SELECT  id,
+  //             message,
+  //             array[id] AS path,
+  //             reply_to_message_id,
+  //             1 AS depth
+  //     FROM    messages
+  //     WHERE   user_id = ? AND reply_to_message_id IS NULL
+
+  //     SELECT  messages.id,
+  //             messages.message,
+  //             cte.path || messages.id,
+  //             messages.reply_to_message_id,
+  //             cte.depth + 1 AS depth
+  //     FROM    messages
+  //     JOIN cte ON messages.reply_to_message_id = cte.id
+  //     )
+  //     SELECT id, message, path, depth FROM cte
+  //     ORDER BY path;
+  // `, user_id);
 };
 
 const getMessagesForQuestion = (root_message_id) => {
