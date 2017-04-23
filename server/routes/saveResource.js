@@ -5,7 +5,6 @@ const Resources = require('../models/resources.js');
 module.exports = (req, res) => {
   const user_id = req.user.id;
   const resource_id = req.body.id;
-  console.log(req.body)
 
   Resources.saveResource(user_id, resource_id)
   .then(() => {
