@@ -34,6 +34,35 @@ const getQuestions = (user_id) => {
   //     SELECT id, message, path, depth FROM cte
   //     ORDER BY path;
   // `, user_id);
+
+  // return db.knex.raw(`
+  //   WITH RECURSIVE cte (name, id, message, path, reply_to_message_id, depth)  AS (
+  //     SELECT  users.name,
+  //             messages.id,
+  //             messages.message,
+  //             array[messages.id] AS path,
+  //             messages.reply_to_message_id,
+  //             1 AS depth
+  //     FROM    messages
+  //     JOIN    users ON users.id = messages.user_id
+  //     WHERE   messages.user_id = ? AND messages.reply_to_message_id IS NULL
+
+  //     UNION ALL
+
+  //     SELECT  users.name,
+  //             messages.id,
+  //             messages.message,
+  //             cte.path || messages.id,
+  //             messages.reply_to_message_id,
+  //             cte.depth + 1 AS depth
+  //     FROM    messages
+  //     JOIN    users ON users.id = messages.user_id
+  //     JOIN cte ON messages.reply_to_message_id = cte.id
+  //     )
+  //     SELECT name, id, message, path, depth FROM cte
+  //     ORDER BY path;
+  // `, user_id)
+
 };
 
 const getMessagesForQuestion = (root_message_id) => {
