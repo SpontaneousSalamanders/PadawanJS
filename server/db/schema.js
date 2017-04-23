@@ -120,7 +120,35 @@ const schema = (db) => {
           console.log('Created messages table!');
         });
       }
-    })
+    }),
+
+    db.knex.schema.hasTable('conversations').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('conversations', (table) => {
+          table.increments('id').primary();
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
+        })
+        .then((table) => {
+          console.log('Created conversations table!');
+        });
+      }
+    }),
+
+    db.knex.schema.hasTable('direct_messages').then((exists) => {
+      if (!exists) {
+        db.knex.schema.createTable('direct_messages', (table) => {
+          table.increments('id').primary();
+          table.integer('conversation_id').unsigned().references('id').inTable('conversations');
+          table.integer('user_id').unsigned().references('id').inTable('users');
+          table.string('direct_message');
+          table.timestamp('created_at').defaultTo(db.knex.fn.now());
+        })
+        .then((table) => {
+          console.log('Created direct_messages table!');
+        });
+      }
+    })    
+
   ]);
 };
 
