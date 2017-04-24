@@ -43,9 +43,18 @@ const getMenteeEvents = (user_id) => {
   });
 };
 
+const deleteSavedEvent = (user_id, event_id) => {
+  return db.knex('users_events')
+  .where({
+    user_id: user.id,
+    event_id: event_id
+  });
+};
+
 module.exports = {
   getEvents: getEvents,
   postEvent: postEvent,
   attendEvent: attendEvent,
-  getMenteeEvents: getMenteeEvents
+  getMenteeEvents: getMenteeEvents,
+  deleteSavedEvent: deleteSavedEvent
 };
