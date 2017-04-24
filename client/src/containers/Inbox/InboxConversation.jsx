@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
 
 const InboxConversation = (props) => {
   const { conversation, user, onConvoClick } = props;
@@ -12,13 +13,3 @@ const InboxConversation = (props) => {
     </Link>
   )
 }
-
-
-function mapStateToProps(state) {
-  return {
-    conversation: state.conversation,
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(InboxConversation)

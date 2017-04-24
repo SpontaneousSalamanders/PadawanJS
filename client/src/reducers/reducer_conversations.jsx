@@ -4,13 +4,13 @@ import {
 
 } from '../actions/conversationActions.jsx';
 
-export default function(state = convoData: [], action) {
+export default function(state = {conversationsData: []}, action) {
   switch (action.type) {
     case GET_ALL_CONVERSATIONS:
-      return { ...state, conversations: action.payload };
+      return Object.assign({}, state, { conversationsData: action.payload.data })
     case SELECT_CONVERSATION:
       return { ...state, conversation:
-        action.payload }
+        action.payload.data }
   }
     return state;
 }

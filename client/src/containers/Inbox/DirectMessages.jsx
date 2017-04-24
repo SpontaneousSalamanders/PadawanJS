@@ -19,34 +19,7 @@ class DirectMessages extends Component {
   //   })
   // }
 
-  render() {
-    return (
-      <div>
-        <Link to="/inbox">
-        <h1> Inbox </h1>
-          Back to Inbox
-        </Link>
-        <div>
-          {
-            this.props.directMessages.map(message => (
-              <Message message={message} />
-            ))
-          }
-          <label htmlFor="message-input-field">Message: </label>
-          <textarea
-            type="text"
-            className="form-control"
-            id="message-input-field"
-            onChange={e => onTextInput(e.target.value)}
-            value={text}
-          />
-          <button onClick={() => onMessageSubmit(messageSender, receiver, text, message._id)}>
-            Send Message
-          </button>
-        </div>
-      </div>
-    )
-  }
+
 
 
 }
