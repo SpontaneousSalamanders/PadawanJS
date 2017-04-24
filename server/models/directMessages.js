@@ -3,6 +3,7 @@
 const db = require('../db');
 
 const getConversation = (conversation_id) => {
+  console.log('db conversation_id', conversation_id)
   return db.knex
   .select()
   .from('direct_messages')
@@ -32,7 +33,7 @@ const getAllConversations = (user_id) => {
       .where({id: mostRecentUser})
       .then((info) => {
         return {
-          lastMessage: convos[convos.length - 1], 
+          lastMessage: convos[convos.length - 1],
           recentUser: info
         };
       })

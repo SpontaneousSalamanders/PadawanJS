@@ -6,7 +6,7 @@ import {
 export default function(state = {directMessages: []}, action) {
   switch (action.type) {
     case GET_DIRECT_MESSAGES:
-      return { ...state, directMessages: action.payload };
+      return Object.assign({}, state, { directMessages: action.payload.data })
   }
     return state;
 }

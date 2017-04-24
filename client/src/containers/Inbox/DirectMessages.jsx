@@ -12,7 +12,9 @@ class DirectMessages extends Component {
   }
 
   renderMessages() {
+    console.log('what is convo_id?: ', this.props.conversation_id);
     console.log('direct messages:', this.props.directMessages)
+    console.log('other', this.props.directMessages.directMessages)
   }
 
   render() {

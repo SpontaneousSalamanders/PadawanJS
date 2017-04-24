@@ -7,6 +7,7 @@ module.exports = (req, res) => {
 
   DirectMessages.getConversation(user_id)
   .then((conversation) => {
+    console.log('db getConversation: ',conversation)
     res.status(200).send(conversation);
   })
   .catch((err) => {
