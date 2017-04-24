@@ -70,6 +70,7 @@ const postDirectMessage = (direct_message) => {
 
 module.exports = {
   getConversation: getConversation,
+  getConversationWithNames: getConversationWithNames,
   getAllConversations: getAllConversations,
   postDirectMessage: postDirectMessage,
 };
