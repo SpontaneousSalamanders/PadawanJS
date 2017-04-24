@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import MentorPostMenu from './MentorPostMenu.jsx';
-import EventForm from '../containers/EventForm.jsx';
-import ResourceForm from '../containers/ResourceForm.jsx';
+import MentorPostMenu from '../components/MentorPostMenu.jsx';
+import EventForm from './EventForm.jsx';
+import ResourceForm from './ResourceForm.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import SavedResources from '../containers/SavedResources.jsx';
-import SavedEvents from '../containers/SavedEvents.jsx';
+import SavedResources from './SavedResources.jsx';
+import SavedEvents from './SavedEvents.jsx';
 import { connect } from 'react-redux'
 
 class Dashboard extends Component {
-// const Dashboard = (props) => {
-
   render() {
     const postMenu = this.props.mentor_privileges ? (
       <div className="col-md-6" >
@@ -46,4 +44,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Dashboard);
-// export default Dashboard;
