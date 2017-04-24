@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getConversations, selectConversation } from '../actions/conversationActions.jsx'
+import { getConversations, selectConversation } from '../../actions/conversationActions.jsx'
 import { bindActionCreators } from 'redux';
 
 class Inbox extends Component {
@@ -35,11 +35,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    getConversations: bindActionCreators({getConversations: getConversations}, dispatch),
-    selectConversation: bindActionCreators: bindActionCreators({selectConversation: selectConversation}, dispatch),
+  return bindActionCreators({
+    getConversations: getConversations,
+    selectConversation: selectConversation,
     onConvoClick: conversation => dispatch(selectConversation(conversation))
-  }
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inbox)

@@ -14,7 +14,7 @@ import Dashboard from './components/Dashboard.jsx'
 import RequireAuth from './containers/auth/RequireAuth.jsx';
 import RequireMentor from './containers/auth/RequireMentor.jsx';
 import Inbox from './containers/Inbox/Inbox.jsx';
-import DirectMessage from './containers/Inbox/DirectMessage.jsx';
+import DirectMessages from './containers/Inbox/DirectMessages.jsx';
 
 export default (<Route
   history={browserHistory}
