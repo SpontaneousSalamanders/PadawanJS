@@ -13,6 +13,10 @@ const getConversation = (conversation_id) => {
   })
 };
 
+const getConversationWithNames = (conversation_id) => {
+
+}
+
 const getAllConversations = (user_id) => {
   return db.knex
   .distinct('conversations.id')

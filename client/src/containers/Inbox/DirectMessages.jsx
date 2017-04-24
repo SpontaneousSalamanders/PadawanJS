@@ -6,15 +6,23 @@ import { getConversation } from '../../actions/directMessageActions.jsx'
 // import Message from './Message.jsx';
 // import { submitMessage, fieldInput } from '../../actions/directmessageActions.jsx'
 
+
 class DirectMessages extends Component {
   componentDidMount() {
     this.props.getConversation(this.props.conversations.conversations[0].lastMessage.conversation_id);
   }
 
   renderMessages() {
+
+    return this.props.directMessages.directMessages.map(message, index) => {
+      return (
+        <Message )
+    }
+
     console.log('what is convo_id?: ', this.props.conversations.conversations[0].lastMessage.conversation_id);
     console.log('direct messages:', this.props.directMessages)
     console.log('other', this.props.directMessages.directMessages)
+
   }
 
   render() {
