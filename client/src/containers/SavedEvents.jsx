@@ -4,7 +4,7 @@ import { Divider, Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getSavedEvents } from '../actions/savedEventsActions.jsx';
 import moment from 'moment';
-
+import axios from 'axios';
 
 class SavedEvents extends Component {
   componentDidMount() {
@@ -12,7 +12,12 @@ class SavedEvents extends Component {
   }
 
   render() {
-    console.log('savedEvents', this.props.savedEvents);
+    const handleClick = (event) => {
+      axios.post('/deleteSavedEvent', event, {
+        headers: { authorization: localStorage.getItem('token') }
+      });
+    }
+
     return (
       <div>
       <h4 style={{textAlign: 'center', marginTop: 20}}>Saved Events</h4>
@@ -46,6 +51,11 @@ class SavedEvents extends Component {
                   <br/>
                 </p>
               </div>
+              <button
+                onClick={() => handleClick(event)}
+                type="button">
+                Delete
+              </button>
             </li>
             </Segment>
           )

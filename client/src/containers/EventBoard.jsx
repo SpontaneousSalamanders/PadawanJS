@@ -66,6 +66,11 @@ class EventBoard extends Component {
                   Attend
                 </Button>
               </div>
+              <button
+                onClick={() => this.handleClick(event)}
+                type="button">
+                Attend
+              </button>
             </li>
             </Segment>
           )

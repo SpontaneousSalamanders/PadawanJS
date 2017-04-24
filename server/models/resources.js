@@ -47,9 +47,10 @@ const saveResource = (user_id, resource_id) => {
 const deleteSavedResource = (user_id, event_id) => {
   return db.knex('users_resources')
   .where({
-    user_id: user.id,
+    user_id: user_id,
     resource_id: resource_id
-  });
+  })
+  .del();
 };
 
 module.exports = {

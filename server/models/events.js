@@ -44,11 +44,15 @@ const getMenteeEvents = (user_id) => {
 };
 
 const deleteSavedEvent = (user_id, event_id) => {
+  console.log(user_id);
+  console.log(event_id);
+
   return db.knex('users_events')
   .where({
-    user_id: user.id,
+    user_id: user_id,
     event_id: event_id
-  });
+  })
+  .del();
 };
 
 module.exports = {
