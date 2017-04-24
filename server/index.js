@@ -52,6 +52,10 @@ app.get('/conversation/:uid', handler.getConversation);
 app.get('/allConversations/:uid', handler.getAllConversations);
 app.get('/getMessagesForQuestion/:question_id', handler.getMessagesForQuestion)
 // app.get('/*', handler.wildCard);
+
+app.post('/deleteSavedEvent', handler.deleteSavedEvent);
+app.post('/deleteSavedResource', handler.deleteSavedResource);
+
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/dist/index.html'))
 })
