@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllConversations, selectConversation } from '../../actions/conversationActions.jsx'
+import { getAllConversations, selectConversation} from '../../actions/conversationActions.jsx'
 import { bindActionCreators } from 'redux';
 import InboxConversation from './InboxConversation.jsx';
 
@@ -14,7 +14,7 @@ class Inbox extends Component {
     console.log('this.props.convo is', this.props.conversations);
     return this.props.conversations.conversations.map( (conversation) => {
       return (
-        <InboxConversation conversation={conversation}onConvoClick={onConvoClick}
+        <InboxConversation conversation={conversation}
         />
       )
     })
@@ -33,7 +33,6 @@ class Inbox extends Component {
 
 function mapStateToProps(state) {
   return {
-    mentor: state.selectedMentor,
     conversations: state.conversations
   }
 }
@@ -42,7 +41,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     getAllConversations: getAllConversations,
     selectConversation: selectConversation,
-    onConvoClick: conversation => dispatch(selectConversation(conversation))
   }, dispatch)
 }
 

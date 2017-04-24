@@ -33,11 +33,6 @@ export function homeReducer(state = initialState, action) {
         formState: action.newState
       });
       break;
-    // case SET_AUTH:
-    //   return assign({}, state, {
-    //     loggedIn: action.newState
-    //   });
-      break;
     case SENDING_REQUEST:
       return assign({}, state, {
         currentlySending: action.sending
