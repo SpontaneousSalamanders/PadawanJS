@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const Conversation = (props) => {
+const InboxConversation = (props) => {
   const { conversation, user, onConvoClick } = props;
   return (
-    <Link to={`/inbox/${id}` key={conversation.id}}>
+    <Link to={`/inbox/${id}`} key={conversation.id}>
       <li>
         <span>{props.otherUser}</span>
         {props.latestMessage}
@@ -21,4 +21,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Conversation)
+export default connect(mapStateToProps, mapDispatchToProps)(InboxConversation)

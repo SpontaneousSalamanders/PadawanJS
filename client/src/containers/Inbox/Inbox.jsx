@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getConversations, selectConversation } from '../../actions/conversationActions.jsx'
 import { bindActionCreators } from 'redux';
+import InboxConversation from './InboxConversation.jsx';
 
 class Inbox extends Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class Inbox extends Component {
   renderConversations() {
     return this.props.conversations.map( (conversation) => {
       return (
-        <Conversation conversation={conversation} user={user} onConvoClick={onConvoClick}
+        <InboxConversation conversation={conversation} user={user} onConvoClick={onConvoClick}
         />
       )
     })
