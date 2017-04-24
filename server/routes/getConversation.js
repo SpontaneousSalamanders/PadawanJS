@@ -5,7 +5,7 @@ const DirectMessages = require('../models/directMessages.js');
 module.exports = (req, res) => {
   const user_id = req.params.uid;
 
-  DirectMessages.getConversation(user_id)
+  DirectMessages.getConversationWithNames(user_id)
   .then((conversation) => {
     console.log('db getConversation: ',conversation)
     res.status(200).send(conversation);
