@@ -8,11 +8,11 @@ import { getConversation } from '../../actions/directMessageActions.jsx'
 
 class DirectMessages extends Component {
   componentDidMount() {
-    this.props.getConversation(this.props.conversation_id);
+    this.props.getConversation(this.props.conversations.conversations[0].lastMessage.conversation_id);
   }
 
   renderMessages() {
-    console.log('what is convo_id?: ', this.props.conversation_id);
+    console.log('what is convo_id?: ', this.props.conversations.conversations[0].lastMessage.conversation_id);
     console.log('direct messages:', this.props.directMessages)
     console.log('other', this.props.directMessages.directMessages)
   }
@@ -29,6 +29,7 @@ class DirectMessages extends Component {
 
 function mapStateToProps(state) {
   return {
+    conversations: state.conversations,
     directMessages: state.directMessages,
   }
 }
