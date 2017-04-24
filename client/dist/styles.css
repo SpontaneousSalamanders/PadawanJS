@@ -24,7 +24,6 @@
 .welcome_padawan {
   margin-top: 10px;
   text-align: center;
-/*  text-shadow: 0 0 3px #00b7ee;*/
   margin-bottom: -50px;
 }
 
@@ -63,14 +62,13 @@ Navigation Bar
   padding: 1em;
   display: flex;
   align-items: center;
-  /*background-color: #fff;*/
   background-color: #000000;
   z-index: 6;
 }
 
-/*.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+a.header__findmentor {
   color: black;
-}*/
+}
 
 .header_menus {
   position: fixed;
@@ -81,8 +79,7 @@ Navigation Bar
   padding: 1em;
   display: flex;
   align-items: center;
-  /*background-color: #db644f;*/
-  background-color: #740202;
+  background-color: #db644f;
   margin-top: 65px;
   z-index: 6;
 }
@@ -120,6 +117,10 @@ Navigation Bar
 
 .btn {
   background-color: #5c5d5d;
+}
+
+.btn:hover {
+  background-color: #68BBDA;
 }
 
 @media screen and (max-width: 400px) {

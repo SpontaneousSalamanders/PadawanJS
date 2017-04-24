@@ -17,6 +17,7 @@ class MentorList extends Component {
     return this.props.mentors.filtered.map((mentor, index) => {
       return (
         <MentorListCard
+        key={index}
         mentor={mentor}
         />
       )

@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import {
 	getMessagesForQuestion,
 	getQuestions,
+
 } from '../actions/messageActions.jsx';
 
 class ChallengeThreadList extends Component {
@@ -38,6 +39,12 @@ class ChallengeThreadList extends Component {
 			return (
 				<Segment key={message.id}>
 					<bold>{message.author}</bold> - {message.message}
+					<div>
+						<form>
+							<input />
+							<button>Reply</button>
+						</form>
+					</div>
 				</Segment>
 			);
 		})
