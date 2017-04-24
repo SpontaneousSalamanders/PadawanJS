@@ -5,25 +5,45 @@ import ResourceForm from '../containers/ResourceForm.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SavedResources from '../containers/SavedResources.jsx';
 import SavedEvents from '../containers/SavedEvents.jsx';
+import { connect } from 'react-redux'
 
-const Dashboard = (props) => {
-  return (
-    <div className="container" style={{marginTop: 150, width: '100%'}}>
-      <div className="row">
-        <div className="col-md-6" >
-          <MentorPostMenu />
+class Dashboard extends Component {
+// const Dashboard = (props) => {
+
+  render() {
+    const postMenu = this.props.mentor_privileges ? (
+      <div className="col-md-6" >
+        <MentorPostMenu />
+      </div>
+    ) : (
+      <div className="col-md-6" >
+      </div>
+    );
+
+    return (
+      <div className="container" style={{marginTop: 150, width: '100%'}}>
+        { postMenu }
+        <div className="row">
+          <div className="col-md-6">
+            <SavedResources/>
+            <SavedEvents/>
+          </div>
         </div>
-        <div className="col-md-6">
-          <SavedResources/>
-          <SavedEvents/>
+        <div>
+          <div className="col-md-6">
+          </div>
         </div>
       </div>
-      <div>
-        <div className="col-md-6">
-        </div>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated,
+    mentor_privileges: state.auth.mentor_privileges
+  };
+}
+
+export default connect(mapStateToProps)(Dashboard);
+// export default Dashboard;
