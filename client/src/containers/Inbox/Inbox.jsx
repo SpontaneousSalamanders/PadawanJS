@@ -12,9 +12,9 @@ class Inbox extends Component {
 
   renderConversations() {
     console.log('this.props.convo is', this.props.conversations);
-    return this.props.conversations.map( (conversation) => {
+    return this.props.conversations.conversations.map( (conversation) => {
       return (
-        <InboxConversation conversation={conversation} user={user} onConvoClick={onConvoClick}
+        <InboxConversation conversation={conversation}onConvoClick={onConvoClick}
         />
       )
     })
@@ -34,7 +34,7 @@ class Inbox extends Component {
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
-    conversations: state.conversations.conversationData
+    conversations: state.conversations
   }
 }
 

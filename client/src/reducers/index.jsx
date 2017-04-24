@@ -64,7 +64,7 @@ const RootReducer = combineReducers({
   messages: MessageReducer,
   savedResources: SavedResourcesReducer,
   savedEvents: SavedEventsReducer,
-  conversations: ConversationsReducer
+  conversations: ConversationsReducer,
 
 });
 
