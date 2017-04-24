@@ -15,9 +15,8 @@ class DirectMessages extends Component {
   renderMessages() {
 
     return this.props.directMessages.directMessages.map(message, index) => {
-      return (
-        <Message )
-    }
+      return;
+    };
 
     console.log('what is convo_id?: ', this.props.conversations.conversations[0].lastMessage.conversation_id);
     console.log('direct messages:', this.props.directMessages)

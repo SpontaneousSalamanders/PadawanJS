@@ -14,7 +14,7 @@ class Inbox extends Component {
     console.log('this.props.convo is', this.props.conversations);
     return this.props.conversations.conversations.map( (conversation) => {
       return (
-        <InboxConversation conversation_id ={conversation.lastMessage.conversation_id}
+        <InboxConversation conversation_id = {conversation.lastMessage.conversation_id}
         user = {conversation.recentUser}
         recentMessage={conversation.lastMessage}
         />
