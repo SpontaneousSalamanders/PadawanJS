@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router'
+import { browserHistory, Route } from 'react-router'
 
 import App from './components/App.jsx';
 import LandingPage from './containers/LandingPage.jsx';
@@ -13,6 +13,7 @@ import Signout from './containers/auth/Signout.jsx'
 import Dashboard from './components/Dashboard.jsx'
 
 export default (<Route
+  history={browserHistory}
   component={App}
   onChange={(prevState, nextState) => {
     if (nextState.location.action !== "POP") {
@@ -25,7 +26,7 @@ export default (<Route
   <Route path="/signup" component={SignUpPage} />
   <Route path="/mentorform" component={MentorForm} />
   <Route path="/signout" component={Signout} />
-  <Route path="/profile/*" component={MentorPage} />
+  <Route path="/profile/:id" component={MentorPage} />
   <Route path="/dashboard" component={Dashboard} />
   </Route>
 );
