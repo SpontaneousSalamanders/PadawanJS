@@ -44,7 +44,7 @@ const saveResource = (user_id, resource_id) => {
   });
 };
 
-const deleteSavedResource = (user_id, event_id) => {
+const deleteSavedResource = (user_id, resource_id) => {
   return db.knex('users_resources')
   .where({
     user_id: user_id,

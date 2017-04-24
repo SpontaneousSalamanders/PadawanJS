@@ -51,6 +51,7 @@ class SavedEvents extends Component {
                   <br/>
                 </p>
               </div>
+              <br/>
               <button
                 onClick={() => handleClick(event)}
                 type="button">
