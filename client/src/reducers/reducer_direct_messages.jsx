@@ -3,13 +3,10 @@ import {
 
 } from '../actions/directMessageActions.jsx';
 
-export default function(state = : [], action) {
+export default function(state = {directMessages: []}, action) {
   switch (action.type) {
     case GET_DIRECT_MESSAGES:
-      return { ...state, directMessage: action.payload };
-    case SELECT_CONVERSATION:
-      return { ...state, directMessage:
-        action.payload }
+      return { ...state, directMessages: action.payload };
   }
     return state;
 }

@@ -9,7 +9,7 @@ import MessageReducer from './reducer_messages.jsx';
 import SavedResourcesReducer from './reducer_saved_resources.jsx';
 import SavedEventsReducer from './reducer_saved_events.jsx';
 import ConversationsReducer from './reducer_conversations.jsx';
-
+import DirectMessagesReducer from './reducer_direct_messages.jsx'
 
 
 
@@ -60,6 +60,7 @@ const RootReducer = combineReducers({
   savedResources: SavedResourcesReducer,
   savedEvents: SavedEventsReducer,
   conversations: ConversationsReducer,
+  directMessages: DirectMessagesReducer,
 
 });
 
