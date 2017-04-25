@@ -10,7 +10,6 @@ import SingleMessage from './SingleMessage.jsx';
 
 class DirectMessages extends Component {
 
-
   renderMessages() {
 
     return this.props.directMessages.directMessages.map( (message) => {
@@ -26,6 +25,13 @@ class DirectMessages extends Component {
   }
 
   render() {
+
+    const handleSubmit = (props) => {
+      axios.post('/directMessage/', props, { headers: {
+    authorization: localStorage.getItem('token') }
+      });
+    }
+
     return (
       <div>
       <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
