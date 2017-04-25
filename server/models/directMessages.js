@@ -14,13 +14,13 @@ const getConversation = (conversation_id) => {
 };
 
 const getConversationWithNames = (conversation_id) => {
-  getConversation(conversation_id).map( (message) => {
+  return getConversation(conversation_id).map( (message) => {
     return db.knex
     .distinct('name', 'picture')
     .from('users')
     .innerJoin('direct_messages', function() {
       this.on('direct_messages.user_id', "=", 'users.id')
-    .where({id: message.user_id})
+    .andOn('users.id', '=', message.user_id)
     })
     .then((info) =>{
       return {
