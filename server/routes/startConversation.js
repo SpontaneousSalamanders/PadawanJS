@@ -3,11 +3,14 @@
 const DirectMessages = require('../models/directMessages.js');
 
 module.exports = (req, res) => {
-  const message = req.body;
+
+  const user_profile_id = req.body.user_profile_id;
+  const message = req.body.message;
 
   DirectMessages.startConversation()
-  .then(() => {
-    DirectMessages.postDirectMessage(message)
+  .then((conversation_id) => {
+    console.log(conversation_id)
+    DirectMessages.postDirectMessage(user_profile_id, conversation_id, message)
     .then( () => {
       res.status(200).end();
     })

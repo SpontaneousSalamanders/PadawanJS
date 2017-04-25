@@ -17,8 +17,8 @@ export function getConversation (conversation_id) {
   }
 }
 
-export function startConversation (conversation_id) {
-  const request = axios.get('/startConversation/', { headers: {
+export function startConversation (user_profile_id) {
+  const request = axios.get('/startConversation/', user_profile_id, { headers: {
     authorization: localStorage.getItem('token') }
   })
 

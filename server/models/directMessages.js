@@ -61,7 +61,13 @@ const getAllConversations = (user_id) => {
 };
 
 const startConversation = () => {
-  return db.knex('conversations').insert({});
+  return db.knex('conversations').insert({})
+  .then( () => {
+    return db.knex.select('id')
+    .from('conversations')
+    .orderBy('created_at', 'desc')
+    .limit(1);
+  })
 }
 
 const postDirectMessage = (direct_message) => {

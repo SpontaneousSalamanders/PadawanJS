@@ -18,7 +18,7 @@ export default function(state = initialState, action) {
     case MESSAGE_SENT:
       return Object.assign({}, state, {
         directMessages:
-        action.payload.data
+        action.payload.data,
         messageText: ''
       })
     case INPUT_TEXT:
