@@ -51,8 +51,6 @@ app.post('/directMessage', handler.postDirectMessage);
 app.get('/conversation/:uid', handler.getConversation);
 app.get('/allConversations/:uid', handler.getAllConversations);
 app.get('/getMessagesForQuestion/:question_id', handler.getMessagesForQuestion)
-// app.get('/*', handler.wildCard);
-
 app.post('/deleteSavedEvent', requireAuth, handler.deleteSavedEvent);
 app.post('/deleteSavedResource', requireAuth, handler.deleteSavedResource);
 

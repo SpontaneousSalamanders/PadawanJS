@@ -65,11 +65,6 @@ class ResourceBoard extends Component {
                   Save
                 </Button>
               </div>
-              <button
-                onClick={() => this.handleClick(resource)}
-                type="button">
-                Save
-              </button>
             </li>
             </Segment>
           )
