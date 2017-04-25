@@ -2,6 +2,7 @@
 
 const db = require('../db');
 
+
 const getConversation = (conversation_id) => {
   console.log('db conversation_id', conversation_id)
   return db.knex
@@ -59,6 +60,10 @@ const getAllConversations = (user_id) => {
     })
 };
 
+const startConversation = () => {
+  return db.knex('conversations').insert({});
+}
+
 const postDirectMessage = (direct_message) => {
   return db.knex('direct_messages')
   .insert({
@@ -69,6 +74,7 @@ const postDirectMessage = (direct_message) => {
 };
 
 module.exports = {
+  startConversation: startConversation,
   getConversation: getConversation,
   getConversationWithNames: getConversationWithNames,
   getAllConversations: getAllConversations,
