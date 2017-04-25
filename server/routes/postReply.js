@@ -3,8 +3,6 @@
 const Messages = require('../models/messages.js');
 
 module.exports = (req, res) => {
-  console.log('Reply', req.body)
-
   const user_id = req.user.id;
   const reply = req.body;
 

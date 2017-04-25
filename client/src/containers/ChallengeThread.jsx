@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment } from 'semantic-ui-react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import EnterNewComment from './EnterNewComment.jsx';
 import { bindActionCreators } from 'redux';
 import {

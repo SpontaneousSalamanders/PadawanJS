@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import axios from 'axios';
 
 class ReplyToPreviousReply extends Component {
@@ -13,15 +14,19 @@ class ReplyToPreviousReply extends Component {
   }
 
   handleInputChange(e) {
+    e.preventDefault();
+
     this.setState({
       reply: e.target.value
     })
   }
 
   handleClick(reply) {
+    reply.preventDefault();
+
     axios.post('/postReply',
       {
-        message: reply,
+        message: this.state.reply,
         reply_to_message_id: this.props.id,
         root_message_id: this.props.root_message_id
       },
@@ -30,7 +35,6 @@ class ReplyToPreviousReply extends Component {
   }
 
   render() {
-    console.log('ReplyToPreviousReply', this.props)
     return (
      <div>
        <form>
@@ -39,8 +43,8 @@ class ReplyToPreviousReply extends Component {
          placeholder="Enter your comment"
          onChange={this.handleInputChange}/>
          <button
-          onClick={() => this.handleClick(this.state.reply)}>
-          Postpost</button>
+          onClick={this.handleClick}>
+          Post</button>
        </form>
      </div>
     );
