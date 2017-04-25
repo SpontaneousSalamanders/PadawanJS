@@ -24,7 +24,7 @@ const getConversationWithNames = (conversation_id) => {
     })
     .then((info) =>{
       return {
-        name: info,
+        user: info,
         message: message
       }
     })

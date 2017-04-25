@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { getConversation } from '../../actions/directMessageActions.jsx'
-// import Message from './Message.jsx';
+import Message from './Message.jsx';
 // import { submitMessage, fieldInput } from '../../actions/directmessageActions.jsx'
 
 
@@ -14,9 +14,23 @@ class DirectMessages extends Component {
 
   renderMessages() {
 
+    return this.props.directMessages.directMessages.map( (item) => {
+
+      return (
+        <Message user_id={item.message.user_id} message={item.message.direct_message} timestamp={item.message.created_at} user_name={item.user.name} user_pic={item.user.pic}
+        />
+      )
+
+    })
+
     console.log('what is convo_id?: ', this.props.conversations.conversations[0].lastMessage.conversation_id);
-    console.log('direct messages:', this.props.directMessages)
+
     console.log('other', this.props.directMessages.directMessages)
+
+
+
+
+
 
   }
 
