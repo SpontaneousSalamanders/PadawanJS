@@ -64,7 +64,6 @@ class ChallengeThread extends Component {
 							<ReplyToPreviousReply id={message.id} root_message_id={message.root_message_id}/>
 						) : (
 							<div>
-								this means the this.state.isExpanded is false :(
 							</div>
 						)
 					}
