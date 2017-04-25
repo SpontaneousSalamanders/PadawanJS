@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { getConversation, sendMessage, fieldInput } from '../../actions/directMessageActions.jsx'
 import SingleMessage from './SingleMessage.jsx';
-// import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 
 
@@ -27,6 +27,7 @@ class DirectMessages extends Component {
   render() {
 
     const handleSubmit = (props) => {
+      console.log('inside handleSubmit', props);
       axios.post('/directMessage/', props, { headers: {
     authorization: localStorage.getItem('token') }
       });
@@ -35,10 +36,12 @@ class DirectMessages extends Component {
     return (
       <div>
       <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
+
         {this.renderMessages()}
+
         <label>Message:</label>
 
-          <textarea type="text" value={this.props.text} onChange={e => this.props.fieldInput(e.target.value)} />
+          <textarea type="text" value={this.props.text} onChange={(e) => {this.props.fieldInput(e.target.value)}}/>
 
           <button onClick={() => {this.props.sendMessage(this.props.text)}}>
             Send Message
@@ -54,8 +57,8 @@ function mapStateToProps(state) {
   return {
     conversations: state.conversations,
     directMessages: state.directMessages,
-    text: state.messageText,
     mentor: state.selectedMentor,
+    text: state.messageText,
   }
 }
 
@@ -64,7 +67,6 @@ function mapDispatchToProps(dispatch) {
     getConversation: getConversation,
     sendMessage: sendMessage,
     fieldInput: fieldInput
-
   }, dispatch);
 }
 

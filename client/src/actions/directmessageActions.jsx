@@ -44,6 +44,6 @@ export function fieldInput (field) {
 
   return {
     type: 'FIELD_INPUT',
-    payload: field
+    field
   }
 }
