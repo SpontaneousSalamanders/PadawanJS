@@ -7,23 +7,17 @@ function MentorCard (props) {
     <Card style={{marginTop: 50}}>
       <Image src={props.mentor.picture} />
       <Card.Content>
-        <Card.Header className="mentor_name">
+        <Card.Header >
           {props.mentor.name}
         </Card.Header>
         <Card.Meta>
-          <span className='Location'>
+          <span >
             {props.mentor.location}
           </span>
         </Card.Meta>
         <Card.Description>
-          <h5>Tech Stacks:</h5> {props.mentor.techStack.join(', ')}
+          <h5>Technology Expertise:</h5> {props.mentor.techStack.join(', ')}
         </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <a>
-          <Icon name='user' />
-          {props.mentor.followers} Padawans
-        </a>
       </Card.Content>
     </Card>
   )
