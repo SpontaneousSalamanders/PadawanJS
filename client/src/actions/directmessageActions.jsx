@@ -28,8 +28,9 @@ export function startConversation (user_profile_id) {
   }
 }
 
-export function sendMessage({user_id, conversation_id, direct_message}) {
-  const request = axios.get('/directMessage/', { headers: {
+export function sendMessage(props) {
+  console.log(props)
+  const request = axios.get('/directMessage/', props, { headers: {
     authorization: localStorage.getItem('token') }
   })
 

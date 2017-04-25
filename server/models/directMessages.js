@@ -70,10 +70,10 @@ const startConversation = () => {
   })
 }
 
-const postDirectMessage = (direct_message) => {
+const postDirectMessage = (user_id, direct_message) => {
   return db.knex('direct_messages')
   .insert({
-    user_id: direct_message.user_id,
+    user_id: user_id,
     conversation_id: direct_message.conversation_id,
     direct_message: direct_message.direct_message,
   });

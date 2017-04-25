@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { getConversation } from '../../actions/directMessageActions.jsx'
+import { getConversation, sendMessage, fieldInput } from '../../actions/directMessageActions.jsx'
 import SingleMessage from './SingleMessage.jsx';
-// import { sendMessage, fieldInput } from '../../actions/directMessageActions.jsx'
+// import { Field, reduxForm } from 'redux-form';
+
 
 
 class DirectMessages extends Component {
+
+  handleSubmit(props) {
+    this.props.sendMessage(props)
+  }
+
+  handleChange(event) {
+
+  }
 
   renderMessages() {
 
@@ -24,22 +33,19 @@ class DirectMessages extends Component {
   }
 
   render() {
+    console.log('test', this.props.directMessages.directMessages)
     return (
+      <div>
       <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
         {this.renderMessages()}
       </div>
       <div>
-        <label htmlFor="message-input-field">Message:</label>
-          <textarea
-            type="text"
-            className="form-control"
-            id="message-input-field"
-            onChange={e => onTextInput(e.target.value)}
-            value={text}
-          />
-          <button onClick={() => onMessageSubmit(messageSender, receiver, text, message._id)}>
+        <label>Message:</label>
+          <textarea type="text" value={this.props.text} onChange={e => this.props.fieldInput(e.target.value)} />
+          <button onClick={() => handleSubmit()}>
             Send Message
           </button>
+      </div>
       </div>
     )
   }
@@ -50,12 +56,18 @@ function mapStateToProps(state) {
   return {
     conversations: state.conversations,
     directMessages: state.directMessages,
+    text: state.messageText,
+    mentor: state.selectedMentor,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getConversation: getConversation}, dispatch);
+    getConversation: getConversation,
+    sendMessage: sendMessage,
+    fieldInput: fieldInput
+
+  }, dispatch);
 }
 
 
