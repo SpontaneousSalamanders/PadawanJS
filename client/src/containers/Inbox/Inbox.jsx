@@ -8,6 +8,7 @@ import InboxConversation from './InboxConversation.jsx';
 class Inbox extends Component {
 
   handleSubmit(conversation_id) {
+    console.log(conversation_id)
     this.props.getConversation(conversation_id)
   }
 
@@ -19,11 +20,8 @@ class Inbox extends Component {
     console.log('this.props.convo is', this.props.conversations);
     return this.props.conversations.conversations.map( (conversation) => {
       let name = conversation.recentUser[0].name.split(' ');
-      console.log('convo id', conversation.lastMessage.conversation_id)
 
       return (
-
-
         <InboxConversation conversation_id = {conversation.lastMessage.conversation_id}
         user = {name[0]}
         recentMessage={conversation.lastMessage} handleSubmit={this.handleSubmit.bind(this)}
