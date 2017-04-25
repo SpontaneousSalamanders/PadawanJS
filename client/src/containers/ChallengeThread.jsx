@@ -56,11 +56,12 @@ class ChallengeThread extends Component {
 		}
 
 		return question.messages.map((message) => {
+			console.log('message', message);
 			return (
 				<Segment key={message.id}>
 					<bold>{message.author}</bold> - {message.message}
 					{ this.state.isExpanded ? (
-							<ReplyToPreviousReply />
+							<ReplyToPreviousReply id={message.id} root_message_id={message.root_message_id}/>
 						) : (
 							<div>
 								this means the this.state.isExpanded is false :(

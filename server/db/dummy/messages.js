@@ -44,21 +44,21 @@ module.exports.messages = [
     user_id: 5,
     message: 'What do you mean? African or European swallow?',
     reply_to_message_id: 6,
-    root_message_id: 1,
+    root_message_id: 6,
     created_at: '2017-04-19 12:33:17.205319-07'
   },
   {
     user_id: 2,
     message: 'Noooooooooooo!',
     reply_to_message_id: 7,
-    root_message_id: 1,
+    root_message_id: 6,
     created_at: '2017-04-19 12:34:17.205319-07'
   },
   {
     user_id: 7,
     message: 'What?',
     reply_to_message_id: 6,
-    root_message_id: 1,
+    root_message_id: 6,
     created_at: '2017-04-19 12:35:17.205319-07'
   },
   {
