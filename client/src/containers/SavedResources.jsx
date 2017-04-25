@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment } from 'semantic-ui-react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getSavedResources } from '../actions/savedResourcesActions.jsx';
 import axios from 'axios';
@@ -49,12 +49,14 @@ class SavedResources extends Component {
                 <p key={index}>
                   {resource.description}
                 </p>
+                <Button
+                  onClick={() => handleClick(resource)}
+                  basic
+                  style={{float: 'right'}}
+                  type="button">
+                  Remove
+                </Button>
               </div>
-              <button
-                onClick={() => handleClick(resource)}
-                type="button">
-                Delete
-              </button>
             </li>
             </Segment>
           )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment } from 'semantic-ui-react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getSavedEvents } from '../actions/savedEventsActions.jsx';
 import moment from 'moment';
@@ -50,13 +50,14 @@ class SavedEvents extends Component {
                   {moment(event.date).format('MMMM D YYYY')}
                   <br/>
                 </p>
+                <Button
+                  onClick={() => handleClick(event)}
+                  basic
+                  style={{float: 'right'}}
+                  type="button">
+                  Delete
+                </Button>
               </div>
-              <br/>
-              <button
-                onClick={() => handleClick(event)}
-                type="button">
-                Delete
-              </button>
             </li>
             </Segment>
           )
