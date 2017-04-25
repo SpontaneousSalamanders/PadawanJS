@@ -57,6 +57,8 @@ class ResourceBoard extends Component {
                 <p key={index}>
                   {resource.description}
                 </p>
+              </div>
+              <div className="media-right">
                 <Button
                   onClick={() => this.handleClick(resource)}
                   basic

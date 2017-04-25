@@ -58,6 +58,8 @@ class EventBoard extends Component {
                   {moment(event.date).format('MMMM D YYYY')}
                   <br/>
                 </p>
+              </div>
+              <div className="media-right">
                 <Button
                   style={{float: 'right'}}
                   onClick={() => this.handleClick(event)}
