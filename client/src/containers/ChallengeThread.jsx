@@ -8,12 +8,18 @@ import {
 	getQuestions,
 
 } from '../actions/messageActions.jsx';
+import ReplyToPreviousReply from '../components/ReplyToPreviousReply.jsx';
+
 
 class ChallengeThreadList extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			isExpanded: false
+		}
 		this.renderQuestions = this.renderQuestions.bind(this);
 		this.renderMessagesForQuestion = this.renderMessagesForQuestion.bind(this);
+		this.expandToReplyPreviousAnswer = this.expandToReplyPreviousAnswer.bind(this);
 	}
 
 	componentWillMount() {
@@ -30,6 +36,13 @@ class ChallengeThreadList extends Component {
 		}
 	}
 
+	expandToReplyPreviousAnswer() {
+		this.setState ({
+			isExpanded: true
+		})
+		console.log(this.state.isExpanded);
+	}
+
 	renderMessagesForQuestion(question) {
 		if (!question.hasOwnProperty('messages')) {
 			return null;
@@ -39,12 +52,15 @@ class ChallengeThreadList extends Component {
 			return (
 				<Segment key={message.id}>
 					<bold>{message.author}</bold> - {message.message}
-					<div>
-						<form>
-							<input />
-							<button>Reply</button>
-						</form>
-					</div>
+					{ this.state.isExpanded ? (
+							<ReplyToPreviousReply />
+						) : (
+							<div>
+								this means the this.state.isExpanded is false :(
+							</div>
+						)
+					} 
+					<button onClick={this.expandToReplyPreviousAnswer}>Reply</button>
 				</Segment>
 			);
 		})
@@ -59,6 +75,13 @@ class ChallengeThreadList extends Component {
 			<Segment key={question.id}>
 				<bold>Question: </bold>{question.message}
 				{this.renderMessagesForQuestion(question)}
+				<div>
+					<form>
+						<input />
+						<br></br>
+						<button type="submit">Post</button>
+					</form>
+				</div>
 			</Segment>
 		));
 	}
@@ -71,13 +94,6 @@ class ChallengeThreadList extends Component {
 				<Divider />
 				<Segment>
 					{this.renderQuestions()}
-					<div>
-						<form>
-							<input />
-							<br></br>
-							<button type="submit">Post</button>
-						</form>
-					</div>
 				</Segment>
 			</div>
 		)
