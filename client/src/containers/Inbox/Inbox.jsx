@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllConversations} from '../../actions/conversationActions.jsx'
-import { getConversation } from '../../actions/directmessageActions.jsx'
+import { getConversation } from '../../actions/directMessageActions.jsx'
 import { bindActionCreators } from 'redux';
 import InboxConversation from './InboxConversation.jsx';
 

@@ -11,8 +11,6 @@ class DirectMessages extends Component {
 
   renderMessages() {
 
-    console.log('directmessage props', this.props.conversations.conversations[0].lastMessage.conversation_id)
-
     return this.props.directMessages.directMessages.map( (message) => {
       let name = message.user[0].name.split(' ');
 
