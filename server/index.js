@@ -36,6 +36,7 @@ app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
 app.get('/getEvents/:uid', handler.getEvents);
 app.get('/getResources/:uid', handler.getMentorResources);
+app.get('/getMenteeResources/:uid', handler.getMenteeResources);
 app.get('/getQuestions/:uid', handler.getQuestions);
 app.get('/getMenteeResources', requireAuth, handler.getMenteeResources);
 app.get('/getMenteeResources', handler.getMenteeResources);
@@ -43,13 +44,13 @@ app.get('/getMenteeEvents', requireAuth, handler.getMenteeEvents);
 app.post('/attendEvent', requireAuth, handler.attendEvent);
 app.post('/saveResource', requireAuth, handler.saveResource);
 app.post('/postReply', requireAuth, handler.postReply);
-
 app.post('/postEvent', requireAuth, requireMentor, handler.postEvent);
 app.post('/postResource', requireAuth, requireMentor, handler.postResource);
 app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion);
 app.post('/directMessage', handler.postDirectMessage);
 app.get('/conversation/:uid', handler.getConversation);
 app.get('/allConversations/:uid', handler.getAllConversations);
+app.get('/getMessagesForQuestion/:question_id', handler.getMessagesForQuestion)
 app.get('/*', handler.wildCard);
 
 // authentication routes

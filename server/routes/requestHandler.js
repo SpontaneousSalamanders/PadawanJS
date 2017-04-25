@@ -11,6 +11,7 @@ module.exports = {
   getQuestions: require('./getQuestions.js'),
   getConversation: require('./getConversation.js'),
   getAllConversations: require('./getAllConversations.js'),
+  getMessagesForQuestion: require('./getMessagesForQuestion.js'),
   postEvent: require('./postEvent.js'),
   postResource: require('./postResource.js'),
   postQuestion: require('./postQuestion.js'),

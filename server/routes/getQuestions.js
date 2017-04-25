@@ -6,8 +6,8 @@ module.exports = (req, res) => {
   const user_id = req.params.uid;
 
   Messages.getQuestions(user_id)
-  .then((questions) => {
-    res.status(200).send(questions);
+  .then((messages) => {
+    res.status(200).send(messages);
   })
   .catch((err) => {
     res.status(err.status || 500).send({'error in getQuestions': err});

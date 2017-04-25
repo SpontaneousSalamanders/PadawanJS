@@ -31,7 +31,6 @@ export default function(state = INITIAL_STATE, action = {}) {
           filtered: state.index.filter((mentor) => {
             const role = [mentor.role];
             const matchingRoles = intersection(action.payload.roles, role);
-            console.log('this is matchingroles', matchingRoles);
             return matchingRoles.length > 0 && matchingRoles.length === action.payload.roles.length;
           }),
         });
@@ -40,7 +39,6 @@ export default function(state = INITIAL_STATE, action = {}) {
           filtered: state.index.filter((mentor) => {
             const location = [mentor.location];
             const matchingLocations = intersection(action.payload.locations, location);
-            console.log('this is location', matchingLocations);
             return matchingLocations.length > 0 && matchingLocations.length === action.payload.locations.length;
           }),
         }); 

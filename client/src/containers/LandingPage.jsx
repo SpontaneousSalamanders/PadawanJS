@@ -21,5 +21,3 @@ class LandingPage extends Component {
 }
 
 export default LandingPage;
-     		// <video className="video" src="/padawanjs.mov" autoPlay="true">
-     		// </video>

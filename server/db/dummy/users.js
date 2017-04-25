@@ -118,5 +118,5 @@ module.exports.users = [
     email: 'winston.ku@ku.com',
     password: '$2a$10$SHBvPEginR6EFtrHH62eJeKZo3wqAQ95Dz5Ecw8L9NJ6QXNxPbFOm',
     location: 'San Jose',
-  },
+  }
 ]
