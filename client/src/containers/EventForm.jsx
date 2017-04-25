@@ -14,7 +14,7 @@ import {
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'firstName', 'lastName', 'email', 'favoriteColor', 'notes' ]
+  const requiredFields = [ 'Title', 'Location', 'Description', 'Event Date', 'Event Time' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
@@ -58,14 +58,14 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
 )
 
 const renderTimePicker = props => (
-  <TimePicker 
+  <TimePicker
     floatingLabelText={props.label}
     errorText={props.touched && props.error}
     {...props}
   />
 )
 const renderDatePicker = props => (
-  <DatePicker 
+  <DatePicker
     floatingLabelText={props.label}
     errorText={props.touched && props.error}
     {...props}

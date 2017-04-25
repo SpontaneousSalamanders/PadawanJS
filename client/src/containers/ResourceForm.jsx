@@ -11,7 +11,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'firstName', 'lastName', 'email', 'favoriteColor', 'notes' ]
+  const requiredFields = [ 'Title', 'URL', 'Category', 'Description' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'

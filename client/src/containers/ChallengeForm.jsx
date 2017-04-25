@@ -2,12 +2,11 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { postChallenge } from '../actions/postChallengeActions.jsx';
-import FlatButton from 'material-ui/FlatButton';
 
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'firstName', 'lastName', 'email', 'favoriteColor', 'notes' ]
+  const requiredFields = [ 'Title', 'Description' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
