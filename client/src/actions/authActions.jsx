@@ -84,21 +84,21 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
 //token included in the header of the request for authorization
 
 export function activateMentorProfile(props) {
-  return function(dispatch) {
-  console.log('active mentor', props)
-    // mentor sign up and activating mentor profile
-    axios.post('/mentor_profile_activation',
+  // return function(dispatch) {
+  // console.log('active mentor', props)
+  //   // mentor sign up and activating mentor profile
+  //   axios.post('/mentor_profile_activation',
+  //     props,
+  //     {headers: { authorization: localStorage.getItem('token') }})
+  //     .then(response => {
+  //       // what protected content are we pointing them to?
+  //       browserHistory.push('/');
+  //     })
+  //     .catch(response => dispatch(authError(response.data.error)));
+  // }
+      axios.post('/mentor_profile_activation',
       props,
       {headers: { authorization: localStorage.getItem('token') }})
-      .then(response => {
-        // what protected content are we pointing them to?
-        browserHistory.push('/');
-      })
-      .catch(response => dispatch(authError(response.data.error)));
-  }
-      // axios.post('/mentor_profile_activation',
-      // props,
-      // {headers: { authorization: localStorage.getItem('token') }})
 }
 
 export function authError(error) {

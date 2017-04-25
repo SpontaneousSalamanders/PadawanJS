@@ -9,14 +9,17 @@ import axios from 'axios';
 class SavedEvents extends Component {
   componentDidMount() {
     this.props.getSavedEvents();
-  }
+  };
 
   render() {
     const handleClick = (event) => {
       axios.post('/deleteSavedEvent', event, {
         headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(() => {
+        return this.props.getSavedEvents();
       });
-    }
+    };
 
     return (
       <div>

@@ -8,14 +8,17 @@ import axios from 'axios';
 class SavedResources extends Component {
   componentDidMount() {
     this.props.getSavedResources();
-  }
+  };
 
   render() {
     const handleClick = (resource) => {
       axios.post('/deleteSavedResource', resource, {
         headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(() => {
+        return this.props.getSavedResources();
       });
-    }
+    };
 
     return (
       <div>
