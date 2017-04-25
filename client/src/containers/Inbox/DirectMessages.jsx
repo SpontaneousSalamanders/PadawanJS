@@ -10,9 +10,6 @@ import SingleMessage from './SingleMessage.jsx';
 
 class DirectMessages extends Component {
 
-  handleSubmit(props) {
-    this.props.sendMessage(props)
-  }
 
   renderMessages() {
 
@@ -29,16 +26,15 @@ class DirectMessages extends Component {
   }
 
   render() {
-    console.log('test', this.props.directMessages.directMessages)
     return (
       <div>
       <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
         {this.renderMessages()}
-      </div>
-      <div>
         <label>Message:</label>
+
           <textarea type="text" value={this.props.text} onChange={e => this.props.fieldInput(e.target.value)} />
-          <button onClick={() => handleSubmit()}>
+
+          <button onClick={() => {this.props.sendMessage(this.props.text)}}>
             Send Message
           </button>
       </div>
