@@ -9,7 +9,7 @@ import {
 
 } from '../actions/messageActions.jsx';
 import ReplyToPreviousReply from '../components/ReplyToPreviousReply.jsx';
-
+import axios from 'axios';
 
 class ChallengeThread extends Component {
 	constructor(props) {
@@ -20,6 +20,13 @@ class ChallengeThread extends Component {
 		this.renderQuestions = this.renderQuestions.bind(this);
 		this.renderMessagesForQuestion = this.renderMessagesForQuestion.bind(this);
 		this.expandToReplyPreviousAnswer = this.expandToReplyPreviousAnswer.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick(reply) {
+	  axios.post('/postPeply', reply, {
+	    headers: { authorization: localStorage.getItem('token') }
+	  });
 	}
 
 	componentWillMount() {
@@ -59,7 +66,7 @@ class ChallengeThread extends Component {
 								this means the this.state.isExpanded is false :(
 							</div>
 						)
-					} 
+					}
 					<button onClick={this.expandToReplyPreviousAnswer}>Reply</button>
 				</Segment>
 			);
