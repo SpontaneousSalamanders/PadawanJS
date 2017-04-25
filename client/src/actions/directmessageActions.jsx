@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const GET_DIRECT_MESSAGES = 'GET_DIRECT_MESSAGES';
 export const MESSAGE_SENT = 'MESSAGE_SENT'
-export const INPUT_TEXT = 'INPUT_TEXT'
+export const FIELD_INPUT = 'FIELD_INPUT'
 
 export function getConversation (conversation_id) {
   console.log('getconvo is being called', conversation_id);
@@ -36,5 +36,13 @@ export function sendMessage({user_id, conversation_id, direct_message}) {
   return {
     type: MESSAGE_SENT,
     payload: request
+  }
+}
+
+export function fieldInput (field) {
+
+  return {
+    type: 'FIELD_INPUT',
+    payload: field
   }
 }

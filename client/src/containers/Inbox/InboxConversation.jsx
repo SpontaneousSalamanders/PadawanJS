@@ -16,6 +16,7 @@ const InboxConversation = (props) => {
       <Segment>
         {user}: {recentMessage.direct_message}
       </Segment>
+
     </button>
 
     </Link>

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { getConversation } from '../../actions/directMessageActions.jsx'
 import SingleMessage from './SingleMessage.jsx';
-// import { submitMessage, fieldInput } from '../../actions/directMessageActions.jsx'
+// import { sendMessage, fieldInput } from '../../actions/directMessageActions.jsx'
 
 
 class DirectMessages extends Component {
@@ -29,7 +29,17 @@ class DirectMessages extends Component {
         {this.renderMessages()}
       </div>
       <div>
-
+        <label htmlFor="message-input-field">Message:</label>
+          <textarea
+            type="text"
+            className="form-control"
+            id="message-input-field"
+            onChange={e => onTextInput(e.target.value)}
+            value={text}
+          />
+          <button onClick={() => onMessageSubmit(messageSender, receiver, text, message._id)}>
+            Send Message
+          </button>
       </div>
     )
   }

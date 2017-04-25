@@ -1,7 +1,7 @@
 import {
   GET_DIRECT_MESSAGES,
   MESSAGE_SENT,
-  INPUT_TEXT
+  FIELD_INPUT
 } from '../actions/directMessageActions.jsx';
 
 const initialState = {
@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
         action.payload.data,
         messageText: ''
       })
-    case INPUT_TEXT:
+    case FIELD_INPUT:
       return Object.assign({}, state, {
         messageText: action.text
       })
