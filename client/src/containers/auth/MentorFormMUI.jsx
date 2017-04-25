@@ -104,13 +104,26 @@ const MentorForm = props => {
         <Field name="email" component={renderTextField} label="Email"/>
       </div>
       <div>
+        <Field name="github" component={renderTextField} floatingLabelText="Github Handle"/>
+      </div>
+      <div>
+        <Field name="linkedIn" component={renderTextField} floatingLabelText="LinkedIn Handle"/>
+      </div>
+      <div>
+        <Field 
+          name="description" 
+          component={renderTextField}
+          label="Tell us about yourself"
+          multiLine={true}
+          rows={2} />
+      </div>
+      <div>
         <Field name="location" component={renderSelectField} label="Location">
           <MenuItem value="San Francisco" primaryText="San Francisco"/>
           <MenuItem value="San Jose" primaryText="San Jose"/>
           <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
         </Field>
       </div>
-
       <div> 
         <Field name="role" component={renderSelectField} label="Role">
           <MenuItem value="Front end" primaryText="Front end"/>
