@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { getConversation } from '../../actions/directMessageActions.jsx'
-import Message from './Message.jsx';
+import SingleMessage from './SingleMessage.jsx';
 // import { submitMessage, fieldInput } from '../../actions/directmessageActions.jsx'
 
 
@@ -14,23 +14,22 @@ class DirectMessages extends Component {
 
   renderMessages() {
 
-    return this.props.directMessages.directMessages.map( (item) => {
+    // console.log('test', this.props.directMessages.directMessages[0].message);
+
+    // console.log('another test'. this.props.directMessages.directMessages.message.direct_message);
+
+    // console.log(this.props.directMessages.directMessages[0].user[0].name);
+
+
+    return this.props.directMessages.directMessages.map( (message) => {
+      let name = message.user[0].name.split(' ');
 
       return (
-        <Message user_id={item.message.user_id} message={item.message.direct_message} timestamp={item.message.created_at} user_name={item.user.name} user_pic={item.user.pic}
+        <SingleMessage user_id={message.message.user_id} message={message.message.direct_message} timestamp={message.message.created_at} user_name={name[0]} user_pic={message.user[0].pic}
         />
       )
 
     })
-
-    console.log('what is convo_id?: ', this.props.conversations.conversations[0].lastMessage.conversation_id);
-
-    console.log('other', this.props.directMessages.directMessages)
-
-
-
-
-
 
   }
 
