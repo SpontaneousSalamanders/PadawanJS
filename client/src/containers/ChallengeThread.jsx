@@ -11,7 +11,7 @@ import {
 import ReplyToPreviousReply from '../components/ReplyToPreviousReply.jsx';
 
 
-class ChallengeThreadList extends Component {
+class ChallengeThread extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -115,4 +115,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChallengeThreadList)
+export default connect(mapStateToProps, mapDispatchToProps)(ChallengeThread)
