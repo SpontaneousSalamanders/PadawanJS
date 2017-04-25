@@ -48,6 +48,9 @@ exports.mentor_profile_activation = function (req, res, next) {
   const role = req.body.role;
   const location = req.body.location;
   const techStack = req.body.techStack;
+  const github = 'https://github.com/' + req.body.github;
+  const linkedIn = 'https://www.linkedin.com/in/' + req.body.linkedIn;
+  const description = req.body.description;
   const type = 'mentor';
 
   console.log('list of stuff', email, role, location, techStack, type);
@@ -63,6 +66,9 @@ exports.mentor_profile_activation = function (req, res, next) {
       type: 'mentor',
       role: role,
       location: location,
+      github: github,
+      linkedIn: linkedIn,
+      description: description, 
       techStack: techStack,
     })
     .then(() => {
