@@ -20,10 +20,10 @@ export default function(state = initialState, action) {
         messageText: ''
       })
     case FIELD_INPUT:
-    console.log('action.text', action.text)
-      return {...state,
-        messageText: action.text
-      }
+    console.log('action.field', action.field)
+      return Object.assign({}, state, {
+        messageText: action.field
+      })
   }
     return state;
 }
