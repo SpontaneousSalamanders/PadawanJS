@@ -30,7 +30,7 @@ export default function(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return { authenticated: state.auth.authenticated, admin_privileges: state.auth.mentor_privileges };
+    return { authenticated: state.auth.authenticated, mentor_privileges: state.auth.mentor_privileges };
   }
 
   return connect(mapStateToProps)(MentorProfileAuthorization);

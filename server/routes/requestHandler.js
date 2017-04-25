@@ -18,5 +18,7 @@ module.exports = {
   postReply: require('./postReply.js'),
   postDirectMessage: require('./postDirectMessage.js'),
   saveResource: require('./saveResource.js'),
+  deleteSavedEvent: require('./deleteSavedEvent.js'),
+  deleteSavedResource: require('./deleteSavedResource.js'),
   wildCard: require('./wildCard.js')
 }

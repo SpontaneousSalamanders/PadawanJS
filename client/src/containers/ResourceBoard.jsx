@@ -32,7 +32,7 @@ class ResourceBoard extends Component {
           console.log('resource', resource);
           return (
             <Segment key={index}>
-            
+
             <li key={index} className="media">
               <div className="media-left">
                 <div

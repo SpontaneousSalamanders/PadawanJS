@@ -28,9 +28,9 @@ app.options('*', cors());
 app.use(express.static(__dirname + '/../client/dist'));
 
 // serve up / but not sure if needed
-app.get('/', function(req, res) {
-  res.sendFile(__dirname, + '/../client/dist')
-})
+// app.get('/', function(req, res) {
+//   res.sendFile(__dirname, + '/../client/dist')
+// })
 
 app.get('/getMentors', handler.getMentors);
 app.get('/getMentorProfile/:uid', handler.getMentorProfile);
@@ -51,7 +51,12 @@ app.post('/directMessage', handler.postDirectMessage);
 app.get('/conversation/:uid', handler.getConversation);
 app.get('/allConversations/:uid', handler.getAllConversations);
 app.get('/getMessagesForQuestion/:question_id', handler.getMessagesForQuestion)
-app.get('/*', handler.wildCard);
+app.post('/deleteSavedEvent', requireAuth, handler.deleteSavedEvent);
+app.post('/deleteSavedResource', requireAuth, handler.deleteSavedResource);
+
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname + '/../client/dist/index.html'))
+})
 
 // authentication routes
 authRouter(app);

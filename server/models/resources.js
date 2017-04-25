@@ -13,7 +13,7 @@ const getMentorResources = (user_id) => {
 
 const getMenteeResources = (user_id) => {
   return db.knex
-  .select()
+  .select('resources.id', 'resources.title', 'resources.description', 'resources.URL', 'categories.icon')
   .from('resources')
   .innerJoin('users_resources', function() {
     this.on('users_resources.user_id', '=', Number(user_id))
@@ -31,9 +31,6 @@ const postResource = (user_id, resource) => {
     URL: resource.URL,
     resource_category: resource.category
   })
-  .catch((err) => {
-    console.log(err);
-  });
 };
 
 const saveResource = (user_id, resource_id) => {
@@ -44,9 +41,19 @@ const saveResource = (user_id, resource_id) => {
   });
 };
 
+const deleteSavedResource = (user_id, resource_id) => {
+  return db.knex('users_resources')
+  .where({
+    user_id: user_id,
+    resource_id: resource_id
+  })
+  .del();
+};
+
 module.exports = {
   getMentorResources: getMentorResources,
   getMenteeResources: getMenteeResources,
   postResource: postResource,
-  saveResource: saveResource
+  saveResource: saveResource,
+  deleteSavedResource: deleteSavedResource
 };

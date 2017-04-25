@@ -3,7 +3,7 @@
 const Messages = require('../models/messages.js');
 
 module.exports = (req, res) => {
-  const user_id = req.user_id;
+  const user_id = req.user.id;
   const reply = req.body;
 
   Messages.postReply(user_id, reply)

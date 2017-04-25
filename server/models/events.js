@@ -4,7 +4,7 @@ const db = require('../db');
 
 const getEvents = (user_id) => {
   return db.knex
-  .select()
+  .select('id', 'title', 'description', 'location', 'date', 'time')
   .from('events')
   .where({user_id: user_id})
   .orderBy('created_at');
@@ -35,7 +35,7 @@ const attendEvent = (user_id, event_id) => {
 
 const getMenteeEvents = (user_id) => {
   return db.knex
-  .select()
+  .select('events.id', 'events.title', 'events.description', 'events.location', 'events.date', 'events.time')
   .from('events')
   .innerJoin('users_events', function() {
     this.on('users_events.user_id', '=', Number(user_id))
@@ -43,9 +43,19 @@ const getMenteeEvents = (user_id) => {
   });
 };
 
+const deleteSavedEvent = (user_id, event_id) => {
+  return db.knex('users_events')
+  .where({
+    user_id: user_id,
+    event_id: event_id
+  })
+  .del();
+};
+
 module.exports = {
   getEvents: getEvents,
   postEvent: postEvent,
   attendEvent: attendEvent,
-  getMenteeEvents: getMenteeEvents
+  getMenteeEvents: getMenteeEvents,
+  deleteSavedEvent: deleteSavedEvent
 };
