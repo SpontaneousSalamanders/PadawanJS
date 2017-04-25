@@ -24,7 +24,7 @@ class ChallengeThread extends Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	nestReplies(replies) {
+	nestReplies(replies = []) {
 	  const replyMap = {};
 
 	  replies.forEach(reply => replyMap[reply.id] = reply);
@@ -69,13 +69,8 @@ class ChallengeThread extends Component {
 		console.log(this.state.isExpanded);
 	}
 
-	renderMessagesForQuestion(question) {
-		if (!question.hasOwnProperty('messages')) {
-			return null;
-		}
-
-		return question.messages.map((message) => {
-			console.log('message', message);
+	renderMessagesForQuestion(messages) {
+		return messages.map((message) => {
 			return (
 				<Segment key={message.id}>
 					<bold>{message.author}</bold> - {message.message}
@@ -87,6 +82,7 @@ class ChallengeThread extends Component {
 						)
 					}
 					<button onClick={this.expandToReplyPreviousAnswer}>Reply</button>
+					{ message.children ? this.renderMessagesForQuestion(message.children) : null }
 				</Segment>
 			);
 		})
@@ -100,7 +96,7 @@ class ChallengeThread extends Component {
 		return this.props.questions.map((question) => (
 			<Segment key={question.id}>
 				<bold>Question: </bold>{question.message}
-				{this.renderMessagesForQuestion(question)}
+				{this.renderMessagesForQuestion(this.nestReplies(question.messages))}
 				<div>
 					<form>
 						<input />
