@@ -8,9 +8,6 @@ import SingleMessage from './SingleMessage.jsx';
 
 
 class DirectMessages extends Component {
-  componentDidMount() {
-    this.props.getConversation(this.props.conversations.conversations[0].lastMessage.conversation_id);
-  }
 
   renderMessages() {
 

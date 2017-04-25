@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllConversations, getConversation } from '../../actions/conversationActions.jsx'
+import { getAllConversations} from '../../actions/conversationActions.jsx'
+import { getConversation } from '../../actions/directmessageActions.jsx'
 import { bindActionCreators } from 'redux';
 import InboxConversation from './InboxConversation.jsx';
 
 class Inbox extends Component {
+
+  handleSubmit(conversation_id) {
+    this.props.getConversation(conversation_id)
+  }
 
   componentDidMount() {
     this.props.getAllConversations();
@@ -21,7 +26,7 @@ class Inbox extends Component {
 
         <InboxConversation conversation_id = {conversation.lastMessage.conversation_id}
         user = {name[0]}
-        recentMessage={conversation.lastMessage} selectConversation={getConversation}
+        recentMessage={conversation.lastMessage} handleSubmit={this.handleSubmit.bind(this)}
         />
       )
     })

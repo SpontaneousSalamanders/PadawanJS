@@ -8,8 +8,7 @@
 
 import React, { Component } from 'react';
 import ErrorSignIn from '../containers/ErrorSignInPage.jsx'
-// import { changeForm } from '../actions/index.jsx';
-// import loading button at some point
+
 
 
 const assign = Object.assign;
@@ -34,40 +33,6 @@ class Form extends Component {
         </div>
       </form>
     );
-  }
-
-  // Change the username in the app state
-  changeUsername(event) {
-    var newState = this.mergeWithCurrentState({
-      username: event.target.value
-    });
-
-    this.emitChange(newState);
-  }
-
-  // Change the password in the app state
-  changePassword(event) {
-    var newState = this.mergeWithCurrentState({
-      password: event.target.value
-    });
-
-    this.emitChange(newState);
-  }
-
-  // Merges the current state with a change
-  mergeWithCurrentState(change) {
-    return assign(this.props.data, change);
-  }
-
-  // Emits a change of the form state to the application state
-  emitChange(newState) {
-    this.props.dispatch(changeForm(newState));
-  }
-
-  // onSubmit call the passed onSubmit function
-  onSubmit(event) {
-    event.preventDefault();
-    this.props.onSubmit(this.props.data.username, this.props.data.password);
   }
 }
 
