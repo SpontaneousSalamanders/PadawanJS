@@ -4,8 +4,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { getConversation } from '../../actions/directMessageActions.jsx'
 import SingleMessage from './SingleMessage.jsx';
-// import { submitMessage, fieldInput } from '../../actions/directmessageActions.jsx'
-
+import ComposeMessage from './ComposeMessage.jsx';
 
 class DirectMessages extends Component {
 
@@ -27,6 +26,7 @@ class DirectMessages extends Component {
     return (
       <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
         {this.renderMessages()}
+        <ComposeMessage />
       </div>
     )
   }
