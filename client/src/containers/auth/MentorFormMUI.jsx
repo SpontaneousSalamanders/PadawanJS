@@ -105,7 +105,7 @@ const MentorForm = props => {
       </div>
       <div>
         <Field name="location" component={renderSelectField} label="Location">
-          <MenuItem value="San Fransisco" primaryText="San Fransisco"/>
+          <MenuItem value="San Francisco" primaryText="San Francisco"/>
           <MenuItem value="San Jose" primaryText="San Jose"/>
           <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
         </Field>
@@ -121,7 +121,7 @@ const MentorForm = props => {
       <div>
         Select Languages 
         <Field name="techStack" component={props => <TechSelect options={techOptions} field={props.input}
-          />} label="teckStack" />
+          />} label="techStack" />
 
       </div>
       <div style={{marginTop: 30}}>
