@@ -10,7 +10,7 @@ import MentorForm from './containers/auth/MentorFormMUI.jsx';
 // import MentorForm from './containers/auth/MentorForm.jsx';
 import MentorPage from './components/MentorPage.jsx'
 import Signout from './containers/auth/Signout.jsx'
-import Dashboard from './components/Dashboard.jsx'
+import Dashboard from './containers/Dashboard.jsx'
 import RequireAuth from './containers/auth/RequireAuth.jsx';
 import RequireMentor from './containers/auth/RequireMentor.jsx';
 import Inbox from './containers/Inbox/Inbox.jsx';
