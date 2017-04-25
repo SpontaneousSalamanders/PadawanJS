@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 import { activateMentorProfile } from '../../actions/authActions.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TechSelect from '../../components/TechSelect.jsx';
-
+import { Segment } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
@@ -95,53 +95,61 @@ const techOptions = [
   },
 ]
 
+const formStyle = 
+  {
+    paddingBottom: 30,
+    marginTop: 50,
+  }
+
 const MentorForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <MuiThemeProvider>
-    <form style={{height: 500, marginTop: 150}} onSubmit={handleSubmit(activateMentorProfile)}>
-      <div>
-        <Field name="email" component={renderTextField} label="Email"/>
-      </div>
-      <div>
-        <Field name="github" component={renderTextField} floatingLabelText="Github Handle"/>
-      </div>
-      <div>
-        <Field name="linkedIn" component={renderTextField} floatingLabelText="LinkedIn Handle"/>
-      </div>
-      <div>
-        <Field 
-          name="description" 
-          component={renderTextField}
-          label="Tell us about yourself"
-          multiLine={true}
-          rows={2} />
-      </div>
-      <div>
-        <Field name="location" component={renderSelectField} label="Location">
-          <MenuItem value="San Francisco" primaryText="San Francisco"/>
-          <MenuItem value="San Jose" primaryText="San Jose"/>
-          <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
-        </Field>
-      </div>
-      <div> 
-        <Field name="role" component={renderSelectField} label="Role">
-          <MenuItem value="Front end" primaryText="Front end"/>
-          <MenuItem value="Back end" primaryText="Back end"/>
-          <MenuItem value="Full Stack" primaryText="Full Stack"/>
-        </Field>
-      </div>
-      <div>
-        Select Languages 
-        <Field name="techStack" component={props => <TechSelect options={techOptions} field={props.input}
-          />} label="techStack" />
+    <Segment>
+      <MuiThemeProvider>
+        <form style={formStyle} onSubmit={handleSubmit(activateMentorProfile)}>
+          <div>
+            <Field name="email" component={renderTextField} label="Email"/>
+          </div>
+          <div>
+            <Field name="github" component={renderTextField} floatingLabelText="Github Handle"/>
+          </div>
+          <div>
+            <Field name="linkedIn" component={renderTextField} floatingLabelText="LinkedIn Handle"/>
+          </div>
+          <div>
+            <Field 
+              name="description" 
+              component={renderTextField}
+              label="Tell us about yourself"
+              multiLine={true}
+              rows={2} />
+          </div>
+          <div>
+            <Field name="location" component={renderSelectField} label="Location">
+              <MenuItem value="San Francisco" primaryText="San Francisco"/>
+              <MenuItem value="San Jose" primaryText="San Jose"/>
+              <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
+            </Field>
+          </div>
+          <div> 
+            <Field name="role" component={renderSelectField} label="Role">
+              <MenuItem value="Front end" primaryText="Front end"/>
+              <MenuItem value="Back end" primaryText="Back end"/>
+              <MenuItem value="Full Stack" primaryText="Full Stack"/>
+            </Field>
+          </div>
+          <div>
+            Select Technologies 
+            <Field name="techStack" component={props => <TechSelect options={techOptions} field={props.input}
+              />} label="techStack" />
 
-      </div>
-      <div style={{marginTop: 30}}>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-      </div>
-    </form>
-    </MuiThemeProvider>
+          </div>
+          <div style={{marginTop: 30}}>
+            <button type="submit" disabled={pristine || submitting}>Submit</button>
+          </div>
+        </form>
+      </MuiThemeProvider>
+    </Segment>
 
   )
 }
