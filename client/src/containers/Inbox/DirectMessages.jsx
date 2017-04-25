@@ -14,10 +14,6 @@ class DirectMessages extends Component {
     this.props.sendMessage(props)
   }
 
-  handleChange(event) {
-
-  }
-
   renderMessages() {
 
     return this.props.directMessages.directMessages.map( (message) => {
