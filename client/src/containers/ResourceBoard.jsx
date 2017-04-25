@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment, Button } from 'semantic-ui-react';
+import { Divider, Segment, Button, Popup } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getResources } from '../actions/resourceActions.jsx';
 import axios from 'axios';
@@ -59,13 +59,19 @@ class ResourceBoard extends Component {
                 </p>
               </div>
               <div className="media-right">
-                <Button
+                <Popup
+                  trigger={<Button
                   onClick={() => this.handleClick(resource)}
                   basic
                   style={{float: 'right'}}
                   type="button">
                   Save
-                </Button>
+                </Button>}
+                  content="Saved!"
+                  on="click"
+                  hideOnScroll
+                />
+                
               </div>
             </li>
             </Segment>

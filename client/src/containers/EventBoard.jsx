@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
-import { Divider, Segment, Button } from 'semantic-ui-react';
+import { Divider, Segment, Button, Popup } from 'semantic-ui-react';
 import moment from 'moment';
 import axios from 'axios';
 
@@ -60,13 +60,16 @@ class EventBoard extends Component {
                 </p>
               </div>
               <div className="media-right">
-                <Button
+                <Popup
+                  trigger={<Button
                   style={{float: 'right'}}
                   onClick={() => this.handleClick(event)}
-                  basic
-                  type="button">
-                  Attend
-                </Button>
+                  basic>Attend</Button>}
+                  content="Added to your Events"
+                  on="click"
+                  hideOnScroll
+                />
+                
               </div>
             </li>
             </Segment>
