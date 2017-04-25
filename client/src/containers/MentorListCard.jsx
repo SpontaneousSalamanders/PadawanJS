@@ -68,7 +68,8 @@ function MentorListCard (props) {
               </div>
               <div className="footer">
                 <div className="social-links text-center">
-                  <a target="_blank"  href={props.mentor.github} className="facebook"><i className="fa fa-github"></i></a>
+                  <a target="_blank"  href={props.mentor.github} className="facebook"><i 
+                        className="fa fa-github"></i></a>
                   <a target="_blank" href={props.mentor.linkedIn} className="google"><i className="fa fa-linkedin"></i></a>
               </div>
           </div>
