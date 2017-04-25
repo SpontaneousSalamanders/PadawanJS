@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvents } from '../actions/eventActions.jsx';
-import { Divider, Segment } from 'semantic-ui-react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import moment from 'moment';
 import axios from 'axios';
 
@@ -34,11 +34,6 @@ class EventBoard extends Component {
         {this.props.events.map((event, index)=>{
           return (
             <Segment>
-            <button
-              onClick={() => this.handleClick(event)}
-              type="button">
-              Attend
-            </button>
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -63,6 +58,13 @@ class EventBoard extends Component {
                   {moment(event.date).format('MMMM D YYYY')}
                   <br/>
                 </p>
+                <Button
+                  style={{float: 'right'}}
+                  onClick={() => this.handleClick(event)}
+                  basic
+                  type="button">
+                  Attend
+                </Button>
               </div>
             </li>
             </Segment>
