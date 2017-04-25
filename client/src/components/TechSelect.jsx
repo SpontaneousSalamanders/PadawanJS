@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import isUndefined from 'lodash/isUndefined';
 import isArray from 'lodash/isArray';
-
+import Checkbox from 'material-ui/Checkbox';
 class TechSelect extends Component {
     constructor() {
         super();
@@ -49,10 +49,7 @@ class TechSelect extends Component {
         const values = this.getCurrentValues();
 
         return (
-            <div className="form-group">
-            {label &&
-            <label>{label}</label>
-            }
+
 
             <div>
                 {options.map(option => {
@@ -63,23 +60,19 @@ class TechSelect extends Component {
                             key={option.id}
                             className="checkbox"
                         >
-                            <label>
-                                <input
+                                <Checkbox
                                     {...field}
-                                    type="checkbox"
-                                    onChange={event => this.handleChange(event, option.id)}
+                                    onCheck={event => this.handleChange(event, option.id)}
+                                    label={option.label}
                                     onBlur={() => onBlur(values)}
                                     checked={isChecked}
                                     value={option.id}
                                 />
-
-                                {option.label}
-                            </label>
                         </div>
                     );
                 })}
                 </div>
-            </div>
+
         );
     }
 }

@@ -1,16 +1,14 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import Checkbox from 'material-ui/Checkbox'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import { postEvent } from '../actions/postEventActions.jsx';
-import FlatButton from 'material-ui/FlatButton';
-import {
-  TimePicker,
-  DatePicker,
-} from 'redux-form-material-ui';
+import { activateMentorProfile } from '../../actions/authActions.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TechSelect from '../../components/TechSelect.jsx';
+
 
 const validate = values => {
   const errors = {}
@@ -37,14 +35,19 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 
 const renderCheckbox = ({ input, label }) => (
   <Checkbox label={label}
-    checked={input.value ? true : false}
+    checked={input.value}
     onCheck={input.onChange}/>
 )
 
 const renderRadioGroup = ({ input, ...rest }) => (
   <RadioButtonGroup {...input} {...rest}
     valueSelected={input.value}
-    onChange={(event, value) => input.onChange(value)}/>
+    onChange={(event, value) => input.onChange(value)}>
+    {techOptions.map(option =>{
+      return <RadioButton value={option.label} label={option.label}/>
+    })}
+
+  </RadioButtonGroup>
 )
 
 const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
@@ -57,70 +60,89 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
     {...custom}/>
 )
 
-const renderTimePicker = props => (
-  <TimePicker 
-    floatingLabelText={props.label}
-    errorText={props.touched && props.error}
-    {...props}
-  />
-)
-const renderDatePicker = props => (
-  <DatePicker 
-    floatingLabelText={props.label}
-    errorText={props.touched && props.error}
-    {...props}
-  />
-)
+const techOptions = [
+  {
+    id: 'React',
+    label: 'React'
+  },
+  {
+    id: 'Angular',
+    label: 'Angular'
+  },
+  {
+    id: 'Backbone',
+    label: 'Backbone'
+  },
+  {
+    id: 'React Native',
+    label: 'React Native'
+  },
+  {
+    id: 'Express',
+    label: 'Express'
+  },
+  {
+    id: 'Node.js',
+    label: 'Node.js'
+  },
+  {
+    id: 'TDD',
+    label: 'TDD'
+  },
+  {
+    id: 'Redux',
+    label: 'Redux'
+  },
+]
 
-const EventForm = props => {
+const MentorForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form style={{height: 500}} onSubmit={handleSubmit(postEvent)}>
-      Event
+    <MuiThemeProvider>
+    <form style={{height: 500, marginTop: 150}} onSubmit={handleSubmit(activateMentorProfile)}>
       <div>
-        <Field name="title" component={renderTextField} label="Title"/>
+        <Field name="email" component={renderTextField} label="Email"/>
       </div>
       <div>
         <Field name="location" component={renderSelectField} label="Location">
-          <MenuItem value="San Fransisco" primaryText="San Fransisco"/>
+          <MenuItem value="San Francisco" primaryText="San Francisco"/>
           <MenuItem value="San Jose" primaryText="San Jose"/>
           <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
         </Field>
       </div>
-      <div>
-        <Field name="description" component={renderTextField} label="Description" multiLine={true} rows={2}/>
+
+      <div> 
+        <Field name="role" component={renderSelectField} label="Role">
+          <MenuItem value="Front end" primaryText="Front end"/>
+          <MenuItem value="Back end" primaryText="Back end"/>
+          <MenuItem value="Full Stack" primaryText="Full Stack"/>
+        </Field>
       </div>
       <div>
-        <Field
-          name="date"
-          label="Event Date"
-          component={renderDatePicker}
-          format={null} />
-      </div>
-      <div>
-        <Field
-          name="time"
-          component={renderTimePicker}
-          label="Event Time"
-          format={null} />
+        Select Languages 
+        <Field name="techStack" component={props => <TechSelect options={techOptions} field={props.input}
+          />} label="techStack" />
+
       </div>
       <div style={{marginTop: 30}}>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
       </div>
     </form>
+    </MuiThemeProvider>
+
   )
 }
 
 function mapStateToProps(state) {
   return {
     initialValues: {
-      user_id: state.selectedMentor.id
+      type: 'mentor'
     }
   }
 }
 
 
 export default reduxForm({
-  form: 'EventForm',  // a unique identifier for this form
+  form: 'mentorform',  // a unique identifier for this form
   validate,
-}, mapStateToProps)(EventForm)
+}, mapStateToProps)(MentorForm)

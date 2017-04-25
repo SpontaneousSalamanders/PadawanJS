@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment } from 'semantic-ui-react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { getResources } from '../actions/resourceActions.jsx';
 import axios from 'axios';
@@ -32,11 +32,7 @@ class ResourceBoard extends Component {
           console.log('resource', resource);
           return (
             <Segment key={index}>
-            <button
-              onClick={() => this.handleClick(resource)}
-              type="button">
-              Save
-            </button>
+            
             <li key={index} className="media">
               <div className="media-left">
                 <div
@@ -61,6 +57,13 @@ class ResourceBoard extends Component {
                 <p key={index}>
                   {resource.description}
                 </p>
+                <Button
+                  onClick={() => this.handleClick(resource)}
+                  basic
+                  style={{float: 'right'}}
+                  type="button">
+                  Save
+                </Button>
               </div>
             </li>
             </Segment>
