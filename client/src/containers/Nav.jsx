@@ -33,7 +33,7 @@ class Nav extends Component {
         </div>
       );
 
-    navButtons = this.props.mentorPrivileges ? (
+    navButtons = this.props.mentor_privileges ? (
       <div>
         <Link className="btn btn--login btn--nav" to="/inbox">Inbox</Link>
         <Link className="btn btn--login btn--nav" to="/dashboard">Jedi Dashboard</Link>
