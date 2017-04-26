@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment, Button } from 'semantic-ui-react';
+import { Divider, Segment, Button, Avatar } from 'semantic-ui-react';
 import EnterNewComment from './EnterNewComment.jsx';
 import { bindActionCreators } from 'redux';
 import {
@@ -33,11 +33,10 @@ class ChallengeThread extends Component {
 	render () {
 		return (
 			<div>
-				<br />
-				<h3>Challenges</h3>
-				<Divider />
-				<Segment>
-					{this.renderMessages(this.props.questions)}
+				<h4 style={{textAlign: 'center', marginTop: 20}}>Challenges</h4>
+        <Divider />
+        <Segment>
+          {this.renderMessages(this.props.questions)}
 				</Segment>
 			</div>
 		)

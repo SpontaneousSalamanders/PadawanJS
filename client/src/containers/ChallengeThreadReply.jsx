@@ -39,7 +39,7 @@ class ChallengeThreadReply extends Component {
       { headers: { authorization: localStorage.getItem('token') }
     })
     .then(() => {
-      this.setState({reply: ''})
+      this.setState({ reply: '' })
       this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
     });
   }

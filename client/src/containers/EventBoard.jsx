@@ -24,9 +24,7 @@ class EventBoard extends Component {
   }
 
   render() {
-    console.log('EventBoard')
-    return this.props.events.length > 0 ?
-    (
+    return (
       <div>
       <h4 style={{textAlign: 'center'}}>Mentorship Events</h4>
       <Divider />
@@ -69,19 +67,14 @@ class EventBoard extends Component {
                   on="click"
                   hideOnScroll
                 />
-                
+
               </div>
             </li>
             </Segment>
           )
         })}
-
       </ul>
       </div>
-    )
-    :
-    (
-      <div></div>
     )
   }
 }
