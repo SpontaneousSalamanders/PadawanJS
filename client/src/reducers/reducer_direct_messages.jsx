@@ -8,7 +8,8 @@ const initialState = {
   directMessages: [],
   fetchingInbox: false,
   messageError: null,
-  messageText: ''
+  messageText: '',
+  newConversation: null,
 };
 
 export default function(state = initialState, action) {
@@ -24,6 +25,8 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, {
         messageText: action.field
       })
+    case GET_NEW_CONVERSATION:
+      return Object.assign({}, state, { newConversation: action.payload.data });
   }
     return state;
 }
