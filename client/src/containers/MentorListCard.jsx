@@ -7,7 +7,6 @@ import { selectMentor } from '../actions/index.jsx'
 import { Button } from 'semantic-ui-react';
 
 function MentorListCard (props) {
-  console.log('mentor list card', props)
   return (
     <div className="rotating-card-container">
       <div className="rotating-card">
