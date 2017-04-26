@@ -4,11 +4,12 @@ const db = require('../db');
 
 const getQuestions = (user_id) => {
   return db.knex.raw(`
-    WITH RECURSIVE cte (name, id, message, reply_to_message_id)  AS (
+    WITH RECURSIVE cte (name, id, message, reply_to_message_id, created_at)  AS (
       SELECT  users.name,
               messages.id,
               messages.message,
-              messages.reply_to_message_id
+              messages.reply_to_message_id,
+              messages.created_at
       FROM    messages
       LEFT OUTER JOIN users ON users.id = messages.user_id
       WHERE   messages.user_id = ? AND messages.reply_to_message_id IS NULL
@@ -18,30 +19,31 @@ const getQuestions = (user_id) => {
       SELECT  users.name,
               messages.id,
               messages.message,
-              messages.reply_to_message_id
+              messages.reply_to_message_id,
+              messages.created_at
       FROM    messages
       LEFT OUTER JOIN users ON users.id = messages.user_id
       JOIN cte ON messages.reply_to_message_id = cte.id
       )
-    SELECT name, id, message, reply_to_message_id FROM cte
-    ORDER BY id;
+    SELECT name, id, message, reply_to_message_id, created_at FROM cte
+    ORDER BY created_at DESC;
   `, user_id)
-  .then((messages) => {
-    const nestedMessages = messages.rows;
-    const nestedMessageMap = {};
+  .then((messageList) => {
+    const messages = messageList.rows;
+    const messageMap = {};
 
-    nestedMessages.forEach(nestedMessage => nestedMessageMap[nestedMessage.id] = nestedMessage);
+    messages.forEach(message => messageMap[message.id] = message);
 
-    nestedMessages.forEach(nestedMessage => {
-      if (nestedMessage.reply_to_message_id !== null) {
-        const parent = nestedMessageMap[nestedMessage.reply_to_message_id];
+    messages.forEach(message => {
+      if (message.reply_to_message_id !== null) {
+        const parent = messageMap[message.reply_to_message_id];
         parent.children = parent.children || [];
-        parent.children.push(nestedMessage);
+        parent.children.push(message);
       }
     });
 
-    return nestedMessages.filter(nestedMessage => {
-      return nestedMessage.reply_to_message_id === null;
+    return messages.filter(message => {
+      return message.reply_to_message_id === null;
     });
   })
 };

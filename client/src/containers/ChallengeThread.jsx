@@ -19,9 +19,11 @@ class ChallengeThread extends Component {
 		return messages.map((message) => {
 			return (
 				<Segment key={message.id}>
-					<h3><strong>{message.name}</strong></h3>
-					{message.message}
-					<ChallengeThreadReply id={message.id} />
+					<h3>{message.name}</h3>
+					<p>{message.message}</p>
+					<ChallengeThreadReply
+            id={message.id}
+            name={message.name}/>
 					{ message.children ? this.renderMessages(message.children) : null }
 				</Segment>
 			);
