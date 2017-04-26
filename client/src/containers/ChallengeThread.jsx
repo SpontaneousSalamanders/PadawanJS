@@ -8,7 +8,7 @@ import {
 	getQuestions,
 
 } from '../actions/messageActions.jsx';
-import ChallengeThreadReply from '../components/ChallengeThreadReply.jsx';
+import ChallengeThreadReply from './ChallengeThreadReply.jsx';
 
 class ChallengeThread extends Component {
 	componentWillMount() {

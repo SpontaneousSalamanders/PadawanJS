@@ -39,13 +39,9 @@ class ChallengeThreadReply extends Component {
       { headers: { authorization: localStorage.getItem('token') }
     })
     .then(() => {
+      this.setState({reply: ''})
       this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
-    })
-    .then(() => {
-      this.setState({
-        reply: ''
-      })
-    })
+    });
   }
 
   render() {
@@ -53,10 +49,9 @@ class ChallengeThreadReply extends Component {
      <div style={{overflow: 'hidden'}}>
        <form>
          <input
-         id="messageID"
-         value={this.state.reply}
-         placeholder="Reply"
-         onChange={this.handleInputChange}/>
+          value={this.state.reply}
+          placeholder="Reply"
+          onChange={this.handleInputChange}/>
          <Button
           onClick={this.handleClick}
           basic
