@@ -94,6 +94,7 @@ export function activateMentorProfile(props) {
         // what protected content are we pointing them to?
         browserHistory.push('/');
       })
+  //
   //     .catch(response => dispatch(authError(response.data.error)));
   // }
       // axios.post('/mentor_profile_activation',
