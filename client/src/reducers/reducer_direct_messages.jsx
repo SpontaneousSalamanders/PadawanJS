@@ -1,7 +1,8 @@
 import {
   GET_DIRECT_MESSAGES,
   MESSAGE_SENT,
-  FIELD_INPUT
+  FIELD_INPUT,
+  GET_NEW_CONVERSATION
 } from '../actions/directMessageActions.jsx';
 
 const initialState = {

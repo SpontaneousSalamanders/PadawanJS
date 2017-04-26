@@ -2,8 +2,9 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 export const GET_DIRECT_MESSAGES = 'GET_DIRECT_MESSAGES';
-export const MESSAGE_SENT = 'MESSAGE_SENT'
-export const FIELD_INPUT = 'FIELD_INPUT'
+export const MESSAGE_SENT = 'MESSAGE_SENT';
+export const FIELD_INPUT = 'FIELD_INPUT';
+export const GET_NEW_CONVERSATION = 'GET_NEW_CONVERSATION';
 
 export function getConversation (conversation_id) {
   console.log('getconvo is being called', conversation_id);
