@@ -77,11 +77,11 @@ const postDirectMessage = (user_id, direct_message) => {
     conversation_id: direct_message.conversation_id,
     direct_message: direct_message.direct_message,
   })
-  .then( () => {
-    console.log('direct message conversation id', direct_message.conversation_id);
+  // .then( () => {
+  //   console.log('direct message conversation id', direct_message.conversation_id);
 
-    getConversation(direct_message.conversation_id)
-  })
+  //   // getConversation(direct_message.conversation_id)
+  // })
 };
 
 module.exports = {

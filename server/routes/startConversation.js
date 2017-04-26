@@ -12,9 +12,13 @@ module.exports = (req, res) => {
   .then((conversation_id) => {
     console.log('is this working in start Conversation?',conversation_id[0].id);
     direct_message["conversation_id"] = conversation_id[0].id;
+
     DirectMessages.postDirectMessage(mentor_id, direct_message)
-    .then( (conversation) => {
-      res.status(200).send(conversation);
+    .then( () => {
+      DirectMessages.getConversation(conversation_id[0].id)
+      .then( (conversation) => {
+        res.status(200).send(conversation);
+      })
     })
   })
   .catch((err) => {
