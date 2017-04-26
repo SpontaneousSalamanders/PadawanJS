@@ -17,7 +17,7 @@ class SavedEvents extends Component {
         headers: { authorization: localStorage.getItem('token') }
       })
       .then(() => {
-        return this.props.getSavedEvents();
+        this.props.getSavedEvents();
       });
     };
 

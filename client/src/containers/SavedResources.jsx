@@ -16,7 +16,7 @@ class SavedResources extends Component {
         headers: { authorization: localStorage.getItem('token') }
       })
       .then(() => {
-        return this.props.getSavedResources();
+        this.props.getSavedResources();
       });
     };
 

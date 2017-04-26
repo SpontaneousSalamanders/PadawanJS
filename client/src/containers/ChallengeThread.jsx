@@ -13,9 +13,9 @@ import ReplyToPreviousReply from '../components/ReplyToPreviousReply.jsx';
 class ChallengeThread extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			isExpanded: false
-		}
+		// this.state = {
+		// 	isExpanded: false
+		// }
 		this.nestReplies = this.nestReplies.bind(this);
 		this.renderQuestions = this.renderQuestions.bind(this);
 		this.renderMessagesForQuestion = this.renderMessagesForQuestion.bind(this);
@@ -28,9 +28,9 @@ class ChallengeThread extends Component {
 	  replies.forEach(reply => replyMap[reply.id] = reply);
 
 	  replies.forEach(reply => {
-	    if(reply.reply_to_message_id !== reply.root_message_id) {
+	    if (reply.reply_to_message_id !== reply.root_message_id) {
 	      const parent = replyMap[reply.reply_to_message_id];
-	      parent.children = parent.children || []
+	      parent.children = parent.children || [];
 	      parent.children.push(reply);
 	    }
 	  });
@@ -54,12 +54,12 @@ class ChallengeThread extends Component {
 		}
 	}
 
-	expandToReplyPreviousAnswer() {
-		this.setState ({
-			isExpanded: true
-		})
-		console.log(this.state.isExpanded);
-	}
+	// expandToReplyPreviousAnswer() {
+	// 	this.setState ({
+	// 		isExpanded: true
+	// 	})
+	// 	console.log(this.state.isExpanded);
+	// }
 
 	renderMessagesForQuestion(messages) {
 		return messages.map((message) => {
@@ -73,7 +73,6 @@ class ChallengeThread extends Component {
 							</div>
 						)
 					}
-					<button onClick={this.expandToReplyPreviousAnswer}>Reply</button>
 					{ message.children ? this.renderMessagesForQuestion(message.children) : null }
 				</Segment>
 			);
@@ -104,7 +103,7 @@ class ChallengeThread extends Component {
 		return (
 			<div>
 				<br />
-				<h3>Challenges posted by this mentor</h3>
+				<h3>Challenges</h3>
 				<Divider />
 				<Segment>
 					{this.renderQuestions()}
