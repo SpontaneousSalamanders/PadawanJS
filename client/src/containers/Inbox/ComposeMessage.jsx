@@ -35,12 +35,12 @@ const ComposeMessageForm = props => {
       <div>
         <label>Notes</label>
         <div>
-        <Field name="conversation_id" component/>
+        <Field name="conversation_id" component="input" value={props.conversation_id}/>
         <Field name="direct_message" component="textarea" />
         </div>
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting}>Submit
+        <button type="submit" >Submit
         </button>
       </div>
     </form>
