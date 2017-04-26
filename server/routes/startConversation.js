@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
   const mentor_id = req.body.mentor_id;
   console.log('mentor_id is:', mentor_id)
-  const direct_message = { direct_message: 'Hello Padawan! Ask me anything.' }
+  const direct_message = { direct_message: 'Hello! Ask me anything.' }
 
   DirectMessages.startConversation()
   .then((conversation_id) => {
@@ -14,7 +14,7 @@ module.exports = (req, res) => {
     direct_message["conversation_id"] = conversation_id[0].id;
     DirectMessages.postDirectMessage(mentor_id, direct_message)
     .then( () => {
-      res.status(200).end();
+      res.status(200).send(conversation_id[0].id);
     })
   })
   .catch((err) => {

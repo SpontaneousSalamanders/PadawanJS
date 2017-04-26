@@ -4,6 +4,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
+import { Link } from 'react-router';
 import { startConversation } from '../actions/directMessageActions.jsx'
 
 

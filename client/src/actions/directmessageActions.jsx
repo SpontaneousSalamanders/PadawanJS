@@ -11,7 +11,6 @@ export function getConversation (conversation_id) {
     authorization: localStorage.getItem('token') }
   })
 
-
   return {
     type: GET_DIRECT_MESSAGES,
     payload: request
@@ -25,6 +24,8 @@ export function startConversation (props) {
   const request = axios.post('/startConversation/', props, { headers: {
     authorization: localStorage.getItem('token') }
   })
+
+
 
   return {
     type: GET_DIRECT_MESSAGES,
