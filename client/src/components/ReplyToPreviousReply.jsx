@@ -52,26 +52,3 @@ class ReplyToPreviousReply extends Component {
 }
 
 export default ReplyToPreviousReply;
-
-// const ReplyToPreviousReply = (props) => {
-//   const handleClick = (reply) => {
-//     axios.post('/postReply', props, {
-//       headers: { authorization: localStorage.getItem('token') }
-//     });
-//   }
-
-//   // console.log('ReplyToPreviousReply', props)
-
-//   return (
-//   	<div>
-//   		<form>
-//   			<input placeholder="Enter your comment" />
-//   			<button
-//         onClick={() => handleClick({})}>
-//         Postpost</button>
-//   		</form>
-//   	</div>
-//   );
-// }
-
-// export default ReplyToPreviousReply;
