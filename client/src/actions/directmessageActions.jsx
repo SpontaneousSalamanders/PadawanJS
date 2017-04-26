@@ -6,6 +6,7 @@ export const FIELD_INPUT = 'FIELD_INPUT'
 
 export function getConversation (conversation_id) {
   console.log('getconvo is being called', conversation_id);
+
   const request = axios.get('/conversation/' + conversation_id, { headers: {
     authorization: localStorage.getItem('token') }
   })
@@ -35,7 +36,7 @@ export function sendMessage(props) {
   })
 
   return {
-    type: MESSAGE_SENT,
+    type: GET_DIRECT_MESSAGES,
     payload: request
   }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Segment } from 'semantic-ui-react';
 import { getConversation } from '../../actions/directMessageActions.jsx';
 
-// add an on-click function that selects the correct
+
 
 const InboxConversation = (props) => {
   const { conversation_id, user, recentMessage, handleSubmit } = props;

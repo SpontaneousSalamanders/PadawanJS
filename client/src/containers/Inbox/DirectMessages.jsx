@@ -23,10 +23,14 @@ class DirectMessages extends Component {
   }
 
   render() {
+
+    var conversation_id = this.props.location.pathname.slice(7);
+    console.log ('current path is:', conversation_id);
+
     return (
       <div className="container" style={{width: '100%', marginTop: 100, marginLeft: 150}}>
         {this.renderMessages()}
-        <ComposeMessage />
+        <ComposeMessage conversation_id={conversation_id}/>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { sendMessage } from '../../actions/directMessageActions.jsx';
@@ -28,14 +29,14 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 )
 
 const ComposeMessageForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+
+  const { handleSubmit, pristine, reset, submitting, conversation_id, direct_message } = props
 
   return (
-    <form style={{height: 500}} onSubmit={handleSubmit(sendMessage)}>
+    <form style={{height: 500}} onSubmit={handleSubmit(sendMessage.bind(this, {conversation_id:conversation_id, direct_message:data}))}>
       <div>
         <label>Notes</label>
         <div>
-        <Field name="conversation_id" component="input" value={props.conversation_id}/>
         <Field name="direct_message" component="textarea" />
         </div>
       </div>
@@ -50,13 +51,14 @@ const ComposeMessageForm = props => {
 function mapStateToProps(state) {
   return {
     initialValues: {
-      conversation_id: state.directMessages.directMessages[0].message.conversation_id
+      conversation_id: conversation_id
     }
   }
 }
 
 export default reduxForm({
   form: 'ComposeMessageForm',
+  enableReinitialize: true,
   validate,
 }, mapStateToProps)(ComposeMessageForm)
 
