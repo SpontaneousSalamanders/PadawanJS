@@ -12,6 +12,7 @@ module.exports.users = [
     techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
     github: 'https://github.com/beth',
     linkedIn: 'https://www.linkedin.com/in/bethjohnson3',
+    description:'Created automated testing tool to run UI Automated tests on android hand-held devices, compile results of tests into reports, and notify specified persons when testing was complete.',
     followers: 26
   },
   {
@@ -25,6 +26,7 @@ module.exports.users = [
     techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
     github: 'https://github.com/bcmarinacci',
     linkedIn: 'https://www.linkedin.com/in/bcmarinacci',
+    description: 'I worked with Benji while he was a student and a Fellow at MakerSquare. He is brilliant.',
     followers: 25
   },
   {
@@ -38,6 +40,7 @@ module.exports.users = [
     techStack: ['React', 'Express', 'Node.js', 'JavaScript'],
     github: 'https://github.com/fredx',
     linkedIn: 'https://www.linkedin.com/in/fredzirdung',
+    description: 'From the very beginning, Fred has shown himself to be an extremely capable manager and mentor.',
     followers: 32
   },
   {
@@ -51,6 +54,7 @@ module.exports.users = [
     techStack: ['React', 'Node.js', 'JavaScript'],
     github: 'https://github.com/erikdbrown',
     linkedIn: 'https://www.linkedin.com/in/erikdbrown',
+    description:'I\'m a product-driven software engineer, focused on building and supporting applications that have a social or civic impact.',
     followers: 24
   },
   {
@@ -62,8 +66,9 @@ module.exports.users = [
     role: 'Full Stack',
     picture: 'https://imgur.com/ohFukM2.jpg',
     techStack: ['Angular', 'Node.js', 'JavaScript'],
-    github: '',
-    linkedIn: '',
+    description: 'I graduated from business school in 2014, and then worked as a management consultant for two and a half years.',
+    github:'https://github.com/tylerarbus',
+    linkedIn: 'https://www.linkedin.com/in/tylerarbus/',
     followers: 20
   },
   {
@@ -75,8 +80,9 @@ module.exports.users = [
     role: 'Front end',
     picture: 'https://imgur.com/9eJRSav.jpg',
     techStack: ['React', 'Node.js', 'JavaScript'],
-    github: '',
-    linkedIn: '',
+    description: 'I graduated from Colgate University in 2012. Most recently I worked as a Marketing Associate for an edtech company in the Bay Area for about two years.',
+    github: 'https://github.com/pmillssf',
+    linkedIn: 'https://www.linkedin.com/in/pauldfmills/',
     followers: 21
   },
   {
@@ -88,8 +94,9 @@ module.exports.users = [
     role: 'Full Stack',
     picture: 'https://imgur.com/uz1C3om.jpg',
     techStack: ['React', 'Node.js', 'JavaScript'],
-    github: '',
-    linkedIn: '',
+    github: 'https://github.com/alisonzthu',
+    linkedIn: 'www.linkedin.com/in/xueying-alison-z',
+    description: 'I wrote a GUI-based calculator and a library management system with Java before. They are both quite simple though.',
     followers: 20
   },
   {
@@ -101,8 +108,9 @@ module.exports.users = [
     role: 'Back end',
     picture: 'https://imgur.com/yTpcGqk.jpg',
     techStack: ['React', 'Node.js', 'JavaScript'],
-    github: '',
-    linkedIn: '',
+    github: 'https://github.com/ijongkim',
+    linkedIn: 'https://www.linkedin.com/in/ijongkim',
+    description: 'I am always looking for things to improve within a given process or organization.',
     followers: 20
   },
   {
