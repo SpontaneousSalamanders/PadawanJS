@@ -25,27 +25,26 @@ const getQuestions = (user_id) => {
       )
     SELECT name, id, message, reply_to_message_id FROM cte
     ORDER BY id;
-  `, user_id);
+  `, user_id)
+  .then((messages) => {
+    const nestedMessages = messages.rows;
+    const nestedMessageMap = {};
 
-  // This is because all questions are where there is no reply_to_message_id
-  // or root_message_id
-  // return db.knex
-  // .select()
-  // .from('messages')
-  // .where({ user_id: user_id })
-  // .whereNull('reply_to_message_id')
-  // .whereNull('root_message_id')
-  // .orderBy('id');
+    nestedMessages.forEach(nestedMessage => nestedMessageMap[nestedMessage.id] = nestedMessage);
+
+    nestedMessages.forEach(nestedMessage => {
+      if (nestedMessage.reply_to_message_id !== null) {
+        const parent = nestedMessageMap[nestedMessage.reply_to_message_id];
+        parent.children = parent.children || [];
+        parent.children.push(nestedMessage);
+      }
+    });
+
+    return nestedMessages.filter(nestedMessage => {
+      return nestedMessage.reply_to_message_id === null;
+    });
+  })
 };
-
-// const getMessagesForQuestion = (root_message_id) => {
-//   // The root message id here should be the "question" message id
-//   return db.knex('messages')
-//   .select(['messages.*', 'users.name as author'])
-//   .leftJoin("users", 'messages.user_id', 'users.id')
-//   .where({ root_message_id: root_message_id })
-//   .orderBy('id')
-// }
 
 const postQuestion = (user_id, question) => {
   return db.knex('messages')
