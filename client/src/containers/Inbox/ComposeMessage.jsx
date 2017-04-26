@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, formValueSelector } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { sendMessage } from '../../actions/directMessageActions.jsx';
 
@@ -28,16 +29,18 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
   />
 )
 
-const ComposeMessageForm = props => {
+let ComposeMessageForm = props => {
 
-  const { handleSubmit, pristine, reset, submitting, conversation_id, direct_message } = props
+  const { handleSubmit, pristine, reset, submitting, conversation_id, direct_message } = props;
+
+
 
   return (
-    <form style={{height: 500}} onSubmit={handleSubmit(sendMessage.bind(this, {conversation_id:conversation_id, direct_message:direct_message}))}>
+    <form style={{height: 500}} onSubmit={handleSubmit(sendMessage.bind(this, {conversation_id:conversation_id, direct_message: direct_message}))}>
       <div>
-        <label>Notes</label>
+        <label>Message:</label>
         <div>
-        <Field name="direct_message" component="textarea" {...direct_message} />
+        <Field name="direct_message" component="textarea" />
         </div>
       </div>
       <div>
@@ -48,18 +51,24 @@ const ComposeMessageForm = props => {
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    initialValues: {
-      conversation_id: conversation_id
-    }
-  }
-}
-
-export default reduxForm({
+ComposeMessageForm = reduxForm({
   form: 'ComposeMessageForm',
-  enableReinitialize: true,
   validate,
-}, mapStateToProps)(ComposeMessageForm)
+})(ComposeMessageForm)
 
+const selector = formValueSelector("ComposeMessageForm");
+
+ComposeMessageForm = connect(
+  state => {
+   const direct_message = selector(state, 'direct_message')
+   return {
+      direct_message
+   }
+  }
+)(ComposeMessageForm)
+
+
+
+
+export default ComposeMessageForm;
 
