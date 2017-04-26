@@ -4,6 +4,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
+import { startConversation } from '../actions/directMessageActions.jsx'
+
 
 function MentorCard (props) {
   return (
@@ -27,7 +29,8 @@ function MentorCard (props) {
             Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
           </CardText>
           <CardActions>
-            <FlatButton label="Action1" />
+            <FlatButton label="Send Message" onClick={() =>
+              startConversation({mentor_id: props.mentor_id})} />
             <FlatButton label="Action2" />
           </CardActions>
         </Card>

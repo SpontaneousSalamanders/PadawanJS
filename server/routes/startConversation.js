@@ -1,16 +1,18 @@
-'use strict'
+'use strict';
 
 const DirectMessages = require('../models/directMessages.js');
 
 module.exports = (req, res) => {
 
-  const user_profile_id = req.body.user_profile_id;
-  const direct_message = req.body.message.direct_message;
+  const mentor_id = req.body.mentor_id;
+  console.log('mentor_id is:', mentor_id)
+  const direct_message = { direct_message: 'Hello Padawan! Ask me anything.' }
 
   DirectMessages.startConversation()
   .then((conversation_id) => {
-    console.log(conversation_id)
-    DirectMessages.postDirectMessage(user_profile_id, {conversation_id, direct_message})
+    console.log('is this working in start Conversation?',conversation_id[0].id);
+    direct_message["conversation_id"] = conversation_id[0].id;
+    DirectMessages.postDirectMessage(mentor_id, direct_message)
     .then( () => {
       res.status(200).end();
     })

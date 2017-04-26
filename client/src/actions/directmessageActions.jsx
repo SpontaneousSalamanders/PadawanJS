@@ -18,13 +18,16 @@ export function getConversation (conversation_id) {
   }
 }
 
-export function startConversation (user_profile_id) {
-  const request = axios.get('/startConversation/', user_profile_id, { headers: {
+export function startConversation (props) {
+
+  console.log('inside Start Conversation', props);
+
+  const request = axios.post('/startConversation/', props, { headers: {
     authorization: localStorage.getItem('token') }
   })
 
   return {
-    type: MESSAGE_SENT,
+    type: GET_DIRECT_MESSAGES,
     payload: request
   }
 }
