@@ -30,8 +30,13 @@ function MentorCard (props) {
             Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
           </CardText>
           <CardActions>
-            <FlatButton label="Send Message" onClick={() =>
-              startConversation({mentor_id: props.mentor_id})} />
+            <FlatButton label="Send Message" onClick={() => {
+              startConversation({mentor_id: props.mentor_id});
+              console.log('inside profile card', props.directMessages);
+            }
+
+              }
+              />
             <FlatButton label="Action2" />
           </CardActions>
         </Card>
@@ -43,6 +48,7 @@ function MentorCard (props) {
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
+    directMessages: state.directMessages
   };
 }
 
