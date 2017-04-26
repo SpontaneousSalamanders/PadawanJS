@@ -33,11 +33,11 @@ const ComposeMessageForm = props => {
   const { handleSubmit, pristine, reset, submitting, conversation_id, direct_message } = props
 
   return (
-    <form style={{height: 500}} onSubmit={handleSubmit(sendMessage.bind(this, {conversation_id:conversation_id, direct_message:data}))}>
+    <form style={{height: 500}} onSubmit={handleSubmit(sendMessage.bind(this, {conversation_id:conversation_id, direct_message:direct_message}))}>
       <div>
         <label>Notes</label>
         <div>
-        <Field name="direct_message" component="textarea" />
+        <Field name="direct_message" component="textarea" {...direct_message} />
         </div>
       </div>
       <div>
