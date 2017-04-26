@@ -25,6 +25,7 @@ class ResourceBoard extends Component {
   render() {
     return (
       <div>
+      <Segment>
       <h4 style={{textAlign: 'center', marginTop: 20}}>Recommended Resources</h4>
       <Divider />
       <ul className="media-list">
@@ -71,14 +72,14 @@ class ResourceBoard extends Component {
                   on="click"
                   hideOnScroll
                 />
-                
+
               </div>
             </li>
             </Segment>
           )
         })}
-
       </ul>
+      </Segment>
       </div>
     )
   }

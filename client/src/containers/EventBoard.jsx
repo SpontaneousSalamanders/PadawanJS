@@ -26,6 +26,7 @@ class EventBoard extends Component {
   render() {
     return (
       <div>
+      <Segment>
       <h4 style={{textAlign: 'center'}}>Mentorship Events</h4>
       <Divider />
       <ul className="media-list">
@@ -74,6 +75,7 @@ class EventBoard extends Component {
           )
         })}
       </ul>
+      </Segment>
       </div>
     )
   }

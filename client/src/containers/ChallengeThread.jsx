@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment, Button, Avatar } from 'semantic-ui-react';
+import { Divider, Segment, Button } from 'semantic-ui-react';
 import EnterNewComment from './EnterNewComment.jsx';
 import { bindActionCreators } from 'redux';
 import {
@@ -19,8 +19,27 @@ class ChallengeThread extends Component {
 		return messages.map((message) => {
 			return (
 				<Segment key={message.id}>
-					<h3>{message.name}</h3>
-					<p>{message.message}</p>
+          <div className="media-left">
+            <div
+              key={message.id}
+              style={{width: 50}}
+              className='thumbnail'>
+              <img
+                className="media-object"
+                src={message.picture}
+                key={message.id}
+                alt="..."/>
+            </div>
+          </div>
+          <div
+            key={message.id}
+            className="media-body">
+            <h5
+              className="media-heading" >{message.name}</h5>
+            <p key={message.id}>
+              {message.message}
+            </p>
+          </div>
 					<ChallengeThreadReply
             id={message.id}
             name={message.name}/>
@@ -33,9 +52,9 @@ class ChallengeThread extends Component {
 	render () {
 		return (
 			<div>
+        <Segment>
 				<h4 style={{textAlign: 'center', marginTop: 20}}>Challenges</h4>
         <Divider />
-        <Segment>
           {this.renderMessages(this.props.questions)}
 				</Segment>
 			</div>

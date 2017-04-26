@@ -4,8 +4,9 @@ const db = require('../db');
 
 const getQuestions = (user_id) => {
   return db.knex.raw(`
-    WITH RECURSIVE cte (name, id, message, reply_to_message_id, created_at)  AS (
+    WITH RECURSIVE cte (name, picture, id, message, reply_to_message_id, created_at)  AS (
       SELECT  users.name,
+              users.picture,
               messages.id,
               messages.message,
               messages.reply_to_message_id,
@@ -17,6 +18,7 @@ const getQuestions = (user_id) => {
       UNION ALL
 
       SELECT  users.name,
+              users.picture,
               messages.id,
               messages.message,
               messages.reply_to_message_id,
@@ -25,7 +27,7 @@ const getQuestions = (user_id) => {
       LEFT OUTER JOIN users ON users.id = messages.user_id
       JOIN cte ON messages.reply_to_message_id = cte.id
       )
-    SELECT name, id, message, reply_to_message_id, created_at FROM cte
+    SELECT name, picture, id, message, reply_to_message_id, created_at FROM cte
     ORDER BY created_at DESC;
   `, user_id)
   .then((messageList) => {
