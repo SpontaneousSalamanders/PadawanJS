@@ -70,6 +70,10 @@ a.header__findmentor {
   color: #f2f2f2;
 }
 
+.findmentor {
+  margin-left: 47%;
+}
+
 .header_menus {
   position: fixed;
   top: 0;
@@ -79,7 +83,6 @@ a.header__findmentor {
   padding: 1em;
   display: flex;
   align-items: center;
-  /*background-color: #db644f;*/
   background-color: #601e28;
   margin-top: 65px;
   z-index: 6;
