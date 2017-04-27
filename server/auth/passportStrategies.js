@@ -62,6 +62,7 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   db.knex('users').where({email: payload.sub}).first()
   .then((user) =>{
     if (user) {
+      console.log('user id', user.id)
       return done (null, user);
     } else {
       return done (null, false);
