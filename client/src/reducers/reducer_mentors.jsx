@@ -41,49 +41,31 @@ export default function(state = INITIAL_STATE, action = {}) {
         return Object.assign({}, state, {
           filtered: filtered_by_techStacks_roles_locations
         });
+      } else if (!action.payload.techStacks.includes('Nothing selected') && !action.payload.roles.includes('Nothing selected')) {
+        return Object.assign({}, state, {
+          filtered: filtered_by_techStacks_roles
+        });
+      } else if (!action.payload.roles.includes('Nothing selected') && !action.payload.locations.includes('Nothing selected')) {
+        return Object.assign({}, state, {
+          filtered: filtered_by_roles_locations
+        });
+      } else if (!action.payload.techStacks.includes('Nothing selected') && !action.payload.locations.includes('Nothing selected')) {
+        return Object.assign({}, state, {
+          filtered: filtered_by_techStacks_locations
+        });
       } else if (!action.payload.techStacks.includes('Nothing selected')) {
-        if (!action.payload.roles.includes('Nothing selected')) {
-          return Object.assign({}, state, {
-            filtered: filtered_by_techStacks_roles
-          })
-        } else if (!action.payload.locations.includes('Nothing selected')) {
-          return Object.assign({}, state, {
-            filtered: filtered_by_techStacks_locations
-          })
-        } else {
-          return Object.assign({}, state, {
-            filtered: filtered_by_techStacks
-          });
-        } 
+        return Object.assign({}, state, {
+          filtered: filtered_by_techStacks
+        });
       } else if (!action.payload.roles.includes('Nothing selected')) {
-        if (!action.payload.techStacks.includes('Nothing selected')) {
-          return Object.assign({}, state, {
-            filtered: filtered_by_techStacks_roles
-          })
-        } else if (!action.payload.locations.includes('Nothing selected')) {
-          return Object.assign({}, state, {
-            filtered: filtered_by_roles_locations
-          })
-        } else {
-          return Object.assign({}, state, {
-            filtered: filtered_by_roles
-          });
-        }
+        return Object.assign({}, state, {
+          filtered: filtered_by_roles
+        });
       } else if (!action.payload.locations.includes('Nothing selected')) {
-        if (!action.payload.techStacks.includes('Nothing selected')) {
-          return Object.assign({}, state, {
-            filtered: filtered_by_techStacks_locations
-          })
-        } else if (!action.payload.roles.includes('Nothing selected')) {
-          var result_L_R = intersection(filtered_by_locations, filtered_by_roles);
-          return Object.assign({}, state, {
-            filtered: filtered_by_roles_locations
-          })
-        } else {
         return Object.assign({}, state, {
           filtered: filtered_by_locations
-        }); 
-      }
+        });
+
     }
     default:
       return state;
