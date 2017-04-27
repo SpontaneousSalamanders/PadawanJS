@@ -82,7 +82,7 @@ const EventForm = props => {
       </div>
       <div>
         <Field name="location" component={renderSelectField} label="Location">
-          <MenuItem value="San Fransisco" primaryText="San Fransisco"/>
+          <MenuItem value="San Francisco" primaryText="San Francisco"/>
           <MenuItem value="San Jose" primaryText="San Jose"/>
           <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
         </Field>
