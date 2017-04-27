@@ -8,7 +8,7 @@ class LandingPage extends Component {
     return (
      <div>
      	<div>
-	     	<img className="placeholder" src="/787215.jpg"/>
+	     	<img className="placeholder" src="http://imgur.com/l3g52Tu.jpg"/>
 	     	<h2 className="welcome_padawan">
 	     		Meet our favorite mentors!
 	     		<br />
