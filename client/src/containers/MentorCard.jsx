@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import React from 'react';
+import { Card, Image, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-function MentorCard (props) {
+function MentorCard(props) {
   return (
     <Card style={{marginTop: 50}}>
       <Image src={props.mentor.picture} />
@@ -19,6 +19,9 @@ function MentorCard (props) {
           <h5>Technology Expertise:</h5> {props.mentor.techStack.join(', ')}
         </Card.Description>
       </Card.Content>
+      <Card.Content extra>
+      <Button style={{ textAlign: 'center', marginLeft: '25%' }} basic>Send Message</Button>
+    </Card.Content>
     </Card>
   )
 }
