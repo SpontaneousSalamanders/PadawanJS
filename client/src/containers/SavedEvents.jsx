@@ -25,48 +25,55 @@ class SavedEvents extends Component {
       <div>
       <h4 style={{textAlign: 'center', marginTop: 20}}>Saved Events</h4>
       <Divider />
-      <ul className="media-list">
-        {this.props.savedEvents.map((event, index)=>{
-          return (
-            <Segment>
-            <li key={index} className="media">
-              <div className="media-left">
-                <div
-                  style={{width: 50, cursor: 'pointer'}}
-                  className='thumbnail'
-                  >
-                  <img className="media-object" src='https://d30y9cdsu7xlg0.cloudfront.net/png/89454-200.png' alt="..."/>
+      {
+        this.props.savedEvents.length > 0 ? (
+        <ul className="media-list">
+          {this.props.savedEvents.map((event, index)=>{
+            return (
+              <Segment>
+              <li key={index} className="media">
+                <div className="media-left">
+                  <div
+                    style={{width: 50, cursor: 'pointer'}}
+                    className='thumbnail'
+                    >
+                    <img className="media-object" src='https://d30y9cdsu7xlg0.cloudfront.net/png/89454-200.png' alt="..."/>
+                  </div>
                 </div>
-              </div>
-              <div className="media-body">
-                <h5
-                  style={{cursor: 'pointer'}}
+                <div className="media-body">
+                  <h5
+                    style={{cursor: 'pointer'}}
 
-                  className="media-heading" >{event.title}</h5>
-                <p>
-                  {event.description}
-                  <br/>
-                  {event.location}
-                  <br/>
-                  {event.description}
-                  <br/>
-                  {moment(event.date).format('MMMM D YYYY')}
-                  <br/>
-                </p>
-                <Button
-                  onClick={() => handleClick(event)}
-                  basic
-                  style={{float: 'right'}}
-                  type="button">
-                  Delete
-                </Button>
-              </div>
-            </li>
-            </Segment>
-          )
-        })}
-
-      </ul>
+                    className="media-heading" >{event.title}</h5>
+                  <p>
+                    {event.description}
+                    <br/>
+                    {event.location}
+                    <br/>
+                    {event.description}
+                    <br/>
+                    {moment(event.date).format('MMMM D YYYY')}
+                    <br/>
+                  </p>
+                  <Button
+                    onClick={() => handleClick(event)}
+                    basic
+                    style={{float: 'right'}}
+                    type="button">
+                    Delete
+                  </Button>
+                </div>
+              </li>
+              </Segment>
+            )
+          })}
+        </ul>
+        ) : (
+        <div style={{"textAlign":"center", "marginTop":20}}>
+        <p style={{"color":"#BCBCBC"}}>You have no saved events.</p>
+        </div>
+        )
+      }
       </div>
     )
   }
