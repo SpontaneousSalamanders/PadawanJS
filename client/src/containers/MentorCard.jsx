@@ -19,11 +19,8 @@ function MentorCard(props) {
           <h5>Technology Expertise:</h5> {props.mentor.techStack.join(', ')}
         </Card.Description>
       </Card.Content>
-      <Card.Content extra>
-      <Button style={{ textAlign: 'center', marginLeft: '25%' }} basic>Send Message</Button>
-    </Card.Content>
     </Card>
-  )
+  );
 }
 
 function mapStateToProps(state) {
