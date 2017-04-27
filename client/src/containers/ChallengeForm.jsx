@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { postChallenge } from '../actions/postChallengeActions.jsx';
-
+import { Button } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
@@ -39,7 +39,7 @@ const ChallengeForm = props => {
         <Field name="message" component={renderTextField} label="Question" multiLine={true} rows={2}/>
       </div>
       <div style={{marginTop: 30}}>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <Button type="submit" disabled={pristine || submitting}>Submit</Button>
       </div>
     </form>
   )

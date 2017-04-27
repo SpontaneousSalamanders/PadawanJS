@@ -11,6 +11,8 @@ import {
   TimePicker,
   DatePicker,
 } from 'redux-form-material-ui';
+import { Button } from 'semantic-ui-react';
+import { GET_EVENTS } from '../actions/eventActions.jsx';
 
 const validate = values => {
   const errors = {}
@@ -105,7 +107,7 @@ const EventForm = props => {
           format={null} />
       </div>
       <div style={{marginTop: 30}}>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <Button type="submit" disabled={pristine || submitting}>Submit</Button>
       </div>
     </form>
   )
