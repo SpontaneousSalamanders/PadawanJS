@@ -68,7 +68,7 @@ class ResourceBoard extends Component {
                     type="button">
                     Save
                   </Button>}
-                    content={this.props.authenticated ? 'Saved!' : 'Please log in to save'}
+                    content={this.props.authenticated ? 'Saved to your resources!' : 'Please log in to save'}
                     on="click"
                     hideOnScroll
                   />
