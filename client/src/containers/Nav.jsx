@@ -49,9 +49,8 @@ class Nav extends Component {
           </div>
         </div>
         <div className="header_menus">
-          <div className="header__wrapper">
-            <span><Link className="header__findmentor" to="/find_mentor"><h4>Find Mentor</h4></Link></span>
-          </div>
+          <div className="aboutus"><Link className="header__aboutus" to="/about"><h4>About Us</h4></Link></div>
+          <div className="findmentor"><Link className="header__findmentor" to="/find_mentor"><h4>Find Mentor</h4></Link></div>
         </div>
       </div>
 

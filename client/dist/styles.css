@@ -70,6 +70,10 @@ a.header__findmentor {
   color: #f2f2f2;
 }
 
+.findmentor {
+  margin-left: 700px;
+}
+
 .header_menus {
   position: fixed;
   top: 0;
@@ -79,11 +83,18 @@ a.header__findmentor {
   padding: 1em;
   display: flex;
   align-items: center;
-  /*background-color: #db644f;*/
   background-color: #601e28;
   margin-top: 65px;
   z-index: 6;
 }
+
+a.header__aboutus {
+  color: #f2f2f2;
+}
+
+/*.aboutus {
+  margin-left: 700px;
+}*/
 
 .nav__wrapper {
   max-width: $max-width;
