@@ -22,6 +22,7 @@ class SavedResources extends Component {
 
     return (
       <div>
+      <Segment>
       <h4 style={{textAlign: 'center', marginTop: 20}}>My Resources</h4>
       <Divider />
       {
@@ -73,6 +74,7 @@ class SavedResources extends Component {
         </div>
         )
       }
+      </Segment>
       </div>
     )
   }

@@ -23,6 +23,7 @@ class SavedEvents extends Component {
 
     return (
       <div>
+      <Segment>
       <h4 style={{textAlign: 'center', marginTop: 20}}>Saved Events</h4>
       <Divider />
       {
@@ -74,6 +75,7 @@ class SavedEvents extends Component {
         </div>
         )
       }
+      </Segment>
       </div>
     )
   }
