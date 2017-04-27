@@ -12,12 +12,11 @@ import {
   TimePicker,
   DatePicker,
 } from 'redux-form-material-ui';
-import { Button } from 'semantic-ui-react';
-import { GET_EVENTS } from '../actions/eventActions.jsx';
+import { Button, Popup } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'Title', 'Location', 'Description', 'Event Date', 'Event Time' ]
+  const requiredFields = [ 'title', 'location', 'description', 'date', 'time' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
@@ -76,7 +75,7 @@ const renderDatePicker = props => (
 )
 
 const EventForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting, valid } = props
   return (
     <form style={{height: 500}} onSubmit={handleSubmit}>
       Event
@@ -108,7 +107,7 @@ const EventForm = props => {
           format={null} />
       </div>
       <div style={{marginTop: 30}}>
-        <Button type="submit" disabled={pristine || submitting}>Submit</Button>
+        <Popup trigger={<Button type="submit" disabled={pristine || submitting} >Submit</Button>} content={!valid ? 'Please fill required fields': 'Submitted'} on="click" hideOnScroll />
       </div>
     </form>
   )
