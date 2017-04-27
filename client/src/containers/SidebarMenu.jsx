@@ -14,7 +14,6 @@ const techStackItems = [
   'React',
   'Angular',
   'Backbone',
-  'React Native',
   'Express',
   'Node.js',
   'TDD',
@@ -29,7 +28,7 @@ const rolesItems = [
 ];
 
 const locationItems = [
-  'SF',
+  'San Francisco',
   'San Jose',
   'Palo Alto'
 ];
