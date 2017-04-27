@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment, Button } from 'semantic-ui-react';
+import { Divider, Segment, Button, Popup } from 'semantic-ui-react';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import {
@@ -52,12 +52,30 @@ class ChallengeThreadReply extends Component {
           value={this.state.reply}
           placeholder={"Reply to " + this.props.name.split(' ')[0]}
           onChange={this.handleInputChange}/>
-         <Button
-          onClick={this.handleClick}
-          basic
-          style={{'float':'right'}}>
-          Post
-        </Button>
+          {
+            this.props.authenticated ? (
+              <Button
+                onClick={this.handleClick}
+                basic
+                style={{'float':'right'}}>
+                Post
+              </Button>
+            ) : (
+              <Popup
+                trigger={
+                  <Button
+                    onClick={this.handleClick}
+                    basic
+                    style={{'float':'right'}}>
+                    Post
+                  </Button>
+                }
+                content="Please log in to post"
+                on="click"
+                hideOnScroll
+              />
+            )
+          }
        </form>
      </div>
     );
@@ -67,6 +85,7 @@ class ChallengeThreadReply extends Component {
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
+    authenticated: state.auth.authenticated,
     questions: state.messages.questions,
     messagesForQuestions: state.messages.messagesForQuestions,
   };
