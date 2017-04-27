@@ -29,6 +29,5 @@ describe('Reducers', () => {
   it('Selected Mentor has a default state', () => {
     expect(SelectedMentorReducer(undefined, { type: 'unexpected' })).toEqual(null);
   });
-
 });
 
