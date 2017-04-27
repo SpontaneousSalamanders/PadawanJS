@@ -12,15 +12,16 @@ const MentorPage = function(props) {
       <div className="row">
         <div className="col-md-6">
           <MentorCard />
+          <ResourceBoard />
         </div>
         <div className="col-md-6">
-          <ResourceBoard />
           <EventBoard />
+          <br/>
+          <ChallengeThread />
         </div>
       </div>
       <div className="row">
         <div className="col-md-6">
-          <ChallengeThread />
         </div>
       </div>
     </div>

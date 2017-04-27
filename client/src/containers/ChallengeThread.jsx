@@ -8,106 +8,57 @@ import {
 	getQuestions,
 
 } from '../actions/messageActions.jsx';
-import ReplyToPreviousReply from '../components/ReplyToPreviousReply.jsx';
+import ChallengeThreadReply from './ChallengeThreadReply.jsx';
 
 class ChallengeThread extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			isExpanded: false
-		}
-		this.nestReplies = this.nestReplies.bind(this);
-		this.renderQuestions = this.renderQuestions.bind(this);
-		this.renderMessagesForQuestion = this.renderMessagesForQuestion.bind(this);
-		this.expandToReplyPreviousAnswer = this.expandToReplyPreviousAnswer.bind(this);
-	}
-
-	nestReplies(replies = []) {
-	  const replyMap = {};
-
-	  replies.forEach(reply => replyMap[reply.id] = reply);
-
-	  replies.forEach(reply => {
-	    if(reply.reply_to_message_id !== reply.root_message_id) {
-	      const parent = replyMap[reply.reply_to_message_id];
-	      parent.children = parent.children || []
-	      parent.children.push(reply);
-	    }
-	  });
-
-	  return replies.filter(reply => {
-	    return reply.reply_to_message_id === reply.root_message_id;
-	  });
-	}
-
 	componentWillMount() {
 		this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.questions && nextProps.questions.length > 1) {
-			nextProps.questions.forEach((question) => {
-				if (!question.hasOwnProperty('messages')) {
-					nextProps.getMessagesForQuestionAction.getMessagesForQuestion(question.id);
-				}
-			})
-		}
-	}
-
-	expandToReplyPreviousAnswer() {
-		this.setState ({
-			isExpanded: true
-		})
-		console.log(this.state.isExpanded);
-	}
-
-	renderMessagesForQuestion(messages) {
-		return messages.map((message) => {
-			return (
-				<Segment key={message.id}>
-					<bold>{message.author}</bold> - {message.message}
-					{ this.state.isExpanded ? (
-							<ReplyToPreviousReply id={message.id} root_message_id={message.root_message_id}/>
-						) : (
-							<div>
-							</div>
-						)
-					}
-					<button onClick={this.expandToReplyPreviousAnswer}>Reply</button>
-					{ message.children ? this.renderMessagesForQuestion(message.children) : null }
-				</Segment>
-			);
-		})
-	}
-
-	renderQuestions() {
-		if (!this.props.questions || this.props.questions.length < 1) {
-			return null;
-		}
-
-		return this.props.questions.map((question) => (
-			<Segment key={question.id}>
-				<bold>Question: </bold>{question.message}
-				{this.renderMessagesForQuestion(this.nestReplies(question.messages))}
-				<div>
-					<form>
-						<input />
-						<br></br>
-						<button type="submit">Post</button>
-					</form>
-				</div>
-			</Segment>
-		));
+	renderMessages(messages = []) {
+		return messages.length > 0 ? (
+      messages.map((message) => {
+  			return (
+  				<Segment key={message.id}>
+            <div className="media-left">
+              <div
+                key={message.id}
+                style={{"width": 50}}
+                className="thumbnail">
+                <img
+                  className="media-object"
+                  src={message.picture}
+                  key={message.id}
+                  alt="..."/>
+              </div>
+            </div>
+            <div
+              key={message.id}
+              className="media-body">
+              <h4 className="media-heading">{message.name}</h4>
+              <p key={message.id}>{message.message}</p>
+            </div>
+  					<ChallengeThreadReply
+              id={message.id}
+              name={message.name}/>
+  					{ message.children ? this.renderMessages(message.children) : null }
+  				</Segment>
+        )
+  		})
+    ) : (
+    <div style={{"textAlign":"center", "marginTop":20}}>
+    <p style={{"color":"#BCBCBC"}}>This mentor has no challenges.</p>
+    </div>
+    )
 	}
 
 	render () {
 		return (
 			<div>
-				<br />
-				<h3>Challenges posted by this mentor</h3>
-				<Divider />
-				<Segment>
-					{this.renderQuestions()}
+        <Segment>
+				<h4 style={{"textAlign":"center", "marginTop":20}}>Challenges</h4>
+        <Divider />
+          {this.renderMessages(this.props.questions)}
 				</Segment>
 			</div>
 		)

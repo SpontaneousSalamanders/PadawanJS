@@ -3,53 +3,52 @@
 const db = require('../db');
 
 const getQuestions = (user_id) => {
-  // This is because all questions are where there is no reply_to_message_id
-  // or root_message_id
-  return db.knex
-  .select()
-  .from('messages')
-  .where({ user_id: user_id })
-  .whereNull('reply_to_message_id')
-  .whereNull('root_message_id')
-  .orderBy('id');
+  return db.knex.raw(`
+    WITH RECURSIVE cte (name, picture, id, message, reply_to_message_id, created_at)  AS (
+      SELECT  users.name,
+              users.picture,
+              messages.id,
+              messages.message,
+              messages.reply_to_message_id,
+              messages.created_at
+      FROM    messages
+      LEFT OUTER JOIN users ON users.id = messages.user_id
+      WHERE   messages.user_id = ? AND messages.reply_to_message_id IS NULL
 
-  // return db.knex.raw(`
-  //   WITH RECURSIVE cte (name, id, message, path, reply_to_message_id, depth)  AS (
-  //     SELECT  users.name,
-  //             messages.id,
-  //             messages.message,
-  //             array[messages.id] AS path,
-  //             messages.reply_to_message_id,
-  //             1 AS depth
-  //     FROM    messages
-  //     LEFT OUTER JOIN users ON users.id = messages.user_id
-  //     WHERE   messages.user_id = ? AND messages.reply_to_message_id IS NULL
+      UNION ALL
 
-  //     UNION ALL
+      SELECT  users.name,
+              users.picture,
+              messages.id,
+              messages.message,
+              messages.reply_to_message_id,
+              messages.created_at
+      FROM    messages
+      LEFT OUTER JOIN users ON users.id = messages.user_id
+      JOIN cte ON messages.reply_to_message_id = cte.id
+      )
+    SELECT name, picture, id, message, reply_to_message_id, created_at FROM cte
+    ORDER BY created_at DESC;
+  `, user_id)
+  .then((messageList) => {
+    const messages = messageList.rows;
+    const messageMap = {};
 
-  //     SELECT  users.name,
-  //             messages.id,
-  //             messages.message,
-  //             cte.path || messages.id,
-  //             messages.reply_to_message_id,
-  //             cte.depth + 1 AS depth
-  //     FROM    messages
-  //     LEFT OUTER JOIN users ON users.id = messages.user_id
-  //     JOIN cte ON messages.reply_to_message_id = cte.id
-  //     )
-  //   SELECT name, id, message, path, depth FROM cte
-  //   ORDER BY path;
-  // `, user_id);
+    messages.forEach(message => messageMap[message.id] = message);
+
+    messages.forEach(message => {
+      if (message.reply_to_message_id !== null) {
+        const parent = messageMap[message.reply_to_message_id];
+        parent.children = parent.children || [];
+        parent.children.push(message);
+      }
+    });
+
+    return messages.filter(message => {
+      return message.reply_to_message_id === null;
+    });
+  })
 };
-
-const getMessagesForQuestion = (root_message_id) => {
-  // The root message id here should be the "question" message id
-  return db.knex('messages')
-  .select(['messages.*', 'users.name as author'])
-  .leftJoin("users", 'messages.user_id', 'users.id')
-  .where({ root_message_id: root_message_id })
-  .orderBy('id')
-}
 
 const postQuestion = (user_id, question) => {
   return db.knex('messages')
@@ -72,7 +71,6 @@ const postReply = (user_id, reply) => {
 
 module.exports = {
   getQuestions: getQuestions,
-  getMessagesForQuestion: getMessagesForQuestion,
   postQuestion: postQuestion,
   postReply: postReply
 };

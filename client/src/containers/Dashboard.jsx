@@ -24,6 +24,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col-md-6">
             <SavedResources/>
+            <br/>
             <SavedEvents/>
           </div>
         </div>

@@ -25,60 +25,69 @@ class ResourceBoard extends Component {
   render() {
     return (
       <div>
-      <h4 style={{textAlign: 'center', marginTop: 20}}>Recommended Resources</h4>
+      <Segment>
+      <h4 style={{"textAlign":"center", "marginTop":20}}>Suggested Resources</h4>
       <Divider />
-      <ul className="media-list">
-        {this.props.resources.map((resource, index)=>{
-          console.log('resource', resource);
-          return (
-            <Segment key={index}>
+      {
+        this.props.resources.length > 0 ? (
+        <ul className="media-list">
+          {this.props.resources.map((resource, index)=>{
+            console.log('resource', resource);
+            return (
+              <Segment key={index}>
 
-            <li key={index} className="media">
-              <div className="media-left">
+              <li key={index} className="media">
+                <div className="media-left">
+                  <div
+                    key={index}
+                    style={{"width": 50, "cursor":"pointer"}}
+                    className="thumbnail"
+                    onClick={()=>{window.open(resource.URL)}}>
+                    <img
+                      className="media-object"
+                      src={resource.icon}
+                      key={index}
+                      alt="..."/>
+                  </div>
+                </div>
                 <div
                   key={index}
-                  style={{width: 50, cursor: 'pointer'}}
-                  className='thumbnail'
-                  onClick={()=>{window.open(resource.URL)}}>
-                  <img
-                    className="media-object"
-                    src={resource.icon}
-                    key={index}
-                    alt="..."/>
+                  className="media-body">
+                  <h5
+                    style={{"cursor":"pointer"}}
+                    onClick={()=>{window.open(resource.URL)}}
+                    className="media-heading" >{resource.title}</h5>
+                  <p key={index}>
+                    {resource.description}
+                  </p>
                 </div>
-              </div>
-              <div
-                key={index}
-                className="media-body">
-                <h5
-                  style={{cursor: 'pointer'}}
-                  onClick={()=>{window.open(resource.URL)}}
-                  className="media-heading" >{resource.title}</h5>
-                <p key={index}>
-                  {resource.description}
-                </p>
-              </div>
-              <div className="media-right">
-                <Popup
-                  trigger={<Button
-                  onClick={() => this.handleClick(resource)}
-                  basic
-                  style={{float: 'right'}}
-                  type="button">
-                  Save
-                </Button>}
-                  content="Saved!"
-                  on="click"
-                  hideOnScroll
-                />
-                
-              </div>
-            </li>
-            </Segment>
-          )
-        })}
+                <div className="media-right">
+                  <Popup
+                    trigger={<Button
+                    onClick={() => this.handleClick(resource)}
+                    basic
+                    style={{"float":"right"}}
+                    type="button">
+                    Save
+                  </Button>}
+                    content="Saved!"
+                    on="click"
+                    hideOnScroll
+                  />
 
-      </ul>
+                </div>
+              </li>
+              </Segment>
+            )
+          })}
+        </ul>
+        ) : (
+        <div style={{"textAlign":"center", "marginTop":20}}>
+        <p style={{"color":"#BCBCBC"}}>This mentor has no suggested resources.</p>
+        </div>
+        )
+      }
+      </Segment>
       </div>
     )
   }
