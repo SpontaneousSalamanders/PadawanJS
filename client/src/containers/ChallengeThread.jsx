@@ -54,12 +54,8 @@ class ChallengeThread extends Component {
 
 	render () {
 		return (
-			<div>
-        <Segment>
-				<h4 style={{"textAlign":"center", "marginTop":20}}>Challenges</h4>
-        <Divider />
-          {this.renderMessages(this.props.questions)}
-				</Segment>
+			<div style={{"height":750, "overflow":"auto"}}>
+        {this.renderMessages(this.props.questions)}
 			</div>
 		)
 	}

@@ -24,10 +24,7 @@ class ResourceBoard extends Component {
 
   render() {
     return (
-      <div>
-      <Segment>
-      <h4 style={{"textAlign":"center", "marginTop":20}}>Suggested Resources</h4>
-      <Divider />
+      <div style={{"height":750, "overflow":"auto"}}>
       {
         this.props.resources.length > 0 ? (
         <ul className="media-list">
@@ -87,7 +84,6 @@ class ResourceBoard extends Component {
         </div>
         )
       }
-      </Segment>
       </div>
     )
   }

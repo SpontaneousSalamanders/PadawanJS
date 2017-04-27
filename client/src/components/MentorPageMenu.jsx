@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class MentorPageMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeItem: 'Events' }
+    this.state = { activeItem: 'Upcoming Events' }
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
@@ -20,12 +20,12 @@ class MentorPageMenu extends Component {
   render() {
     const { activeItem } = this.state
 
-    return this.state.activeItem === 'Events' ? (
+    return this.state.activeItem === 'Upcoming Events' ? (
       <div>
         <Menu attached='top' tabular>
-          <Menu.Item name='Events' active={activeItem === 'Events'} onClick={this.handleItemClick} />
+          <Menu.Item name='Upcoming Events' active={activeItem === 'Upcoming Events'} onClick={this.handleItemClick} />
           <Menu.Item name='Challenges' active={activeItem === 'Challenges'} onClick={this.handleItemClick} />
-          <Menu.Item name='Resources' active={activeItem === 'Resources'} onClick={this.handleItemClick} />
+          <Menu.Item name='Suggested Resources' active={activeItem === 'Suggested Resources'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
           </Menu.Menu>
         </Menu>
@@ -39,9 +39,9 @@ class MentorPageMenu extends Component {
     ) : this.state.activeItem === 'Challenges' ? (
       <div>
         <Menu attached='top' tabular>
-          <Menu.Item name='Events' active={activeItem === 'Events'} onClick={this.handleItemClick} />
+          <Menu.Item name='Upcoming Events' active={activeItem === 'Upcoming Events'} onClick={this.handleItemClick} />
           <Menu.Item name='Challenges' active={activeItem === 'Challenges'} onClick={this.handleItemClick} />
-          <Menu.Item name='Resources' active={activeItem === 'Resources'} onClick={this.handleItemClick} />
+          <Menu.Item name='Suggested Resources' active={activeItem === 'Suggested Resources'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
           </Menu.Menu>
         </Menu>
@@ -55,9 +55,9 @@ class MentorPageMenu extends Component {
       ) : (
       <div>
         <Menu attached='top' tabular>
-          <Menu.Item name='Events' active={activeItem === 'Events'} onClick={this.handleItemClick} />
+          <Menu.Item name='Upcoming Events' active={activeItem === 'Upcoming Events'} onClick={this.handleItemClick} />
           <Menu.Item name='Challenges' active={activeItem === 'Challenges'} onClick={this.handleItemClick} />
-          <Menu.Item name='Resources' active={activeItem === 'Resources'} onClick={this.handleItemClick} />
+          <Menu.Item name='Suggested Resources' active={activeItem === 'Suggested Resources'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
           </Menu.Menu>
         </Menu>
