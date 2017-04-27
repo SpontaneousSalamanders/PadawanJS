@@ -24,7 +24,6 @@ export default (<Route
     }
   }}>
   <Route path="/" component={LandingPage} />
-  <Route path="/about" component={About} />
   <Route path="/find_mentor" component={FindMentor} />
   <Route path="/signin" component={LoginPage} />
   <Route path="/signup" component={SignUpPage} />
