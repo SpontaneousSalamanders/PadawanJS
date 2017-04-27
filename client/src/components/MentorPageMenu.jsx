@@ -30,7 +30,7 @@ class MentorPageMenu extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Segment attached='bottom'>
+        <Segment attached='bottom' style={{height: 529}}>
           <MuiThemeProvider>
             <EventBoard style={{height: 500}}/>
           </MuiThemeProvider>
