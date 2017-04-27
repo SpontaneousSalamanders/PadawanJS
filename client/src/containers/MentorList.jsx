@@ -20,8 +20,8 @@ class MentorList extends Component {
         key={index}
         mentor={mentor}
         />
-      )
-    })
+      );
+    });
   }
 
   render() {
@@ -30,13 +30,13 @@ class MentorList extends Component {
             <div className="col-xl-12"></div>
             {this.renderList()}
         </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    mentors: state.mentors,
+    mentors: state.mentors
   };
 }
 
