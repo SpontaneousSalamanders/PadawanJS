@@ -16,6 +16,7 @@ module.exports = {
   postResource: require('./postResource.js'),
   postQuestion: require('./postQuestion.js'),
   postReply: require('./postReply.js'),
+  startConversation: require('./startConversation.js'),
   postDirectMessage: require('./postDirectMessage.js'),
   saveResource: require('./saveResource.js'),
   deleteSavedEvent: require('./deleteSavedEvent.js'),

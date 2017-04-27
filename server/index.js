@@ -47,9 +47,10 @@ app.post('/postReply', requireAuth, handler.postReply);
 app.post('/postEvent', requireAuth, requireMentor, handler.postEvent);
 app.post('/postResource', requireAuth, requireMentor, handler.postResource);
 app.post('/postQuestion', requireAuth, requireMentor, handler.postQuestion);
-app.post('/directMessage', handler.postDirectMessage);
-app.get('/conversation/:uid', handler.getConversation);
-app.get('/allConversations/:uid', handler.getAllConversations);
+app.post('/directMessage', requireAuth, handler.postDirectMessage);
+app.post('/startConversation', requireAuth, handler.startConversation);
+app.get('/conversation/:uid', requireAuth, handler.getConversation);
+app.get('/allConversations/', requireAuth, handler.getAllConversations);
 app.get('/getMessagesForQuestion/:question_id', handler.getMessagesForQuestion)
 app.post('/deleteSavedEvent', requireAuth, handler.deleteSavedEvent);
 app.post('/deleteSavedResource', requireAuth, handler.deleteSavedResource);

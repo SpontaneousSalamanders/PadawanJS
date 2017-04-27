@@ -58,7 +58,8 @@ const jwtOptions = {
 
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if the user ID in the payload exists in our database
-  db.knex('users').where({id: payload.sub}).first()
+  console.log('what is payload sub?', payload.sub)
+  db.knex('users').where({email: payload.sub}).first()
   .then((user) =>{
     if (user) {
       return done (null, user);

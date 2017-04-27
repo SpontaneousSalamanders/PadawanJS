@@ -5,8 +5,8 @@ const config = require('../config.js');
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
-  console.log(user);
-  return jwt.encode({ sub: user.id, iat: timestamp, type: user.type }, config.secret);
+  console.log('user in token', user);
+  return jwt.encode({ sub: user.email, iat: timestamp, type: user.type }, config.secret);
 }
 
 exports.signin = function(req, res, next) {
@@ -32,11 +32,12 @@ exports.signup = function(req, res, next) {
     if (user) {
       return res.status(422).send({ error: 'Email is in use'});
     } else if (user === undefined) {
-      console.log('user was found undefined,  creating user and then sending token back');
 
       user = User.createUser(email, password, name);
 
-      res.json({ token: tokenForUser(user) });
+      console.log('email password and type', email, password, type)
+
+      res.send({ token: tokenForUser({email: email, password: password, type: type}) });
     }
   })
   .catch((err) => { return next(err)})
@@ -68,12 +69,12 @@ exports.mentor_profile_activation = function (req, res, next) {
       location: location,
       github: github,
       linkedIn: linkedIn,
-      description: description, 
+      description: description,
       techStack: techStack,
     })
-    .then(() => {
+    .then((user) => {
       console.log('mentor updated in type');
-    // res.json({ token: tokenForUser(user) })
+      res.send({ token: tokenForUser({email: email, type: 'mentor'})})
     })
     .catch((err) => { return next(err)})
 

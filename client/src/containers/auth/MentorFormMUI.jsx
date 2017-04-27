@@ -95,7 +95,7 @@ const techOptions = [
   },
 ]
 
-const formStyle = 
+const formStyle =
   {
     paddingBottom: 30,
     marginTop: 50,
@@ -117,8 +117,8 @@ const MentorForm = props => {
             <Field name="linkedIn" component={renderTextField} floatingLabelText="LinkedIn Handle"/>
           </div>
           <div>
-            <Field 
-              name="description" 
+            <Field
+              name="description"
               component={renderTextField}
               label="Tell us about yourself"
               multiLine={true}
@@ -131,7 +131,7 @@ const MentorForm = props => {
               <MenuItem value="Palo Alto" primaryText="Palo Alto"/>
             </Field>
           </div>
-          <div> 
+          <div>
             <Field name="role" component={renderSelectField} label="Role">
               <MenuItem value="Front end" primaryText="Front end"/>
               <MenuItem value="Back end" primaryText="Back end"/>
@@ -139,7 +139,7 @@ const MentorForm = props => {
             </Field>
           </div>
           <div>
-            Select Technologies 
+            Select Technologies
             <Field name="techStack" component={props => <TechSelect options={techOptions} field={props.input}
               />} label="techStack" />
 

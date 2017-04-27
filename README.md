@@ -1,6 +1,6 @@
 # PadawanJS
 
-> PadawanJS is a meetup app that connects mentees to mentors in the tech industry.
+> PadawanJS is a meetup app that connects mentees to JavaScript mentors in the tech industry.
 
 ## Team
 
@@ -26,7 +26,6 @@
 ## Requirements
 
 - Node 6.4.x
-- Redis 2.6.x
 - Postgresql 9.1.x
 - etc
 - etc

@@ -4,12 +4,10 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-export const AUTH_USER = 'auth_user';
-export const UNAUTH_USER = 'unauth_user';
-export const AUTH_ERROR = 'auth_error';
-export const FETCH_STUDENT_PROFILE = 'fetch_student_profile'
-export const FETCH_MENTOR_PROFILE = 'fetch_mentor_profile'
-export const SET_MENTOR_PRIVILEGES = 'set_mentor_privileges';
+export const AUTH_USER = 'AUTH_USER';
+export const UNAUTH_USER = 'UNAUTH_USER';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const SET_MENTOR_PRIVILEGES = 'SET_MENTOR_PRIVILEGES';
 
 const jwt_decode = require('jwt-decode');
 
@@ -20,11 +18,11 @@ export function signinUser({ email, password }) {
     // Submit email/password to the server
     axios.post('/signin', { email, password })
       .then( (response) => {
-        // // If request is good...
-        // // - Update state to indicate user is authenticated
+        // If request is good...
+        // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER });
 
-        // // decode token for info on the user
+        // decode token for info on the user
         let decoded_token_data = jwt_decode(response.data.token);
 
         // - Save the JWT token
@@ -66,7 +64,9 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
     axios.post('/signup', { email, password, firstName, lastName, passwordConfirm, type})
       .then(response => {
         dispatch({ type: AUTH_USER });
+
         localStorage.setItem('token', response.data.token);
+
 
         // send to appropriate student profile after auth
 
@@ -92,6 +92,18 @@ export function activateMentorProfile(props) {
       {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
         // what protected content are we pointing them to?
+        console.log('response is', response)
+
+        let decoded_token_data = jwt_decode(response.data.token);
+
+        localStorage.setItem('token', response.data.token);
+
+        console.log('dispatch should have been called after setting token')
+
+        return ({type: SET_MENTOR_PRIVILEGES});
+
+      })
+      .then( () => {
         browserHistory.push('/');
       })
   //     .catch(response => dispatch(authError(response.data.error)));
@@ -112,39 +124,4 @@ export function signoutUser() {
   localStorage.removeItem('token');
   browserHistory.push('/')
   return { type: UNAUTH_USER };
-}
-
-//token included in the header of the request for authorization
-// fetch student dashboard with just student privileges
-export function fetchStudentProfile() {
-  return function(dispatch) {
-    axios.get('/student_profile', {
-      headers: { authorization: localStorage.getItem('token') }
-    })
-      .then(response => {
-        dispatch({
-          type: FETCH_STUDENT_PROFILE,
-          payload: response.data.message
-        });
-        console.log('r.d.m?', response.data.message)
-      });
-  }
-}
-
-
-//token included in the header of the request for authorization
-// fetch mentor dashboard with mentor privileges
-export function fetchMentorProfile(mentor) {
-  return function(dispatch) {
-    axios.get('/mentor_profile', {
-      headers: { authorization: localStorage.getItem('token') }
-    })
-      .then(response => {
-        dispatch({
-          type: FETCH_MENTOR_PROFILE,
-          payload: response.data.message
-        });
-        console.log('r.d.m?', response.data.message)
-      });
-  }
 }

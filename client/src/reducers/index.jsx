@@ -8,7 +8,8 @@ import AuthReducer from './reducer_auth.jsx';
 import MessageReducer from './reducer_messages.jsx';
 import SavedResourcesReducer from './reducer_saved_resources.jsx';
 import SavedEventsReducer from './reducer_saved_events.jsx';
-
+import ConversationsReducer from './reducer_conversations.jsx';
+import DirectMessagesReducer from './reducer_direct_messages.jsx'
 
 
 
@@ -31,11 +32,6 @@ export function homeReducer(state = initialState, action) {
       return assign({}, state, {
         formState: action.newState
       });
-      break;
-    // case SET_AUTH:
-    //   return assign({}, state, {
-    //     loggedIn: action.newState
-    //   });
       break;
     case SENDING_REQUEST:
       return assign({}, state, {
@@ -62,7 +58,10 @@ const RootReducer = combineReducers({
   auth: AuthReducer,
   messages: MessageReducer,
   savedResources: SavedResourcesReducer,
-  savedEvents: SavedEventsReducer
+  savedEvents: SavedEventsReducer,
+  conversations: ConversationsReducer,
+  directMessages: DirectMessagesReducer,
+
 });
 
 export default RootReducer;
