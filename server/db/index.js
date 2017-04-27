@@ -2,7 +2,6 @@ const pg = require('pg');
 const Knex = require('knex');
 const Bookshelf = require('bookshelf');
 const createSchema = require('./schema.js');
-const seedData = require('./dummy/seedData.js');
 
 const knex = Knex({
   client: 'pg',
@@ -17,6 +16,6 @@ const knex = Knex({
 
 const db = Bookshelf(knex);
 
-createSchema(db).then(() => seedData(db));
+createSchema(db);
 
 module.exports = db;
