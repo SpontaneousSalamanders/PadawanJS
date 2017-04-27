@@ -15,14 +15,9 @@ const MentorPage = function(props) {
       <div className="row">
         <div className="col-md-6">
           <MentorCard mentor_id={mentor_id}/>
-          <ResourceBoard />
         </div>
         <div className="col-md-6">
           <MentorPageMenu />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-6">
         </div>
       </div>
     </div>
