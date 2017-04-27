@@ -20,7 +20,7 @@ function MentorCard(props) {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-      <Button style={{textAlign: 'center', marginLeft: '25%'}} basic>Send Message</Button>
+      <Button style={{ textAlign: 'center', marginLeft: '25%' }} basic>Send Message</Button>
     </Card.Content>
     </Card>
   )

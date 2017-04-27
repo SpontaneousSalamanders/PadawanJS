@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MentorProfileCard from '../containers/MentorProfileCard.jsx';
 import ChallengeThread from '../containers/ChallengeThread.jsx';
 
-const MentorPage = function (props) {
+const MentorPage = function(props) {
   return (
     <div className="container" style={{marginTop: 150, width: '100%'}}>
       <div className="row">
