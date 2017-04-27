@@ -114,37 +114,3 @@ export function signoutUser() {
   browserHistory.push('/')
   return { type: UNAUTH_USER };
 }
-
-//token included in the header of the request for authorization
-// fetch student dashboard with just student privileges
-export function fetchStudentProfile() {
-  return function(dispatch) {
-    axios.get('/student_profile', {
-      headers: { authorization: localStorage.getItem('token') }
-    })
-      .then(response => {
-        dispatch({
-          type: FETCH_STUDENT_PROFILE,
-          payload: response.data.message
-        });
-        console.log('r.d.m?', response.data.message)
-      });
-  }
-}
-
-
-//token included in the header of the request for authorization
-// fetch mentor dashboard with mentor privileges
-export function fetchMentorProfile(mentor) {
-  return function(dispatch) {
-    axios.get('/mentor_profile', {
-      headers: { authorization: localStorage.getItem('token') }
-    })
-      .then(response => {
-        dispatch({
-
-        });
-        console.log('r.d.m?', response.data.message)
-      });
-  }
-}
