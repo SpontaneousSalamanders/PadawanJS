@@ -46,8 +46,6 @@ class EventBoard extends Component {
                     style={{"cursor":"pointer"}}
                     className="media-heading">{event.title}</h5>
                   <p>
-                    {event.description}
-                    <br/>
                     {event.location}
                     <br/>
                     {event.description}
