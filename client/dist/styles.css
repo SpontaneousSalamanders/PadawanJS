@@ -67,7 +67,7 @@ Navigation Bar
 }
 
 a.header__findmentor {
-  color: black;
+  color: #f2f2f2;
 }
 
 .header_menus {
@@ -79,7 +79,8 @@ a.header__findmentor {
   padding: 1em;
   display: flex;
   align-items: center;
-  background-color: #db644f;
+  /*background-color: #db644f;*/
+  background-color: #601e28;
   margin-top: 65px;
   z-index: 6;
 }
@@ -149,23 +150,23 @@ a.header__findmentor {
     bottom: 0;
     padding-top: 15px;
     padding-left: 15px;
-    padding-right: 20px;
     padding-bottom: 30px;
+    padding-right: 15px;
     /*background-color: #e0e1e1;*/
-    background-color: #ffffff;
+    background-color: #fafafa;
     /*background-color: #6bd3f0;*/
   }
 
   .tech_stack {
-    color: black;
+    color: #960000;
   }
 
   .roles {
-    color: black;
+    color: #007c0f;
   }
 
   .locations {
-    color: black;
+    color: #0043a1;
   }
 
   .tech_items {
