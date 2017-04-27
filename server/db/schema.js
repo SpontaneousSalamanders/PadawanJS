@@ -3,7 +3,7 @@
 const seedData = require('./dummy/seedData.js');
 
 const schema = (db) => {
-  db.knex.schema.hasTable('users').then((exists) => {
+  return db.knex.schema.hasTable('users').then((exists) => {
     if (!exists) {
       db.knex.schema.createTable('users', (table) => {
         table.increments('id').primary();
