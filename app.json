@@ -1,7 +1,6 @@
 {
   "name": "PadawanJS",
   "scripts": {
-    "heroku-postbuild": "npm run seed"
   },
   "env": {
   },

@@ -148,8 +148,7 @@ const schema = (db) => {
           console.log('Created direct_messages table!');
         });
       }
-    })    
-
+    })
   ]);
 };
 
