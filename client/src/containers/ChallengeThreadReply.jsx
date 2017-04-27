@@ -46,17 +46,16 @@ class ChallengeThreadReply extends Component {
 
   render() {
     return (
-     <div style={{overflow: 'hidden'}} class="mini ui button">
+     <div style={{overflow: 'hidden'}}>
        <form>
          <input
           value={this.state.reply}
           placeholder={"Reply to " + this.props.name.split(' ')[0]}
           onChange={this.handleInputChange}/>
          <Button
-         class="mini ui button"
           onClick={this.handleClick}
           basic
-          style={{float: 'right'}}>
+          style={{'float':'right'}}>
           Post
         </Button>
        </form>

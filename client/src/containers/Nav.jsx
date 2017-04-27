@@ -22,7 +22,7 @@ class Nav extends Component {
     const navButtons = this.props.mentor_privileges ? (
       <div>
         <Link className="btn btn--login btn--nav" to="/dashboard">Dashboard</Link>
-        <Link className="btn btn--login btn--nav" to="/signout">Signout</Link>
+        <Link className="btn btn--login btn--nav" to="/signout">Sign out</Link>
       </div>
       ) : this.props.authenticated ? (
         <div>
@@ -33,7 +33,7 @@ class Nav extends Component {
       ) : (
         <div>
           <Link className="btn btn--login btn--nav" to="/signup">Sign Up</Link>
-          <Link className="btn btn--login btn--nav" to="/signin">Login</Link>
+          <Link className="btn btn--login btn--nav" to="/signin">Log in</Link>
         </div>
       );
 

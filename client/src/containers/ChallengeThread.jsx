@@ -16,44 +16,47 @@ class ChallengeThread extends Component {
 	}
 
 	renderMessages(messages = []) {
-		return messages.map((message) => {
-			return (
-				<Segment key={message.id}>
-          <div className="media-left">
+		return messages.length > 0 ? (
+      messages.map((message) => {
+  			return (
+  				<Segment key={message.id}>
+            <div className="media-left">
+              <div
+                key={message.id}
+                style={{"width": 50}}
+                className="thumbnail">
+                <img
+                  className="media-object"
+                  src={message.picture}
+                  key={message.id}
+                  alt="..."/>
+              </div>
+            </div>
             <div
               key={message.id}
-              style={{width: 50}}
-              className='thumbnail'>
-              <img
-                className="media-object"
-                src={message.picture}
-                key={message.id}
-                alt="..."/>
+              className="media-body">
+              <h4 className="media-heading">{message.name}</h4>
+              <p key={message.id}>{message.message}</p>
             </div>
-          </div>
-          <div
-            key={message.id}
-            className="media-body">
-            <h5
-              className="media-heading" >{message.name}</h5>
-            <p key={message.id}>
-              {message.message}
-            </p>
-          </div>
-					<ChallengeThreadReply
-            id={message.id}
-            name={message.name}/>
-					{ message.children ? this.renderMessages(message.children) : null }
-				</Segment>
-			);
-		})
+  					<ChallengeThreadReply
+              id={message.id}
+              name={message.name}/>
+  					{ message.children ? this.renderMessages(message.children) : null }
+  				</Segment>
+        )
+  		})
+    ) : (
+    <div style={{"textAlign":"center", "marginTop":20}}>
+    <p style={{"color":"#BCBCBC"}}>This mentor has no challenges.</p>
+    </div>
+    )
 	}
 
 	render () {
 		return (
 			<div>
         <Segment>
-				<h4 style={{textAlign: 'center', marginTop: 20}}>Challenges</h4>
+				<h4 style={{"textAlign":"center", "marginTop":20}}>Challenges</h4>
         <Divider />
           {this.renderMessages(this.props.questions)}
 				</Segment>
