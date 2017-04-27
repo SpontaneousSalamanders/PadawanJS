@@ -10,17 +10,17 @@ const MentorPage = function (props) {
   return (
     <div className="container" style={{marginTop: 150, width: '100%'}}>
       <div className="row">
-        <div className="col-md-6" >
-          <MentorProfileCard/>
+        <div className="col-md-6">
+          <MentorCard />
         </div>
         <div className="col-md-6">
-          <ResourceBoard/>
-          <EventBoard/>
-          <ChallengeThread />
+          <ResourceBoard />
+          <EventBoard />
         </div>
       </div>
-      <div>
+      <div className="row">
         <div className="col-md-6">
+          <ChallengeThread />
         </div>
       </div>
     </div>
