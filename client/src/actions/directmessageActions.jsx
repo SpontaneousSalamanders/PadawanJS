@@ -40,11 +40,12 @@ export function sendMessage(props) {
   const request = axios.post('/directMessage/', props, { headers: {
     authorization: localStorage.getItem('token') }
   })
-
-  return {
-    type: GET_DIRECT_MESSAGES,
-    payload: request
-  }
+  .then( () => {
+    return {
+      type: GET_DIRECT_MESSAGES,
+      payload: request
+    }
+  })
 }
 
 export function fieldInput (field) {

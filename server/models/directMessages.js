@@ -77,11 +77,27 @@ const postDirectMessage = (user_id, direct_message) => {
     conversation_id: direct_message.conversation_id,
     direct_message: direct_message.direct_message,
   })
-  // .then( () => {
-  //   console.log('direct message conversation id', direct_message.conversation_id);
+  .then( () => {
+    console.log('direct message conversation id', direct_message.conversation_id);
 
-  //   // getConversation(direct_message.conversation_id)
-  // })
+    // getConversation(direct_message.conversation_id)
+  return getConversation(direct_message.conversation_id).map( (message) => {
+    return db.knex
+    .distinct('name', 'picture')
+    .from('users')
+    .innerJoin('direct_messages', function() {
+      this.on('direct_messages.user_id', "=", 'users.id')
+    .andOn('users.id', '=', message.user_id)
+    })
+    .then((info) =>{
+      return {
+        user: info,
+        message: message
+      }
+    })
+  })
+
+  })
 };
 
 module.exports = {

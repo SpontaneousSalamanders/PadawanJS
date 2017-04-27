@@ -71,9 +71,9 @@ exports.mentor_profile_activation = function (req, res, next) {
       description: description,
       techStack: techStack,
     })
-    .then(() => {
+    .then((user) => {
       console.log('mentor updated in type');
-      res.json({ token: tokenForUser(req.user)})
+      res.json({ token: tokenForUser(user)})
     })
     .catch((err) => { return next(err)})
 

@@ -7,8 +7,8 @@ module.exports = (req, res) => {
   const message = req.body;
 
   DirectMessages.postDirectMessage(user_id, message)
-  .then(() => {
-    res.status(200).end();
+  .then((conversation) => {
+    res.status(200).send(conversation);
   })
   .catch((err) => {
     res.status(err.status || 500).send({'error in postDirectMessage': err});

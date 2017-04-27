@@ -96,13 +96,17 @@ export function activateMentorProfile(props) {
         let decoded_token_data = jwt_decode(response.data.token);
 
         localStorage.setItem('token', response.data.token);
-
-        browserHistory.push('/');
-
+      })
+      .then( () => {
         return ({type: SET_MENTOR_PRIVILEGES})
       })
-  //
-  //     .catch(response => dispatch(authError(response.data.error)));
+      .then ( () => {
+        return ({type: AUTH_USER})
+      })
+      .then( () => {
+        browserHistory.push('/');
+      })
+      // .catch(response => dispatch(authError(response.data.error)));
   // }
       // axios.post('/mentor_profile_activation',
       // props,
