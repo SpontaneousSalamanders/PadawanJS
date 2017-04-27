@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Segment, Button } from 'semantic-ui-react';
+import { Divider, Segment, Button, Popup } from 'semantic-ui-react';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import {
@@ -52,12 +52,20 @@ class ChallengeThreadReply extends Component {
           value={this.state.reply}
           placeholder={"Reply to " + this.props.name.split(' ')[0]}
           onChange={this.handleInputChange}/>
-         <Button
-          onClick={this.handleClick}
-          basic
-          style={{'float':'right'}}>
-          Post
-        </Button>
+
+          <Popup
+            trigger={
+              <Button
+                onClick={this.handleClick}
+                basic
+                style={{'float':'right'}}>
+                Post
+              </Button>
+            }
+            content={this.props.authenticated ? null : 'Please log in to post'}
+            on="click"
+            hideOnScroll
+          />
        </form>
      </div>
     );

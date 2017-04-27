@@ -62,7 +62,7 @@ class EventBoard extends Component {
                     style={{"float":"right"}}
                     onClick={() => this.handleClick(event)}
                     basic>Attend</Button>}
-                    content="Added to your Events"
+                    content={this.props.authenticated ? 'Added to your events!' : 'Please log in to save event'}
                     on="click"
                     hideOnScroll
                   />
@@ -86,6 +86,7 @@ class EventBoard extends Component {
 
 function mapStateToProps(state) {
   return {
+    authenticated: state.auth.authenticated,
     mentor: state.selectedMentor,
     events: state.events.eventData
   };

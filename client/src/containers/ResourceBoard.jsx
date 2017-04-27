@@ -23,6 +23,7 @@ class ResourceBoard extends Component {
   }
 
   render() {
+    console.log('this.props.authenticated', this.props.authenticated)
     return (
       <div style={{"height":750, "overflow":"auto"}}>
       {
@@ -67,7 +68,7 @@ class ResourceBoard extends Component {
                     type="button">
                     Save
                   </Button>}
-                    content="Saved!"
+                    content={this.props.authenticated ? 'Saved!' : 'Please log in to save'}
                     on="click"
                     hideOnScroll
                   />
@@ -91,6 +92,7 @@ class ResourceBoard extends Component {
 
 function mapStateToProps(state) {
   return {
+    authenticated: state.auth.authenticated,
     mentor: state.selectedMentor,
     resources: state.resources.resourceData
   }
