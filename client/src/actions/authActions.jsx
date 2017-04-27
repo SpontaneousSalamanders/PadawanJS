@@ -92,7 +92,14 @@ export function activateMentorProfile(props) {
       {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
         // what protected content are we pointing them to?
+
+        let decoded_token_data = jwt_decode(response.data.token);
+
+        localStorage.setItem('token', response.data.token);
+
         browserHistory.push('/');
+
+        return ({type: SET_MENTOR_PRIVILEGES})
       })
   //
   //     .catch(response => dispatch(authError(response.data.error)));

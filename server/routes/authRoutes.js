@@ -43,7 +43,7 @@ module.exports = function(app) {
   // took requireAuth out because id: payload.sub was giving an issue in stduent signup -> mentor sign up flow
   // route for signing up a mentor with mentor privileges
 
-  app.post('/mentor_profile_activation', auth.mentor_profile_activation);
+  app.post('/mentor_profile_activation', requireAuth, auth.mentor_profile_activation);
 
   app.post('/postResource', requireAuth, function(req, res) {
     console.log(req.user.id);
