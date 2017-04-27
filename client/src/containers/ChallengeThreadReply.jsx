@@ -52,20 +52,30 @@ class ChallengeThreadReply extends Component {
           value={this.state.reply}
           placeholder={"Reply to " + this.props.name.split(' ')[0]}
           onChange={this.handleInputChange}/>
-
-          <Popup
-            trigger={
+          {
+            this.props.authenticated ? (
               <Button
                 onClick={this.handleClick}
                 basic
                 style={{'float':'right'}}>
                 Post
               </Button>
-            }
-            content={this.props.authenticated ? null : 'Please log in to post'}
-            on="click"
-            hideOnScroll
-          />
+            ) : (
+              <Popup
+                trigger={
+                  <Button
+                    onClick={this.handleClick}
+                    basic
+                    style={{'float':'right'}}>
+                    Post
+                  </Button>
+                }
+                content="Please log in to post"
+                on="click"
+                hideOnScroll
+              />
+            )
+          }
        </form>
      </div>
     );
@@ -75,6 +85,7 @@ class ChallengeThreadReply extends Component {
 function mapStateToProps(state) {
   return {
     mentor: state.selectedMentor,
+    authenticated: state.auth.authenticated,
     questions: state.messages.questions,
     messagesForQuestions: state.messages.messagesForQuestions,
   };
