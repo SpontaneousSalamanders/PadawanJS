@@ -19,12 +19,13 @@ module.exports.categories = [
   },
   {
     location: 'San Francisco',
-    image:'https://images4.alphacoders.com/190/thumb-1920-19098.jpg'
-
+    // image:'https://images4.alphacoders.com/190/thumb-1920-19098.jpg'
+    image:'http://imgur.com/bn2IOHj.jpg'
   },
   {
     location: 'San Jose',
-    image:'http://vignette1.wikia.nocookie.net/swfanon/images/8/86/Daelmen_City.jpg/revision/latest?cb=20130115174543'
+    // image:'http://vignette1.wikia.nocookie.net/swfanon/images/8/86/Daelmen_City.jpg/revision/latest?cb=20130115174543'
+    image:'http://imgur.com/XqNFKL8.jpg'
 
   },
   {
