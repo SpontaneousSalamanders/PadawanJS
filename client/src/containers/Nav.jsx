@@ -21,7 +21,6 @@ class Nav extends Component {
     // based on the current authentication state.
     let navButtons = this.props.authenticated ? (
         <div>
-          <Link className="btn btn--login btn--nav" to="/inbox">Inbox</Link>
           <Link className="btn btn--login btn--nav" to="/mentorform">Become a Mentor!</Link>
           <Link className="btn btn--login btn--nav" to="/dashboard">Dashboard</Link>
           <Link className="btn btn--login btn--nav" to="/signout">Signout</Link>
@@ -35,7 +34,6 @@ class Nav extends Component {
 
     navButtons = this.props.mentor_privileges ? (
       <div>
-        <Link className="btn btn--login btn--nav" to="/inbox">Inbox</Link>
         <Link className="btn btn--login btn--nav" to="/dashboard">Jedi Dashboard</Link>
         <Link className="btn btn--login btn--nav" to="/signout">Signout</Link>
       </div>

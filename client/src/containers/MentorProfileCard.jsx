@@ -29,16 +29,6 @@ function MentorCard (props) {
             Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
             Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
           </CardText>
-          <CardActions>
-            <FlatButton label="Send Message" onClick={() => {
-              startConversation({mentor_id: props.mentor_id});
-              console.log('inside profile card', props.directMessages);
-            }
-
-              }
-              />
-            <FlatButton label="Action2" />
-          </CardActions>
         </Card>
     </MuiThemeProvider>
 
