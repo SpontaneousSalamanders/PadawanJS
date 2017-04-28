@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Checkbox from 'material-ui/Checkbox'
@@ -75,7 +76,7 @@ const renderDatePicker = props => (
 const EventForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form style={{height: 500}} onSubmit={handleSubmit(postEvent)}>
+    <form style={{height: 500}} onSubmit={handleSubmit}>
       Event
       <div>
         <Field name="title" component={renderTextField} label="Title"/>
@@ -120,7 +121,9 @@ function mapStateToProps(state) {
 }
 
 
-export default reduxForm({
+export default connect(null, {
+  onSubmit: postEvent
+})(reduxForm({
   form: 'EventForm',  // a unique identifier for this form
   validate,
-}, mapStateToProps)(EventForm)
+}, mapStateToProps)(EventForm))
