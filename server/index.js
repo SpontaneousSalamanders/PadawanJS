@@ -54,6 +54,10 @@ app.get('/allConversations/', requireAuth, handler.getAllConversations);
 app.get('/getMessagesForQuestion/:question_id', handler.getMessagesForQuestion)
 app.post('/deleteSavedEvent', requireAuth, handler.deleteSavedEvent);
 app.post('/deleteSavedResource', requireAuth, handler.deleteSavedResource);
+app.get('/getMentorEvents', requireAuth, requireMentor, handler.getMentorEvents);
+app.get('/getUserResources', requireAuth, requireMentor, handler.getUserResources);
+app.get('/getUserQuestions', requireAuth, requireMentor, handler.getUserQuestions);
+
 
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/dist/index.html'))

@@ -32,7 +32,7 @@ class MentorPageMenu extends Component {
 
         <Segment attached='bottom' style={{height: 529}}>
           <MuiThemeProvider>
-            <EventBoard style={{height: 500}}/>
+            <EventBoard inDashboard={this.props.inDashboard} style={{height: 500}}/>
           </MuiThemeProvider>
         </Segment>
       </div>
@@ -48,7 +48,7 @@ class MentorPageMenu extends Component {
 
         <Segment attached='bottom'>
           <MuiThemeProvider>
-            <ChallengeThread style={{height: 500}}/>
+            <ChallengeThread inDashboard={this.props.inDashboard} style={{height: 500}}/>
           </MuiThemeProvider>
         </Segment>
       </div>
@@ -64,7 +64,7 @@ class MentorPageMenu extends Component {
 
         <Segment attached='bottom'>
           <MuiThemeProvider>
-            <ResourceBoard style={{height: 500}}/>
+            <ResourceBoard inDashboard={this.props.inDashboard} style={{height: 500}}/>
           </MuiThemeProvider>
         </Segment>
       </div>

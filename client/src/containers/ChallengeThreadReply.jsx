@@ -40,7 +40,7 @@ class ChallengeThreadReply extends Component {
     })
     .then(() => {
       this.setState({ reply: '' })
-      this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
+      this.props.inDashboard ? this.props.getQuestionsAction.getQuestions() : this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
     });
   }
 

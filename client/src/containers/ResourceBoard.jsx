@@ -13,7 +13,7 @@ class ResourceBoard extends Component {
   }
 
   componentDidMount() {
-    this.props.getResources(this.props.mentor.id);
+    this.props.inDashboard ? this.props.getResources() : this.props.getResources(this.props.mentor.id);
   }
 
   handleClick(resource) {

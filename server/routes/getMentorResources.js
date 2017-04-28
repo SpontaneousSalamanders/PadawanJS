@@ -3,7 +3,7 @@
 const Resources = require('../models/resources.js');
 
 module.exports = (req, res) => {
-  const user_id = req.params.uid;
+  const user_id = req.params.uid ? req.params.uid : req.user.id;
 
   Resources.getMentorResources(user_id)
   .then((resources) => {

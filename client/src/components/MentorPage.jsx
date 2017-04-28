@@ -17,7 +17,7 @@ const MentorPage = function(props) {
           <MentorCard mentor_id={mentor_id}/>
         </div>
         <div className="col-md-8">
-          <MentorPageMenu />
+          <MentorPageMenu inDashboard={false}/>
         </div>
       </div>
     </div>

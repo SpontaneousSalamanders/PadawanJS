@@ -12,7 +12,7 @@ import ChallengeThreadReply from './ChallengeThreadReply.jsx';
 
 class ChallengeThread extends Component {
 	componentWillMount() {
-		this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
+		this.props.inDashboard ? this.props.getQuestionsAction.getQuestions() : this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
 	}
 
 	renderMessages(messages = []) {
@@ -40,7 +40,8 @@ class ChallengeThread extends Component {
             </div>
   					<ChallengeThreadReply
               id={message.id}
-              name={message.name}/>
+              name={message.name}
+              inDashboard={this.props.inDashboard}/>
   					{ message.children ? this.renderMessages(message.children) : null }
   				</Segment>
         )

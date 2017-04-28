@@ -3,7 +3,7 @@
 const Messages = require('../models/messages.js');
 
 module.exports = (req, res) => {
-  const user_id = req.params.uid;
+  const user_id = req.params.uid ? req.params.uid : req.user.id;
 
   Messages.getQuestions(user_id)
   .then((messages) => {
