@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 import { postResource } from '../actions/postResourceActions.jsx';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import { Button } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
@@ -80,11 +81,11 @@ const ResourceForm = props => {
         <Field name="description" component={renderTextField} label="Description" multiLine={true} rows={2}/>
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <Button type="submit" disabled={pristine || submitting}>Submit</Button>
       </div>
     </form>
-  )
-}
+  );
+};
 
 function mapStateToProps(state) {
   return {
@@ -92,7 +93,7 @@ function mapStateToProps(state) {
     initialValues: {
       user_id: state.selectedMentor.id
     }
-  }
+  };
 }
 
 

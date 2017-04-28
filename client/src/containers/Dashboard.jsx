@@ -5,35 +5,46 @@ import ResourceForm from './ResourceForm.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SavedResources from './SavedResources.jsx';
 import SavedEvents from './SavedEvents.jsx';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import MentorPageMenu from '../components/MentorPageMenu.jsx';
 
 class Dashboard extends Component {
   render() {
-    const postMenu = this.props.mentor_privileges ? (
-      <div className="col-md-6" >
-        <MentorPostMenu />
-      </div>
-    ) : (
-      <div className="col-md-6" >
-      </div>
-    );
-
+    const postMenu = this.props.mentor_privileges 
+    if (postMenu === true) {
+      return (
+        <div className="container" style={{marginTop: 150, width: '100%'}}>
+          <div className="row">
+            <div className="col-md-6">
+              <MentorPostMenu />
+            </div>
+            <div className="col-md-6" >
+              <MentorPageMenu />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              <SavedResources />
+            </div>
+            <div className="col-md-6">
+              <SavedEvents />
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="container" style={{marginTop: 150, width: '100%'}}>
-        { postMenu }
         <div className="row">
           <div className="col-md-6">
-            <SavedResources/>
-            <br/>
-            <SavedEvents/>
+            <SavedResources />
           </div>
-        </div>
-        <div>
           <div className="col-md-6">
+            <SavedEvents />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
