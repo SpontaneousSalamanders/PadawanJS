@@ -8,8 +8,10 @@ module.exports = {
   getMentorProfile: require('./getMentorProfile.js'),
   getMentors: require('./getMentors.js'),
   getMentorResources: require('./getMentorResources.js'),
+  getUserResources: require('./getMentorResources.js'),
   getMenteeResources: require('./getMenteeResources.js'),
   getQuestions: require('./getQuestions.js'),
+  getUserQuestions: require('./getQuestions.js'),
   getConversation: require('./getConversation.js'),
   getAllConversations: require('./getAllConversations.js'),
   getMessagesForQuestion: require('./getMessagesForQuestion.js'),
@@ -22,5 +24,5 @@ module.exports = {
   saveResource: require('./saveResource.js'),
   deleteSavedEvent: require('./deleteSavedEvent.js'),
   deleteSavedResource: require('./deleteSavedResource.js'),
-  wildCard: require('./wildCard.js')
+  wildCard: require('./wildCard.js'),
 }

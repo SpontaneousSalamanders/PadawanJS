@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_EVENTS = 'GET_EVENTS';
 
 export function getEvents(user_id) {
-  let request = null;
+  let request;
 
   if (user_id) {
     request = axios.get('/getEvents/' + user_id);

@@ -15,11 +15,19 @@ export function getMessages(user_id) {
 
 
 export function getQuestions(user_id) {
-	const response = axios.get('/getQuestions/' + user_id);
+  let response;
+
+  if (user_id) {
+    response = axios.get('/getQuestions/' + user_id);
+  } else {
+    response = axios.get('/getUserQuestions', {
+      headers: { authorization: localStorage.getItem('token') }
+    });
+  }
 
 	return {
 		type: GET_QUESTIONS,
-		payload: response,
+		payload: response
 	};
 }
 

@@ -12,7 +12,7 @@ import ChallengeThreadReply from './ChallengeThreadReply.jsx';
 
 class ChallengeThread extends Component {
 	componentWillMount() {
-		this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
+		this.props.inDashboard ? this.props.getQuestionsAction.getQuestions() : this.props.getQuestionsAction.getQuestions(this.props.mentor.id);
 	}
 
 	renderMessages(messages = []) {
