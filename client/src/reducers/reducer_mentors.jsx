@@ -33,6 +33,7 @@ export default function(state = INITIAL_STATE, action = {}) {
       var filtered_by_techStacks_locations = intersection(filtered_by_techStacks, filtered_by_locations);
       var filtered_by_roles_locations = intersection(filtered_by_roles, filtered_by_locations);
       var filtered_by_techStacks_roles_locations = intersection(filtered_by_techStacks_roles, filtered_by_locations);
+      console.log(filtered_by_techStacks_roles);
       if (action.payload.techStacks.includes('Nothing selected') && action.payload.roles.includes('Nothing selected') && action.payload.locations.includes('Nothing selected')) {
         return Object.assign({}, state, {
           filtered: state.index,
