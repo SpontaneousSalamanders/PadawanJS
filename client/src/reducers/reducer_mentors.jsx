@@ -66,7 +66,6 @@ export default function(state = INITIAL_STATE, action = {}) {
         return Object.assign({}, state, {
           filtered: filtered_by_locations
         });
-
     }
     default:
       return state;
