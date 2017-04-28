@@ -40,7 +40,8 @@ class ChallengeThread extends Component {
             </div>
   					<ChallengeThreadReply
               id={message.id}
-              name={message.name}/>
+              name={message.name}
+              inDashboard={this.props.inDashboard}/>
   					{ message.children ? this.renderMessages(message.children) : null }
   				</Segment>
         )
