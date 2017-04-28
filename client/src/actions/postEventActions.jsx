@@ -22,22 +22,14 @@ export function postEvent(props) {
 
       console.log('response is:', decoded_token_data)
 
-
       // browserHistory.push(`/profile/${decoded_token_data.id}`)
     })
     .catch( (response) => {
       console.log(response)
-
-      // browserHistory.push(`/profile/${response.data.id}`)
-    })
-    .catch( (response) => {
-      console.log(response)
-      // dispatch(authError(response.data.error))
     })
   }
   // return {
   //   type: POST_EVENT,
   //   payload: request
   // };
-
 }
