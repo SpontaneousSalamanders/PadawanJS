@@ -6,7 +6,7 @@ import { Button, Popup } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'title', 'description' ]
+  const requiredFields = [ 'title', 'message' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
