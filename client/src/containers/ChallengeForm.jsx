@@ -2,11 +2,11 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { postChallenge } from '../actions/postChallengeActions.jsx';
-
+import { Button, Popup } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'Title', 'Description' ]
+  const requiredFields = [ 'title', 'message' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
@@ -28,7 +28,7 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 )
 
 const ChallengeForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting, valid } = props
   return (
     <form style={{height: 500}} onSubmit={handleSubmit(postChallenge)}>
       Challenge
@@ -39,7 +39,7 @@ const ChallengeForm = props => {
         <Field name="message" component={renderTextField} label="Question" multiLine={true} rows={2}/>
       </div>
       <div style={{marginTop: 30}}>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <Popup trigger={<Button type="submit" disabled={pristine || submitting} >Submit</Button>} content={!valid ? 'Please fill required fields': 'Submitted'} on="click" hideOnScroll />
       </div>
     </form>
   )

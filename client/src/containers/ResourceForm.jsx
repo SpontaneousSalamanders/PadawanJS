@@ -8,10 +8,11 @@ import MenuItem from 'material-ui/MenuItem'
 import { postResource } from '../actions/postResourceActions.jsx';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import { Button, Popup } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'Title', 'URL', 'Category', 'Description' ]
+  const requiredFields = [ 'title', 'URL', 'category', 'description' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
@@ -55,7 +56,7 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
 )
 
 const ResourceForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting, valid } = props
   return (
     <form style={{height: 500}} onSubmit={handleSubmit(postResource)}>
       Resource
@@ -80,11 +81,12 @@ const ResourceForm = props => {
         <Field name="description" component={renderTextField} label="Description" multiLine={true} rows={2}/>
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <Popup trigger={<Button type="submit" disabled={pristine || submitting} >Submit</Button>} content={!valid ? 'Please fill required fields': 'Submitted'} on="click" hideOnScroll />
+        
       </div>
     </form>
-  )
-}
+  );
+};
 
 function mapStateToProps(state) {
   return {
@@ -92,7 +94,7 @@ function mapStateToProps(state) {
     initialValues: {
       user_id: state.selectedMentor.id
     }
-  }
+  };
 }
 
 
