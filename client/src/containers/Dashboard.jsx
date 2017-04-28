@@ -19,14 +19,7 @@ class Dashboard extends Component {
               <MentorPostMenu />
             </div>
             <div className="col-md-6" >
-              <MentorPageMenu />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
               <SavedResources />
-            </div>
-            <div className="col-md-6">
               <SavedEvents />
             </div>
           </div>
