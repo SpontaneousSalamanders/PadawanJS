@@ -10,7 +10,7 @@ import MentorPageMenu from '../components/MentorPageMenu.jsx';
 
 class Dashboard extends Component {
   render() {
-    const postMenu = this.props.mentor_privileges 
+    const postMenu = this.props.mentor_privileges
     if (postMenu === true) {
       return (
         <div className="container" style={{marginTop: 150, width: '100%'}}>
@@ -19,7 +19,7 @@ class Dashboard extends Component {
               <MentorPostMenu />
             </div>
             <div className="col-md-6" >
-              <MentorPageMenu />
+              <MentorPageMenu inDashboard={true} />
             </div>
           </div>
           <div className="row">

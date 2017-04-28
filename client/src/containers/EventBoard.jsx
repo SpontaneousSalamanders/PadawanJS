@@ -14,7 +14,7 @@ class EventBoard extends Component {
   }
 
   componentDidMount() {
-    this.props.getEvents(this.props.mentor.id);
+    this.props.inDashboard ? this.props.getEvents() : this.props.getEvents(this.props.mentor.id);
   }
 
   handleClick(event) {

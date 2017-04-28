@@ -3,7 +3,7 @@
 const Events = require('../models/events.js');
 
 module.exports = (req, res) => {
-  const user_id = req.params.uid;
+  const user_id = req.params.uid ? req.params.uid : req.user.id;
 
   Events.getEvents(user_id)
   .then((events) => {
