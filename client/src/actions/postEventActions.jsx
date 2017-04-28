@@ -15,7 +15,7 @@ export function postEvent(props) {
     .then( (response) => {
       dispatch({ type: POST_EVENT })
 
-      let decoded_token_data = jwt_decode(response.data.token);
+      // let decoded_token_data = jwt_decode(response.data.token);
 
       // - Save the JWT token
       // localStorage.setItem('token', response.data.token);
@@ -32,5 +32,4 @@ export function postEvent(props) {
   //   type: POST_EVENT,
   //   payload: request
   // };
-
 }
