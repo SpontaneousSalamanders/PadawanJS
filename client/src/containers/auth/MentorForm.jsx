@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, Form, reduxForm } from 'redux-form';
-import * as actions from '../../actions/authActions.jsx';
+import { activateMentorProfile } from '../../actions/authActions.jsx';
 import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 
@@ -115,4 +115,6 @@ MentorForm = reduxForm({
   form: 'mentorform',
 })(MentorForm);
 
-export default connect(mapStateToProps, actions)(MentorForm);
+export default connect(null, {
+  onSubmit: activateMentorProfile
+})(MentorForm);

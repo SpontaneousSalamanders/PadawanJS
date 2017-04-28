@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
@@ -106,7 +107,7 @@ const MentorForm = props => {
   return (
     <Segment>
       <MuiThemeProvider>
-        <form style={formStyle} onSubmit={handleSubmit(activateMentorProfile)}>
+        <form style={formStyle} onSubmit={handleSubmit}>
           <div>
             <Field name="email" component={renderTextField} label="Email"/>
           </div>
@@ -163,7 +164,9 @@ function mapStateToProps(state) {
 }
 
 
-export default reduxForm({
+export default connect(null, {
+  onSubmit: activateMentorProfile
+})(reduxForm({
   form: 'mentorform',  // a unique identifier for this form
   validate,
-}, mapStateToProps)(MentorForm)
+}, mapStateToProps)(MentorForm))

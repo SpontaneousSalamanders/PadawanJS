@@ -84,7 +84,7 @@ export function signupUser({ email, password, firstName, lastName, passwordConfi
 //token included in the header of the request for authorization
 
 export function activateMentorProfile(props) {
-  // return function(dispatch) {
+  return function(dispatch) {
   console.log('active mentor', props)
     // mentor sign up and activating mentor profile
     axios.post('/mentor_profile_activation',
@@ -92,6 +92,8 @@ export function activateMentorProfile(props) {
       {headers: { authorization: localStorage.getItem('token') }})
       .then(response => {
         // what protected content are we pointing them to?
+        dispatch({type: SET_MENTOR_PRIVILEGES});
+
         console.log('response is', response)
 
         let decoded_token_data = jwt_decode(response.data.token);
@@ -100,17 +102,10 @@ export function activateMentorProfile(props) {
 
         console.log('dispatch should have been called after setting token')
 
-        return ({type: SET_MENTOR_PRIVILEGES});
-
-      })
-      .then( () => {
         browserHistory.push('/');
       })
-  //     .catch(response => dispatch(authError(response.data.error)));
-  // }
-      // axios.post('/mentor_profile_activation',
-      // props,
-      // {headers: { authorization: localStorage.getItem('token') }})
+      .catch(response => dispatch(response.data.error));
+  }
 }
 
 export function authError(error) {
