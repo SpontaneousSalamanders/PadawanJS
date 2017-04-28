@@ -1,7 +1,6 @@
 {
   "name": "PadawanJS",
   "scripts": {
-    "postdeploy": "npm run seed"
   },
   "env": {
   },

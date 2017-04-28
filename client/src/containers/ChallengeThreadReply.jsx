@@ -46,7 +46,7 @@ class ChallengeThreadReply extends Component {
 
   render() {
     return (
-     <div style={{overflow: 'hidden'}}>
+     <div style={{"overflow":"hidden"}}>
        <form>
          <input
           value={this.state.reply}
@@ -57,7 +57,7 @@ class ChallengeThreadReply extends Component {
               <Button
                 onClick={this.handleClick}
                 basic
-                style={{'float':'right'}}>
+                style={{"float":"right"}}>
                 Post
               </Button>
             ) : (
@@ -66,7 +66,7 @@ class ChallengeThreadReply extends Component {
                   <Button
                     onClick={this.handleClick}
                     basic
-                    style={{'float':'right'}}>
+                    style={{"float":"right"}}>
                     Post
                   </Button>
                 }

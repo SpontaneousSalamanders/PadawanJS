@@ -10,34 +10,38 @@ const messages = require('./messages.js').messages;
 const direct_messages = require('./directMessages.js').direct_messages;
 const conversations = require('./directMessages.js').conversations;
 
-db.knex.schema.hasTable('users')
-.then(() => {
-  return db.knex('users').insert(users);
-})
-.then(() => {
-  return db.knex('events').insert(events);
-})
-.then(() => {
-  return db.knex('categories').insert(categories);
-})
-.then(() => {
-  return db.knex('resources').insert(resources);
-})
-.then(() => {
-  return db.knex('users_events').insert(users_events);
-})
-.then(() => {
-  return db.knex('users_resources').insert(users_resources);
-})
-.then(() => {
-  return db.knex('messages').insert(messages);
-})
-.then(() => {
-  return db.knex('conversations').insert(conversations);
-})
-.then(() => {
-  return db.knex('direct_messages').insert(direct_messages);
-})
-.catch((err)=> {
-	console.log(err)
-})
+const seedData = (db) => {
+  return db.knex.schema.hasTable('users')
+  .then(() => {
+    return db.knex('users').insert(users);
+  })
+  .then(() => {
+    return db.knex('events').insert(events);
+  })
+  .then(() => {
+    return db.knex('categories').insert(categories);
+  })
+  .then(() => {
+    return db.knex('resources').insert(resources);
+  })
+  .then(() => {
+    return db.knex('users_events').insert(users_events);
+  })
+  .then(() => {
+    return db.knex('users_resources').insert(users_resources);
+  })
+  .then(() => {
+    return db.knex('messages').insert(messages);
+  })
+  .then(() => {
+    return db.knex('conversations').insert(conversations);
+  })
+  .then(() => {
+    return db.knex('direct_messages').insert(direct_messages);
+  })
+  .catch((err)=> {
+  	console.log(err)
+  })
+}
+
+module.exports = seedData;

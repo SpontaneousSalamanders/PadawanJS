@@ -9,7 +9,6 @@
     "webpack-dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "seed": "node server/db/dummy/seedData.js",
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
