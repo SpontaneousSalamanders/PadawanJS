@@ -18,15 +18,14 @@ export function postEvent(props) {
       let decoded_token_data = jwt_decode(response.data.token);
 
       // - Save the JWT token
-      localStorage.setItem('token', response.data.token);
+      // localStorage.setItem('token', response.data.token);
 
-      console.log('response is:', response.data.id)
+      console.log('response is:', decoded_token_data)
 
-      browserHistory.push(`/profile/${response.data.id}`)
+      // browserHistory.push(`/profile/${decoded_token_data.id}`)
     })
     .catch( (response) => {
       console.log(response)
-      dispatch(authError(response.data.error))
     })
   }
   // return {
